@@ -233,13 +233,15 @@ nvm use 22.21.1</code></pre></div><blockquote>
 <li>Via Clone <strong>SSH</strong></li>
 </ul>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-bash">git clone git&#64;github.com:EmmanuelLefevre/AngularTemplate.git
-cd AngularTemplate
+cd GrowLogic
 corepack enable
-pnpm install
+pnpm install --frozen-lockfile
 pnpm start</code></pre></div><ul>
 <li>Via Package</li>
 </ul>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-bash"></code></pre></div>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash"></code></pre></div><h3>Installation d&#39;une librairie</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">$env:ALLOW_UPDATE=1; pnpm add &lt;nom-du-package&gt;</code></pre></div><h3>Installation de la CLI Angular en global</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">pnpm add -g &#64;angular/cli&#64;21.2.1</code></pre></div>
 
 
 
