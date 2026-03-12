@@ -226,8 +226,8 @@ jobs:
     name: 🎯 Deploy to Production
     needs: [security, quality]
     # 🚩 Temporarily disabled (will never launch)
-    if: github.ref == 'refs/heads/main' && false
-    # if: github.ref == 'refs/heads/main'
+    # if: github.ref == 'refs/heads/main' && false
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -258,7 +258,7 @@ jobs:
           ARGS: '-rlgoDazvc -i --delete'
 
           # ⚠️ Double-check folder name in /dist directory after build (pnpm build)
-          SOURCE: 'dist/AngularTemplate/browser/'
+          SOURCE: 'dist/GrowLogic/browser/'
 
           # Avoids sending git configuration files on server
           EXCLUDE: '/node_modules/, /.github/, /.git/'
