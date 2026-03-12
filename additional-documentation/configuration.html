@@ -1,0 +1,320 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">⚙️ CONFIGURATION ⚙️</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#ts-config">TYPESCRIPT CONFIGURATION</a><ul>
+<li><a href="#base-config">Configuration de base</a></li>
+<li><a href="#paths-aliases">Alias &amp; Chemins)</a></li>
+<li><a href="#app-config">Configuration applicative</a></li>
+</ul>
+</li>
+<li><a href="#apache-config">SERVER CONFIG (APACHE)</a></li>
+<li><a href="#schematics">SCHEMATICS</a></li>
+</ul>
+<h2 id="ts-config">
+  <img
+    alt="TSCONFIG"
+    title="TSCONFIG"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/ts_config.png"
+  />
+  TYPESCRIPT CONFIGURATION
+</h2>
+
+<p>La configuration <strong>TypeScript</strong> est divisée en plusieurs fichiers pour séparer les règles globales, celles de l&#39;application et celles des tests.  </p>
+<h3 id="base-config">Configuration de Base</h3>
+
+<p><strong><code>tsconfig.json</code></strong>  </p>
+<p>Ce fichier contient les paramètres fondamentaux du compilateur <strong>TypeScript</strong> (<code>compilerOptions</code>) et du compilateur <strong>Angular</strong> (<code>angularCompilerOptions</code>) qui sont hérités par tous les autres fichiers de configuration de l&#39;espace de travail.  </p>
+<p>Il définit le niveau de rigueur du typage (<strong>Strict Mode</strong>) et la compatibilité du code généré.  </p>
+<p>💡 Une documentation complète est disponible dans le fichier <code>tsconfig.json</code> et ici =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#ts-base-config-rules">👀 TypeScript Base Config Rules</a>  </p>
+</blockquote>
+<p>📄 <a href="./tsconfig.json">Consulter la configuration</a>  </p>
+<h3 id="paths-aliases">Alias & Chemins</h3>
+
+<p>Pour éviter les imports relatifs illisibles comme <code>../../../../core/services/auth.service</code>, nous utilisons des <strong>Alias</strong>.<br>Ces raccourcis sont définis dans <code>compilerOptions.paths</code> du <code>tsconfig.json</code>.  </p>
+<p>💡 Une documentation complète est disponible dans le fichier <code>tsconfig.app.json</code> et ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#ts-alias-config-rules">👀 TypeScript Alias Config Rules</a>  </p>
+</blockquote>
+<h3 id="app-config">Configuration applicative</h3>
+
+<p><strong><code>tsconfig.app.json</code></strong>  </p>
+<p>💡 Une documentation complète est disponible dans le fichier <code>tsconfig.app.json</code> et ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#ts-app-config-rules">👀 TypeScript App Config Rules</a>  </p>
+</blockquote>
+<h2 id="apache-config">
+  <img
+    alt="Apache"
+    title="Apache"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/apache.png"
+  />
+  SERVER CONFIG (Apache)
+</h2>
+
+<h3>A propos d&#39;Apache HTTP Server ::</h3>
+<p><strong>Apache</strong> est le serveur web qui héberge notre application en production.<br>Contrairement à un serveur d&#39;application (comme <strong>NodeJS</strong>* ou <strong>Java</strong>), son rôle ici est de servir des fichiers statiques (<strong>HTML</strong>, <strong>SCSS</strong>, <strong>JS</strong>, <strong>Images</strong>) au navigateur de l&#39;utilisateur.  </p>
+<h3>Le défi des &quot;Single Page Applications&quot; (SPA)</h3>
+<p><strong>Angular</strong> est une <strong>SPA</strong> : il n&#39;y a qu&#39;un seul fichier réel (<code>index.html</code>). La navigation (ex: <code>/dashboard</code>, <code>/profile</code>) est virtuelle et gérée par <strong>JavaScript</strong> dans le navigateur.  </p>
+<p><strong>Le problème :</strong>  </p>
+<p>Si un utilisateur rafraîchit la page sur <code>https://monsite.com/dashboard</code>, le serveur <strong>Apache</strong> cherche un fichier <code>dashboard.html</code> qui n&#39;existe pas et renvoie une <strong>Erreur 404</strong>.  </p>
+<p><strong>La solution (.htaccess) :</strong>  </p>
+<p>Nous utilisons un fichier de configuration distribué (<code>.htaccess</code>) pour intercepter toutes les requêtes entrantes et dire au serveur :  </p>
+<blockquote>
+<p><em>&quot;Si tu ne trouves pas le fichier demandé, renvoie <code>index.html</code> et laisse Angular gérer l&#39;affichage.&quot;</em>  </p>
+</blockquote>
+<h3>Le fichier <code>.htaccess</code></h3>
+<p>Ce fichier est situé dans le dossier des assets publics et est automatiquement copié à la racine du build lors de la compilation.  </p>
+<p><strong>Emplacement build :</strong> <code>dist/AngularTemplate/browser/.htaccess</code>  </p>
+<h3>Fonctionnalités activées :</h3>
+<p>Le fichier assure trois rôles critiques pour la sécurité et la navigation :  </p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Catégorie</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>🔀 URL Rewriting</strong></td>
+<td align="left"><strong>SPA Fallback</strong> : Rediriger toutes les requêtes inconnues vers <code>index.html</code> pour que le <strong>Router Angular</strong> prenne le relais (évite les erreurs 404 au rechargement)</td>
+</tr>
+<tr>
+<td align="left"><strong>🔒 Force HTTPS</strong></td>
+<td align="left">Rediriger automatiquement tout le trafic <strong>HTTP</strong> (Port 80) vers <strong>HTTPS</strong> (Port 443) pour chiffrer les échanges</td>
+</tr>
+<tr>
+<td align="left"><strong>🛡️ Security Headers</strong></td>
+<td align="left">Injecter des en-têtes <strong>HTTP</strong> stricts pour protéger l&#39;application contre les attaques courantes <br> - <code>Strict-Transport-Security</code> (<strong>HSTS</strong>) <br> - <code>Content-Security-Policy</code> (<strong>XSS</strong>) <br> - <code>X-Frame-Options</code> (<strong>Clickjacking</strong>)</td>
+</tr>
+<tr>
+<td align="left"><strong>🛂 Permissions-Policy</strong></td>
+<td align="left"><strong>Contrôle des API Navigateur.</strong> <br> Permet de désactiver complètement l&#39;accès aux fonctionnalités sensibles du matériel (Caméra, Micro, Géolocalisation, USB, Paiement) pour renforcer la vie privée de l&#39;utilisateur</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><a href="https://securityheaders.com/">🔗 Security Headers Scan</a>  </p>
+</blockquote>
+<p><img src="https://github.com/EmmanuelLefevre/MarkdownImg/blob/main/snyk_security_headers.png" alt="Security Headers Scan Result" class="img-responsive">  </p>
+<h2 id="schematics">
+  <img
+    alt="Schematics"
+    title="Schematics"
+    width="60px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/schematics.png"
+  />
+  Schematics Rules
+</h2>
+
+<h3>Introduction :</h3>
+<p>Les schematics d&#39;<strong>Angular</strong> sont un puissant outil qui facilite le développement en automatisant la génération et la modification de code. Cela permet de personnaliser et d&#39;étendre les fonctionnalités de la <strong>CLI</strong>.<br>La section de configuration des <strong>schematics</strong> définit les paramètres par défaut de la commande <code>ng generate</code> de l&#39;interface de la <strong>CLI</strong> d&#39;*<strong>*Angular</strong>.  </p>
+<p>Ils permettent aux développeurs de créer des composants, des services, des modules et d&#39;autres éléments de manière standardisée (tout en réduisant les tâches répétitives et en minimisant les erreurs) grâce à la ligne de commande.  </p>
+<p>Les <strong>schematics</strong> utilisent des règles pour définir comment le code doit être généré. De plus cela garantit la cohérence et le respect des bonnes pratiques architecturales dans l&#39;ensemble du projet lors de la création de nouveaux fichiers (composants, services, gardes...).  </p>
+<p>La configuration se trouve dans le fichier <code>angular.json</code>.  </p>
+<p>💡 Une documentation complète est disponible ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#schematics-rules">👀 Schematics Rules</a>  </p>
+</blockquote>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'configuration.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">📈 SEO 📈</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#custom-service">CUSTOM SERVICE</a></li>
+<li><a href="#routing">ROUTING &amp; INJECTION DYNAMIQUE</a></li>
+<li><a href="#orchestration">ORCHESTRATION</a></li>
+<li><a href="#sitemap">SITEMAP</a></li>
+<li><a href="#robots">ROBOTS</a></li>
+<li><a href="#s%C3%A9mantique">SÉMANTIQUE</a></li>
+</ul>
+<h2 id="custom-service">
+  CUSTOM SERVICE
+</h2>
+
+<p>Le <strong>Custom SEO Service</strong> est le moteur central de la gestion des métadonnées dans l&#39;application <strong>Angular</strong>. Il permet de manipuler dynamiquement le contenu de la balise <code>&lt;head&gt;</code> du document <strong>HTML</strong> en fonction de la navigation de l&#39;utilisateur.  </p>
+<ul>
+<li><p><strong>Injection Dynamique &amp; I18n :</strong><br>Mettre à jour le <code>&lt;title&gt;</code> et la <code>&lt;meta name=&quot;description&quot;&gt;</code> de manière asynchrone en récupérant les traductions via <strong>ngx-translate</strong> (clés <code>titleKey</code> et <code>descriptionKey</code>).  </p>
+</li>
+<li><p><strong>Open Graph :</strong><br>Génèrer automatiquement les balises <code>og:title</code>, <code>og:description</code> et <code>og:image</code> pour assurer un référencement optimal lors de la navigation de l&#39;utilisateur.  </p>
+</li>
+<li><p><strong>Configuration Globale :</strong><br>Appliquer systématiquement les balises techniques définies dans l&#39;environnement (<code>robots</code>, <code>author</code>, <code>keywords</code>, <code>theme-color</code>, <code>lang</code>).</p>
+</li>
+</ul>
+<blockquote>
+<p>📄 Consulter le SEO service : <code>./src/app/core/_services/seo/seo.service.ts</code>  </p>
+</blockquote>
+<h2 id="routing">
+  ROUTING & INJECTION DYNAMIQUE
+</h2>
+
+<p>L&#39;application utilise le système de <strong>Route Data</strong> d&#39;<strong>Angular</strong> pour définir les règles <strong>SEO</strong> spécifiques à chaque page sans toucher à la logique des composants.  </p>
+<h3>Configuration via <code>app.routes.ts</code></h3>
+<p>Chaque route peut posséder un objet <code>data.seo</code>. C&#39;est cet objet qui est lu lors de la navigation pour paramétrer le <strong>SeoService</strong>.  </p>
+<ol>
+<li><strong>Pages Publiques</strong> (Indexables)</li>
+</ol>
+<p>Pour les pages standard (<code>Home</code>, <code>Login</code>, <code>Contact</code>), nous passons des clés de traduction (<code>keys</code>). Le service se charge de traduire ces clés avant de les injecter dans le DOM.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">{
+  path: &#39;home&#39;,
+  // ...
+  data: {
+    seo: {
+      titleKey: &#39;SEO.HOME_TITLE&#39;,             // Clé i18n pour &lt;title&gt; et og:title
+      descriptionKey: &#39;SEO.HOME_DESCRIPTION&#39;  // Clé i18n pour meta description
+    }
+  }
+}</code></pre></div><ol start="2">
+<li><strong>Pages Techniques &amp; Erreurs</strong> (Non-Indexables)</li>
+</ol>
+<p>Pour les pages d&#39;erreur ou les zones privées non sécurisées par un login, nous forçons les robots à ne pas indexer la page pour protéger le &quot;Crawl Budget&quot; et éviter de référencer du contenu inutile.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">{
+  path: &#39;unfound-error&#39;, // 404
+  // ...
+  data: {
+    seo: {
+      robots: &#39;noindex, nofollow&#39; // Bloque l&#39;indexation Google/Bing
+    }
+  }
+}</code></pre></div><h3>Le Flux de Données (Workflow)</h3>
+<p>Le processus d&#39;injection est automatique à chaque changement d&#39;<strong>URL</strong>. Voici comment les données transitent du routeur vers le <strong>HTML</strong> :</p>
+<ul>
+<li><p><strong>Navigation :</strong><br>L&#39;utilisateur change de page (ex: va sur <code>/contact</code>).  </p>
+</li>
+<li><p><strong>Router Event :</strong><br>L&#39;application détecte la fin de la navigation (<strong>NavigationEnd</strong>).  </p>
+</li>
+<li><p><strong>Extraction :</strong><br>L&#39;application lit les propriétés <code>data.seo</code> de la route active.  </p>
+</li>
+<li><p><strong>Injection :</strong><br>Le <strong>SeoService</strong> reçoit ces données, traduit les textes si nécessaire et met à jour les balises <code>&lt;head&gt;</code>.</p>
+</li>
+</ul>
+<blockquote>
+<p>📄 Consulter le routing : <code>./src/app/app.route.ts</code>  </p>
+</blockquote>
+<h2 id="orchestration">
+  ORCHESTRATION
+</h2>
+
+<p>L&#39;initialisation du <strong>SEO</strong> se fait dans le composant racine <code>AppComponent</code>. C&#39;est ici que l&#39;on connecte le <strong>Router Angular</strong> au <strong>SeoService</strong>.  </p>
+<p>L&#39;implémentation repose sur trois mécanismes clés pour garantir que les métadonnées sont toujours synchronisées :  </p>
+<ol>
+<li><strong>Ecoute de la Navigation</strong> (<code>initSeoListener</code>)</li>
+</ol>
+<p>À chaque événement <strong>NavigationEnd</strong> (fin de chargement d&#39;une page), l&#39;application :  </p>
+<ul>
+<li>Récupère les données de la route active via <code>getLatestRouteData</code>.  </li>
+<li>Appelle <code>seoService.updateMetaTags(data)</code> pour rafraîchir le <code>&lt;head&gt;</code>.</li>
+</ul>
+<ol start="2">
+<li><strong>Support du Multilingue</strong> (<code>onLangChange</code>)</li>
+</ol>
+<p>Si l&#39;utilisateur change de langue (via <strong>ngx-translate</strong>) sans changer de page, les métadonnées doivent être traduites immédiatement.  </p>
+<p>L&#39;abonnement à <code>this.translate.onLangChange</code> relance la mise à jour des tags avec les nouvelles traductions.  </p>
+<ol start="3">
+<li><strong>Traversée de l&#39;Arbre de Routage</strong> (<code>getLatestRouteData</code>)</li>
+</ol>
+<p>Les données <strong>SEO</strong> sont souvent définies sur les routes &quot;enfants&quot; (ex: <code>HomeViewComponent</code>) et non sur la route racine.  </p>
+<p>Cette fonction récursive descend jusqu&#39;à la dernière route active (la &quot;feuille&quot; de l&#39;arbre) pour récupérer l&#39;objet <code>data.seo</code> le plus spécifique.  </p>
+<ol start="4">
+<li><strong>Expérience Utilisateur &amp; Core Web Vitals</strong> (<code>initScrollTopListener</code>)</li>
+</ol>
+<p>Bien que ce ne soit pas strictement des &quot;<code>meta tags</code>&quot;, le reset du scroll (<code>window.scrollTo(0, 0)</code>) améliore l&#39;expérience utilisateur (<strong>UX</strong>).  </p>
+<p><strong>Google</strong> prenant en compte les signaux <strong>UX</strong> (<strong>Core Web Vitals</strong>) pour le référencement, cette fonction contribue indirectement à un meilleur score <strong>SEO</strong>.  </p>
+<blockquote>
+<p>📄 Consulter l&#39;entry point : <code>./src/app/app.component.ts</code>  </p>
+</blockquote>
+<h2 id="sitemap">
+  <img
+    alt="SITEMAP"
+    title="SITEMAP"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/sitemap.png"
+  />
+  SITEMAP
+</h2>
+
+<p>Le <strong>Sitemap XML</strong> est un fichier essentiel pour l&#39;indexation. Il agit comme une carte routière pour les moteurs de recherche (Google, Bing...).  </p>
+<p><strong>Rôle :</strong> lister toutes les URLs de notre site que l&#39;on souhaite voir indexées.  </p>
+<p><strong>Utilité :</strong> aider les robots à découvrir des pages profondes qui pourraient ne pas avoir de liens internes évidents et à comprendre la hiérarchie du site.  </p>
+<p><strong>Contenu type :</strong> <strong>URL</strong> de la page, la date de dernière modification (<code>lastmod</code>) et la fréquence de changement (<code>changefreq</code>).  </p>
+<blockquote>
+<p>📄 Consulter le sitemap.xml : <code>./public/sitemap.xml</code>  </p>
+</blockquote>
+<h2 id="robots">
+  <img
+    alt="ROBOTS"
+    title="ROBOTS"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/robots.png"
+  />
+  ROBOTS
+</h2>
+
+<p>Le fichier <code>robots.txt</code> est la première ressource consultée par les robots d&#39;exploration (<code>crawlers</code>) lorsqu&#39;ils arrivent sur notre site.  </p>
+<p><strong>Rôle :</strong> donner des directives d&#39;accès (&quot;<code>Autorisé</code>&quot; ou &quot;<code>Interdit</code>&quot;).  </p>
+<p><strong>Fonctionnement :</strong> permettre d&#39;empêcher l&#39;indexation de parties privées ou techniques du site (ex: <code>/admin</code>, <code>/api</code>) pour économiser le &quot;budget de crawl&quot;.  </p>
+<p><strong>Lien avec le Sitemap :</strong> il est recommandé d&#39;inclure l&#39;<strong>URL</strong> de notre <strong>Sitemap</strong> à la fin du fichier <code>robots.txt</code>.  </p>
+<blockquote>
+<p>📄 Consulter le robots.txt : <code>./public/robots.txt</code>  </p>
+</blockquote>
+<h2 id="sémantique">
+  <img
+    alt="SÉMANTIQUE"
+    title="SÉMANTIQUE"
+    width="34px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+  />
+  SÉMANTIQUE
+</h2>
+
+<p>La <strong>Sémantique HTML</strong> est le squelette de notre référencement naturel (<strong>SEO on-page</strong>). Elle permet aux algorithmes de comprendre la structure et l&#39;importance relative de chaque contenu sur une page.  </p>
+<p>Pour garantir un bon référencement, l&#39;application doit respecter ces règles :  </p>
+<ul>
+<li><p><strong>Structure HTML5 :</strong><br>Utilisation correcte des balises de sectionnement (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>).</p>
+</li>
+<li><p><strong>Hiérarchie des Titres :</strong><br><code>&lt;H1&gt;</code> : unique par page, il décrit le sujet principal.<br><code>&lt;H2&gt;</code> - <code>&lt;H6&gt;</code> : utilisés pour structurer les sous-sections de manière logique.  </p>
+</li>
+<li><p><strong>Accessibilité &amp; SEO :</strong><br>Attributs <code>alt</code> descriptifs sur toutes les images.<br>Attributs <code>title</code> et <code>aria-label</code> sur les liens et boutons pour donner du contexte.</p>
+</li>
+</ul>
+<p>Une bonne sémantique améliore non seulement le <strong>SEO</strong> mais aussi l&#39;accessibilité pour les lecteurs d&#39;écran.  </p>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'seo.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

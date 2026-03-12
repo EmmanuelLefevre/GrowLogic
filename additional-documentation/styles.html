@@ -1,0 +1,373 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">🎨 STYLES 🎨</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#styles">STYLES</a></li>
+<li><a href="#sass">SASS</a></li>
+<li><a href="#-architecture-scss">ARCHITECTURE SCSS</a></li>
+<li><a href="#bem">BEM</a></li>
+<li><a href="#angular-material">ANGULAR MATERIAL</a></li>
+<li><a href="#fontawesome">FONTAWESOME</a></li>
+</ul>
+<h2 id="styles">
+  🎨 STYLES
+</h2>
+
+<p>L&#39;architecture <strong>SCSS</strong> du projet repose sur une adaptation du <strong>7-1 Pattern</strong>. Cette structure modulaire garantit la maintenabilité, la scalabilité et la séparation des préoccupations : les outils d&#39;un côté, le rendu visuel de l&#39;autre.<br>De plus il y est combiné la puissance du préprocesseur <strong>Sass</strong> avec la rigueur de la méthodologie <strong>BEM</strong>.  </p>
+<p>Cela implifie la gestion des imports <strong>Sass</strong> en définissant <code>src/styles</code> comme racine de résolution.  </p>
+<p>Cela permet d&#39;importer le <strong>Barrel File</strong> abstracts (ou autre fichier global) depuis n&#39;importe quel composant via un chemin absolu et propre (ex: <code>@use &#39;abstracts&#39;</code>), éliminant définitivement les chemins relatifs complexes et fragiles (ex: <code>../../../../styles/abstracts</code>).&quot;  </p>
+<p>Dans <code>angular.json</code> ajouter la propriété <code>stylePreprocessorOptions</code> dans <code>@architect.build.options</code>.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">&quot;stylePreprocessorOptions&quot;: {
+  &quot;includePaths&quot;: [
+    &quot;src&quot;,
+    &quot;src/styles&quot;
+  ]
+}</code></pre></div><h2 id="sass">
+  <img
+    alt="SASS"
+    title="SASS"
+    width="34px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
+  />
+  SASS
+</h2>
+
+<blockquote>
+<p><a href="https://sass-lang.com/documentation/">🔗 SASS Documentation</a>  </p>
+</blockquote>
+<p><strong>SASS</strong> (Syntactically Awesome Style Sheets)  </p>
+<p>Nous utilisons <strong>SCSS</strong> (<strong>Sassy CSS</strong>), la syntaxe la plus populaire de <strong>SASS</strong>. C&#39;est un préprocesseur qui étend les capacités du <strong>CSS</strong> standard.  </p>
+<p><strong>Pourquoi ce choix ?</strong>  </p>
+<ul>
+<li><strong>Modularité :</strong> découpage du code en petits fichiers partiels (<code>_partial.scss</code>) faciles à gérer/maintenir.</li>
+<li><strong>Variables &amp; Logique :</strong> utilisation de variables pour les couleurs/fonts, de boucles et de conditions pour générer du code complexe.</li>
+<li><strong>Mixins &amp; Fonctions :</strong> création de bouts de code réutilisables (ex: gestion des breakpoints responsive).</li>
+<li><strong>Nesting (Imbrication) :</strong> permet d&#39;écrire du <strong>CSS</strong> qui reflète la hiérarchie <strong>HTML</strong>.</li>
+</ul>
+<p><strong>Note :</strong> nous utilisons le système de modules moderne de <strong>SASS</strong> (<code>@use</code> et <code>@forward</code>) au lieu de l&#39;ancien système d&#39;imports globaux (<code>@import</code>) désormais déprécié pour des raisons de performance et de conflits de noms.  </p>
+<h2 id="-architecture-scss">
+  🏗️ ARCHITECTURE SCSS
+</h2>
+
+<b>Example :</b><div><pre class="line-numbers"><code class="language-plaintext">📂src
+ ┗ 🎨styles
+   ┣ 📂abstracts
+   ┃ ┣ 🎨_functions.scss            # Fonctions de calcul (ex: conversion px vers rem)
+   ┃ ┣ 🎨_mixins.scss               # Media queries
+   ┃ ┗ 🎨_index.scss                # Point d&#39;entrée pour le forwarding (&#64;forward)
+   ┣ 📂base
+   ┃ ┣ 🎨_animations.scss           # Keyframes globaux
+   ┃ ┣ 🎨_fonts.scss                # Importation des polices
+   ┃ ┣ 🎨_globals.scss              # Styles globaux des balises sémantiques
+   ┃ ┣ 🎨_reset.scss                # Normalisation CSS
+   ┃ ┣ 🎨_typography.scss           # Police (sur balisage sémantiques)
+   ┃ ┗ 🎨_utilities.scss            # Classes utilitaires
+   ┣ 📂layout
+   ┃ ┣ 🎨_admin-layout.scss
+   ┃ ┗ 🎨_main-layout.scss
+   ┗ 📂themes
+     ┣ 🎨_light-theme.scss          # Palette de couleurs claire
+     ┣ 🎨_material-overrides.scss   # Customisation des composants Angular Material
+     ┗ 🎨_theme-variables.scss      # Définition des tokens de design (variabilisation des couleurs, polices)</code></pre></div><h3>Détails des dossiers</h3>
+<ul>
+<li><strong>abstracts/</strong> (The Tools)</li>
+</ul>
+<p>Ce dossier contient uniquement des helpers <strong>SASS</strong>. Ces fichiers ne génèrent aucune ligne de <strong>CSS</strong> lorsqu&#39;ils sont compilés.  </p>
+<p>Ils doivent être importés (@use) dans les composants qui en ont besoin.  </p>
+<p>Le fichier <code>_index.scss</code> sert de &quot;<strong>Barrel File</strong>&quot; pour exposer tous les abstracts en une seule ligne.  </p>
+<ul>
+<li><strong>base/</strong> (The Boilerplate)</li>
+</ul>
+<p>Ce dossier définit le socle de l&#39;application. Il cible principalement les sélecteurs de balises <strong>HTML</strong> brutes (sans classes).  </p>
+<p>C&#39;est ici que l&#39;on définit la typographie par défaut, le reset <strong>CSS</strong> et les comportements globaux.  </p>
+<ul>
+<li><strong>layout/</strong> (The Skeleton)</li>
+</ul>
+<p>Contient les styles des structures majeures qui enveloppent l&#39;application (Header, Footer, Sidebar, Grilles principales).  </p>
+<ul>
+<li><strong>themes/</strong> (The Skin)</li>
+</ul>
+<p>Gère l&#39;aspect visuel et le branding.  </p>
+<p>C&#39;est ici que l&#39;on surcharge les composants <strong>Angular Material</strong> pour qu&#39;ils correspondent à la charte graphique.  </p>
+<p>Permet la gestion facile des thèmes (Dark/Light mode).  </p>
+<h2 id="bem">
+  <img
+    alt="BEM"
+    title="BEM"
+    width="54px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/bem.png"
+  />
+  BEM
+</h2>
+
+<blockquote>
+<p><a href="https://en.bem.info/methodology/">🔗 BEM Documentation</a>  </p>
+</blockquote>
+<p><strong>Méthodologie BEM</strong> (Block Element Modifier)  </p>
+<p>Pour garantir des classes <strong>CSS</strong> compréhensibles et éviter les conflits de spécificité nous appliquons la convention de nommage <strong>BEM</strong>.  </p>
+<ul>
+<li>L&#39;un des avantages majeurs de <strong>BEM</strong> :<br>Il permet de garder une spécificité faible (<code>low specificity</code>) et d&#39;éviter ce qu&#39;on appelle &quot;l&#39;enfer de l&#39;imbrication&quot; (<strong>Nesting Hell</strong>).</li>
+</ul>
+<p>Une erreur classique avec les préprocesseurs comme <strong>SASS</strong> est d&#39;abuser de l&#39;imbrication, ce qui crée des sélecteurs <strong>CSS</strong> à rallonge, très lourds et difficiles à surcharger.  </p>
+<p><strong>BEM</strong> résout ce problème en aplatissant la structure. Même si nous indentons visuellement dans le fichier <code>.scss</code> pour la lisibilité, le <strong>CSS</strong> compilé ne doit pas être imbriqué.  </p>
+<p><strong>Le concept :</strong>  </p>
+<ul>
+<li><strong>Block</strong> (<code>.card</code>) : l&#39;entité autonome qui a du sens par elle-même.</li>
+<li><strong>Element</strong> (<code>.card__title</code>) : une partie du bloc qui n&#39;a pas de sens seule. Séparé par deux underscores <code>__</code>.</li>
+<li><strong>Modifier</strong> (<code>.card--featured</code>) : une variante ou un état du bloc. Séparé par deux tirets <code>--</code>.</li>
+</ul>
+<p>Exemple d&#39;implémentation en <strong>SCSS</strong> : L&#39;imbrication de <strong>SASS</strong> rend l&#39;écriture du <strong>BEM</strong> extrêmement rapide et lisible grâce au sélecteur parent <code>&amp;</code>.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-SCSS">/* 📄 card.component.scss */
+
+.card {
+  background: #fff;
+  padding: 20px;
+
+  /* 🟢 Element : .card__header */
+  &amp;__header {
+    border-bottom: 1px solid #eee;
+  }
+
+  /* 🟢 Element : .card__title */
+  &amp;__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  /* 🟠 Modifier : .card--featured */
+  &amp;--featured {
+    border: 2px solid gold;
+    background: #fffbe6;
+  }
+}</code></pre></div><p>💡 <strong>La règle d&#39;or :</strong><br>En <strong>SCSS</strong> avec <strong>BEM</strong>, évitez d&#39;imbriquer plus de 1 niveau de profondeur (le <strong>Bloc</strong> qui contient l&#39;<strong>Element</strong>). Si vous vous retrouvez à faire <code>.bloc { &amp;__elem { &amp;__sub-elem { ... } } }</code>, c&#39;est que vous devez probablement créer un nouveau <strong>Bloc</strong>.  </p>
+<h2 id="angular-material">
+  <img
+    alt="ANGULAR MATERIAL"
+    title="ANGULAR MATERIAL"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/angular_material.png"
+  />
+  ANGULAR MATERIAL
+</h2>
+
+<blockquote>
+<p><a href="https://material.angular.dev/components/categories">🔗 Angular Material Documentation</a></p>
+</blockquote>
+<p><strong>Angular Material</strong> est la bibliothèque de composants officielle basée sur les principes du <strong>Material Design</strong>. Elle offre une collection de composants UI testés, accessibles et performants.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add &#64;angular/material &#64;angular/cdk</code></pre></div><p>⚠️ Les surcharges de <strong>Angular Material</strong> (<code>_material-overrides.scss</code>) sont globales et doivent être importées une seule fois dans le fichier <code>styles.scss</code> principal dans <code>src/styles</code> et non dans chaque composant.  </p>
+<h2 id="fontawesome">
+  <img
+    alt="FONTAWESOME"
+    title="FONTAWESOME"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/fontawesome.png"
+  />
+  FONTAWESOME
+</h2>
+
+<blockquote>
+<p><a href="https://docs.fontawesome.com/">🔗 Fontawesome Documentation</a></p>
+</blockquote>
+<p>Pour l&#39;iconographie, <strong>Font Awesome</strong> est le standard de l&#39;industrie. Plutôt que d&#39;utiliser des polices de caractères, l&#39;intégration via les composants <strong>Angular</strong> sera privilégiée, cela permet une gestion optimale des <strong>SVG</strong> et du <strong>Tree-shaking</strong> (seules les icônes utilisées sont incluses dans le build final).  </p>
+<ul>
+<li><strong>Scalabilité :</strong> les icônes vectorielles garantissent une netteté parfaite sur tous les écrans.</li>
+<li><strong>Modularité :</strong> possibilité d&#39;importer uniquement les packs nécessaires (Solid, Regular, Brands).</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add &#64;fortawesome/fontawesome-svg-core &#64;fortawesome/angular-fontawesome</code></pre></div><p>Puis ajouter les différentes variantes d&#39;icônes...  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add &#64;fortawesome/free-solid-svg-icons &#64;fortawesome/free-brands-svg-icons &#64;fortawesome/free-regular-svg-icons</code></pre></div>
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'styles.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

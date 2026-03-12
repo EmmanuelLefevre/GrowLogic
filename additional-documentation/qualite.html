@@ -1,0 +1,580 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">💎 QUALITÉ 💎</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#eslint">ESLINT</a></li>
+<li><a href="#prettier">PRETTIER</a></li>
+<li><a href="#htmlhint">HTMLHINT</a></li>
+<li><a href="#stylelint">STYLELINT</a></li>
+<li><a href="#secretlint">SECRETLINT</a></li>
+<li><a href="#translate">NGX TRANSLATE</a><ul>
+<li><a href="#translate-lint">NGX TRANSLATE LINT</a></li>
+<li><a href="#translate-extract">NGX TRANSLATE EXTRACT</a></li>
+</ul>
+</li>
+<li><a href="#husky">HUSKY</a></li>
+</ul>
+<h2 id="eslint">
+  <img
+    alt="ESLint"
+    title="ESLint"
+    width="34px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eslint/eslint-original.svg"
+  />
+  ESLINT
+</h2>
+
+<h3>Introduction :</h3>
+<p><strong>ESLint</strong> est un outil de linting pour <strong>JavaScript</strong> et <strong>TypeScript</strong> qui permet d&#39;analyser le code afin d&#39;identifier et de signaler des schémas de code potentiellement problématiques.<br>Son principal objectif est d&#39;améliorer la qualité du code et de garantir des pratiques de codage cohérentes au sein d&#39;une équipe de développement. Grâce à un large éventail de règles configurables <strong>ESLint permet</strong>, avant même l&#39;exécution du code, aux développeurs de =&gt;</p>
+<ul>
+<li>définir des normes spécifiques à un projet</li>
+<li>définir des règles de nommage</li>
+<li>détecter les erreurs syntaxiques</li>
+<li>détecter les problèmes de style</li>
+</ul>
+<p>En plus de ces fonctionnalités, <strong>ESLint</strong> permet des vérifications automatiques en temps réel dans l&#39;environnement de développement, fournissant un retour immédiat lors de la rédaction de code.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">ng lint</code></pre></div><p><strong>ESLint</strong> a aussi une fonctionnalité de correction automatique des erreurs détectées.<br>Lors de l&#39;exécution de cette commande, <strong>ESLint</strong> analyse le code source à la recherche de problèmes qui peuvent être corrigés automatiquement.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">ng lint --fix</code></pre></div><p>Pour finir, <strong>ESLint</strong> s&#39;intègre parfaitement dans les pipelines d&#39;intégration continue (<strong>CI</strong>). En exécutant les règles de linting lors des builds, la pipeline s&#39;assure que tout le code soumis respecte les normes définies, empêchant ainsi le déploiement de code non conforme.  </p>
+<h3>Extension VSCode :</h3>
+<blockquote>
+<p><a href="https://marketplace.visualstudio.com/items/?itemName=dbaeumer.vscode-eslint">🔗 ESLint VSCode Extension</a></p>
+</blockquote>
+<p>⚠️ Pensez à recharger le server ESLint dans votre VSCode !!!  </p>
+<p><code>CTRL + SHIFT + P</code>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">Restart ESLint Server</code></pre></div><p><strong>Etape 1 :</strong> Installer <strong>ESLint</strong>  </p>
+<p>La méthode officielle et la plus sûre pour <strong>Angular</strong> est d&#39;utiliser les &quot;Schematics&quot;. Cela va générer la configuration adaptée à la version 21.<br>Pour être sûr à 100%, on peut même ajouter un &quot;flag&quot; pour forcer le gestionnaire.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">ng add &#64;angular-eslint/schematics --package-manager=pnpm</code></pre></div><p><strong>* Note :</strong> Si on demande quel gestionnaire utiliser, confirmer celui déjà choisi (<strong>PNPM</strong>, <strong>Yarn</strong>...). Ici <strong>PNPM</strong>. Cette commande va ajouter les dépendances eslint et créer un fichier de configuration (<code>eslint.config.js</code> pour les versions modernes utilisant le &quot;Flat Config&quot;).  </p>
+<p><strong>Etape 2 :</strong> Empêcher les conflits (<strong>ESLint</strong> vs <strong>Prettier</strong>)  </p>
+<p><strong>ESLint</strong> a aussi des règles de formatage qui peuvent contredire <strong>Prettier</strong>. Il faut désactiver ces règles côté <strong>ESLint</strong>.  </p>
+<ol>
+<li>Installer la config de compatibilité</li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D eslint-config-prettier</code></pre></div><ol start="2">
+<li>Installer <strong>ESLint</strong> et <strong>Angular ESLint</strong></li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D eslint angular-eslint</code></pre></div><ol start="3">
+<li>Installer les <code>stylistics</code></li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D &#64;stylistic/eslint-plugin</code></pre></div><ol start="4">
+<li>Installer le plugin <code>security</code></li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D eslint-plugin-security</code></pre></div><p>Créer un fichier <code>eslint-security.config.js</code> et y coller la configuration présente dans le template.<br>Cette configuration de sécurité a été séparée dans un autre fichier afin de l&#39;éxécuter dans le job 🛡️ Security Scans.  </p>
+<ol start="5">
+<li>Configurer <strong>ESLint</strong></li>
+</ol>
+<p>Ouvrir le fichier <code>eslint.config.js</code> (qui vient d&#39;être créé à la racine).  </p>
+<p>💡 Une documentation complète est disponible ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#eslint-rules">👀 ESLint Rules</a>  </p>
+</blockquote>
+<p><strong>* Note :</strong> Prettier ne sera pas ajouté automatiquement il faut le faire manuellement.  </p>
+<p><strong>Etape 3 :</strong> Global ignores  </p>
+<p>Cette section <strong>GLOBAL IGNORES</strong> de la configuration <strong>ESLint</strong> permet de spécifier des motifs de fichiers ou de dossiers à ignorer par l’outil de linting de manière globale. Autrement dit <strong>ESLint</strong> n’appliquera pas ses règles à tous les fichiers qui correspondent à ces motifs et ce quel que soit le fichier dans le projet. Cela est utile pour exclure des répertoires ou des fichiers qui ne doivent pas être lintés.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-js">// GLOBAL IGNORES ----------
+export default defineConfig([
+  {
+    ignores: [
+      &#39;.angular/&#39;,
+      &#39;dist/&#39;,
+      &#39;node_modules/&#39;
+    ]
+  }
+]);</code></pre></div><p><strong>Etape 4 :</strong> Overrides  </p>
+<p>Cette section <strong>OVERRIDES</strong> de la configuration <strong>ESLint</strong> permet de désactiver certaines règles pour des fichiers spécifiques où l&#39;on ne souhaite pas appliquer certaines règles.<br>Cela est particulièrement utile pour les fichiers de <strong>Directives</strong>, <strong>Pipes</strong> ou d&#39;environnements qui peuvent avoir des conventions ainsi que des besoins différents par rapport au reste du code.  </p>
+<p>Dans la nouvelle <strong>Flat Config</strong> d&#39;<strong>ESLint</strong>, la propriété <code>overrides</code> (telle qu&#39;elle existait dans l&#39;ancien format <code>.eslintrc</code>) n&#39;existe plus.  </p>
+<p>Le concept est maintenant le suivant : <strong>TOUT</strong> est &quot;override&quot;. Pour créer des exceptions, il suffit d&#39;ajouter un nouvel objet à la fin du tableau <code>defineConfig</code>. Comme <strong>ESLint</strong> lit la configuration de haut en bas, les règles définies à la fin écrasent celles du début pour les fichiers correspondants.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-js">export default defineConfig([
+  // OVERRIDES ----------
+  {
+    files: [&#39;**/*.spec.ts&#39;],
+    rules: {
+      &#39;&#64;angular-eslint/no-empty-lifecycle-method&#39;: &#39;off&#39;,
+      &#39;&#64;typescript-eslint/explicit-function-return-type&#39;: &#39;off&#39;,
+      &#39;&#64;typescript-eslint/no-empty-function&#39;: &#39;off&#39;,
+      &#39;&#64;typescript-eslint/no-magic-numbers&#39;: &#39;off&#39;
+    }
+  },
+  {
+    files: [&quot;src/environments/*.ts&quot;],
+    rules: {
+      &quot;&#64;typescript-eslint/naming-convention&quot;: [&quot;off&quot;],
+      &quot;capitalized-comments&quot;: [&quot;off&quot;]
+    }
+  }
+]);</code></pre></div><p><strong>Etape 5 :</strong> Ajouter les scripts pratiques  </p>
+<p>Mettre à jour la section &quot;scripts&quot; du <code>package.json</code> pour faciliter l&#39;utilisation en créant ces commandes =&gt;  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;scripts&quot;: {
+    &quot;lint&quot;: &quot;ng lint&quot;,
+    &quot;lint:ci&quot;: &quot;ng lint --max-warnings=0&quot;,
+    &quot;lint:security:ci&quot;: &quot;eslint \&quot;src/**/*.{ts,js}\&quot; --config eslint-security.config.js&quot;,
+  }
+}</code></pre></div><p><strong>Etape 6 :</strong> Tester la commande  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm lint</code></pre></div><p>Vous devriez voir s&#39;afficher =&gt;  </p>
+<br>
+
+<p><img src="https://github.com/EmmanuelLefevre/MarkdownImg/blob/main/template_angular_lint_command.png" alt="Terminal Screen" class="img-responsive"></p>
+<br>
+
+<p><strong>Etape 7 :</strong> Ajouter les autres packages <strong>ESLint</strong>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D &#64;angular-eslint/builder &#64;eslint/js typescript-eslint</code></pre></div><h2 id="prettier">
+  <img
+    alt="Prettier"
+    title="Prettier"
+    width="30px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/prettier.png"
+  />
+  PRETTIER
+</h2>
+
+<p>Pour un projet <strong>Angular</strong> moderne, la combinaison standard de l&#39;industrie est <strong>ESLint</strong> (pour la qualité du code et les erreurs) et <strong>Prettier</strong> (pour le style et le formatage).  </p>
+<h3>Introduction :</h3>
+<p><strong>Prettier</strong> est un formateur de code qui garantit des styles de code cohérents dans un projet.<br>En l&#39;intégrant, les développeurs peuvent automatiser le formatage des fichiers <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>HTML</strong> et autres, ce qui uniformise le style du code au sein de l&#39;équipe.<br>L&#39;utilisation de <strong>Prettier</strong> permet d&#39;améliorer la lisibilité et la maintenabilité du code, tout en minimisant les erreurs de syntaxe liées aux différents styles de codage. Cette approche assure que tout le code du projet respecte le même format.  </p>
+<p><strong>Note :</strong> les fichiers <code>*.ts</code> ont été ajoutés au fichier <code>.prettierignore</code>. Cette modification permet d&#39;éviter les conflits de formatage entre <strong>Prettier</strong> et certaines des règles <strong>ESLint Stylistic</strong> mises en place...  </p>
+<p>Un hook de <code>pre-commit</code> via <strong>Husky</strong> étant implémenté et utilisant <code>lint-staged</code> dans le <code>package.json</code>, <strong>Prettier</strong> ne formattera que les fichiers nécessaires lors d’un commit et ce de manière automatique et transparente pour le développeur.  </p>
+<p>Cela garantit que tous les fichiers commits respectent les normes de formatage définies par l&#39;équipe. Cette automatisation rend le workflow de développement plus fluide et aide à maintenir un code uniforme sans nécessiter d&#39;interventions manuelles.  </p>
+<p><strong>Etape 1 :</strong> Installer <strong>Prettier</strong></p>
+<p>Bien qu&#39;il y ait une configuration dans <code>package.json</code>, il est préférable (Best Practice) d&#39;avoir un fichier de configuration dédié <code>.prettierrc</code>.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D prettier</code></pre></div><p><strong>Etape 2 :</strong> Créer un fichier <code>.prettierrc.js</code> à la racine et y coller la configuration présente dans le template.  </p>
+<p>💡 Une documentation complète est disponible dans le fichier <code>.prettierrc.js</code> et ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#prettier-rules">👀 Prettier Rules</a>  </p>
+</blockquote>
+<p>Installer l&#39;extension <strong>Trivago</strong> pour le tri des imports.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D &#64;trivago/prettier-plugin-sort-imports</code></pre></div><p>Formater le code :  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm format</code></pre></div><p>Formater un fichier précis :  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm exec prettier --write .prettierrc.js</code></pre></div><p><strong>Etape 3 :</strong> Nettoyage : Supprimer le bloc &quot;prettier&quot;: { ... } du fichier <code>package.json</code> pour éviter les doublons et y inclure les scripts =&gt;</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;scripts&quot;: {
+    &quot;format&quot;: &quot;prettier --write .&quot;,
+    &quot;format:check&quot;: &quot;prettier --check .&quot;,
+  }
+}</code></pre></div><p><strong>Etape 4 :</strong> Créer un fichier <code>.prettierignore</code> pour éviter de formater des fichiers inutiles et y coller la configuration présente dans le template.</p>
+<h2 id="htmlhint">
+  <img
+    alt="HTMLHint"
+    title="HTMLHint"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/htmlhint.png"
+  />
+  HTMLHINT
+</h2>
+
+<h3>Introduction :</h3>
+<p>Assurer la qualité et la cohérence des templates <strong>HTML</strong> au sein d&#39;un projet <strong>Angular</strong> est essentiel pour la maintenabilité et la robustesse d&#39;une application.  </p>
+<p>C&#39;est précisément le rôle de <strong>HTMLHint</strong>, un analyseur de code statique (ou linter) dédié au <strong>HTML</strong>.  </p>
+<p>En l&#39;intégrant dans notre chaîne d&#39;outils de développement, nous pouvons automatiser l&#39;inspection de nos fichiers <code>.html</code> afin de détecter les erreurs courantes, les mauvaises pratiques et les incohérences de style.<br>Grâce à un ensemble de règles configurables via un fichier <code>.htmlhintrc</code>, <strong>HTMLHint</strong> nous aide à renforcer les standards de code de notre équipe, prévenir des bugs liés aux balises et <strong>PAR-DESSUS TOUT</strong> améliorer l&#39;accessibilité de nos applications (<strong>A11y</strong>) !!!  </p>
+<blockquote>
+<p><a href="accessibility.html">👀 En savoir plus sur l&#39;accessibilité</a></p>
+</blockquote>
+<p><strong>Etape 1 :</strong> Ajouter le package <strong>HTMLLint</strong>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D htmlhint</code></pre></div><p><strong>Etape 2 :</strong> Ajouter l&#39;extension <strong>VSCode</strong> :  </p>
+<blockquote>
+<p><a href="https://marketplace.visualstudio.com/items/?itemName=HTMLHint.vscode-htmlhint">🔗 HTMLHint VSCode Extension</a></p>
+</blockquote>
+<p>Si vous n&#39;avez pas l&#39;extension <strong>VSCode</strong> il faut ajouter cette configuration dans son <code>settings.json</code>, sinon le fichier de configuration ne sera pas reconnu par celui-ci.<br>De plus cela activera l&#39;autocomplétion et la validation du fichier <code>.htmlhintrc</code>.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;json.schemas&quot;: [
+    {
+      &quot;fileMatch&quot;: [&quot;/.htmlhintrc&quot;],
+      &quot;url&quot;: &quot;https://json.schemastore.org/htmlhint.json&quot;
+    }
+  ]
+}</code></pre></div><p><strong>Etape 3 :</strong> Configuration :  </p>
+<p>Il faut créer le fichier <code>.htmlhintrc</code> à la racine du projet et y coller la configuration présente dans le template.  </p>
+<p>💡 Une documentation complète est disponible ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#htmlhint-rules">👀 HTMLLint Rules</a>  </p>
+</blockquote>
+<p>Pour finir ouvrir le fichier <code>package.json</code> et ajouter la commande suivante dans la partie <code>scripts</code> =&gt;  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;scripts&quot;: {
+    &quot;lint:html&quot;: &quot;htmlhint \&quot;src/**/*.html\&quot;&quot;,
+    &quot;lint:html:ci&quot;: &quot;htmlhint \&quot;src/**/*.html\&quot;&quot;,
+  }
+}</code></pre></div><p><strong>Etape 4 :</strong> Tester la commande  </p>
+<p>Lancer le lint sur nos fichiers <strong>HTML</strong> =&gt;  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm lint:html</code></pre></div><p>Si le script n&#39;est pas défini dans le <code>package.json</code> =&gt;  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">npx htmlhint &quot;**/*.html&quot;</code></pre></div><p>💡 Une documentation complète est disponible ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#htmlhint-rules">👀 HTMLHint Rules</a>  </p>
+</blockquote>
+<h2 id="stylelint">
+  <img
+    alt="StyleLint"
+    title="StyleLint"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/stylelint.png"
+  />
+  STYLELINT
+</h2>
+
+<p>Pour la configuration des règles <strong>SCSS</strong> il faut ajouter <strong>StyleLint</strong>.  </p>
+<h3>Introduction :</h3>
+<p><strong>Stylelint</strong> est un linter <strong>CSS</strong> moderne et puissant, il vérifie votre code source pour y déceler des erreurs, des fautes de style ou encore des codes hexa incorrectes, sans avoir à l&#39;exécuter.<br>Concrètement, <strong>Stylelint</strong> analyse vos fichiers de style et nous signale tout ce qui ne respecte pas un ensemble de règles que nous avons définies au préalable.  </p>
+<h3>Configuration :</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D stylelint stylelint-scss postcss-scss</code></pre></div><p>Il faut ensuite créer le fichier <code>.stylelintrc.json</code> à la racine et y coller la configuration présente dans le template.  </p>
+<p>De plus il est nécessaire d&#39;ajouter dans le fichier <code>package.json</code> le fix des fichiers dans le <code>lint-staged</code>.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;*.scss&quot;: [
+    &quot;stylelint --fix&quot;
+  ],
+}</code></pre></div><p>ainsi que le script =&gt;  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;scripts&quot;: {
+    &quot;lint:scss&quot;: &quot;stylelint \&quot;src/**/*.scss\&quot;&quot;,
+    &quot;lint:scss:ci&quot;: &quot;stylelint \&quot;src/**/*.scss\&quot; --max-warnings=0&quot;,
+  }
+}</code></pre></div><p>💡 Une documentation complète est disponible ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#stylelint-rules">👀 StyleLint Rules</a>  </p>
+</blockquote>
+<h2 id="translate">
+  <img
+    alt="NGX TRANSLATE"
+    title="NGX TRANSLATE"
+    width="30px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/ngx_translate.png"
+  />
+  NGX TRANSLATE
+</h2>
+
+<h3 id="translate-lint">NGX TRANSLATE LINTER</h3>
+
+<h3>Introduction :</h3>
+<blockquote>
+<p><a href="multi-langues.html#ngx-translate-linter">👀 Consulter la documentation du projet</a>  </p>
+</blockquote>
+<h3>Configuration :</h3>
+<p><strong>Etape 1 :</strong> Installer <strong>Ngx Translate Lint</strong>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D ngx-translate-lint</code></pre></div><p><strong>Etape 2 :</strong> Configurer le script dans <code>package.json</code> pour la <strong>CI</strong>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;scripts&quot;: {
+    &quot;i18n:lint&quot;: &quot;ngx-translate-lint -c ./.ngx-translate-lint.json&quot;,
+  }
+}</code></pre></div><p><strong>Etape 3 :</strong> Créer le fichier <code>.ngx-translate-lint.json</code></p>
+<p>💡 Une documentation complète est disponible ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#i18n-lint-rules">👀 Ngx Translate Linter Rules</a>  </p>
+</blockquote>
+<p><strong>Etape 4 :</strong> Configurer <code>lint-staged</code>  </p>
+<p>Toujours dans le fichier <code>package.json</code>.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;lint-staged&quot;: {
+    &quot;src/**/*.{ts,html}&quot;: [
+      &quot;pnpm i18n:lint&quot;
+    ]
+  }
+}</code></pre></div><p><strong>Etape 5 :</strong> Vérifier le fonctionnement  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm i18n:lint</code></pre></div><h3 id="translate-extract">NGX TRANSLATE EXTRACT</h3>
+
+<h3>Introduction :</h3>
+<blockquote>
+<p><a href="multi-langues.html#ngx-translate-extract">👀 Consulter la documentation du projet</a>  </p>
+</blockquote>
+<h3>Configuration :</h3>
+<p><strong>Etape 1 :</strong> Installer <strong>Ngx Translate Extract</strong>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D &#64;bartholomej/ngx-translate-extract</code></pre></div><p><strong>Etape 2 :</strong> Configurer le script dans <code>package.json</code>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;scripts&quot;: {
+    &quot;i18n:extract&quot;: &quot;ngx-translate-extract --input ./src --output ./src/assets/i18n/en.json ./src/assets/i18n/fr.json --sort --format namespaced-json&quot;,
+  }
+}</code></pre></div><p><strong>Etape 3 :</strong> Configurer <code>lint-staged</code>  </p>
+<p>Toujours dans le fichier <code>package.json</code>.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;lint-staged&quot;: {
+    &quot;src/**/*.{ts,html}&quot;: [
+      &quot;pnpm i18n:extract&quot;,
+      &quot;git add src/assets/i18n/*.json&quot;
+    ]
+  }
+}</code></pre></div><p><strong>Etape 4 :</strong> Vérifier le fonctionnement  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm i18n:extract</code></pre></div><h2 id="husky">
+  <img
+    alt="Husky"
+    title="Husky"
+    width="30px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/husky.png"
+  />
+  HUSKY
+</h2>
+
+<h3>Introduction :</h3>
+<p>Imaginez un gardien de la qualité automatique à l&#39;entrée de votre code base. Son travail est de s&#39;assurer que chaque nouvelle contribution respecte les règles de style et de qualité établies par l&#39;équipe, sans que personne n&#39;ait à y penser.<br>C&#39;est pourquoi nous allons utiliser <strong>Husky</strong> couplé à <code>pre-commit</code> et <code>lint-staged</code>. Ensemble, ils créent une chaîne d&#39;automatisation puissante qui s&#39;exécute avant chaque commit. Décortiquons ensemble les rôles de chaque acteur...  </p>
+<h4>1. Le Hook de pre-commit (le déclencheur) :</h4>
+<p>Au coeur du système se trouve une fonctionnalité native de <strong>Git</strong> : les hooks. Un hook est simplement un script que <strong>Git</strong> exécute automatiquement à des moments clés de son cycle de vie. Le hook de <code>pre-commit</code> se déclenche juste après que l&#39;on ait tapé <code>git commit</code> et avant même que l&#39;éditeur de message de commit ne s&#39;ouvre.  </p>
+<p>C&#39;est le point de départ de notre processus de vérification. Il nous donne une opportunité parfaite pour analyser le code et, si nécessaire, bloquer le commit s&#39;il n&#39;est pas conforme.  </p>
+<h4>2. Husky (le gestionnaire de hooks) :</h4>
+<p>Gérer les hooks <strong>Git</strong> manuellement peut être complexe, car ils doivent être placés dans le dossier <code>.git/hooks</code>, qui n&#39;est pas versionné avec le reste du projet. Il est donc difficile de les partager au sein d&#39;une équipe.  </p>
+<p><strong>Husky</strong> résout ce problème avec brio. C&#39;est un outil qui permet de configurer les hooks <strong>Git</strong> très simplement, directement dans notre fichier <code>package.json</code>. <strong>Husky</strong> agit comme un &quot;manager&quot; : il s&#39;assure que nos scripts personnalisés (comme le formatage du code) sont bien exécutés lorsque le hook de <code>pre-commit</code> est déclenché par <strong>Git</strong>.  </p>
+<h4>3. Lint-Staged (l&#39;optimiseur intelligent) :</h4>
+<p>Pourquoi <code>lint-staged</code> ? Lancer <code>pnpm lint</code> sur un gros projet prend du temps (10s... 30s... 1min). Si l&#39;on doit attendre 1 minute à chaque commit, nous allons finir par désactiver <strong>Husky</strong>.  </p>
+<p>C&#39;est là que <code>lint-staged</code> entre en jeu. C&#39;est un outil intelligent qui exécute des commandes uniquement sur les fichiers qui sont &quot;staged&quot;. Au lieu de formater les 5000 fichiers du projet, il ne formatera que les 3 que vous venez de modifier et l&#39;opération devient quasiment instantanée.  </p>
+<h3>Configuration :</h3>
+<p><strong>Etape 1 :</strong> Installer <strong>Husky</strong> et <code>lint-staged</code>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D husky lint-staged</code></pre></div><p><strong>Etape 2 :</strong> Initialiser <strong>Husky</strong>  </p>
+<p>Cette commande va créer le dossier <code>.husky</code> et configurer le script prepare dans notre <code>package.json</code>.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm exec husky init</code></pre></div><p><strong>Etape 3 :</strong> Configurer <code>lint-staged</code>  </p>
+<p>Ouvrir le fichier <code>package.json</code>. Ajouter la configuration tout à la fin du fichier (après devDependencies).  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;lint-staged&quot;: {
+    &quot;src/**/*.html&quot;: [
+      &quot;htmlhint&quot;,
+      &quot;eslint --fix --max-warnings=50&quot;,
+      &quot;prettier --write&quot;
+    ],
+    &quot;src/**/*.ts&quot;: [
+      &quot;eslint --fix --max-warnings=50&quot;,
+      &quot;prettier --write&quot;
+    ],
+    &quot;**/*.{css,scss,json,md}&quot;: [
+      &quot;prettier --write&quot;
+    ],
+    &quot;*.scss&quot;: [
+      &quot;stylelint --fix&quot;
+    ],
+    &quot;*.{js,cjs,mjs}&quot;: [
+      &quot;eslint --fix --max-warnings=50&quot;,
+      &quot;prettier --write&quot;
+    ],
+    &quot;*.{yaml,yml}&quot;: [
+      &quot;prettier --write&quot;
+    ]
+  }
+}</code></pre></div><p><strong>Etape 4 :</strong> Dire à <strong>Husky</strong> d&#39;utiliser <code>lint-staged</code>  </p>
+<p>Aller dans le dossier <code>.husky</code> qui a été créé à la racine du projet. Trouver le fichier nommé <code>pre-commit</code>.  </p>
+<ul>
+<li>Simple linting</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm exec lint-staged</code></pre></div><ul>
+<li>Tests + linting</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm test -- --run
+pnpm exec lint-staged</code></pre></div><p><strong>Etape 5 :</strong> Ajouter la commande au <code>package.json</code> si ça n&#39;a pas été fait automatiquement...</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">&quot;scripts&quot;: {
+  &quot;prepare&quot;: &quot;husky&quot;,
+}</code></pre></div><h2 id="secretlint">
+  <img
+    alt="SECRETLINT"
+    title="SECRETLINT"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/secretlint.png"
+  />
+  SECRETLINT
+</h2>
+
+<p><strong>Secretlint</strong> est un outil d&#39;analyse statique enfichable (&quot;pluggable&quot;) conçu pour empêcher l&#39;inclusion accidentelle de secrets et d&#39;informations sensibles dans le code source.  </p>
+<p><strong>Son rôle</strong><br>Il analyse les fichiers modifiés en temps réel pour détecter des informations d&#39;identification (<strong>clé privée SSH</strong>, <strong>clé API</strong>, <strong>tokens AWS</strong>, clés privées, <strong>mdp</strong> ou des motifs suspects = chaîne de caractères nommée <code>SECRET_KEY</code>) avant même qu&#39;elles ne soient ajoutées à l&#39;index <strong>Git</strong>.  </p>
+<p>Contrairement à d&#39;autres outils qui scannent l&#39;historique, <strong>Secretlint</strong> se concentre sur la prévention immédiate via des hooks <code>pre-commit</code>.  </p>
+<p><strong>Pourquoi c&#39;est top</strong><br>Une fois qu&#39;un secret est &quot;poussé&quot; sur un dépôt (même privé), il est considéré comme compromis. Même si on supprime la ligne plus tard, le secret reste présent dans l&#39;historique des commits.  </p>
+<p>Il évite la pollution de l&#39;historique <strong>Git</strong>. Une fois qu&#39;un secret est commité, il est techniquement compromis et difficile à effacer totalement. <strong>Secretlint</strong> bloque le processus dès la détection, forçant le développeur à placer ses secrets dans des variables d&#39;environnement (<code>.env</code>) ou des gestionnaires de secrets sécurisés (comme les <strong>GitHub Secrets</strong> ou <strong>HashiCorp Vault</strong>) garantissant ainsi que le code partagé reste sain.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D secretlint &#64;secretlint/secretlint-rule-preset-recommend</code></pre></div><p>De plus il est nécessaire d&#39;ajouter dans le fichier <code>package.json</code> l&#39;exécution de <strong>Secretlint</strong> sur les fichiers en <code>pre-commit</code> via <code>lint-staged</code>.  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;lint-staged&quot;: {
+    &quot;*&quot;: [
+      &quot;secretlint --maskSecrets&quot;
+    ]
+  }
+}</code></pre></div><p>Ainsi que le script suivant dans le <code>package.json</code> =&gt;</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;scripts&quot;: {
+    &quot;lint:secrets&quot;: &quot;secretlint \&quot;**/*\&quot;&quot;
+  }
+}</code></pre></div><p>Créer le fichier <code>.secretlintrc.json</code> (via la commande <code>npx secretlint --init</code> ou manuellement) et y coller la configuration présente dans le template.  </p>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'qualite.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

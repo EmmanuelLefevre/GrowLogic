@@ -1,0 +1,383 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">🤖 CICD 🤖</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#protection-des-branches">Protection des branches</a></li>
+<li><a href="#strategie-de-qualite">Stratégie de qualité</a></li>
+<li><a href="#sonar-cloud">Sonar Cloud</a></li>
+<li><a href="#snyk">Snyk</a></li>
+<li><a href="#codeql">CodeQL</a></li>
+<li><a href="#gitleaks">GitLeaks</a></li>
+<li><a href="#linters">Linters</a></li>
+<li><a href="#rimraf">Rimraf</a></li>
+<li><a href="#clean-up-workflow">clean up workflow</a></li>
+</ul>
+<h2 id="protection-des-branches">
+  PROTECTION DES BRANCHES
+</h2>
+
+<p>Pour garantir que la qualité et la sécurité du code ne soient jamais compromises, des règles de protection strictes ont été appliquées sur les branches vitales du projet.  </p>
+<p>🔒 <strong>Configuration pour <code>main</code> et <code>develop</code></strong>  </p>
+<p>Voici les règles implémentées dans ce dépôt (Settings &gt; Branches &gt; Add rule) :</p>
+<ul>
+<li><strong>Require a pull request before merging :</strong> interdiction totale de pousser directement du code sur ces branches. Tout changement doit passer par une <strong>PR</strong>.</li>
+<li><strong>Require status checks to pass before merging :</strong> une <strong>PR</strong> ne peut être fusionnée que si les jobs suivants sont au vert :<br>🛡️ Security Scans<br>✨ Quality &amp; Tests</li>
+<li><strong>Require conversation resolution before merging :</strong> toutes les remarques des relecteurs lors de la <strong>PR</strong> doivent être traitées.</li>
+<li><strong>Restrict deletions &amp; force pushes :</strong> empêcher quiconque d&#39;effacer l&#39;historique ou de réécrire les branches stables.</li>
+</ul>
+<p>L&#39;option <strong>&quot;Include administrators&quot;</strong> est également activée...  </p>
+<h2 id="strategie-de-qualite">
+  STRATEGIE DE QUALITE
+</h2>
+
+<p>Pour maintenir une base de code saine sans ralentir le développement quotidien, une stratégie de validation stricte mais pragmatique est appliquée : <strong>&quot;Souple en local, Intransigeant en CI&quot;</strong> !!!  </p>
+<ol>
+<li><strong>En Local (Commit) :</strong> Tolérance Partielle 🚧</li>
+</ol>
+<p>Lors des commits, <strong>Husky</strong> et <strong>lint-staged</strong> analysent uniquement les fichiers modifiés.  </p>
+<p><strong>Philosophie</strong>  </p>
+<p>Le développement est un processus itératif. Il est acceptable d&#39;avoir quelques imperfections mineures (warnings) pendant que l&#39;on travaille sur une fonctionnalité.  </p>
+<p><strong>Seuil de tolérance : Max 50 warnings</strong>  </p>
+<ul>
+<li>Si erreurs (errors), le commit est bloqué.</li>
+<li>Si moins de 50 warnings, le commit passe.</li>
+<li>Si plus de 50 warnings, le commit est bloqué.</li>
+</ul>
+<p>Commande exécutée : <code>eslint --fix --max-warnings=50</code>  </p>
+<ol start="2">
+<li><strong>En CI/CD (Pull Request) :</strong> Tolérance Zéro ⛔</li>
+</ol>
+<p>Lorsqu&#39;une Pull Request est ouverte vers <code>develop</code> ou <code>main</code>, le pipeline <strong>GitHub Actions</strong> analyse l&#39;intégralité du projet.  </p>
+<p><strong>Philosophie</strong>  </p>
+<p>Le code qui entre dans les branches principales doit être irréprochable. La dette technique ne doit pas s&#39;accumuler silencieusement via des warnings ignorés.  </p>
+<p><strong>Seuil de tolérance : Max 0 warnings</strong> </p>
+<p>Conséquence : Si le moindre warning subsiste (<strong>HTML</strong>, <strong>TS</strong> ou encore <strong>SCSS</strong>), le job ✨ Quality &amp; Tests échoue et le merge est bloqué par <strong>GitHub</strong>.  </p>
+<p>Commande exécutée : <code>pnpm lint:ci</code> (ng lint --max-warnings=0).  </p>
+<h2 id="sonar-cloud">
+  <img
+    alt="SonarCloud"
+    title="SonarCloud"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/sonar_cloud.png"
+  />
+  SONAR CLOUD
+</h2>
+
+<p><strong>SonarCloud</strong> est l&#39;inspecteur de santé de ce projet. C&#39;est l&#39;outil de référence pour le <strong>&quot;Clean Code&quot;</strong>.  </p>
+<p><strong>Son rôle</strong><br>Il analyse la qualité globale. Il traque :</p>
+<ul>
+<li><strong>Bugs :</strong> code qui va probablement planter.</li>
+<li><strong>&quot;Code Smells&quot; :</strong> code mal écrit, difficile à maintenir (dette technique).</li>
+<li><strong>Couverture de test :</strong> s&#39;assure que tu as bien testé ce que tu as écrit.</li>
+<li><strong>Hotspots de sécurité :</strong> zones du code qui demandent une révision manuelle.</li>
+</ul>
+<p><strong>Pourquoi c&#39;est top</strong>  </p>
+<p>Son concept de <strong>Quality Gate</strong> (Porte de Qualité) est génial : si du nouveau code ne respecte pas les standards (ex : <strong>moins</strong> de <strong>80%</strong> de tests), il bloque la fusion de la <strong>PR</strong>.  </p>
+<p>Configurer son compte <strong>SonarCloud</strong> et son secret <code>SONAR_TOKEN</code>.  </p>
+<p>Créer le fichier <code>sonar-project.properties</code> à la racine et y coller la configuration présente dans le template...  </p>
+<h2 id="snyk">
+  <img
+    alt="Snyk"
+    title="Snyk"
+    width="88px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/snyk.png"
+  />
+  SNYK
+</h2>
+
+<p><strong>Snyk</strong> est le spécialiste des dépendances externes. Dans un projet moderne, <strong>80%</strong> du code provient de bibliothèques tierces (via <strong>NPM</strong> ou <strong>PNPM</strong>). <strong>Snyk</strong> s&#39;assure que ces bibliothèques que nous importons ne sont pas empoisonnées.</p>
+<p><strong>Son rôle</strong><br>Il parcourt le fichier <code>package.json</code> et le <code>pnpm-lock.yaml</code> pour les comparer à une base de données géante de vulnérabilités connues (<strong>CVE</strong>).</p>
+<p><strong>Pourquoi c&#39;est top</strong><br>Il ne se contente pas de dire &quot;c&#39;est cassé&quot;, il propose souvent la version précise à laquelle l&#39;on doit mettre à jour pour corriger la faille.</p>
+<p><strong>Seuil</strong><br>Seules les vulnérabilités de niveau high bloquent le pipeline, évitant ainsi de stopper le projet pour des failles mineures ou sans correctif disponible.</p>
+<h2 id="codeql">
+  <img
+    alt="CodeQL"
+    title="CodeQL"
+    width="60px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/codeql.png"
+  />
+  CODEQL
+</h2>
+
+<p><strong>CodeQL</strong> est le moteur d&#39;analyse sémantique de <strong>GitHub</strong>. Contrairement à un linter classique qui regarde la forme, <strong>CodeQL</strong> traite le code comme une base de données.</p>
+<p><strong>Son rôle</strong><br>Il exécute des requêtes complexes pour voir comment les données circulent dans l&#39;application. Il peut détecter si une entrée utilisateur non sécurisée finit par être exécutée par une fonction sensible (prévenant ainsi les injections).</p>
+<p><strong>Pourquoi c&#39;est top</strong><br>C&#39;est un outil de &quot;chasseur de failles&quot;. Il est capable de trouver des erreurs de logique ou des vulnérabilités critiques que personne n&#39;a encore répertoriées ailleurs.</p>
+<h2 id="gitleaks">
+  <img
+    alt="GitLeaks"
+    title="GitLeaks"
+    width="100px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/git_leaks.png"
+  />
+  GIT LEAKS
+</h2>
+
+<p>Bien que nous utilisions <strong>Gitleaks</strong> en local, son intégration dans la pipeline <strong>CI/CD</strong> est cruciale pour garantir une étanchéité totale du projet.  </p>
+<p><strong>Pourquoi l&#39;avoir aussi dans la CI ?</strong>  </p>
+<ul>
+<li><strong>Contournement des Hooks :</strong> un développeur peut (volontairement ou non) bypasser les protections locales avec la commande <code>git commit --no-verify</code>. La <strong>CI</strong>, elle, ne peut pas être ignorée.</li>
+<li><strong>Historique complet :</strong> alors que le scan local se concentre sur les fichiers modifiés (<code>--staged</code>), la version <strong>CI</strong> peut être configurée pour scanner l&#39;intégralité de l&#39;historique de la branche pour s&#39;assurer qu&#39;aucun secret n&#39;a été &quot;glissé&quot; dans un commit passé.</li>
+<li><strong>Auditabilité :</strong> elle génère un rapport officiel dans l&#39;onglet <strong>Security</strong> de <strong>GitHub</strong>, permettant de garder une trace des tentatives d&#39;introduction de données sensibles.</li>
+</ul>
+<p>Si <strong>Gitleaks</strong> trouve une faille, le job <strong>Security</strong> échoue immédiatement, bloquant ainsi toute tentative de fusion ou de déploiement.  </p>
+<h2 id="linters">
+  💎 Linters
+</h2>
+
+<p><strong>TOUS</strong> les linters suivants sont de nouveau éxécutés dans le <strong>Job</strong> <code>quality</code> :  </p>
+<ul>
+<li><strong>ESLINT</strong>  </li>
+<li><strong>Prettier</strong>  </li>
+<li><strong>HTMLHint</strong>  </li>
+<li><strong>Stylelint</strong>  </li>
+<li><strong>NgxTranslateLint</strong></li>
+</ul>
+<h2 id="rimraf">
+  🧹 RIMRAF
+</h2>
+
+<p>L&#39;utilisation de <strong>rimraf</strong> permet de supprimer des dossiers de manière fiable que l&#39;on soit sous <strong>Windows</strong>, <strong>macOS</strong> ou <strong>Linux</strong>. C&#39;est essentiel pour éviter que d&#39;anciens rapports de couverture ne viennent fausser les nouvelles analyses.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D rimraf</code></pre></div><p>Dans <code>package.json</code> ajouter les scripts <code>clean</code> et <code>test:coverage</code></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">&quot;scripts&quot;: {
+  &quot;clean&quot;: &quot;rimraf coverage .angular&quot;,
+  &quot;test:coverage&quot;: &quot;ng test --coverage --watch=false&quot;,
+}</code></pre></div><h2 id="clean-up-workflow">
+  <img
+    alt="GitHub Actions"
+    title="GitHub Actions"
+    width="34px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg"
+  />
+  CLEAN UP WORKFLOW
+</h2>
+
+<h3>MAINTENANCE : NETTOYAGE DES WORKFLOWS</h3>
+<p>Ce workflow utilitaire <code>cleanup.yml</code> est conçu pour maintenir la propreté de l&#39;onglet <strong>GitHub Actions</strong> en supprimant automatiquement les anciennes éxécutions inutiles.  </p>
+<h4>🕒 Déclenchement</h4>
+<p><strong>Automatique :</strong> tous les jours à 05h00 UTC.<br><strong>Manuel :</strong> peut être lancé à la demande via l&#39;onglet <strong>Actions</strong>.  </p>
+<h4>⚙️ Fonctionnement</h4>
+<p>Le script utilise la <strong>GitHub CLI</strong> (gh) pour effectuer deux types de nettoyage :  </p>
+<ol>
+<li><strong>Suppression des échecs et annulations :</strong></li>
+</ol>
+<ul>
+<li>Il scanne tous les workflows du projet.</li>
+<li>Il identifie les 100 dernières exécutions basées sur leur statut <code>failure</code> (échec) ou <code>cancelled</code> (annulé).</li>
+</ul>
+<p><strong>Objectif :</strong> ne garder que l&#39;historique des builds réussis pour une meilleure lisibilité.  </p>
+<ol start="2">
+<li><strong>Suppression des déploiements GitHub Pages :</strong></li>
+</ol>
+<ul>
+<li>Il cible spécifiquement les pipelines générés automatiquement par <strong>GitHub</strong> sous le nom &quot;<code>pages build and deployment</code>&quot;.</li>
+<li>Il filtre les 100 dernières exécutions basées sur leur titre d&#39;affichage (<code>displayTitle</code>).</li>
+<li>Il supprime ces entrées pour éviter l&#39;accumulation de logs de déploiement qui se déclenchent à chaque mise à jour de la branche de publication.</li>
+</ul>
+<p><strong>Objectif :</strong> nettoyer les traces de déploiement automatique de la <strong>Compodoc</strong> sur <strong>GitHub Pages</strong>.  </p>
+<ol start="3">
+<li><strong>Auto-nettoyage (Self-Cleanup) :</strong></li>
+</ol>
+<ul>
+<li>Il cible spécifiquement l&#39;historique du fichier <code>cleanup.yml</code>.</li>
+<li>Il supprime les anciennes exécutions réussies (completed) de ce workflow de nettoyage.</li>
+</ul>
+<p>💡 <strong>Note :</strong> Il exclut l&#39;exécution en cours (<code>$GITHUB_RUN_ID</code>).  </p>
+<p><strong>Objectif :</strong> éviter que l&#39;historique ne soit pollué par des centaines de logs inutiles.  </p>
+<p>⚠️ <strong>Important !!!</strong><br>Si vous renommez le fichier <code>cleanup.yml</code>, mettre impérativement à jour la variable <code>WORKFLOW_FILE=&quot;cleanup.yml&quot;</code> du script, sinon l&#39;auto-nettoyage ne fonctionnera plus !  </p>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'cicd.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

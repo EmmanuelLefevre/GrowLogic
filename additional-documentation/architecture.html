@@ -1,0 +1,354 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">🏗 ARCHITECTURE 🏗</h1>
+
+<br>
+<br>
+
+<b>Example :</b><div><pre class="line-numbers"><code class="language-plaintext">🏗️.github
+ ┗ 🤖workflows
+   ┣ cleanup.yml
+   ┗ pipeline.yml
+🐶.husky
+💻.vscode
+📘docs
+🌍public
+ ┣ ⚙️.htaccess
+ ┣ 🛠️manifest.json
+ ┣ 🤖robots.txt
+ ┣ 🗺️sitemap.xml
+📂src
+ ┣ 🔄_environments
+ ┃ ┣ 🔑environment.prod.ts
+ ┃ ┗ 🔑environment.ts
+ ┣ 🈸app
+ ┃ ┣ 🧠core
+ ┃ ┃ ┣ ⚙️_config
+ ┃ ┃ ┃ ┣ 🔗links
+ ┃ ┃ ┃ ┃ ┣ host-links.constant.ts
+ ┃ ┃ ┃ ┃ ┣ nav-links.constant.ts
+ ┃ ┃ ┃ ┃ ┗ social-links.constant.ts
+ ┃ ┃ ┃ ┗ 🔔snackbar
+ ┃ ┃ ┃   ┗ snackbar.constant.ts
+ ┃ ┃ ┣ 🧱_models
+ ┃ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┣ 📂environment
+ ┃ ┃ ┃ ┣ 📂forms
+ ┃ ┃ ┃ ┣ 📂links
+ ┃ ┃ ┃ ┣ 📂seo
+ ┃ ┃ ┃ ┣ 📂snackbar
+ ┃ ┃ ┃ ┗ 📂user
+ ┃ ┃ ┣ 💉_services
+ ┃ ┃ ┃ ┣ 🔐auth
+ ┃ ┃ ┃ ┃ ┗ 📄auth.service.ts
+ ┃ ┃ ┃ ┣ 📈seo
+ ┃ ┃ ┃ ┃ ┗ 📄seo.service.ts
+ ┃ ┃ ┃ ┣ 🔔snackbar
+ ┃ ┃ ┃ ┃ ┗ 📄snackbar.service.ts
+ ┃ ┃ ┃ ┗ 🗣️translation
+ ┃ ┃ ┃   ┗ 📄translation.service.ts
+ ┃ ┃ ┣ 🚧guard
+ ┃ ┃ ┃ ┣ 👑admin
+ ┃ ┃ ┃ ┗ 🆔auth
+ ┃ ┃ ┗ 🎣interceptor
+ ┃ ┃   ┗ 🆔auth
+ ┃ ┃     ┗ 📄auth.interceptor.ts
+ ┃ ┣ 🧩features
+ ┃ ┃ ┣ 👑admin
+ ┃ ┃ ┃ ┣ ⚙️_config
+ ┃ ┃ ┃ ┣ 🧱_models
+ ┃ ┃ ┃ ┣ 💉_services
+ ┃ ┃ ┃ ┣ 🗃️components
+ ┃ ┃ ┃ ┣ 📂dashboard
+ ┃ ┃ ┃ ┃ ┣ 📄dashboard.component.html
+ ┃ ┃ ┃ ┃ ┗ 📄dashboard.component.ts
+ ┃ ┃ ┃ ┣ 👁️admin-views
+ ┃ ┃ ┃ ┣ 📂settings
+ ┃ ┃ ┃ ┣ 📂users
+ ┃ ┃ ┃ ┣ 📄admin-layout.component.html
+ ┃ ┃ ┃ ┗ 📄admin-layout.component.ts
+ ┃ ┃ ┣ 🔓private
+ ┃ ┃ ┃ ┣ ⚙️_config
+ ┃ ┃ ┃ ┣ 🧱_models
+ ┃ ┃ ┃ ┣ 💉_services
+ ┃ ┃ ┃ ┣ 🗃️components
+ ┃ ┃ ┃ ┣ 👁️private-views
+ ┃ ┃ ┃ ┣ 📄private.component.html
+ ┃ ┃ ┃ ┣ 📄private.component.ts
+ ┃ ┃ ┃ ┣ 📄private.config.ts
+ ┃ ┃ ┃ ┗ 📄private.route.ts
+ ┃ ┃ ┗ 😺public
+ ┃ ┃   ┣ ⚙️_config
+ ┃ ┃   ┣ 🧱_models
+ ┃ ┃   ┣ 💉_services
+ ┃ ┃   ┣ 🗃️components
+ ┃ ┃   ┣ 👁️public-views
+ ┃ ┃   ┃ ┣ ✉️contact
+ ┃ ┃   ┃ ┗ 🏠home
+ ┃ ┃   ┣ 📄public.component.html
+ ┃ ┃   ┣ 📄public.component.ts
+ ┃ ┃   ┣ 📄public.config.ts
+ ┃ ┃   ┗ 📄public.route.ts
+ ┃ ┣ ♻️shared
+ ┃ ┃ ┣ 🎛️_directives
+ ┃ ┃ ┣ ⚗️_pipes
+ ┃ ┃ ┣ 🧰_utils
+ ┃ ┃ ┣ 🗃️components
+ ┃ ┃ ┃ ┣ 📂footer
+ ┃ ┃ ┃ ┣ 📂header
+ ┃ ┃ ┃ ❌error-handler
+ ┃ ┃ ┃ ┣ 👁️error-views
+ ┃ ┃ ┃ ┃ ┣ 📂server-error
+ ┃ ┃ ┃ ┃ ┣ 📂unauthorized-error
+ ┃ ┃ ┃ ┃ ┣ 📂unconnected-error
+ ┃ ┃ ┃ ┃ ┗ 📂unfound-error
+ ┃ ┃ ┃ ┣ 📄error-handler.component.html
+ ┃ ┃ ┃ ┗ 📄error-handler.component.ts
+ ┃ ┃ ┗ 📄shared.ts
+ ┃ ┣ 📄app.component.html
+ ┃ ┣ 📄app.component.ts
+ ┃ ┣ 📄app.config.ts
+ ┃ ┗ 📄app.routes.ts
+ ┣ 🖼️assets
+ ┃ ┣ ⚙️_config
+ ┃ ┣ 💾_data
+ ┃ ┣ 🔡fonts
+ ┃ ┣ 🗣️i18n
+ ┃ ┣ ✨icons
+ ┃ ┣ 📷img
+ ┃ ┗ 🏢logos
+ ┣ 🎨styles
+ ┃ ┣ 📂abstracts
+ ┃ ┃ ┣ 🎨_functions.scss
+ ┃ ┃ ┣ 🎨_mixins.scss
+ ┃ ┃ ┗ 🎨_index.scss
+ ┃ ┣ 📂base
+ ┃ ┃ ┣ 🎨_animations.scss
+ ┃ ┃ ┣ 🎨_fonts.scss
+ ┃ ┃ ┣ 🎨_globals.scss
+ ┃ ┃ ┣ 🎨_reset.scss
+ ┃ ┃ ┣ 🎨_typography.scss
+ ┃ ┃ ┗ 🎨_utilities.scss
+ ┃ ┣ 📂layout
+ ┃ ┃ ┣ 🎨_admin-layout.scss
+ ┃ ┃ ┗ 🎨_main-layout.scss
+ ┃ ┗ 📂themes
+ ┃   ┣ 🎨_light-theme.scss
+ ┃   ┣ 🎨_material-overrides.scss
+ ┃   ┗ 🎨_theme-variables.scss
+ ┣ 📄index.html
+ ┣ 📄main.ts
+ ┣ 🎨styles.scss
+ ┗ 🧪test-setup.ts
+📄.....
+📄.compodocrc.json
+📄.gitattributes
+📄.gitignore
+📄.htmlhintrc
+📄.npmrc
+📄.prettier.js
+📄.secretlintrc.json
+📄.stylelintrc.json
+📄eslint-security.config.js
+📄eslint.config.js
+📄LICENSE
+📄package.json
+📄pnpm-lock.yaml
+📄README.md
+🛡️sonar-project.properties
+📄tsconfig.app.json
+📄tsconfig.doc.json
+📄tsconfig.json
+📄tsconfig.spec.json
+🧪vitest.config.ts</code></pre></div>
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'architecture.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

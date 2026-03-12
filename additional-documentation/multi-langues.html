@@ -1,0 +1,278 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">🗣️ MULTI LANGUES 🗣️</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#i18n">I18N</a></li>
+<li><a href="#extension">EXTENSION VSCODE</a></li>
+<li><a href="#ngx-translate">NGX TRANSLATE</a><ul>
+<li><a href="#eslint-ngx-translate-linter">ESLINT NGX TRANSLATE LINTER</a></li>
+<li><a href="#ngx-translate-extract">NGX TRANSLATE EXTRACT</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="i18n">
+  <img
+    alt="I18N"
+    title="I18N"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/i18n.svg"
+  />
+  I18N
+</h2>
+
+<p>Pour offrir une expérience utilisateur de premier plan, l&#39;internationalisation (<strong>i18n</strong>) est une étape incontournable. Elle permet non seulement de toucher un public mondial mais aussi de séparer proprement le contenu textuel de la logique métier.  </p>
+<p>Installer les librairies suivantes =&gt;  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add &#64;ngx-translate/core &#64;ngx-translate/http-loader</code></pre></div><blockquote>
+<p><a href="https://ngx-translate.org/">🔗 Ngx Translate Documentation</a>  </p>
+</blockquote>
+<p><strong>Internationalisation avec NGX-Translate</strong>  </p>
+<p>L&#39;implémentation choisie repose sur <strong>NGX-Translate</strong>, la bibliothèque de référence pour <strong>Angular</strong>. Elle permet de charger des fichiers de traduction de manière asynchrone et de basculer d&#39;une langue à l&#39;autre dynamiquement sans recharger l&#39;application.  </p>
+<p><strong>Pourquoi cette solution ?</strong>  </p>
+<ul>
+<li><strong>Flexibilité :</strong> les traductions sont stockées dans des fichiers <strong>JSON</strong> simples (<code>fr.json</code>, <code>en.json</code>).</li>
+<li><strong>Performance :</strong> chargement à la demande (<strong>Lazy Loading</strong>) des fichiers de langue via <strong>HTTP</strong>.</li>
+<li><strong>Simplicité :</strong> utilisation de <strong>Pipes</strong> (<code>| translate</code>) ou de <strong>Directives</strong> dans les templates <strong>HTML</strong>.</li>
+</ul>
+<h2 id="extension">EXTENSION VSCODE</h2>
+
+<blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally">🔗 I18n Ally VSCode Extension</a>  </p>
+</blockquote>
+<p>Pour un confort de développement absolu, l&#39;extension <strong>I18n Ally</strong> a été implémenté dans ce projet. Elle permet de voir la traduction directement dans le code (à la place de la clé brute) et d&#39;éditer les <strong>JSON</strong> sans changer de fichier.  </p>
+<h4>Configuration :</h4>
+<p>Copier la configuration du fichier <code>settings.json</code> (dossier <code>.vscode</code> à la racine) du projet pour que l&#39;extension détecte correctement les fichiers et la syntaxe <strong>Angular</strong>.  </p>
+<h4>Fonctionnalités clés activées dans ce projet :</h4>
+<ul>
+<li><p><strong>Visualisation Inline :</strong><br>Afficher la traduction française directement dans le code <strong>HTML/TS</strong> à la place de la clé brute (ex: affiche &quot;<code>Accueil</code>&quot; au lieu de <code>HOME.TITLE</code>).  </p>
+</li>
+<li><p><strong>Indicateurs d&#39;état :</strong><br>Signaler visuellement si une traduction est manquante dans une des langues.  </p>
+</li>
+<li><p><strong>Édition Contextuelle :</strong><br>Permettre de modifier le texte (<code>en.json</code> et <code>fr.json</code>) directement depuis une info-bulle dans le code, sans ouvrir les fichiers <strong>JSON</strong>.</p>
+</li>
+</ul>
+<p>💡 Une documentation complète est disponible dans le fichier <code>.vscode/settings.json</code> et ici... =&gt;  </p>
+<blockquote>
+<p><a href="rules-references.html#i18n-ally-rules">👀 I18n Ally Config Rules</a>  </p>
+</blockquote>
+<h2 id="ngx-translate">
+  <img
+    alt="NGX LINTER"
+    title="NGX LINTER"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/ngx_translate.png"
+  />
+  NGX TRANSLATE
+</h2>
+
+<p>Gérer l&#39;internationalisation (<strong>I18n</strong>) manuellement est source d&#39;erreurs : oubli de clés, fautes de frappe ou traductions orphelines qui polluent le code. Pour garantir une qualité irréprochable et un coverage de <strong>100%</strong> (y compris dans nos tests), ce flux a donc été automatisé grâce à deux outils puissants.  </p>
+<h3 id="eslint-ngx-translate-linter">NGX TRANSLATE LINTER</h3>
+
+<blockquote>
+<p><a href="https://www.npmjs.com/package/ngx-translate-lint">🔗 Ngx Translate Linter Documentation</a>  </p>
+</blockquote>
+<p><strong>Le Gardien (ngx-translate-lint) :</strong>  </p>
+<p>Il agit comme un garde-fou strict dans notre <strong>CI/CD</strong>. Il vérifie que chaque clé utilisée dans le code (et les tests !) existe bien dans tous les fichiers de traduction (<code>en.json</code>, <code>fr.json</code>).  </p>
+<h3 id="ngx-translate-extract">ESLINT NGX TRANSLATE LINTER</h3>
+
+<blockquote>
+<p><a href="https://www.npmjs.com/package/@bartholomej/ngx-translate-extract">🔗 Ngx Translate Extract Documentation</a>  </p>
+</blockquote>
+<p><strong>L&#39;Assistant (ngx-translate-extract) :</strong>  </p>
+<p>C&#39;est l&#39;outil de productivité. Il scanne automatiquement tout le projet pour extraire les clés et les injecter dans les fichiers <strong>JSON</strong>.<br>Fini le copier-coller manuel !!!  </p>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'multi-langues.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

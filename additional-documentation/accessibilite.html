@@ -1,0 +1,592 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">♿ ACCESSIBILITÉ ♿</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#introduction">INTRODUCTION</a></li>
+<li><a href="#a11y">A11Y</a></li>
+<li><a href="#wcag">NORME WCAG</a></li>
+<li><a href="#quelques-chiffres">QUELQUES CHIFFRES</a></li>
+<li><a href="#juridique">JURIDIQUE</a></li>
+<li><a href="#outils-ressources">OUTILS &amp; RESSOURCES</a></li>
+<li><a href="#bonnes-pratiques-exemples-code">BONNES PRATIQUES / EXEMPLES DE CODE</a></li>
+</ul>
+<h2>INTRODUCTION</h2>
+<p><strong>Qu&#39;est-ce que l&#39;Accessibilité Numérique ?</strong>  </p>
+<p>L&#39;accessibilité numérique consiste à concevoir et développer des produits digitaux (sites web, applications mobiles, documents) de manière à ce que tous les utilisateurs, quelles que soient leurs capacités physiques ou mentales, puissent y accéder, les comprendre et interagir avec eux.</p>
+<p>L&#39;objectif fondamental n&#39;est pas de créer une version &quot;spéciale&quot; pour les personnes handicapées, mais de supprimer les barrières technologiques qui excluent une partie de la population. Comme une rampe d&#39;accès est indispensable pour un fauteuil roulant mais pratique pour une poussette ou un livreur, l&#39;accessibilité numérique profite à tous.</p>
+<p>L&#39;objectif est de supprimer les barrières qui pourraient empêcher quelqu&#39;un d&#39;accéder à l&#39;information ou d&#39;utiliser un service. Cela inclut les handicaps (non exhaustif) :</p>
+<ul>
+<li><strong>Visuels</strong> (cécité, basse vision, daltonisme, etc).</li>
+<li><strong>Moteurs</strong> (incapacité à utiliser une souris, tremblements, etc).</li>
+<li><strong>Auditifs</strong> (surdité, malentendance, etc).</li>
+<li><strong>Cognitifs</strong> (troubles de l&#39;attention, dyslexie, difficultés d&#39;apprentissage, etc).</li>
+<li><strong>Vieillesse et limitations fonctionnelles :</strong> le vieillissement n&#39;est pas une maladie ou un handicap en soi, mais il s&#39;accompagne souvent de limitations fonctionnelles qui rejoignent directement les problématiques d&#39;accessibilité. La baisse de l&#39;acuité visuelle et audtive, de la dextérité motrice ou de la vitesse de traitement cognitif sont des obstacles courants. Rendre un site accessible, c&#39;est donc aussi le rendre utilisable par une population senior grandissante.</li>
+</ul>
+<p>De plus il est important de noter qu&#39;une bonne accessibilité profite souvent à tous les utilisateurs, pas seulement à ceux en situation de handicap :</p>
+<ul>
+<li>Les sous-titres (conçus pour les sourds) aident aussi quelqu&#39;un à regarder une vidéo dans un environnement bruyant si celui-ci n&#39;a pas de casque/écouteurs.</li>
+<li>Un bon contraste de couleurs (conçu pour les malvoyants) aide tout le monde à lire un écran en plein soleil.</li>
+<li>Une navigation au clavier simple (conçue pour ceux qui ne peuvent utiliser une souris) peut être pratique à bien des égards (oubli de souris ou celle-ci cassée/en panne).</li>
+</ul>
+<p><strong>Le spectre du handicap</strong>  </p>
+<p>Il est crucial de comprendre que le handicap n&#39;est pas toujours un état permanent. L&#39;approche moderne de l&#39;accessibilité (notamment le &quot;Design Inclusif&quot;) distingue trois contextes :</p>
+<ul>
+<li><strong>Permanent :</strong> une personne aveugle ou amputée d&#39;un bras.</li>
+<li><strong>Temporaire :</strong> une personne ayant une cataracte en attente d&#39;opération, un bras dans le plâtre ou en convalescence.</li>
+<li><strong>Situationnel :</strong> une personne tenant un bébé dans un bras ou u parent avec une poussette (limitation motrice).</li>
+</ul>
+<p>En rendant votre site accessible pour le cas &quot;permanent&quot;, vous résolvez automatiquement les problèmes des cas &quot;temporaires&quot; et &quot;situationnels&quot;.</p>
+<h2 id="a11y">
+  <img
+    alt="A11Y"
+    title="A11Y"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/a11y.png"
+  />
+  A11Y
+</h2>
+
+<blockquote>
+<p><a href="https://www.a11yproject.com/">🔗 A11y Documentation</a>  </p>
+</blockquote>
+<p>Au-delà de l&#39;abréviation, <strong>A11y</strong> est la pratique de concevoir et développer des sites web et des applications numériques pour qu&#39;ils soient utilisables par tout le monde, y compris et surtout les personnes en situation de handicap.  </p>
+<p><strong>Que signifie A11y ?</strong></p>
+<p>C&#39;est un numéronyme (une abréviation basée sur des chiffres) pour le mot anglais Accessibility.</p>
+<ul>
+<li><strong>A :</strong> la première lettre</li>
+<li><strong>11 :</strong> le nombre de lettres entre la première et la dernière (c-c-e-s-s-i-b-i-l-i-t)</li>
+<li><strong>Y :</strong> la dernière lettre</li>
+</ul>
+<p>On le prononce souvent &quot;Al-li&quot; (comme le prénom Allie en anglais) ou simplement &quot;Accessibilité&quot;.  </p>
+<p><img src="https://github.com/EmmanuelLefevre/MarkdownImg/blob/main/a11y.png" alt="A11y" class="img-responsive">  </p>
+<p><strong>Pourquoi utiliser ce terme ?</strong></p>
+<p>Au-delà du raccourci d&#39;écriture, le terme <strong>A11y</strong> est devenu le symbole de la communauté des développeurs et designers engagés pour un web inclusif. Voir ce terme dans un projet indique généralement que l&#39;équipe technique a pris en compte les normes d&#39;accessibilité dès la conception.</p>
+<h2 id="wcag">
+  <img
+    alt="WCAG"
+    title="WCAG"
+    width="84px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/wcag.jpg"
+  />
+  NORME WCAG
+</h2>
+
+<p>Si le numéronyme <strong>A11y</strong> est une convention, les règles techniques à respecter sont quand à elles des normes internationales strictes. On ne fait pas de l&#39;accessibilité &quot;au feeling&quot;.</p>
+<p>Tout repose sur le <strong>WCAG</strong> (<strong>Web Content Accessibility Guidelines</strong>), édicté par le <strong>W3C</strong> (l&#39;organisme qui standardise le <strong>Web</strong> comme le <strong>HTML</strong> ou le <strong>CSS</strong>).</p>
+<blockquote>
+<p><a href="https://www.accessiway.com/economies-sanctions-accessibilite?adgroupid=189936695924&utm_campaign=TA_SRC_2_Des+Mob_FR_Generic_Exact&utm_source=google&utm_medium=cpc&utm_content=783031921168&utm_term=p_wcag&hsa_acc=9218225427&hsa_cam=23095677526&hsa_grp=189936695924&hsa_ad=783031921168&hsa_src=g&hsa_tgt=kwd-387224701&hsa_kw=wcag&hsa_mt=p&hsa_net=adwords&hsa_ver=3&gad_source=1&gad_campaignid=23095677526&gbraid=0AAAAApYqMe7DLm4ytvmfzg6EIeP0cZ-0O&gclid=Cj0KCQiA7fbLBhDJARIsAOAqhscZfe_t_2GQs19eI41fuSBJ5AaMb53iXL-pqTJkhjfAUF-C01cpox0aAuqwEALw_wcB">🔗 WCAG Documentation</a>  </p>
+</blockquote>
+<p>Le <strong>WCAG</strong> est la norme technique mondiale. Elle est structurée en 4 grands principes :</p>
+<ul>
+<li><strong>Perceptible :</strong> l&#39;information doit être visible ou audible (contraste des couleurs, texte alternatif).</li>
+<li><strong>Utilisable (Operable) :</strong> l&#39;interface doit être navigable (navigation au clavier, pas de piège au focus).</li>
+<li><strong>Compréhensible :</strong> le langage et le fonctionnement doivent être clairs (langue de la page définie, messages d&#39;erreur explicites).</li>
+<li><strong>Robuste :</strong> le code doit être interprétable par les outils d&#39;assistance (<strong>HTML</strong> sémantique, compatibilité lecteurs d&#39;écran).</li>
+</ul>
+<p>Cette norme définit 3 niveaux de conformité :</p>
+<ul>
+<li><strong>Niveau A (Essentiel) :</strong> si ce n&#39;est pas respecté, le site est inutilisable pour certaines personnes.</li>
+<li><strong>Niveau AA (Standard) :</strong> c&#39;est le niveau visé par la loi (<strong>RGAA</strong>, lois européennes). Il rend le site accessible à la majorité.</li>
+<li><strong>Niveau AAA (Optimal) :</strong> niveau très élevé, réservé à des contextes spécifiques.</li>
+</ul>
+<p>La norme technique (<strong>WCAG</strong>) est ensuite transformée en obligation légale par les états. C&#39;est là que cela devient contraignant...</p>
+<ul>
+<li><strong>En Europe :</strong> la norme harmonisée est la <strong>EN 301 549</strong>. C&#39;est une transposition directe du <strong>WCAG</strong>.</li>
+<li><strong>En France :</strong> nous avons le <strong>RGAA</strong> (Référentiel Général d&#39;Amélioration de l&#39;Accessibilité). C&#39;est la méthode technique officielle de l&#39;État français pour vérifier qu&#39;on respecte la norme <strong>WCAG</strong>.</li>
+</ul>
+<h3>QUELQUES CHIFFRES</h3>
+<ol>
+<li><strong>Sites web non accessibles en 2024</strong></li>
+</ol>
+<p><strong>Source :</strong> <a href="https://webaim.org/projects/million/">🔗 The WebAIM Million</a></p>
+<ul>
+<li><strong>96%</strong> des sites web présentent des défaillances d&#39;accessibilité.</li>
+<li>texte à faible contraste =&gt; présent sur <strong>79%</strong> des pages d&#39;accueil.</li>
+<li>texte alternatif (attribut alt) manquant sur les images : <strong>58%</strong> des pages.</li>
+<li>liens vides : <strong>49%</strong> des pages (un lien sans texte descriptif est déroutant pour la navigation au clavier ou via un lecteur d&#39;écran).</li>
+<li>étiquettes de formulaire (label) manquantes : <strong>45%</strong> des pages (sans étiquette, une personne utilisant un lecteur d&#39;écran ne sait pas quel champ elle doit remplir).</li>
+</ul>
+<p>Il est important de noter que ce test est automatisé et ne détecte qu&#39;environ <strong>30%</strong> des problèmes potentiels. En effet il ne concerne que le &quot;<strong>TOP 1M home page</strong>&quot; et ne scan donc <strong>QUE</strong> la page d&#39;accueil de ce <strong>TOP</strong> sites.</p>
+<p><strong>La situation réelle est donc probablement bien pire !!!</strong></p>
+<ol start="2">
+<li><strong>Personnes en situation de handicap</strong></li>
+</ol>
+<ul>
+<li>A l&#39;échelle mondiale : <strong>1,3 milliard</strong> de personnes de personnes, soit environ <strong>16%</strong> de la population mondiale (1 personne sur 6), vivent avec un handicap significatif.</li>
+</ul>
+<p><strong>Source :</strong> <a href="https://www.who.int/fr/news-room/fact-sheets/detail/disability-and-health">🔗 OMS : rapport mondial sur la santé et le handicap 2023</a></p>
+<ul>
+<li>A l&#39;échelle européenne : environ <strong>135M</strong> de personnes dans l&#39;Union Européenne, soit près d&#39;un citoyen sur quatre (<strong>27%</strong>), déclarent une forme de handicap ou de limitation durable.</li>
+</ul>
+<p><strong>Source :</strong> <a href="https://drees.solidarites-sante.gouv.fr/sites/default/files/2025-01/Fiche%208.7%20-%20Le%20handicap%20en%20Europe.pdf">🔗 Eurostat : statistiques sur le handicap 2023/2024</a></p>
+<ul>
+<li>A l&#39;échelle de la France : <strong>12M</strong> de personnes sont touchées par un handicap (1 personne sur 5).<br><strong>80%</strong> des handicaps sont invisibles (troubles cognitifs, maladies chroniques invalidantes...).</li>
+</ul>
+<p><strong>Source :</strong> <a href="https://handicap.gouv.fr/publication-drees-le-handicap-en-chiffres-edition-2024#:~:text=Les%20chiffres%20cl%C3%A9s%20du%20handicap,des%20probl%C3%A8mes%20de%20m%C3%A9moire%2C%20etc.">🔗 Chiffres consolidés par l&#39;INSEE et la DREES 2022-2024</a></p>
+<ol start="3">
+<li><strong>Conformité dans le secteur public français</strong></li>
+</ol>
+<p>Malgré l&#39;obligation légale (depuis la loi de 2005) pour les services publics d&#39;être accessibles, la conformité reste très faible.</p>
+<blockquote>
+<p><a href="https://www.info.gouv.fr/accessibilite/loi-accessibilite-cadre-legal-et-obligations#:~:text=La%20loi%20pour%20l%27%C3%A9galit%C3%A9,personnes%20en%20situation%20de%20handicap.">🔗 Loi pour l&#39;égalité des droits et des chances</a></p>
+</blockquote>
+<p>Dans son baromètre de 2025, l&#39;Observatoire révélait que le taux de conformité moyen au RGAA (Référentiel Général d&#39;Amélioration de l&#39;Accessibilité) pour les 250 démarches les plus utilisées par les Français stagnait en dessous de <strong>60%</strong> (loin des <strong>100%</strong> requis par la loi).  </p>
+<p><strong>Source :</strong> <a href="https://observatoire.numerique.gouv.fr/observatoire">🔗 Observatoire de la qualité des démarches en ligne 2025</a></p>
+<p>L&#39;accessibilité numérique n&#39;est pas seulement une bonne pratique technique, c&#39;est avant tout une obligation éthique et légale visant à construire un web inclusif.</p>
+<p>De manière non exhaustive cela signifie permettre :</p>
+<ul>
+<li>à un utilisateur malvoyant de comprendre la structure et le contenu via un lecteur d&#39;écran. Celui-ci vocalise la page en se basant sur un balisage correct : il annonce les titres (<code>h1</code>, <code>h2</code>), décrit le rôle des éléments (<code>bouton</code>, <code>lien</code>) et lit le contenu textuel des images grâce à leur attribut <code>alt</code>.</li>
+<li>à un utilisateur de lecteur d&#39;écran de bénéficier d&#39;une prononciation correcte. En déclarant la langue principale de la page avec <code>&lt;html lang=&quot;fr&quot;&gt;</code>, la synthèse vocale utilise le bon accent pour tout le site.
+Pour les termes anglophones, les encadrer avec un <code>&lt;span&gt;</code> afin de permettre au lecteur de basculer sur une prononciation anglaise juste pour ce mot, évitant ainsi une lecture confuse.
+(ex : <code>&lt;span lang=&quot;en&quot;&gt;framework&lt;/span&gt;</code>).</li>
+<li>à une personne ayant un handicap moteur (et ne pouvant utiliser de souris) de contrôler l&#39;interface entièrement au clavier. Cela se fait principalement avec la touche <code>Tab</code> pour se déplacer entre les éléments interactifs (<code>liens</code>, <code>boutons</code>, <code>champs</code>), et les touches <code>Entrée</code> ou <code>Espace</code> pour les activer. Un balisage sémantique est essentiel car les éléments natifs comme la balise <code>&lt;button&gt;</code> ou <code>&lt;a&gt;</code> sont &quot;focusables&quot; par défaut.</li>
+<li>ou encore à un utilisateur sourd ou malentendant d&#39;accéder au contenu d&#39;une vidéo grâce à des <code>captions</code> (sous-titres enrichis), qui décrivent non seulement les dialogues mais aussi les sons importants (ex: <code>[musique entraînante]</code>, <code>[porte qui claque]</code>), ainsi qu&#39;une transcription textuelle complète disponible à côté de la vidéo.</li>
+</ul>
+<p>Garantir l&#39;accessibilité, c&#39;est s&#39;assurer que personne n&#39;est laissé pour compte dans l&#39;accès à l&#39;information et aux services.</p>
+<h3>JURIDIQUE</h3>
+<p>Le cadre légal s&#39;appuie notamment sur la transposition en droit français des directives européennes qui visent à harmoniser les exigences en la matière. Ce cadre légal s&#39;est considérablement durci avec le <strong>European Accessibility Act</strong> (<strong>EAA</strong>).  </p>
+<p><strong>Cette directive est entrée en vigueur le 28 juin 2025 ...!!!</strong></p>
+<blockquote>
+<p><a href="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/la-nouvelle-directive-europeenne-accessibilite-pour-des-produits-et-des-services-accessibles-aux-personnes-en-situation">🔗 Directive Européenne sur l&#39;Accessibilité</a></p>
+</blockquote>
+<h4>Qui est concerné ?**</h4>
+<p>La loi s&#39;applique à une vaste gamme de produits et services numériques :</p>
+<ul>
+<li>Sites de commerce électronique (e-commerce).  </li>
+<li>Services bancaires et financiers.  </li>
+<li>Services de transport (aérien, ferroviaire, autocar).  </li>
+<li>Livres numériques (e-books) et logiciels spécialisés.  </li>
+<li>Équipements terminaux (bornes de paiement, distributeurs de billets).</li>
+</ul>
+<h4>Sanctions</h4>
+<p>En France, le non-respect des obligations d&#39;accessibilité numérique, définies par le <strong>RGAA</strong>, expose les organismes concernés à des sanctions financières.<br>Le défaut de conformité ou l&#39;absence de publication d&#39;une déclaration d&#39;accessibilité peut entraîner une sanction administrative dont le montant peut s&#39;élever jusqu&#39;à <strong>25K€/PAR infraction</strong> constatée.</p>
+<blockquote>
+<p><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000038811937">🔗 Décret n° 2019-768 du 24 juillet 2019</a></p>
+</blockquote>
+<h4>Exemptions et Nuances</h4>
+<p>Il existe des dérogations, mais elles sont encadrées strictement. Ne sont pas soumises aux mêmes obligations les <strong>micro-entreprises</strong> (définies comme employant <strong>moins de 10 personnes</strong> et dont le <strong>CA</strong>** annuel ou le bilan total n&#39;excède pas <strong>2 millions d&#39;euros</strong>).  </p>
+<p>Cependant, l&#39;application diffère selon votre rôle :  </p>
+<ul>
+<li><strong>Prestataires de services</strong> (petite agence web, freelance, site vitrine artisanal...)<br>Ils sont <strong>exemptés</strong> des obligations d&#39;accessibilité de la directive.</li>
+</ul>
+<p>💡💡💡 Même exemptés légalement, l&#39;accessibilité reste un atout commercial et éthique majeur.  </p>
+<ul>
+<li><strong>Fabricants, importateurs et distributeurs de produits</strong><br>Ils peuvent déroger aux obligations sans avoir à fournir de justificatifs administratifs lourds mais sont encouragés à respecter les normes.</li>
+</ul>
+<h4>Autres critères d&#39;exemption (Charge disproportionnée)</h4>
+<p>Pour les entreprises dépassant les seuils ci-dessus, deux cas spécifiques permettent une dérogation (qui doit être justifiée et documentée) :  </p>
+<ul>
+<li><p><strong>Modification fondamentale :</strong> si la mise en conformité modifie la nature même du produit ou service (ex: supprimer l&#39;image d&#39;un outil de radiologie rendrait l&#39;outil inutile).  </p>
+</li>
+<li><p><strong>Charge disproportionnée :</strong> si l&#39;application des normes impose un coût excessif qui mettrait en péril la viabilité économique de l&#39;opérateur (le calcul est précis et défini par la réglementation).</p>
+</li>
+</ul>
+<h2 id="outils-ressources">🛠️ OUTILS & RESSOURCES</h2>
+
+<p>L&#39;accessibilité ne se devine pas, elle se mesure. Voici les outils de référence pour auditer vos projets, au-delà du simple score <strong>Lighthouse</strong>.  </p>
+<p>Contrairement à <strong>HTMLHint</strong> (qui vérifie si notre code est valide syntaxiquement), ces outils vérifient comment ce code est interprété par les technologies d&#39;assistance.  </p>
+<h3>🔍 Audit &amp; Scan Global</h3>
+<blockquote>
+<p><a href="https://developers.google.com/web/tools/lighthouse">🔗 Google Lighthouse</a></p>
+</blockquote>
+<p>Accessible directement via la touche <code>F12</code> (onglet <strong>Lighthouse</strong>), c&#39;est le point de départ incontournable. Il génère un rapport global (<strong>Performance</strong>, <strong>SEO</strong>, <strong>Accessibilité</strong>) et attribue un score sur 100.<br><em>Attention : Un score de 100% ne garantit pas une accessibilité parfaite, car il ne détecte que les erreurs automatisables (~30% des problèmes réels).</em>  </p>
+<blockquote>
+<p><a href="https://wave.webaim.org/">🔗 WAVE (Web Accessibility Evaluation Tool)</a></p>
+</blockquote>
+<p>C&#39;est la référence visuelle. Il injecte des icônes directement sur votre page pour montrer les erreurs (titres manquants, contrastes faibles, images sans alt).<br><em>Disponible en extension Chrome/Firefox.</em>  </p>
+<blockquote>
+<p><a href="https://www.deque.com/axe/devtools/">🔗 Axe DevTools</a></p>
+</blockquote>
+<p>Le moteur qui fait tourner <strong>Lighthouse</strong> mais en version dédiée et plus puissante. Il permet de scanner des portions de page et offre des explications très détaillées pour corriger les bugs.<br><em>Disponible en extension navigateur.</em>  </p>
+<blockquote>
+<p><a href="https://yellowlab.tools/">🔗 Yellow Lab Tools</a></p>
+</blockquote>
+<p>Un outil en ligne excellent qui audite la performance <strong>ET</strong> la qualité du code (<strong>DOM Complexity</strong>, mauvaises pratiques <strong>CSS</strong>/<strong>JS</strong>) avec une section dédiée à l&#39;accessibilité.  </p>
+<blockquote>
+<p><a href="https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi">🔗 HeadingsMap</a></p>
+</blockquote>
+<p>Une extension indispensable qui génère le &quot;plan&quot; de votre site basé sur vos balises <code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code>. Si le plan est incohérent, votre accessibilité est compromise.  </p>
+<h3>🎨 Couleurs &amp; Contrastes</h3>
+<blockquote>
+<p><a href="https://webaim.org/resources/contrastchecker/">🔗 WebAIM Contrast Checker</a></p>
+</blockquote>
+<p>L&#39;outil &quot;juge de paix&quot;. Vous entrez vos deux codes hexadécimaux et il vous dit instantanément si vous passez les niveaux <strong>AA</strong> ou <strong>AAA</strong>.  </p>
+<blockquote>
+<p><a href="https://color.adobe.com/fr/create/color-contrast-analyzer">🔗 Adobe Color (Roue d&#39;accessibilité)</a></p>
+</blockquote>
+<p>Idéal pour les designers. Il permet de tester des palettes entières et suggère des couleurs proches pour corriger les contrastes insuffisants.  </p>
+<blockquote>
+<p><a href="https://coolors.co/contrast-checker">🔗 Coolors Contrast Checker</a></p>
+</blockquote>
+<p>Très visuel, il permet de voir le rendu du texte sur le fond en temps réel et donne un score de lisibilité (<strong>Poor</strong>, <strong>Good</strong>, <strong>Very Good</strong>).  </p>
+<blockquote>
+<p><a href="https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl">🔗 Vision Simulator (Chrome Extension)</a></p>
+</blockquote>
+<p>Permet de simuler différents troubles de la vision (daltonisme, cataracte, vision floue) directement sur votre site pour vérifier que l&#39;interface reste utilisable.  </p>
+<h3>🗣️ Lecteurs d&#39;écrans (screen readers)</h3>
+<p>C&#39;est l&#39;outil final qui valide ou invalide tout votre travail. Un lecteur d&#39;écran est un logiciel d&#39;assistance qui transmet l&#39;information affichée à l&#39;écran (texte, images, liens, menus) à un utilisateur aveugle ou malvoyant, soit par synthèse vocale (<strong>Text-to-Speech</strong>) soit via une plage braille.  </p>
+<h4>Comment ça marche ?</h4>
+<p>Contrairement à une idée reçue, un utilisateur de lecteur d&#39;écran n&#39;écoute pas la page du début à la fin de manière linéaire (ce serait interminable). Il navigue dans la page en sautant d&#39;élément en élément.  </p>
+<p>D&#39;où l&#39;importance cruciale de votre code <strong>HTML</strong> :  </p>
+<ul>
+<li>Il utilise des raccourcis pour sauter de titre en titre (<code>H1</code>, <code>H2</code>...).  </li>
+<li>Il peut lister tous les liens de la page pour trouver &quot;Contact&quot;.  </li>
+<li>Il navigue par <strong>Landmarks</strong> pour aller directement au <code>&lt;footer&gt;</code> ou au <code>&lt;main&gt;</code>.</li>
+</ul>
+<p>Si votre sémantique est mauvaise (pas de balises <code>&lt;h1&gt;</code> ou des boutons <code>&lt;div&gt;</code>) la page devient un labyrinthe sans issue.  </p>
+<h4>Les solutions du marché</h4>
+<p>Il existe quelques acteurs majeurs qu&#39;il est bon de connaître :  </p>
+<ol>
+<li><strong>NVDA (NonVisual Desktop Access)</strong> - <em>Windows / Gratuit &amp; Open Source</em></li>
+</ol>
+<p>C&#39;est la référence mondiale et le meilleur outil pour tester vos développements sur <strong>PC</strong>. Il est léger, puissant et respecte strictement les normes.  </p>
+<blockquote>
+<p><a href="https://www.nvaccess.org/download/">📥 Télécharger NVDA</a></p>
+</blockquote>
+<ol start="2">
+<li><strong>JAWS (Job Access With Speech)</strong> - <em>Windows / Payant</em></li>
+</ol>
+<p>Historiquement le plus utilisé en entreprise. Très cher mais très performant pour les applications bureautiques complexes (<strong>Office</strong>...).</p>
+<ol start="3">
+<li><strong>VoiceOver</strong> - <em>Apple (Mac, iPhone, iPad) / Natif</em></li>
+</ol>
+<p>Déjà installé sur tous les appareils <strong>Apple</strong>. C&#39;est la référence absolue sur mobile. Si vous avez un <strong>iPhone</strong> vous pouvez l&#39;essayer dès maintenant (Réglages &gt; Accessibilité).  </p>
+<ol start="4">
+<li><strong>TalkBack</strong> - <em>Android / Natif</em></li>
+</ol>
+<p>L&#39;équivalent de <strong>VoiceOver</strong> pour l&#39;écosystème <strong>Google/Android</strong>.  </p>
+<h2 id="bonnes-pratiques-exemples-code">✨ BONNES PRATIQUES / EXEMPLES DE CODE</h2>
+
+<p>L&#39;accessibilité ne se limite pas à des contrastes de couleurs. Elle repose sur une structure <strong>HTML</strong> sémantique, une gestion rigoureuse des interactions <strong>JavaScript</strong> et le respect des normes <strong>ARIA</strong>.  </p>
+<ol>
+<li><strong>La Sémantique</strong> (Structure de la page)</li>
+</ol>
+<p>Les lecteurs d&#39;écran utilisent les balises <strong>HTML</strong> pour naviguer (&quot;<code>Aller au menu</code>&quot;, &quot;<code>Aller au contenu principal</code>&quot;).<br>Remplacer des <code>&lt;div&gt;</code> par des balises sémantiques est la fondation.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;div class=&quot;header&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;main-content&quot;&gt;
+  &lt;div class=&quot;article-title&quot;&gt;Mon Titre&lt;/div&gt;
+&lt;/div&gt;</code></pre></div><p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;header&gt;...&lt;/header&gt;
+&lt;main&gt; &lt;article&gt;
+  &lt;h1&gt;Mon Titre&lt;/h1&gt; &lt;/article&gt;
+&lt;/main&gt;</code></pre></div><ol start="2">
+<li><strong>Images &amp; Texte Alternatif</strong> (Alt)</li>
+</ol>
+<p>Le texte alternatif remplace l&#39;image si elle ne s&#39;affiche pas ou pour un utilisateur aveugle. C&#39;est le contexte qui dicte le contenu.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;img src=&quot;k8s_v2_final.jpg&quot;&gt;
+&lt;img src=&quot;logo.png&quot; alt=&quot;image&quot;&gt;</code></pre></div><p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;img src=&quot;search.png&quot; alt=&quot;Lancer la recherche&quot;&gt;
+&lt;img src=&quot;stats-2024.png&quot; alt=&quot;Graphique des ventes 2024, hausse de 20% au T3&quot;&gt;</code></pre></div><ol start="3">
+<li><strong>Contraste des Couleurs</strong></li>
+</ol>
+<p>Le texte doit être lisible pour les malvoyants ou en cas de forte luminosité (soleil sur écran). Le ratio minimum standard (<strong>AA</strong>) est de 4.5:1 pour un texte normal.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-CSS">.text-muted {
+  color: #b3b3b3; /* Gris clair sur blanc : Ratio 2.1:1 (Illisible) */
+  background-color: #ffffff;
+}</code></pre></div><p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-CSS">.text-muted {
+  color: #595959; /* Gris foncé sur blanc : Ratio 4.6:1 (Conforme AA) */
+  background-color: #ffffff;
+}</code></pre></div><p>💡 Astuce : utiliser les <strong>DevTools</strong> du navigateur pour vérifier le ratio !  </p>
+<ol start="4">
+<li><strong>Navigation Clavier</strong> (Indicateur visuel)</li>
+</ol>
+<p>Un utilisateur naviguant au clavier (touche <code>Tab</code>) doit toujours savoir où il se trouve. Ne supprimez jamais l&#39;outline <strong>CSS</strong> sans fournir une alternative visuelle forte.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-CSS">*:focus {
+  outline: none; /* L&#39;utilisateur clavier devient &quot;invisible&quot; */
+}</code></pre></div><p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-CSS">/* :focus-visible cible uniquement la navigation clavier (pas le clic souris) */
+button:focus-visible {
+  outline: 3px solid #2d3e50;
+  outline-offset: 2px;
+}</code></pre></div><ol start="5">
+<li><strong>Gestion du Focus</strong> (Focus Management)</li>
+</ol>
+<p>Lorsqu&#39;une interaction change le contexte (ouverture d&#39;une modale) le focus clavier doit suivre sinon l&#39;utilisateur reste &quot;perdu&quot; derrière.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong> j&#39;ouvre une modale mais le focus reste sur le bouton qui l&#39;a ouverte en arrière-plan.  </p>
+<p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-javascript">function openModal() {
+  const modal = document.getElementById(&#39;myModal&#39;);
+  modal.classList.add(&#39;open&#39;);
+
+  // 1. Déplacer le focus DANS la modale (sur le 1er élément interactif ou le conteneur)
+  const closeBtn = modal.querySelector(&#39;.close-button&#39;);
+  closeBtn.focus();
+
+  // 2. Piéger le focus (Focus Trap) pour qu&#39;il ne sorte pas de la modale (via JS)
+}</code></pre></div><ol start="6">
+<li><strong>Liens, Boutons et Rôles ARIA</strong></li>
+</ol>
+<p>Il ne faut pas utiliser des <code>&lt;div&gt;</code> ou <code>&lt;span&gt;</code> pour créer des boutons. Si vous n&#39;avez pas le choix vous devez recréer le comportement natif manquant.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;div class=&quot;btn&quot; onclick=&quot;submit()&quot;&gt;Valider&lt;/div&gt;</code></pre></div><p>✅ <strong>Bonne pratique :</strong> (Native - Recommandé)</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;button type=&quot;button&quot; onclick=&quot;submit()&quot;&gt;Valider&lt;/button&gt;</code></pre></div><p>✅ <strong>Bonne pratique :</strong> (Si <code>&lt;div&gt;</code> obligatoire - <strong>ARIA</strong>)</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;div
+  role=&quot;button&quot;
+  tabindex=&quot;0&quot;
+  onclick=&quot;submit()&quot;
+  onkeydown=&quot;if(event.key === &#39;Enter&#39; || event.key === &#39; &#39;) submit()&quot;&gt;
+  Valider
+&lt;/div&gt;</code></pre></div><ol start="7">
+<li><strong>Formulaires &amp; Labels</strong></li>
+</ol>
+<p>Un champ de saisie doit toujours être lié à une étiquette. Le placeholder ne suffit pas.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;input type=&quot;email&quot; placeholder=&quot;Votre email&quot;&gt;</code></pre></div><p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;label for=&quot;user-email&quot;&gt;Votre adresse email&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;user-email&quot; name=&quot;email&quot; autocomplete=&quot;email&quot;&gt;</code></pre></div><ol start="8">
+<li><strong>Alertes &amp; Notifications</strong> (ARIA Live Regions)</li>
+</ol>
+<p>Lorsqu&#39;un message apparaît dynamiquement (erreur, succès) sans rechargement de page, le lecteur d&#39;écran ne le voit pas s&#39;il n&#39;est pas averti.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-javascript">// Injecter du texte dans une div standard
+errorDiv.innerHTML = &quot;Identifiants incorrects&quot;;
+// Le lecteur d&#39;écran reste silencieux</code></pre></div><p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;div role=&quot;alert&quot; id=&quot;error-message&quot;&gt;
+  Identifiants incorrects
+&lt;/div&gt;
+
+&lt;div aria-live=&quot;polite&quot;&gt;Mise à jour effectuée&lt;/div&gt;</code></pre></div><ol start="9">
+<li><strong>Vidéo et Audio</strong></li>
+</ol>
+<p>Le contenu multimédia doit avoir une alternative textuelle synchronisée (sous-titres) ou une transcription.  </p>
+<p>❌ <strong>Mauvaise pratique :</strong> une vidéo en autoplay sans contrôles ou sans piste de sous-titres.  </p>
+<p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;video controls width=&quot;250&quot;&gt;
+  &lt;source src=&quot;video.mp4&quot; type=&quot;video/mp4&quot;&gt;
+
+  &lt;track kind=&quot;captions&quot; src=&quot;sous-titres-fr.vtt&quot; srclang=&quot;fr&quot; label=&quot;Français&quot;&gt;
+
+  Votre navigateur ne supporte pas la vidéo. Voici &lt;a href=&quot;transcription.txt&quot;&gt;la transcription textuelle&lt;/a&gt;.
+&lt;/video&gt;</code></pre></div><ol start="10">
+<li><strong>Langue &amp; Prononciation</strong></li>
+</ol>
+<p>Définit l&#39;accent utilisé par la synthèse vocale.  </p>
+<p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;html lang=&quot;fr&quot;&gt;
+&lt;p&gt;
+  J&#39;utilise le framework &lt;span lang=&quot;en&quot;&gt;React&lt;/span&gt; pour mes projets.
+&lt;/p&gt;</code></pre></div><ol start="11">
+<li><strong>Composants dynamiques</strong> (ARIA States)</li>
+</ol>
+<p>Indiquer l&#39;état d&#39;un composant (Ouvert/Fermé, Sélectionné/Non sélectionné) aux technologies d&#39;assistance.  </p>
+<p>✅ <strong>Bonne pratique :</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-HTML">&lt;button
+  aria-expanded=&quot;false&quot; aria-controls=&quot;content-1&quot;
+  id=&quot;accordion-btn-1&quot;
+  onclick=&quot;toggleAccordion(this)&quot;
+&gt;
+  Voir plus d&#39;infos
+&lt;/button&gt;
+
+&lt;div id=&quot;content-1&quot; role=&quot;region&quot; aria-labelledby=&quot;accordion-btn-1&quot; hidden&gt;
+  Contenu caché...
+&lt;/div&gt;</code></pre></div><p><strong>Conseil pour les développeurs</strong>  </p>
+<p>💡💡💡 Ne faites pas confiance aveugle aux outils automatiques (<strong>Lighthouse</strong>, <strong>Wave</strong>). Ils ne détectent que <strong>30% des erreurs</strong>.  </p>
+<p>Prenez l&#39;habitude de lancer <strong>NVDA</strong> (sur Windows) ou <strong>VoiceOver</strong> (sur Mac) une fois par sprint.  </p>
+<ul>
+<li>Fermez les yeux (ou éteignez l&#39;écran).  </li>
+<li>Essayez de naviguer sur votre site uniquement au clavier.  </li>
+<li>Si vous arrivez à comprendre où vous êtes et à effectuer une action clé (ex: envoyer un message), c&#39;est gagné.</li>
+</ul>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'accessibilite.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

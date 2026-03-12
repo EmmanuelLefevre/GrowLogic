@@ -1,0 +1,341 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">📘 DOCUMENTATION 📘</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#compodoc">COMPODOC</a></li>
+<li><a href="#script">SCRIPT PERSONALISÉ</a></li>
+<li><a href="#cicd">CICD</a></li>
+<li><a href="#github-pages">GITHUB PAGES</a></li>
+<li><a href="#depot">CONFIGURATION DU DEPOT</a></li>
+</ul>
+<h2 id="compodoc">
+  <img
+    alt="COMPODOC"
+    title="COMPODOC"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/compodoc.svg"
+  />
+  COMPODOC
+</h2>
+
+<h3>INTRODUCTION</h3>
+<p><strong>Compodoc</strong> est un outil de génération de documentation pour les applications <strong>Angular</strong>. <strong>Compodoc</strong> est le moteur utilisé pour analyser le code <strong>TypeScript</strong> (<code>Modules</code>, <code>Components</code>, <code>Injectables</code>, <code>Routes</code>, <code>Interfaces</code>...) et générer un site web statique complet avec des graphiques de dépendances et une navigation fluide.  </p>
+<blockquote>
+<p><a href="https://compodoc.app/">🔗 Compodoc Documentation</a>  </p>
+</blockquote>
+<p>Dans ce projet, nous avons poussé l&#39;intégration plus loin pour permettre une double navigation fluide :  </p>
+<ul>
+<li>Via les fichiers <strong>Markdown</strong> sur <strong>GitHub</strong>.  </li>
+<li>Via le site généré <strong>Compodoc</strong>.</li>
+</ul>
+<blockquote>
+<p><a href="https://emmanuellefevre.github.io/AngularTemplate/">🔗 Lien vers la documentation GitHub Pages</a>  </p>
+</blockquote>
+<h3>CONFIGURATION</h3>
+<p>3 fichiers sont essentiels au bon fonctionnement :  </p>
+<ul>
+<li><code>tsconfig.doc.json</code>  </li>
+<li><code>.compodocrc.json</code>  </li>
+<li><code>docs/summary.json</code></li>
+</ul>
+<p><strong>Etape 1 :</strong> Installer <strong>Compodoc</strong>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm add -D &#64;compodoc/compodoc</code></pre></div><p><strong>Etape 2 :</strong>  </p>
+<ol>
+<li><p>Créer <code>tsconfig.doc.json</code> (à la racine), afin que <strong>Compodoc</strong> exclu les fichiers de tests (<code>.spec.ts</code>) de la documentation....  </p>
+</li>
+<li><p>Créer le fichier <code>.compodocrc.json</code> =&gt;</p>
+</li>
+</ol>
+<p>C&#39;est la configuration principale de <strong>Compodoc</strong> (dossier de sortie, port, thème...)  </p>
+<p>💡 Une documentation complète est disponible ici... =&gt;  </p>
+<blockquote>
+<p><a href=".rules-references.html#compodoc">👀 Compodoc Rules</a>  </p>
+</blockquote>
+<ol start="3">
+<li>Créer le fichier <code>summary.json</code> dans un dossier <code>docs</code> à la racine =&gt;</li>
+</ol>
+<p>Celui-ci sert à définir la structure du menu latéral pour la documentation additionnelle (fichiers <strong>Markdown</strong>).  </p>
+<p><strong>Etape 3 :</strong> Ajouter les scripts au <code>package.json</code>  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">{
+  &quot;scripts&quot;: {
+    &quot;doc&quot;: &quot;node docs/_manage-doc.js serve&quot;,
+    &quot;doc:build&quot;: &quot;node docs/_manage-doc.js build&quot;,
+    &quot;doc:ci&quot;: &quot;node docs/_manage-doc.js build --keep&quot;,
+  }
+}</code></pre></div><p><code>pnpm doc:build</code> ne génère simplement que des fichiers statiques, ce script n&#39;est utile que pour vérifier le build en local...Il n&#39;est pas utilisé dans le déploiement !  </p>
+<p><strong>Etape 4 :</strong> Lancer le serveur <strong>Compodoc</strong> en local =&gt;  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">pnpm doc</code></pre></div><h2 id="script">
+  🛠️ SCRIPT PERSONALISÉ
+</h2>
+
+<p>Pour résoudre le problème des liens relatifs qui diffèrent entre <strong>GitHub</strong> (<code>./docs/file.md</code>) et <strong>Compodoc</strong> (<code>additional-documentation/file.html</code>), un script de pré-traitement intelligent a été implémenté : <code>docs/_manage-doc.j</code>.  </p>
+<p>Ce script effectue les actions suivantes à chaque lancement :  </p>
+<ul>
+<li><p><strong>Backup :</strong><br>Sauvegarder le <code>README.md</code> original.  </p>
+</li>
+<li><p><strong>Transformation :</strong><br>Remplacer les liens <strong>Markdown</strong> par des liens <strong>HTML</strong> compatibles <strong>Compodoc</strong>.  </p>
+</li>
+<li><p><strong>Verrouillage Git :</strong><br>Utiliser git <code>update-index --assume-unchanged</code> pour empêcher de commiter le fichier modifié par erreur.  </p>
+</li>
+<li><p><strong>Exécution :</strong><br>Lancer <strong>Compodoc</strong> avec les arguments appropriés.  </p>
+</li>
+<li><p><strong>Nettoyage :</strong><br>Restaurer le <code>README.md</code> original et nettoie le dossier de sortie (sauf en <strong>CI</strong>).  </p>
+</li>
+<li><p><strong>Sécurité :</strong><br>Utiliser des descripteurs de fichiers (<code>fs.openSync</code>) pour éviter les failles de type <strong>Race Condition</strong>.</p>
+</li>
+</ul>
+<p>💡 <strong>CodeQL</strong> signalerait une &quot;Time-of-check to time-of-use (<strong>TOCTOU</strong>) race condition&quot;. En gros, il dirait : &quot;Tu as vérifié que le fichier existait au début du script, mais entre ce moment-là et le moment où tu écris dedans (<code>writeFileSync</code>), un attaquant pourrait remplacer ce fichier par un lien symbolique malveillant.&quot;<br>C&#39;est un risque très théorique pour un script de build local/CI...  </p>
+<h2 id="cicd">
+  <img
+    alt="CICD"
+    title="CICD"
+    width="34px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg"
+  />
+  CICD
+</h2>
+
+<p>Le déploiement est géré par un <strong>Job</strong> dédié (<code>documentation</code>) dans le fichier <code>.github/workflows/pipeline.yml</code>.  </p>
+<h3>Conditions d&#39;exécution :</h3>
+<p>Le déploiement ne se lance que sur la branche <code>main</code>. Il nécessite que les jobs <code>security</code> et <code>quality</code> soient passés avec succès.  </p>
+<h3>Fonctionnement du Job :</h3>
+<ol>
+<li><p>Checkout du code.  </p>
+</li>
+<li><p>Installation des dépendances.  </p>
+</li>
+<li><p>Génération de la documentation via <code>pnpm doc:ci</code> avec injection dynamique du <code>--base-href</code> (nom du repo).  </p>
+</li>
+<li><p>Upload du dossier <code>.documentation-output</code> vers la branche orpheline <code>gh-pages</code> via l&#39;action <code>peaceiris/actions-gh-pages</code>.</p>
+</li>
+</ol>
+<h2 id="github-pages">
+  <img
+    alt="GITHUB PAGES"
+    title="GITHUB PAGES"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/github_pages.svg"
+  />
+  GITHUB PAGES
+</h2>
+
+<p>La documentation est hébergée gratuitement via <strong>GitHub Pages</strong>. Elle est automatiquement mise à jour à chaque modification sur la branche main.  </p>
+<blockquote>
+<p><a href="https://EmmanuelLefevre.github.io/AngularTemplate/">🔗 Lien vers la documentation GitHub Pages</a>  </p>
+</blockquote>
+<h2 id="depot">
+  <img
+    alt="DEPOT"
+    title="DEPOT"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/github.png"
+  />
+  CONFIGURATION DU DEPOT
+</h2>
+
+<p>Pour que le site soit accessible, la configuration suivante a été appliquée dans les paramètres du dépôt <strong>GitHub</strong> :  </p>
+<ul>
+<li><strong>Settings &gt; Pages</strong></li>
+<li><strong>Source :</strong> Deploy from a branch</li>
+<li><strong>Branch :</strong> gh-pages / (root)</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/EmmanuelLefevre/AngularTemplate/settings/pages">🔗 Lien vers la configuration GitHub Pages</a>  </p>
+</blockquote>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'documentation.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,366 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">💡 FAQ & ERREURS 💡</h1>
+
+<br>
+<br>
+
+<h2 id="erreurs-frequentes">
+  ⚠️ ERREURS FREQUENTES
+</h2>
+
+<h3>🛑 Ma <strong>PR/MR</strong> est bloquée alors que mon commit est passé ?</h3>
+<details>
+
+  <summary>🧐 Consulter la méthode de résolution du problème</summary>
+
+<p>&nbsp;</p>
+<p>C&#39;est normal si vous aviez laissé des warnings. Votre commit est passé localement car il respectait la limite des 50 mais la <strong>CI</strong> exige la perfection.</p>
+<p>Pour corriger :</p>
+<ul>
+<li>Regardez les logs de l&#39;action <strong>GitHub</strong> pour voir les fichiers incriminés.</li>
+<li>Lancez la vérification stricte en local pour les reproduire :</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-Bash">pnpm lint:ci
+pnpm lint:html:ci
+pnpm lint:scss:ci</code></pre></div><p>Corrigez les warnings restants, commitez et pushez.</p>
+</details>
+
+<br>
+
+<h3>🛑 Que faire si Gitleaks lève une alerte ?</h3>
+<details>
+
+  <summary>🧐 Consulter la méthode de résolution du problème</summary>
+
+<p>&nbsp;</p>
+<p>Pas de panique ! Cela arrive aux meilleurs. Si un commit est bloqué en local ou si la <strong>CI</strong> échoue avec un message de <strong>Gitleaks</strong>, suivre ces étapes dans l&#39;ordre :</p>
+<ol>
+<li><strong>Identifier la nature de l&#39;alerte</strong></li>
+</ol>
+<p>Consulter le log de <strong>Gitleaks</strong>. Il indiquera le fichier, la ligne et le type de secret détecté (ex: Generic API Key).</p>
+<ol start="2">
+<li><strong>Cas A : C&#39;est un &quot;Vrai&quot; Secret (Clé réelle, MDP...)</strong></li>
+</ol>
+<p>Si un secret valide traîne réellement :</p>
+<ul>
+<li><strong>Révoquer le secret immédiatement :</strong> changer le mot de passe ou désactiver la clé API sur la plateforme concernée (<strong>AWS</strong>, <strong>Stripe</strong>...). Une clé poussée sur <strong>Git</strong> doit être considérée comme compromise !!!</li>
+<li><strong>Nettoyer le code :</strong> remplacer le secret par une variable d&#39;environnement ou une référence à un coffre-fort (<strong>Secret Manager</strong>).</li>
+<li><strong>Supprimer le secret de l&#39;historique :</strong> si le commit est uniquement local : faire un <code>git commit --amend</code> ou un <code>git rebase</code>.</li>
+</ul>
+<p>Si le commit est déjà sur le serveur : il faudra utiliser un outil comme <strong>BFG Repo-Cleaner</strong> ou <strong>git filter-repo</strong>.</p>
+<blockquote>
+<p><a href="github_tricks.html">🔗 Procédure Git Filter Repo</a></p>
+</blockquote>
+<ol start="3">
+<li><strong>Cas B : C&#39;est un &quot;Faux Positif&quot;</strong></li>
+</ol>
+<p>Si <strong>Gitleaks</strong> s&#39;est trompé (ex: il a pris un ID de test pour une clé API) :</p>
+<ul>
+<li><strong>Utiliser l&#39;empreinte (Fingerprint) :</strong> une empreinte unique pour cette détection est donnée par <strong>Gitleaks</strong>.</li>
+<li><strong>Ajouter l&#39;empreinte à l&#39;allowlist :</strong> copier cette empreinte dans le fichier <code>.gitleaks.toml</code> sous la section <code>[allowlist]</code>.</li>
+</ul>
+<p><strong>Gitleaks</strong> ignorera cette valeur précise à l&#39;avenir.</p>
+<p>💡 <strong>Rappel : La règle d&#39;or</strong></p>
+<p>Ne jamais utiliser <code>--no-verify</code> pour forcer un commit bloqué par <strong>Gitleaks</strong>. Si l&#39;outil aboie, c&#39;est qu&#39;il y a une raison !!!<br>Prendre 2 minutes pour vérifier, cela peut éviter des heures de gestion de crise plus tard...</p>
+</details>
+
+<br>
+
+<h3>🛑 Le job &quot;check-integrity&quot; de la pipeline plante !</h3>
+<details>
+
+  <summary>🧐 Consulter la méthode de résolution du problème</summary>
+
+<p>&nbsp;</p>
+<blockquote>
+<p><strong>Message :</strong> &quot;ERR_PNPM_OUTDATED_LOCKFILE&quot;</p>
+</blockquote>
+<p>Le fichier <code>pnpm-lock.yaml</code> n&#39;est pas synchronisé avec le <code>package.json</code>. Cela arrive typiquement quand :</p>
+<ul>
+<li>Vous avez modifié une version manuellement dans <code>package.json</code>.</li>
+<li>Vous avez résolu un conflit de fusion (merge conflict) dans <code>package.json</code> sans mettre à jour le lockfile.</li>
+<li>Vous avez oublié de commit le lockfile après une installation.</li>
+</ul>
+<p>La <strong>CI</strong> est configurée en mode <strong>STRICT</strong> (<code>frozen-lockfile</code>) : elle refuse d&#39;installer des dépendances si le &quot;contrat&quot; (lockfile) n&#39;est pas clair, afin d&#39;éviter d&#39;installer des versions non testées en production.</p>
+<p>Pour corriger :</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-Bash">pnpm install</code></pre></div><p>Push again 😜</p>
+</details>
+
+<br>
+
+<h3>🛑 Le step &quot;🛡️ PNPM Audit&quot; du job &quot;security&quot; de la pipeline plante !</h3>
+<details>
+
+  <summary>🧐 Consulter la méthode de résolution du problème</summary>
+
+<p>&nbsp;</p>
+<blockquote>
+<p><strong>Message :</strong> &quot;Critical vulnerability found in qs&quot;</p>
+</blockquote>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">Critical vulnerability found in qs
+  Package: qs
+  Vulnerability: Uncontrolled Resource Consumption
+  Severity: critical
+  Installed version: 6.5.2
+  Path: your-project &gt; some-dependency &gt; qs
+  Fixed in: &gt;=6.14.1</code></pre></div><p>Ajouter sa version patchée dans <code>package.json</code> =&gt;</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-JSON">&quot;pnpm&quot;: {
+  &quot;overrides&quot;: {
+    &quot;qs&quot;: &quot;&gt;=6.14.1&quot;
+  }
+}</code></pre></div><p>Supprimer le dossier <code>node_modules</code> et <code>pnpm-lock.yaml</code> puis relancer une install :  </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-Bash">pnpm install</code></pre></div><p>Push again 😜</p>
+</details>
+
+<br>
+
+<h3>🛑 Warning lors du premier push !</h3>
+<details>
+
+  <summary>🧐 Consulter la méthode de résolution du problème</summary>
+
+<p>&nbsp;</p>
+<p><img src="https://github.com/EmmanuelLefevre/MarkdownImg/blob/main/template_angular_git_warning.png" alt="Terminal Screen" class="img-responsive"></p>
+<br>
+
+<p>Créer le fichier <code>.gitattributes</code> à la racine du projet...  </p>
+<p>Puis &quot;renormaliser&quot; la config <strong>Git</strong> en lançant ces commandes dans le projet :</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">git add --renormalize .
+git commit -m &quot;chore: enforce LF line endings&quot; --no-verify</code></pre></div><p>Publier la branche et écraser le contenu sur <strong>Github</strong> avec la version locale :</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">git push --force origin main</code></pre></div></details>
+
+<br>
+
+<h3>🛑 Option &#39;baseUrl&#39; is deprecated</h3>
+<details>
+
+  <summary>🧐 Consulter la méthode de résolution du problème</summary>
+
+<p>&nbsp;</p>
+<p>L&#39;auteur &quot;Andrew Branch&quot; est membre de l&#39;équipe <strong>TypeScript</strong> chez <strong>Microsoft</strong>, ce qui garantit la fiabilité et la pertinence de l&#39;outil.</p>
+<blockquote>
+<p><a href="https://github.com/andrewbranch/ts5to6">🔗 andrewbranch/ts5to6 – Outil de migration TypeScript 5 vers 6</a></p>
+</blockquote>
+<ul>
+<li><strong>BaseUrl</strong></li>
+</ul>
+<p>Pour le fichier de configuration de base du projet</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">npx &#64;andrewbranch/ts5to6 --fixBaseUrl ./tsconfig.json</code></pre></div><p>Pour le fichier de configuration de l&#39;application (où se trouvent les paths)</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">npx &#64;andrewbranch/ts5to6 --fixBaseUrl ./tsconfig.app.json</code></pre></div><ul>
+<li><strong>RootDir</strong></li>
+</ul>
+<p>Pour le fichier de configuration de base du projet</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">npx &#64;andrewbranch/ts5to6 --fixRootDir ./tsconfig.json</code></pre></div><p>Pour le fichier de configuration de l&#39;application</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">npx &#64;andrewbranch/ts5to6 --fixRootDir ./tsconfig.app.json</code></pre></div></details>
+
+<h3>🛑 SonarQube Cloud : faux positif sur le mot de passe de mock !</h3>
+<details>
+
+  <summary>🧐 Consulter la méthode de résolution du problème</summary>
+
+<p>&nbsp;</p>
+<blockquote>
+<p><strong>Message :</strong> &quot;Review this potentially hard-coded password.&quot;</p>
+</blockquote>
+<p>La meilleure pratique DevOps est d&#39;utiliser l&#39;outil pour gérer les exceptions sans modifier un code qui est légitime.  </p>
+<ol>
+<li>Se connecter au dashboard <strong>SonarQube Cloud</strong>.</li>
+<li>Aller dans l&#39;onglet <strong>Issues</strong> du projet.</li>
+<li>Retrouver l&#39;alerte concernant le fichier <code>environment.ts</code>.</li>
+<li>Cliquer sur le statut de l&#39;anomalie (<em>Open</em>).</li>
+<li>Changer le statut en <strong>&quot;Resolve as False Positive&quot;</strong>.</li>
+</ol>
+</details>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'faq-&amp;-erreurs.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

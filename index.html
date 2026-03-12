@@ -1,0 +1,336 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content readme">
+                   <div class="content-data">
+
+
+<div align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=EmmanuelLefevre.AngularTemplate" alt="Visitors"/>
+  &nbsp;&nbsp;<img src="https://img.shields.io/github/last-commit/EmmanuelLefevre/AngularTemplate" alt="Last Commit"/>&nbsp;&nbsp;
+  <img src="https://img.shields.io/github/license/EmmanuelLefevre/AngularTemplate" alt="License MIT"/>
+</div>
+
+<br>
+
+<div align="center"><a href="https://github.com/EmmanuelLefevre/AngularTemplate/actions"><img src="https://github.com/EmmanuelLefevre/AngularTemplate/actions/workflows/pipeline.yml/badge.svg" alt="CI/CD Pipeline"/></a>&nbsp;&nbsp;<a href="https://sonarcloud.io/api/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=security_rating" alt="Security Rating"/></a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=alert_status" alt="Quality Gate"/></a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=coverage" alt="Coverage"/></a></div>
+
+<br>
+
+<br>
+
+<br>
+
+<h1 id="angular-template" align="center">
+  <img
+    alt="Angular"
+    title="Angular"
+    width="34px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"
+  />
+  ANGULAR TEMPLATE
+  <img
+    alt="Angular"
+    title="Angular"
+    width="34px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"
+  />
+</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#-pr%C3%A9sentation">PRÉSENTATION</a></li>
+<li><a href="#-documentation">DOCUMENTATION</a></li>
+<li><a href="#-quick-start">QUICK START</a><ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation--d%C3%A9marrage">Installation &amp; Démarrage</a></li>
+</ul>
+</li>
+</ul>
+<h2>🚀 PRÉSENTATION</h2>
+<blockquote>
+<p><strong>&quot;L&#39;excellence industrielle dès le premier commit !&quot;</strong></p>
+</blockquote>
+<p>Ce projet n&#39;est pas simplement un squelette d&#39;application, c&#39;est un <strong>accélérateur de développement Angular 21</strong> conçu pour les équipes exigeantes.  </p>
+<p>Il incarne une philosophie <strong>&quot;Zéro Config - Maximum Quality&quot;</strong>.  </p>
+<p>Tout a été pré-configuré avec certains des outils les plus stricts du marché afin de se concentrer uniquement sur la valeur métier sans se soucier de la dette technique.  </p>
+<h3>🔥 Pourquoi ce template ?</h3>
+<p>✨ <strong>Qualité :</strong><br>Une config <strong>ESLint</strong> (flat-config) &amp; <strong>Prettier</strong> stricte (mais aussi <strong>HTMLHint</strong>, <strong>StyleLint</strong>, <strong>SecretLint</strong>), couplée à <strong>SonarCloud</strong> pour un code propre, uniforme et maintenable.  </p>
+<p>🛡️ <strong>Sécurité :</strong><br>Scans automatiques de vulnérabilités (<strong>Snyk</strong>), détection de secrets (<strong>GitLeaks</strong>) et analyse statique avancée (<strong>CodeQL</strong>).  </p>
+<p>⚡ <strong>Haute Performance :</strong><br>Build ultra-rapide (<strong>Esbuild</strong>), serveur de développement quasi instantané (<strong>Vite</strong>) et gestionnaire de paquets optimisé et reproductible via (<strong>PNPM</strong>).  </p>
+<p>🧪 <strong>Tests Next-Gen :</strong><br>Stratégie de tests unitaires modernisée propulsée par <strong>Vitest</strong> offrant une exécution instantanée et une compatibilité native avec l&#39;écosystème <strong>Vite</strong>.  </p>
+<p>🚧 <strong>Gatekeeping Local :</strong><br>Finis les commits cassés. <strong>Husky</strong> et <strong>lint-staged</strong> interceptent chaque commit pour formater, linter et vérifier les secrets sur les fichiers modifiés uniquement. La qualité est forcée à la source avant même d&#39;arriver sur la CI.  </p>
+<p>🤖 <strong>CI/CD Ready :</strong><br>Pipelines <strong>GitHub Actions</strong> complètes incluant tests, linting, documentations, audits de sécurité et déploiement.  </p>
+<p>🏷️ <strong>Packaging &amp; Release Automatisés :</strong><br>Fini la gestion manuelle des versions. Le template intègre <strong>Semantic Release</strong> pour calculer automatiquement le <strong>SemVer</strong>, générer le <strong>Changelog</strong>, créer la <strong>Release GitHub</strong> et publier les artefacts sur <strong>GitHub Packages</strong>.  </p>
+<p>🛠️ <strong>DX &amp; Corepack :</strong><br>Onboarding immédiat. Grâce à <strong>Corepack</strong>, le projet installe et utilise automatiquement la version stricte de <strong>PNPM</strong> définie dans le <code>package.json</code>. Fini les conflits de versions entre développeurs ou les installations globales.  </p>
+<p>♿ <strong>Accessibilité Native :</strong><br>Conformité <strong>RGAA / WCAG</strong> intégrée dès le départ. Structure sémantique stricte, navigation au clavier et gestion du focus testées pour une inclusion totale.  </p>
+<p>📈 <strong>SEO &amp; PWA Ready :</strong><br>Maximisez votre visibilité. Un <strong>Service Meta</strong> dynamique gère vos balises <code>&lt;head&gt;</code> en temps réel selon les routes. Le tout est épaulé par une configuration native des fichiers <strong><code>sitemap.xml</code></strong>, <strong><code>robots.txt</code></strong> et <strong><code>manifest.json</code></strong> pour une indexation parfaite et une compatibilité mobile.  </p>
+<p>🗣️ <strong>Multi-langues :</strong><br><strong>I18n</strong> intégré par défaut via <strong>NGX-Translate</strong> permettant de gérer facilement les traductions et de séparer le contenu de la logique métier.  </p>
+<!-- L'intégrité des traductions est garantie par un outillage automatisé :  
+
+- 🕵️‍♂️ **Extraction automatique :** `pnpm i18n:extract` => scanne le code pour générer et mettre à jour les fichiers **JSON** sans effort manuel.
+- 👮 **Validation stricte :** `pnpm i18n:lint` un garde-fou **CI/CD** qui bloque le déploiement si une clé est manquante ou inutilisée. -->
+
+<p>🎨 <strong>Design System &amp; Mobile-First :</strong><br>Conception intégralement pensée pour le mobile. Le <strong>Design System</strong> est entièrement variabilisé (mixins, couleurs, polices, espacements...) pour une personnalisation sans douleur.  </p>
+<p>🧩 <strong>Smart UI Kit :</strong><br>Une bibliothèque de composants internes (Custom Form, Generic Input, Button, Link, ScrollToTop...) et des layouts (Public, Admin, Header, Footer, Nav...) prêts à l&#39;emploi. <strong>Tous couverts à 100% par des tests.</strong>  </p>
+<p>🧠 <strong>Architecture :</strong><br><strong>Error Handler</strong> global, <strong>Interceptors</strong>, <strong>Guards</strong> d&#39;authentification, une partie de l&#39;application <strong>Public</strong> et <strong>Private</strong> ainsi qu&#39;un <strong>Dashboard Admin</strong> fonctionnel sont déjà configurés. <strong>Tous couverts à 100% par des tests.</strong>  </p>
+<p>🛠️ <strong>Pipes &amp; Directives :</strong><br>Des outils essentiels comme des <strong>Directives</strong> (<code>input-focus</code>, <code>input-trim</code>, <code>input-uppercase</code>...) et des <strong>Pipes</strong> (<code>date-format</code>...) sont inclus. <strong>Tous couverts à 100% par des tests.</strong>  </p>
+<p>📘 <strong>Documentation :</strong><br>Architecture documentée en temps réel. <strong>Compodoc</strong> génère une documentation technique complète, automatiquement déployée et hébergée sur <strong>GitHub Pages</strong> à chaque merge sur le code stable (branche <code>main</code>). Cette <strong>Compodoc</strong> est évidemment aussi disponible en environnement local !  </p>
+<h2>📚 DOCUMENTATION</h2>
+<p>La documentation détaillée est disponible ici :  </p>
+<ul>
+<li>🏗 <a href="additional-documentation/architecture.html">Architecture</a></li>
+<li>🚀 <a href="additional-documentation/setup.html">Setup</a></li>
+<li>💎 <a href="additional-documentation/qualite.html">Qualité</a></li>
+<li>🧪 <a href="additional-documentation/tests.html">Tests</a></li>
+<li>⚙️ <a href="additional-documentation/configuration.html">Configuration</a></li>
+<li>🏷️ <a href="additional-documentation/build-&-packaging.html">Build &amp; Packaging</a></li>
+<li>🤖 <a href="additional-documentation/cicd.html">CICD</a></li>
+<li>🎨 <a href="additional-documentation/styles.html">Styles</a></li>
+<li>🗣️ <a href="additional-documentation/multi-langues.html">Multi Langues</a></li>
+<li>♿ <a href="additional-documentation/accessibilite.html">Accessibilité</a></li>
+<li>📈 <a href="additional-documentation/seo.html">SEO</a></li>
+<li>📘 <a href="additional-documentation/documentation.html">Documentation</a></li>
+<li>🔧 <a href="additional-documentation/rules-references.html">Rules Reference</a></li>
+<li>💡 <a href="additional-documentation/faq-&-erreurs.html">FAQ &amp; Erreurs</a></li>
+</ul>
+<br>
+
+<blockquote>
+<p><a href="https://emmanuellefevre.github.io/AngularTemplate/">🔗 Lien vers la documentation GitHub Pages</a>  </p>
+</blockquote>
+<h2>⚡ QUICK START</h2>
+<h3>Requirements</h3>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Angular</th>
+<th align="left">Node.js</th>
+<th align="left">TypeScript</th>
+<th align="left">RxJS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>21.0.x</code></td>
+<td align="left"><code>^20.19.0</code> || <code>^22.12.0</code> || <code>^24.0.0</code></td>
+<td align="left"><code>&gt;=5.9.0</code> || <code>&lt;=6.0.0</code></td>
+<td align="left"><code>^6.5.3</code> || <code>^7.4.0</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Etape 1 :</strong> Node.js  </p>
+<ul>
+<li>Ce projet nécessite une version précise de <strong>NodeJS</strong>. Utilisez <strong>NVM</strong></li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-shell">nvm install 22.12.0
+nvm use 22.12.0</code></pre></div><blockquote>
+<p><a href="https://github.com/EmmanuelLefevre/Documentations/blob/main/Personnal%20Cheatsheets/nvm_cheatsheets.md">🔗 NVM Cheatsheets</a>  </p>
+</blockquote>
+<p><strong>Etape 2 :</strong> Gestionnaire de paquets : <strong>PNPM</strong> &amp; <strong>Corepack</strong>  </p>
+<p>Ce projet utilise <strong>Corepack</strong> (inclus dans <strong>NodeJS</strong>) pour garantir que tous les développeurs utilisent exactement la même version de <strong>PNPM</strong> (définie dans le <code>package.json</code>).  </p>
+<p>⚠️ Vous pouvez toutefois installer <strong>PNPM</strong> en global.  </p>
+<blockquote>
+<p><a href="additional-documentation/setup.html#pnpm">👀 Setup</a></p>
+</blockquote>
+<h3>Installation &amp; Démarrage</h3>
+<ul>
+<li>Via Clone <strong>SSH</strong></li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">git clone git&#64;github.com:EmmanuelLefevre/AngularTemplate.git
+cd AngularTemplate
+corepack enable
+pnpm install
+pnpm start</code></pre></div><ul>
+<li>Via Package</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash"></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'readme';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

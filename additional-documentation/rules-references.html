@@ -1,0 +1,2025 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-template documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-template documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">🔧 RULES REFERENCES 🔧</h1>
+
+<br>
+<br>
+
+<h2>SOMMAIRE</h2>
+<ul>
+<li><a href="#eslint-rules">ESLint Rules</a><ul>
+<li><a href="#angular">Angular</a></li>
+<li><a href="#typescript">TypeScript</a></li>
+<li><a href="#angular-template">Angular Template</a></li>
+<li><a href="#stylistics">Stylistics</a></li>
+<li><a href="#security">Security</a></li>
+</ul>
+</li>
+<li><a href="#prettier-rules">Prettier Rules</a></li>
+<li><a href="#htmlhint-rules">HTMLHint Rules</a></li>
+<li><a href="#stylelint-rules">StyleLint Rules</a></li>
+<li><a href="#i18n-lint-rules">I18n Rules</a></li>
+<li><a href="#ts-config-rules">TypeScript Config Rules</a><ul>
+<li><a href="#ts-base-config-rules">TypeScript Base Config Rules</a></li>
+<li><a href="#ts-alias-config-rules">TypeScript Alias Config Rules</a></li>
+<li><a href="#ts-app-config-rules">TypeScript App Config Rules</a></li>
+</ul>
+</li>
+<li><a href="#compodoc">Compodoc Rules</a></li>
+<li><a href="#schematics-rules">Schematics Rules</a></li>
+<li><a href="#vscode-rules">VSCode Rules</a><ul>
+<li><a href="#files-association">Files Association</a></li>
+<li><a href="#i18n-ally">I18n Ally</a></li>
+</ul>
+</li>
+</ul>
+<h2>RULES</h2>
+<h2 id="eslint-rules">
+  <img
+    alt="ESLint"
+    title="ESLint"
+    width="34px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eslint/eslint-original.svg"
+  />
+  ESLint Rules
+</h2>
+
+<blockquote>
+<p><a href="https://eslint.org/docs/latest/use/getting-started">🔗 ESLint Documentation</a><br><a href="https://eslint.org/docs/latest/rules/">🔗 ESLint Recommanded Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>👁️ Tout voir</summary>
+
+<p>&nbsp;</p>
+<h3 id="angular">Angular</h3>
+
+<blockquote>
+<p><a href="https://www.npmjs.com/package/@angular-eslint/eslint-plugin">🔗 ESLint Angular Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<p>Cette section regroupe les règles spécifiques au framework <strong>Angular</strong>. Elles visent à faire respecter les bonnes pratiques architecturales, les conventions de nommage propres à l&#39;écosystème (comme le <code>kebab-case</code> pour les sélecteurs de composants) et à prévenir des erreurs courantes impactant les performances (comme les <strong>Pipes</strong> impurs).  </p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>component-selector</code></strong></td>
+<td align="left"><code>[Object]</code></td>
+<td align="left"><strong>1. <code>type: &#39;element&#39;</code></strong> : Forcer l&#39;utilisation des composants comme éléments <strong>HTML</strong> (ex: <code>&lt;app-home&gt;</code>)<br><br><strong>2. <code>style: &#39;kebab-case&#39;</code></strong> : Imposer le nommage en minuscules séparées par des tirets</td>
+</tr>
+<tr>
+<td align="left"><strong><code>directive-selector</code></strong></td>
+<td align="left"><code>[Object]</code></td>
+<td align="left"><strong>1. <code>type: &#39;attribute&#39;</code></strong> : Forcer l&#39;utilisation des <strong>Directives</strong> comme attributs (ex: <code>&lt;div myDir&gt;</code>)<br><br><strong>2. <code>style: &#39;camelCase&#39;</code></strong> : Imposer le nommage en <code>camelCase</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-empty-lifecycle-method</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Interdire les méthodes de cycle de vie vides (<code>ngOnInit</code>) qui polluent le code inutilement</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-pipe-impure</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Interdire les <strong>Pipes</strong> impurs qui sont recalculés à chaque cycle de détection, causant de graves problèmes de performance</td>
+</tr>
+<tr>
+<td align="left"><strong><code>prefer-output-readonly</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Garantir que les <code>Output</code> (<code>EventEmitter</code>) ne sont pas écrasés après leur initialisation</td>
+</tr>
+<tr>
+<td align="left"><strong><code>pipe-prefix</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Imposer un préfixe cohérent pour tous les <strong>Pipes</strong> de l&#39;application</td>
+</tr>
+<tr>
+<td align="left"><strong><code>prefer-standalone</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Pousser vers l&#39;architecture moderne <strong>Angular</strong> en forçant les composants <code>standalone</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>sort-keys-in-type-decorator</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Trier les propriétés dans les <strong>Décorateurs</strong> (<code>@Component</code>) par ordre alphabétique pour la lisibilité</td>
+</tr>
+<tr>
+<td align="left"><strong><code>sort-lifecycle-methods</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Imposer un ordre strict des méthodes de cycle de vie (<code>ngOnChanges</code> -&gt; <code>ngOnInit</code> -&gt; <code>ngOnDestroy</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h3 id="typescript">TypeScript</h3>
+
+<blockquote>
+<p><a href="https://typescript-eslint.io/rules/">🔗 ESLint TypeScript Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<p>Ces règles étendent les capacités d&#39;<strong>ESLint</strong> pour comprendre la syntaxe <strong>TypeScript</strong>. Elles se concentrent sur la sûreté du typage (<code>type safety</code>), la lisibilité et la prévention de bugs subtils liés à la gestion des types (comme l&#39;usage de <code>any</code> ou les <code>magic numbers</code>).  </p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>explicit-function-return-type</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Obliger à typer le retour de chaque fonction pour rendre le code autodocumenté et éviter les retours accidentels</td>
+</tr>
+<tr>
+<td align="left"><strong><code>naming-convention</code></strong></td>
+<td align="left"><code>[Array]</code></td>
+<td align="left"><strong>1. Variables</strong> : <code>camelCase</code> (standard) ou <code>UPPER_CASE</code> (constantes globales)<br><br><strong>2. Méthodes</strong> : <code>camelCase</code><br><br><strong>3. Classes</strong> : <code>PascalCase</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-empty-function</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Signaler les fonctions sans corps, souvent signe d&#39;un code oublié ou inachevé</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-empty-interface</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Une interface vide est inutile. Utiliser un <strong>Type</strong> si c&#39;est un simple <code>alias</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-magic-numbers</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Interdire l&#39;usage de nombres bruts sans contexte. Il faut utiliser des constantes nommées</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-shadow</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Empêcher de nommer une variable locale comme une variable de portée supérieure (risque de confusion)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-unsafe-return</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Interdire de retourner <code>any</code> dans une fonction qui attend un <strong>Type</strong> précis</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-unused-vars</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Nettoier le code en signalant les variables déclarées mais jamais utilisées</td>
+</tr>
+<tr>
+<td align="left"><strong><code>prefer-readonly</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Marquer automatiquement comme <code>readonly</code> les propriétés privées qui ne sont jamais modifiées après le constructeur</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h3 id="angular-template">Angular Template</h3>
+
+<blockquote>
+<p><a href="https://www.npmjs.com/package/@angular-eslint/eslint-plugin-template">🔗 ESLint Angular Template Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<p>Ce linter analyse spécifiquement les fichiers <strong>HTML</strong> (<code>.html</code>). Il est crucial pour garantir l&#39;accessibilité (<strong>A11y</strong>) de l&#39;application, éviter des erreurs de syntaxe <strong>Angular</strong> complexes et limiter la complexité logique directement dans les vues.  </p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>alt-text</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Obliger, pour l&#39;accessibilité, les images à avoir un texte alternatif</td>
+</tr>
+<tr>
+<td align="left"><strong><code>banana-in-box</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Vérifier la syntaxe <code>[(ngModel)]</code> et alerte si on écrit l&#39;inverse <code>([ngModel])</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>button-has-type</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Tout bouton doit avoir un <code>type</code> explicite (<code>submit</code>, <code>button</code>, <code>reset</code>) pour éviter les soumissions involontaires</td>
+</tr>
+<tr>
+<td align="left"><strong><code>click-events-have-key-events</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Accessibilité : un élément cliquable doit aussi être utilisable au clavier</td>
+</tr>
+<tr>
+<td align="left"><strong><code>conditional-complexity</code></strong></td>
+<td align="left"><code>5</code></td>
+<td align="left">Limiter la complexité logique dans le <strong>HTML</strong>. Si trop complexe, déplacer la logique dans le <strong>TS</strong></td>
+</tr>
+<tr>
+<td align="left"><strong><code>cyclomatic-complexity</code></strong></td>
+<td align="left"><code>15</code></td>
+<td align="left">Alerter si un template contient trop de boucles/conditions imbriquées (indigeste)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>eqeqeq</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Forcer l&#39;égalité stricte <code>===</code> dans les templates</td>
+</tr>
+<tr>
+<td align="left"><strong><code>interactive-supports-focus</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Les éléments interactifs doivent être &quot;focusables&quot; (<code>tabindex</code>) pour la navigation clavier</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-any</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Interdire <code>$any(...)</code> dans le <strong>HTML</strong> qui désactive le typage fort</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-distracting-elements</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Bannir les balises obsolètes (<code>&lt;marquee&gt;</code>, <code>&lt;blink&gt;</code>).</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-inline-styles</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Le <strong>SCSS</strong> doit être dans les fichiers de style, pas dans l&#39;attribut <code>style=&quot;...&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>prefer-built-in-pipes</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Préférer les <strong>Pipes</strong>** natifs (<code>DatePipe</code>, <code>AsyncPipe</code>) aux solutions manuelles</td>
+</tr>
+<tr>
+<td align="left"><strong><code>prefer-self-closing-tags</code></strong></td>
+<td align="left"><code>&#39;error&#39;</code></td>
+<td align="left">Nettoyer le code : <code>&lt;app-comp /&gt;</code> au lieu de <code>&lt;app-comp&gt;&lt;/app-comp&gt;</code> si vide</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h3 id="stylistics">Stylistics</h3>
+
+<blockquote>
+<p><a href="https://eslint.style/rules">🔗 ESLint Stylistics Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<p>Depuis la dépréciation des règles de formatage dans <strong>ESLint core</strong>, ce plugin (<code>@stylistic</code>) prend le relais. Il assure une uniformité visuelle stricte (espaces, virgules, points-virgules) qui n&#39;impacte pas la logique mais rend le code agréable à lire et évite les <code>Git diff</code> inutiles.  </p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>arrow-spacing</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Espace avant et après la flèche <code>=&gt;</code> des fonctions fléchées</td>
+</tr>
+<tr>
+<td align="left"><strong><code>block-spacing</code></strong></td>
+<td align="left"><code>&#39;always&#39;</code></td>
+<td align="left">Espace à l&#39;intérieur des accolades <code>{ code }</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>brace-style</code></strong></td>
+<td align="left"><code>&#39;stroustrup&#39;</code></td>
+<td align="left">Le <code>else</code> doit être sur sa propre ligne</td>
+</tr>
+<tr>
+<td align="left"><strong><code>comma-spacing</code></strong></td>
+<td align="left"><code>[Object]</code></td>
+<td align="left">Espace après la virgule, jamais avant</td>
+</tr>
+<tr>
+<td align="left"><strong><code>indent</code></strong></td>
+<td align="left"><code>2</code></td>
+<td align="left">Indentation standard de 2 espaces</td>
+</tr>
+<tr>
+<td align="left"><strong><code>max-len</code></strong></td>
+<td align="left"><code>120</code></td>
+<td align="left">Limiter la longueur des lignes de code (500 pour les commentaires)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>member-delimiter-style</code></strong></td>
+<td align="left"><code>&#39;semi&#39;</code></td>
+<td align="left">Utilisation de points-virgules dans les interfaces/types</td>
+</tr>
+<tr>
+<td align="left"><strong><code>no-multiple-empty-lines</code></strong></td>
+<td align="left"><code>2</code></td>
+<td align="left">Maximum 2 lignes vides consécutives pour aérer sans trop espacer</td>
+</tr>
+<tr>
+<td align="left"><strong><code>padding-line-between-statements</code></strong></td>
+<td align="left"><code>[Object]</code></td>
+<td align="left">Force une ligne vide avant toute déclaration de <code>class</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>quotes</code></strong></td>
+<td align="left"><code>&#39;single&#39;</code></td>
+<td align="left">Utilisation exclusive des guillemets simples <code>&#39;</code> (sauf échappement)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>semi</code></strong></td>
+<td align="left"><code>&#39;always&#39;</code></td>
+<td align="left">Point-virgule obligatoire à la fin des instructions</td>
+</tr>
+<tr>
+<td align="left"><strong><code>spaced-comment</code></strong></td>
+<td align="left"><code>&#39;always&#39;</code></td>
+<td align="left">Espace obligatoire au début d&#39;un commentaire <code>// Texte</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h3 id="security">Security</h3>
+
+<blockquote>
+<p><a href="https://www.npmjs.com/package/eslint-plugin-security">🔗 ESLint Security Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<p>Le plugin (<strong>eslint-plugin-security</strong>) ajoute une couche de sécurité statique. Il scanne le code pour détecter des modèles susceptibles de créer des vulnérabilités, comme les attaques par déni de service via <strong>RegEx</strong> (<code>ReDoS</code>) ou l&#39;injection d&#39;objets non sécurisés. Nous utilisons ici la configuration recommended standard.  </p>
+</details>
+
+</details>
+
+<h2 id="prettier-rules">
+  <img
+    alt="Prettier"
+    title="Prettier"
+    width="30px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/prettier.png"
+  />
+  Prettier Rules
+</h2>
+
+<blockquote>
+<p><a href="https://prettier.io/docs/options">🔗 Prettier Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description / Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>arrowParens</code></strong></td>
+<td align="left"><code>&quot;always&quot;</code></td>
+<td align="left">Forcer les parenthèses autour des arguments des fonctions fléchées</td>
+</tr>
+<tr>
+<td align="left"><strong><code>bracketSameLine</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Placer la balise de fermeture de l&#39;élément HTML multi-lignes (<code>&gt;</code>) sur la même ligne que le dernier attribut</td>
+</tr>
+<tr>
+<td align="left"><strong><code>bracketSpacing</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ajouter des espaces entre les accolades des objets<br>(<code>{ foo: bar }</code> au lieu de <code>{foo: bar}</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>embeddedLanguageFormatting</code></strong></td>
+<td align="left"><code>&quot;auto&quot;</code></td>
+<td align="left">Prettier formate automatiquement le code intégré (ex: CSS dans JS) s&#39;il le reconnaît</td>
+</tr>
+<tr>
+<td align="left"><strong><code>endOfLine</code></strong></td>
+<td align="left"><code>&quot;lf&quot;</code></td>
+<td align="left">Line Feed (LF). Standard Unix. Garantit la cohérence des fins de ligne (même sous Windows) et évite des modifications inutiles dans Git</td>
+</tr>
+<tr>
+<td align="left"><strong><code>experimentalTernaries</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Conserver le formatage classique des ternaires<br>(<code>condition ? true : false</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>htmlWhitespaceSensitivity</code></strong></td>
+<td align="left"><code>&quot;css&quot;</code></td>
+<td align="left">Respecter la propriété CSS <code>display</code> par défaut pour la gestion des espaces dans le HTML (évite de casser la mise en page inline)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>importOrder</code></strong></td>
+<td align="left"><code>[Array]</code></td>
+<td align="left">Définit la hiérarchie verticale des imports (nécessite <code>@trivago/prettier-plugin-sort-imports</code>)<br><br><strong>1. <code>^@angular/(.*)$</code></strong> : Packages Angular officiels (Core, Common...) en premier<br><br><strong>2. <code>^rxjs</code></strong> : RxJS, moteur asynchrone fondamental<br><br><strong>3. <code>&lt;THIRD_PARTY_MODULES&gt;</code></strong> : Tout ce qui vient de <code>node_modules</code> (non intercepté avant)<br><br><strong>4. <code>^@core/(.*)$</code></strong> : Alias TypeScript pour le dossier « core » (services, guards...)<br><br><strong>5. <code>^@shared/(.*)$</code></strong> : Alias pour le dossier « partagé » (composants UI, pipes...)<br><br><strong>6. <code>^[./]</code></strong> : Importations locales (fichiers proches), placées à la fin</td>
+</tr>
+<tr>
+<td align="left"><strong><code>importOrderParserPlugins</code></strong></td>
+<td align="left"><code>[Array]</code></td>
+<td align="left">Plugins pour l&#39;analyseur Babel<br><strong>Important :</strong> Inclure <code>&quot;decorators-legacy&quot;</code> pour qu&#39;Angular (<code>@Component</code>) ne génère pas d&#39;erreur et <code>&quot;typescript&quot;</code> pour la syntaxe TS</td>
+</tr>
+<tr>
+<td align="left"><strong><code>importOrderSeparation</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ajoute une ligne vide entre les groupes d&#39;imports</td>
+</tr>
+<tr>
+<td align="left"><strong><code>importOrderSortSpecifiers</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Trie également les imports nommés entre accolades<br>(ex: <code>{b, a}</code> devient <code>{a, b}</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>insertPragma</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">N&#39;ajoute pas de commentaire <code>@format</code> en haut des fichiers</td>
+</tr>
+<tr>
+<td align="left"><strong><code>overrides</code></strong></td>
+<td align="left"><code>[Object]</code></td>
+<td align="left">Configuration spécifique (notamment pour Angular) pour analyser correctement la syntaxe (<code>*ngIf</code>, <code>[prop]</code>, <code>(event)</code>) dans les fichiers HTML</td>
+</tr>
+<tr>
+<td align="left"><strong><code>plugins</code></strong></td>
+<td align="left"><code>[&quot;@trivago...&quot;]</code></td>
+<td align="left">Indique à Prettier de charger le plugin <code>@trivago/prettier-plugin-sort-imports</code>. Sans cela, les options de tri sont ignorées</td>
+</tr>
+<tr>
+<td align="left"><strong><code>printWidth</code></strong></td>
+<td align="left"><code>120</code></td>
+<td align="left">Coupe les lignes après 120 caractères (plus confortable que le défaut de 80)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>proseWrap</code></strong></td>
+<td align="left"><code>&quot;preserve&quot;</code></td>
+<td align="left">Ne reformate pas les blocs de texte en Markdown (évite des différences Git inutiles)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>quoteProps</code></strong></td>
+<td align="left"><code>&quot;as-needed&quot;</code></td>
+<td align="left">N&#39;utilise des guillemets autour des clés d’objet que si la syntaxe l’exige</td>
+</tr>
+<tr>
+<td align="left"><strong><code>requirePragma</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Formate tous les fichiers, pas seulement ceux comportant la balise <code>@format</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>semi</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ajoute systématiquement un point-virgule à la fin des instructions</td>
+</tr>
+<tr>
+<td align="left"><strong><code>singleAttributePerLine</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Force un attribut par ligne en HTML si la balise est longue (rend les templates Angular plus lisibles)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>singleQuote</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Utilise des guillemets simples (<code>&#39;text&#39;</code>) en JS/TS pour réduire le bruit visuel</td>
+</tr>
+<tr>
+<td align="left"><strong><code>tabWidth</code></strong></td>
+<td align="left"><code>2</code></td>
+<td align="left">Une indentation correspond à 2 espaces</td>
+</tr>
+<tr>
+<td align="left"><strong><code>trailingComma</code></strong></td>
+<td align="left"><code>&quot;all&quot;</code></td>
+<td align="left">Ajoute des virgules à la fin des listes (objets, tableaux, fonctions). Rend les diffs Git plus propres</td>
+</tr>
+<tr>
+<td align="left"><strong><code>useTabs</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Utilise des espaces pour l&#39;indentation, pas des tabulations</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h2 id="htmlhint-rules">
+  <img
+    alt="HTMLHint"
+    title="HTMLHint"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/htmlhint.png"
+  />
+  HTMLHint Rules
+</h2>
+
+<blockquote>
+<p><a href="https://htmlhint.com/rules/">🔗 HTMLHint Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>alt-require</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Impose que toutes les balises <code>&lt;img&gt;</code> possèdent un attribut <code>alt</code>, ce qui est crucial pour l&#39;accessibilité web</td>
+</tr>
+<tr>
+<td align="left"><strong><code>attr-lowercase</code></strong></td>
+<td align="left"><code>ARRAY</code></td>
+<td align="left">Applique l&#39;utilisation de minuscules pour tous les noms d&#39;attributs HTML pour la cohérence du code<br><br><strong>Exception :</strong> Il est possible de fournir un tableau pour ignorer certains attributs, notamment ceux en <code>camelCase</code> issus de Angular (<code>[&quot;(ngSubmit)&quot;], &quot;[formControl]&quot;, &quot;[ngClass]&quot;], &quot;[routerLink]&quot;</code>...)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>attr-no-duplication</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Interdit la duplication d&#39;attributs sur un même élément (<code>&lt;div class=&quot;a&quot; class=&quot;b&quot;&gt;</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>attr-no-unnecessary-whitespace</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Aucun espace entre les noms et les valeurs des attributs</td>
+</tr>
+<tr>
+<td align="left"><strong><code>attr-sorted</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Les attributs doivent être triés dans l&#39;ordre suivant :<br><br><strong>1. <code>class</code></strong><br><br><strong>2. <code>id</code></strong><br><br><strong>3. <code>name</code></strong><br><br><strong>4. <code>src</code></strong><br><br><strong>5. <code>for</code></strong><br><br><strong>6. <code>type</code></strong><br><br><strong>7. <code>href</code></strong><br><br><strong>8. <code>value</code></strong><br><br><strong>9. <code>title</code></strong><br><br><strong>10. <code>alt</code></strong><br><br><strong>11. <code>role</code></strong></td>
+</tr>
+<tr>
+<td align="left"><strong><code>attr-value-double-quotes</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Force l&#39;utilisation des guillemets doubles pour toutes les valeurs d&#39;attributs</td>
+</tr>
+<tr>
+<td align="left"><strong><code>attr-value-no-duplication</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Vérifie que les valeurs au sein d&#39;un même attribut (<code>class</code>) ne sont pas dupliquées</td>
+</tr>
+<tr>
+<td align="left"><strong><code>attr-whitespace</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Aucun espace en début ou en fin de valeur d&#39;attribut</td>
+</tr>
+<tr>
+<td align="left"><strong><code>button-type-require</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Exige que chaque balise <code>&lt;button&gt;</code> ait un attribut <code>type</code> (<code>button</code>, <code>submit</code>, <code>reset</code>) pour éviter les soumissions de formulaire inattendues</td>
+</tr>
+<tr>
+<td align="left"><strong><code>doctype-first</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">S&#39;assure que le document commence par une déclaration <code>&lt;!DOCTYPE&gt;</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>doctype-html5</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Vérifie que le Doctype est bien celui de HTML5 (<code>&lt;!DOCTYPE html&gt;</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>frame-title-require</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Requiert un attribut <code>title</code> sur les <code>&lt;iframe&gt;</code> et <code>&lt;frame&gt;</code> pour l&#39;accessibilité</td>
+</tr>
+<tr>
+<td align="left"><strong><code>h1-require</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Ne pas imposer la présence d&#39;au moins une balise <code>&lt;h1&gt;</code> pour la structure sémantique et le SEO</td>
+</tr>
+<tr>
+<td align="left"><strong><code>html-lang-require</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Exige que la balise <code>&lt;html&gt;</code> possède un attribut <code>lang</code> pour spécifier la langue du document (accessibilité et SEO)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>id-class-value</code></strong></td>
+<td align="left"><code>dash</code></td>
+<td align="left">Aucunes règles imposées</td>
+</tr>
+<tr>
+<td align="left"><strong><code>id-unique</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Garantit que tous les attributs <code>id</code> sur la page sont uniques</td>
+</tr>
+<tr>
+<td align="left"><strong><code>input-requires-label</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Ne pas vérifier que chaque <code>&lt;input&gt;</code> est associé à une balise <code>&lt;label&gt;</code> pour l&#39;accessibilité</td>
+</tr>
+<tr>
+<td align="left"><strong><code>inline-script-disabled</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">L&#39;utilisation des inline scripts est impossible</td>
+</tr>
+<tr>
+<td align="left"><strong><code>inline-style</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">L&#39;utilisation du inline style est impossible</td>
+</tr>
+<tr>
+<td align="left"><strong><code>main-require</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Ne pas imposer la présence d&#39;une balise <code>&lt;main&gt;</code> pour identifier le contenu principal du document</td>
+</tr>
+<tr>
+<td align="left"><strong><code>meta-charset-require</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Requiert la déclaration de l&#39;encodage des caractères via <code>&lt;meta charset=&quot;...&quot;&gt;</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>meta-description-require</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Ne pas exiger la présence d&#39;une balise <code>&lt;meta name=&quot;description&quot; ...&gt;</code> pour le SEO</td>
+</tr>
+<tr>
+<td align="left"><strong><code>meta-viewport-require</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Impose la présence de la balise <code>&lt;meta name=&quot;viewport&quot; ...&gt;</code> pour un affichage correct sur les mobiles</td>
+</tr>
+<tr>
+<td align="left"><strong><code>spec-char-escape</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Vérifie que les caractères spéciaux HTML (<code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>) sont correctement échappés</td>
+</tr>
+<tr>
+<td align="left"><strong><code>src-not-empty</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Interdit les attributs <code>src</code> vides sur les scripts et les images pour éviter des requêtes inutiles</td>
+</tr>
+<tr>
+<td align="left"><strong><code>tag-no-obsolete</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Interdit l&#39;utilisation de balises HTML obsolètes (<code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>tag-pair</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">S&#39;assure que toutes les balises sont correctement ouvertes et fermées, une règle fondamentale pour un HTML valide</td>
+</tr>
+<tr>
+<td align="left"><strong><code>tag-self-close</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Les balises auto-fermantes, également appelées éléments vides, sont des éléments HTML qui ne nécessitent pas de balise de fermeture distincte (ceinture/bretelle avec notre ESlint)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>tagname-lowercase</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Impose que tous les noms de balises soient en minuscules</td>
+</tr>
+<tr>
+<td align="left"><strong><code>title-require</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Requiert la présence d&#39;une balise <code>&lt;title&gt;</code> dans l&#39;en-tête <code>&lt;head&gt;</code> de la page</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h2 id="stylelint-rules">
+  <img
+    alt="StyleLint"
+    title="StyleLint"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/stylelint.png"
+  />
+  StyleLint Rules
+</h2>
+
+<blockquote>
+<p><a href="https://stylelint.io/user-guide/rules">🔗 StyleLint SCSS Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>plugins</code></strong></td>
+<td align="left"><code>[&quot;stylelint-scss&quot;]</code></td>
+<td align="left">Charge le plugin nécessaire pour supporter les règles spécifiques au SCSS</td>
+</tr>
+<tr>
+<td align="left"><strong><code>customSyntax</code></strong></td>
+<td align="left"><code>&quot;postcss-scss&quot;</code></td>
+<td align="left">Définit l&#39;analyseur syntaxique (parser) approprié pour les fichiers SCSS</td>
+</tr>
+<tr>
+<td align="left"><strong><code>block-no-empty</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Interdit les blocs de déclaration vides (ex: <code>a { }</code>) pour garder le code propre</td>
+</tr>
+<tr>
+<td align="left"><strong><code>color-no-invalid-hex</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Signale les codes couleurs hexadécimaux invalides (ex: <code>#12345z</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>scss/at-extend-no-missing-placeholder</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Impose que l&#39;instruction <code>@extend</code> ne cible que des placeholders (sélecteurs <code>%</code>), ce qui évite de gonfler la taille du CSS final inutilement</td>
+</tr>
+<tr>
+<td align="left"><strong><code>scss/at-if-no-null</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Interdit la comparaison explicite avec <code>null</code> dans les boucles <code>@if</code> (car en Sass, <code>null</code> est déjà évalué comme faux)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>max-nesting-depth</code></strong></td>
+<td align="left"><code>ARRAY</code></td>
+<td align="left">Contrôle la complexité du CSS en limitant l&#39;imbrication :<br><br><strong>Limite :</strong> 3 niveaux de profondeur maximum<br><br><strong>Exception :</strong> Les &quot;at-rules&quot; sans bloc (comme les <code>@import</code> ou <code>@include</code> simples) sont ignorées via <code>[&quot;blockless-at-rules&quot;]</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>scss/at-rule-no-unknown</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Remplace la règle standard <code>at-rule-no-unknown</code> (qui est mise à <code>null</code>)<br><br>Vérifie la validité des directives (<code>@</code>), tout en autorisant celles spécifiques au SCSS comme <code>@mixin</code>, <code>@include</code> ou <code>@content</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>scss/comment-no-empty</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Remplace la règle standard <code>comment-no-empty</code> (qui est mise à <code>null</code>)<br><br>Interdit les commentaires vides, tout en supportant la syntaxe de commentaire double slash <code>//</code> du SCSS</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h2 id="i18n-lint-rules">
+  <img
+    alt="I18NLINT"
+    title="I18NLINT"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/i18n.svg"
+  />
+  I18n Lint Rules
+</h2>
+
+<details>
+
+  <summary>👁️ Tout voir</summary>
+
+<h3 id="ts-base-config-rules">Ngx Translate Linter Rules</h3>
+
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<blockquote>
+<p><a href="https://www.npmjs.com/package/ngx-translate-lint">🔗 Ngx Translate Linter Documentation</a>  </p>
+</blockquote>
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>languages</code></strong></td>
+<td align="left"><code>&quot;./src/assets/i18n/*.json&quot;</code></td>
+<td align="left">Chemin vers les fichiers <strong>JSON</strong> de traduction à analyser</td>
+</tr>
+<tr>
+<td align="left"><strong><code>project</code></strong></td>
+<td align="left"><code>&quot;./src/app/**/*.{html,ts}&quot;</code></td>
+<td align="left">Portée du scan : analyse tous les fichiers <strong>HTML</strong> et <strong>TS</strong> du dossier <code>app</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>rules.deepSearch</code></strong></td>
+<td align="left"><code>&quot;disable&quot;</code></td>
+<td align="left">Désactiver la recherche récursive profonde pour optimiser les performances</td>
+</tr>
+<tr>
+<td align="left"><strong><code>rules.emptyKeys</code></strong></td>
+<td align="left"><code>&quot;error&quot;</code></td>
+<td align="left">Signaler une <strong>erreur</strong> si une clé existe dans le <strong>JSON</strong> mais que sa valeur est vide</td>
+</tr>
+<tr>
+<td align="left"><strong><code>rules.ignoredKeys</code></strong></td>
+<td align="left"><code>[&quot;META\\..*&quot;, &quot;ngIf&quot;, ...]</code></td>
+<td align="left">Liste de motifs (<strong>Regex</strong>) exclus de l&#39;analyse (clés dynamiques, <strong>Directives</strong>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>rules.keysOnViews</code></strong></td>
+<td align="left"><code>&quot;error&quot;</code></td>
+<td align="left">Signaler une <strong>erreur</strong> si une clé est utilisée dans le code mais manquante dans le fichier <strong>JSON</strong></td>
+</tr>
+<tr>
+<td align="left"><strong><code>rules.maxWarning</code></strong></td>
+<td align="left"><code>&quot;0&quot;</code></td>
+<td align="left">Tolérance zéro : le processus échoue dès qu&#39;un seul avertissement est détecté</td>
+</tr>
+<tr>
+<td align="left"><strong><code>rules.misprintKeys</code></strong></td>
+<td align="left"><code>&quot;disable&quot;</code></td>
+<td align="left">Désactiver la détection de similitude (fautes de frappe) pour éviter les faux positifs</td>
+</tr>
+<tr>
+<td align="left"><strong><code>rules.zombieKeys</code></strong></td>
+<td align="left"><code>&quot;warning&quot;</code></td>
+<td align="left">Signaler un <strong>avertissement</strong> pour les clés présentes dans le <strong>JSON</strong> mais inutilisées dans le code</td>
+</tr>
+<tr>
+<td align="left"><strong><code>options.fullKeys</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Utiliser le chemin complet des clés dans les rapports d&#39;erreur</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h3 id="ts-base-config-rules">I18n Ally Rules</h3>
+
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<blockquote>
+<p><a href="https://github.com/lokalise/i18n-ally/wiki/Configurations">🔗 I18n Ally</a>  </p>
+</blockquote>
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>i18n-ally.displayLanguage</code></strong></td>
+<td align="left"><code>&quot;fr&quot;</code></td>
+<td align="left">Langue affichée dans les annotations (tooltips) de l&#39;<strong>IDE</strong> pour visualiser les traductions</td>
+</tr>
+<tr>
+<td align="left"><strong><code>i18n-ally.extract.autoDetect</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Désactiver la détection automatique des textes en dur pour éviter les suggestions intrusives</td>
+</tr>
+<tr>
+<td align="left"><strong><code>i18n-ally.enabledFrameworks</code></strong></td>
+<td align="left"><code>[&quot;ngx-translate&quot;]</code></td>
+<td align="left">Activer le support spécifique pour le framework <strong>Angular</strong> <code>ngx-translate</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>i18n-ally.keepFulfilled</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Définit s&#39;il faut conserver les clés déjà traduites lors des opérations de nettoyage</td>
+</tr>
+<tr>
+<td align="left"><strong><code>i18n-ally.keystyle</code></strong></td>
+<td align="left"><code>&quot;nested&quot;</code></td>
+<td align="left">Utiliser une structure d&#39;objets imbriqués pour l&#39;organisation des fichiers <strong>JSON</strong></td>
+</tr>
+<tr>
+<td align="left"><strong><code>i18n-ally.localesPaths</code></strong></td>
+<td align="left"><code>&quot;src/assets/i18n&quot;</code></td>
+<td align="left">Chemin vers le répertoire contenant les fichiers de traduction (<code>fr.json</code>...)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>i18n-ally.readonly</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Activer le mode lecture seule pour empêcher la modification accidentelle via l&#39;interface de l&#39;extension</td>
+</tr>
+<tr>
+<td align="left"><strong><code>i18n-ally.sourceLanguage</code></strong></td>
+<td align="left"><code>&quot;fr&quot;</code></td>
+<td align="left">Définir le français comme langue de référence (source de vérité) pour le projet</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+</details>
+
+<h2 id="ts-config-rules">
+  <img
+    alt="TS Config"
+    title="TS Config"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/ts_config.png"
+  />
+  TypeScript Config Rules
+</h2>
+
+<blockquote>
+<p><a href="https://www.typescriptlang.org/tsconfig/">🔗 TypeScript Config Documentation</a>  </p>
+</blockquote>
+<details>
+
+  <summary>👁️ Tout voir</summary>
+
+<h3 id="ts-base-config-rules">TypeScript Base Config Rules</h3>
+
+<details>
+
+  <summary>👁️ Tout voir</summary>
+
+<p>&nbsp;</p>
+<p>Cette configuration (<code>tsconfig.json</code>) sert de <strong>base stricte</strong> pour l&#39;ensemble de l&#39;espace de travail. Elle utilise l&#39;approche <strong>&quot;Solution Style&quot;</strong>, déléguant la compilation effective aux fichiers <code>tsconfig.app.json</code> (pour l&#39;application) et <code>tsconfig.spec.json</code> (pour les tests).  </p>
+<h4>1. Options du Compilateur (<code>compilerOptions</code>)</h4>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description &amp; Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>declaration</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Ne pas générer de fichiers de déclaration TypeScript (<code>.d.ts</code>). N&#39;est généralement pas nécessaire pour les applications, mais l&#39;est pour les bibliothèques.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>esModuleInterop</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Améliore la compatibilité entre les modules CommonJS (Node/Legacy) et les modules ES (Modern JS) pour les imports</td>
+</tr>
+<tr>
+<td align="left"><strong><code>experimentalDecorators</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Active le support de la syntaxe des décorateurs, massivement utilisée par Angular (<code>@Component</code>, <code>@Injectable</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>forceConsistentCasing...</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Interdire les références de fichiers avec une casse incohérente (éviter bugs entre Windows / Linux/Mac)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>importHelpers</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Importer les fonctions utilitaires depuis <code>tslib</code> au lieu de générer du code dupliqué dans chaque fichier</td>
+</tr>
+<tr>
+<td align="left"><strong><code>isolatedModules</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Garantit que chaque fichier peut être transpilé individuellement, ce qui est requis pour les outils ultra-rapides comme Vite ou Esbuild</td>
+</tr>
+<tr>
+<td align="left"><strong><code>lib</code></strong></td>
+<td align="left"><code>[Array]</code></td>
+<td align="left"><strong>1. <code>&quot;ES2022&quot;</code></strong> : inclure les types de JavaScript moderne au navigateur<br><br><strong>2. <code>&quot;DOM&quot;</code></strong> : inclure les types spécifiques au navigateur.<br><br></td>
+</tr>
+<tr>
+<td align="left"><strong><code>module</code></strong></td>
+<td align="left"><code>&quot;preserve&quot;</code></td>
+<td align="left">Laisser les instructions d&#39;import/export intactes. Permet au bundler (Vite/Webpack) de gérer le chargement des modules le plus efficacement possible</td>
+</tr>
+<tr>
+<td align="left"><strong><code>moduleResolution</code></strong></td>
+<td align="left"><code>&quot;bundler&quot;</code></td>
+<td align="left">Indique à TypeScript d&#39;utiliser une stratégie de résolution optimisée pour les bundlers modernes (Vite, Esbuild). Ceci est requis par Angular 17+ pour le support correct des exports conditionnels (customConditions) et garantit un build rapide et correct</td>
+</tr>
+<tr>
+<td align="left"><strong><code>noImplicitOverride</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Forcer l&#39;utilisation du mot-clé <code>override</code> lorsqu&#39;une méthode écrase celle d&#39;une classe parente et sécurise l&#39;héritage</td>
+</tr>
+<tr>
+<td align="left"><strong><code>noImplicitReturns</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Vérifier que tous les chemins d&#39;exécution d&#39;une fonction retournent bien une valeur</td>
+</tr>
+<tr>
+<td align="left"><strong><code>noFallthroughCasesInSwitch</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Empêche de passer accidentellement d&#39;un <code>case</code> à un autre dans un <code>switch</code> (oubli du <code>break</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>resolveJsonModule...</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Permettre d&#39;importer directement des fichiers <code>.json</code> comme des modules TypeScript (<code>import data from &#39;./data.json&#39;</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>skipLibCheck</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ignorer la vérification des types à l&#39;intérieur de <code>node_modules</code> pour accélérer considérablement la compilation</td>
+</tr>
+<tr>
+<td align="left"><strong><code>sourceMap</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Indiquer au compilateur de ne pas générer de fichiers <code>.map</code> pour le débogage (souvent géré par les outils de build dans les fichiers spécifiques comme <code>tsconfig.app.json</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>strict</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Activer toutes les options de vérification de type strictes (pas de <code>any</code> implicite, gestion stricte du <code>null</code>, etc.)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>target</code></strong></td>
+<td align="left"><code>&quot;ES2022&quot;</code></td>
+<td align="left">Compiler le code vers ECMAScript 2022 moderne, permettant l&#39;usage natif de <code>async/await</code> et des fonctionnalités de classes récentes</td>
+</tr>
+<tr>
+<td align="left"><strong><code>useDefineForClassFields</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Maintenir le comportement historique d&#39;initialisation des champs de classe pour assurer une compatibilité totale avec les décorateurs Angular</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>2. Options du Compilateur Angular (<code>angularCompilerOptions</code>)</h4>
+<p>Ces paramètres contrôlent le compilateur AOT (Ahead-of-Time) d&#39;Angular, spécifiquement pour la vérification des types dans les templates HTML.  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>enableI18nLegacy...</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Indiquer au compilateur Angular de ne pas utiliser le format d&#39;identifiant de message hérité (legacy) pour l&#39;internationalisation</td>
+</tr>
+<tr>
+<td align="left"><strong><code>strictInjectionParameters</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Signaler une erreur si un paramètre injecté n&#39;est pas compatible avec le type d&#39;injection attendu</td>
+</tr>
+<tr>
+<td align="left"><strong><code>strictInputAccessModifiers</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Respecter les modificateurs d&#39;accès (<code>private</code>, <code>protected</code>) lors de l&#39;accès aux propriétés depuis les templates HTML</td>
+</tr>
+<tr>
+<td align="left"><strong><code>strictStandalone</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Appliquer des règles de validation plus strictes pour les composants, directives et pipes Standalone</td>
+</tr>
+<tr>
+<td align="left"><strong><code>strictTemplates</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Activer la vérification stricte des types dans les templates Angular (<code>.html</code>). Détecte les erreurs de liaison de données à la compilation</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+</details>
+
+<h3 id="ts-alias-config-rules">TypeScript Alias Config Rules</h3>
+
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Alias</th>
+<th align="left">Cible</th>
+<th align="left">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>@app/*</code></strong></td>
+<td align="left"><code>./src/app/*</code></td>
+<td align="left">Racine du code applicatif</td>
+</tr>
+<tr>
+<td align="left"><strong><code>@core/*</code></strong></td>
+<td align="left"><code>./src/app/core/*</code></td>
+<td align="left"><strong>Singletons</strong>, <strong>Services globaux</strong>, <strong>Guards</strong>, <strong>Interceptors</strong></td>
+</tr>
+<tr>
+<td align="left"><strong><code>@features/*</code></strong></td>
+<td align="left"><code>./src/app/features/*</code></td>
+<td align="left">Modules fonctionnels (<strong>Lazy loaded</strong>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>@shared</code></strong></td>
+<td align="left"><code>./src/app/shared/shared.ts</code></td>
+<td align="left"><strong>Barrel File</strong>. Permet d&#39;importer tout le <code>shared</code> d&#39;un coup</td>
+</tr>
+<tr>
+<td align="left"><strong><code>@shared/*</code></strong></td>
+<td align="left"><code>./src/app/shared/*</code></td>
+<td align="left">Accès direct à un composant partagé spécifique</td>
+</tr>
+<tr>
+<td align="left"><strong><code>@env/*</code></strong></td>
+<td align="left"><code>./src/_environments/*</code></td>
+<td align="left">Fichiers de configuration d&#39;environnement (<code>dev</code>/<code>prod</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>@assets/*</code></strong></td>
+<td align="left"><code>./src/assets/*</code></td>
+<td align="left">Images, polices, fichiers statiques</td>
+</tr>
+<tr>
+<td align="left"><strong><code>@styles/*</code></strong></td>
+<td align="left"><code>./src/styles/*</code></td>
+<td align="left">Variables <strong>SCSS</strong>, mixins</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+
+<h3 id="ts-app-config-rules">TypeScript App Config Rules</h3>
+
+
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>extends</code></strong></td>
+<td align="left"><code>&quot;./tsconfig.json&quot;</code></td>
+<td align="left">Hériter de toutes les règles de compilation et options de typage strict du fichier de base</td>
+</tr>
+<tr>
+<td align="left"><strong><code>compilerOptions.outDir</code></strong></td>
+<td align="left"><code>&quot;./out-tsc/app&quot;</code></td>
+<td align="left">Répertoire de sortie où le code <strong>JavaScript</strong> compilé sera placé</td>
+</tr>
+<tr>
+<td align="left"><strong><code>compilerOptions.rootDir</code></strong></td>
+<td align="left"><code>&quot;./src&quot;</code></td>
+<td align="left">Définir le répertoire racine pour la résolution du code source</td>
+</tr>
+<tr>
+<td align="left"><strong><code>compilerOptions.types</code></strong></td>
+<td align="left"><code>[&quot;vite/client&quot;]</code></td>
+<td align="left">Désactiver l&#39;inclusion automatique de tous les types de <code>node_modules</code>. Seuls les types listés ici (<strong>Vite</strong>) sont inclus</td>
+</tr>
+<tr>
+<td align="left"><strong><code>include</code></strong></td>
+<td align="left"><code>[&quot;src/**/*.ts&quot;]</code></td>
+<td align="left">Inclure tous les fichiers <strong>TypeScript</strong> situés dans le dossier <code>src</code> pour la compilation</td>
+</tr>
+<tr>
+<td align="left"><strong><code>exclude</code></strong></td>
+<td align="left"><code>[&quot;src/**/*.spec.ts&quot;]</code></td>
+<td align="left">Exclure explicitement les fichiers de tests unitaires (<code>.spec.ts</code>) de la compilation principale de l&#39;application</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+</details>
+
+<h2 id="compodoc">
+  <img
+    alt="Compodoc"
+    title="Compodoc"
+    width="34px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/compodoc.svg"
+  />
+  Compodoc Rules
+</h2>
+
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>assetsFolder</code></strong></td>
+<td align="left"><code>&quot;public&quot;</code></td>
+<td align="left">Définir le dossier source des images/assets statiques à copier</td>
+</tr>
+<tr>
+<td align="left"><strong><code>disableCoverage</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Masquer le rapport de couverture de la documentation dans le menu</td>
+</tr>
+<tr>
+<td align="left"><strong><code>disableGraph</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Afficher le graphique de dépendances des modules (Graphviz)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>disableInternal</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Masquer les éléments marqués comme <code>@internal</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>disablePrivate</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Masquer les propriétés et méthodes privées des classes</td>
+</tr>
+<tr>
+<td align="left"><strong><code>hideGenerator</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Masquer le lien &quot;Documentation generated by Compodoc&quot; en bas de page</td>
+</tr>
+<tr>
+<td align="left"><strong><code>includes</code></strong></td>
+<td align="left"><code>&quot;./docs&quot;</code></td>
+<td align="left">Dossier contenant les fichiers Markdown additionnels (menu latéral)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>open</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ouvrir automatiquement le navigateur après le lancement du serveur</td>
+</tr>
+<tr>
+<td align="left"><strong><code>output</code></strong></td>
+<td align="left"><code>&quot;.documentation-output&quot;</code></td>
+<td align="left">Dossier de destination où le site statique est généré</td>
+</tr>
+<tr>
+<td align="left"><strong><code>port</code></strong></td>
+<td align="left"><code>8080</code></td>
+<td align="left">Port utilisé pour le serveur local (<code>pnpm doc</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>title</code></strong></td>
+<td align="left"><code>&quot;AngularTemplate Documentation&quot;</code></td>
+<td align="left">Titre affiché dans l&#39;en-tête et l&#39;onglet du navigateur</td>
+</tr>
+<tr>
+<td align="left"><strong><code>tsconfig</code></strong></td>
+<td align="left"><code>&quot;tsconfig.doc.json&quot;</code></td>
+<td align="left">Fichier TypeScript spécifique utilisé pour l&#39;analyse</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h2 id="schematics-rules">
+  <img
+    alt="Schematics"
+    title="Schematics"
+    width="60px"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/schematics.png"
+  />
+  Schematics Rules
+</h2>
+
+<blockquote>
+<p><a href="https://github.com/angular/angular-cli/tree/main/packages/schematics/angular">🔗 Angular Documentation</a></p>
+</blockquote>
+<details>
+
+  <summary>👁️ Tout voir</summary>
+
+<p>&nbsp;</p>
+<h4>1. @schematics/angular:application (<code>Project Initialization</code>)</h4>
+<p>Définit les caractéristiques fondamentales de l&#39;application, principalement utilisées lors de la création du projet.  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>fileNameStyleGuide</code></strong></td>
+<td align="left"><code>&quot;2016&quot;</code></td>
+<td align="left">Utiliser l&#39;ancienne convention de nommage (<code>app.component.ts</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>inlineStyle</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Les styles sont générés dans un fichier <code>.scss</code> séparé</td>
+</tr>
+<tr>
+<td align="left"><strong><code>inlineTemplate</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Le template est généré dans un fichier <code>.html</code> séparé</td>
+</tr>
+<tr>
+<td align="left"><strong><code>routing</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Configurer automatiquement le fichier <code>app.routes.ts</code> pour la navigation</td>
+</tr>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ne pas générer de fichiers de tests unitaires pour les composants initiaux (<code>app.component</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>ssr</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Configurer l&#39;application pour le SSR</td>
+</tr>
+<tr>
+<td align="left"><strong><code>standalone</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Générer la structure initiale en STANDALONE (sans <code>NgModules</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>strict</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Permet des contrôles de type plus stricts</td>
+</tr>
+<tr>
+<td align="left"><strong><code>style</code></strong></td>
+<td align="left"><code>&quot;scss&quot;</code></td>
+<td align="left">Définir SCSS par défaut</td>
+</tr>
+<tr>
+<td align="left"><strong><code>zoneless</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Maintenir <code>zone.js</code> activé pour la détection des changements</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>2. @schematics/angular:class (<code>Class</code>)</h4>
+<p>Configuration pour la génération des classes (<code>ng g cl</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Les classes (souvent des DTO ou des wrappers utilitaires) n&#39;ont généralement pas besoin de tests</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>3. @schematics/angular:component (<code>Components</code>)</h4>
+<p>Configuration pour la génération des composants (<code>ng g c</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>changeDetection</code></strong></td>
+<td align="left"><code>&quot;OnPush&quot;</code></td>
+<td align="left">Définir la stratégie de détection des changements sur <code>OnPush</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>displayBlock</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ajoute automatiquement <code>:host { display: block; }</code> au SCSS du composant</td>
+</tr>
+<tr>
+<td align="left"><strong><code>inlineStyle/inlineTemplate</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Force la séparation des fichiers <code>.html</code> et <code>.scss</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>prefix</code></strong></td>
+<td align="left"><code>&quot;&quot;</code></td>
+<td align="left">Le préfixe du sélecteur est explicitement vide</td>
+</tr>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Générer un fichier de test unitaire (<code>.spec.ts</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>standalone</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Utiliser le STANDALONE pour les composants</td>
+</tr>
+<tr>
+<td align="left"><strong><code>style</code></strong></td>
+<td align="left"><code>&quot;scss&quot;</code></td>
+<td align="left">Définir SCSS par défaut</td>
+</tr>
+<tr>
+<td align="left"><strong><code>type</code></strong></td>
+<td align="left"><code>&quot;component&quot;</code></td>
+<td align="left">Ajouter le type à la classe et au fichier (<code>my-feature.component.ts</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>4. @schematics/angular:directive (<code>Directives</code>)</h4>
+<p>Configuration pour la génération des directives (<code>ng g d</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>prefix</code></strong></td>
+<td align="left"><code>&quot;&quot;</code></td>
+<td align="left">Le préfixe du sélecteur est explicitement vide</td>
+</tr>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Générer un fichier de test unitaire (<code>.spec.ts</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>standalone</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Utiliser le STANDALONE pour les directives</td>
+</tr>
+<tr>
+<td align="left"><strong><code>type</code></strong></td>
+<td align="left"><code>&quot;directive&quot;</code></td>
+<td align="left">Ajouter le type à la classe et au fichier (<code>my-highlight.directive.ts</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>5. @schematics/angular:enum (<code>Enum</code>)</h4>
+<p>Configuration pour la génération des enums (<code>ng g e</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>type</code></strong></td>
+<td align="left"><code>&quot;enum&quot;</code></td>
+<td align="left">Ajouter le type à la classe et au fichier <code>.enum.ts</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>6. @schematics/angular:guard (<code>Guards</code>)</h4>
+<p>Configuration pour le routage des guards (<code>ng g guard</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>functional</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Générer une Guard basée sur une classe (au lieu d&#39;une simple fonction)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>implements</code></strong></td>
+<td align="left"><code>[Array]</code></td>
+<td align="left">Générer le Guard implémentant les quatre interfaces de routage</td>
+</tr>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ne pas générer de fichiers de tests unitaires</td>
+</tr>
+<tr>
+<td align="left"><strong><code>typeSeparator</code></strong></td>
+<td align="left"><code>.</code></td>
+<td align="left">Définir le séparateur <code>guard</code> (<code>auth.guard.ts</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>7. @schematics/angular:interceptor (<code>HTTP Interceptors</code>)</h4>
+<p>Configuration pour la gestion des interceptors (<code>ng g interceptor</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Ne pas générer de fichiers de tests unitaires</td>
+</tr>
+<tr>
+<td align="left"><strong><code>typeSeparator</code></strong></td>
+<td align="left"><code>.</code></td>
+<td align="left">Définir le séparateur <code>interceptor</code> (<code>auth.interceptor.ts</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>8. @schematics/angular:interface (<code>Interfaces</code>)</h4>
+<p>Configuration pour la gestion globale des interfaces (<code>ng g i</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>type</code></strong></td>
+<td align="left"><code>&quot;model&quot;</code></td>
+<td align="left">Ajouter le type à la classe et au fichier <code>.model.ts</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>9. @schematics/angular:module (<code>Modules</code>)</h4>
+<p>Configuration pour la gestion globale des modules (<code>ng g m</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>typeSeparator</code></strong></td>
+<td align="left"><code>.</code></td>
+<td align="left">Définit le séparateur <code>module</code> (uniquement si STANDALONE est désactivé)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>10. @schematics/angular:pipe (<code>Pipes</code>)</h4>
+<p>Configuration pour la gestion globale des pipes (<code>ng g p</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Générer un fichier de test unitaire (<code>.spec.ts</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>standalone</code></strong></td>
+<td align="left"><code>true</code></td>
+<td align="left">Utiliser le STANDALONE pour les pipes</td>
+</tr>
+<tr>
+<td align="left"><strong><code>typeSeparator</code></strong></td>
+<td align="left"><code>.</code></td>
+<td align="left">Définir le séparateur <code>pipe</code> (<code>date.pipe.ts</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>11. @schematics/angular:resolver (<code>Resolvers</code>)</h4>
+<p>Configuration pour la gestion globale des resolvers (<code>ng g r</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Générer un fichier de test unitaire (<code>.spec.ts</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>type</code></strong></td>
+<td align="left"><code>&quot;service&quot;</code></td>
+<td align="left">Ajouter le type à la classe et au fichier (<code>api.service.ts</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+<h4>12. @schematics/angular:service (<code>Services</code>)</h4>
+<p>Configuration pour la gestion globale des services (<code>ng g s</code>).  </p>
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>skipTests</code></strong></td>
+<td align="left"><code>false</code></td>
+<td align="left">Générer un fichier de test unitaire (<code>.spec.ts</code>)</td>
+</tr>
+<tr>
+<td align="left"><strong><code>type</code></strong></td>
+<td align="left"><code>&quot;service&quot;</code></td>
+<td align="left">Ajouter le type à la classe et au fichier (<code>api.service.ts</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+</details>
+
+<h2 id="vscode-rules">
+  <img
+    alt="VSCODE"
+    title="VSCODE"
+    width="30px"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
+  />
+  VSCode Rules
+</h2>
+
+<details>
+
+  <summary>👁️ Tout voir</summary>
+
+<h3 id="files-association">Files Association</h3>
+
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</details>
+
+<h3 id="i18n-ally">I18n Ally</h3>
+
+<details>
+
+  <summary>🧐 Consulter la configuration détaillée</summary>
+
+<p>&nbsp;</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Valeur</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</details>
+
+</details>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'rules-references.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
