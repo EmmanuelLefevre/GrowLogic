@@ -167,16 +167,20 @@ pnpm install --frozen-lockfile
 pnpm start
 ```
 
-### Installation d'une librairie
-
-```bash
-$env:ALLOW_UPDATE=1; pnpm add <nom-du-package>
-```
-
 - Via Package  
 
 ```bash
 
 ```
 
+### Installation d'une librairie
 
+```bash
+$env:ALLOW_UPDATE=1; pnpm add <nom-du-package>
+```
+
+### Installation de la CLI Angular en global
+
+```bash
+pnpm add -g @angular/cli@21.2.1
+```
