@@ -1,0 +1,15 @@
+<div class="public-layout">
+  <header-nav />
+
+  <main class="public-layout__main">
+    <router-outlet />
+  </main>
+
+  @if (isMockEnabled && isHomeRoute()) {
+    <mock-admin-login-button />
+  }
+
+  <scroll-to-top />
+
+  <main-footer />
+</div>

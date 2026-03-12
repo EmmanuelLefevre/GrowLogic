@@ -1,0 +1,121 @@
+@use 'abstracts' as *;
+
+:host {
+  display: block;
+}
+
+.home {
+  padding: 2rem 1rem;
+
+  @include respond-to('tablet') {
+    padding: 4rem 1rem 2rem 1rem;
+  }
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    @include respond-to('tablet') {
+      flex-direction: row;
+      justify-content: center;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: left;
+    }
+  }
+
+  &__welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+
+    @include respond-to('tablet') {
+      align-items: flex-start;
+      text-align: center;
+    }
+  }
+
+  &__logo {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    color: var(--text-black-color);
+    margin: 0 auto;
+  }
+
+  &__description {
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  &__accent {
+    color: var(--text-primary-color);
+    font-weight: bold;
+  }
+
+  &__divider {
+    display: none;
+
+    @include respond-to('tablet') {
+      display: block;
+      width: 2px;
+      height: 250px;
+      flex-shrink: 0;
+      margin: 0 1rem;
+
+      background: linear-gradient(
+        90deg,
+        var(--secondary-color) 0%,
+        oklch(from var(--secondary-color) l c h) 25%,
+        var(--primary-color) 100%
+      );
+    }
+  }
+
+  &__resources {
+    @include respond-to('desktop') {
+      flex: 1;
+    }
+  }
+}
+
+.pill-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  color: var(--text-secondary-color);
+  gap: 1rem;
+  width: 100%;
+
+  @include respond-to('desktop') {
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-width: 220px;
+
+  @include respond-to('tablet') {
+    justify-content: flex-start;
+    font-size: 1.1rem;
+    padding-left: 1.5rem;
+
+    &:hover {
+      color: var(--text-primary-color);
+    }
+  }
+}

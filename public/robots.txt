@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /contact
+Allow: /home
+Allow: /login
+
+# Sitemap
+Sitemap: https://www.growlogic/sitemap.xml

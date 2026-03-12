@@ -1,0 +1,60 @@
+@use 'abstracts' as *;
+
+:host {
+  display: block;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 70px);
+  padding: 4rem 2rem 2rem 2rem;
+  background-color: var(--bg-color);
+
+  &__container {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    padding: 40px;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    background-color: var(--bg-white-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    animation: fade-in 0.3s ease-in-out;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-primary-color);
+    margin-bottom: 10px;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: var(--text-black-color);
+    line-height: 1.5;
+  }
+
+  &__footer {
+    margin-top: 32px;
+    text-align: center;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
