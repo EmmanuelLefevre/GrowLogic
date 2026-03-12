@@ -26,10 +26,6 @@ import { MainButtonComponent } from './components/button/main-button.component';
 export { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 
-// --- DEV
-export { MockAdminLoginButtonComponent } from './components/dev/mock-admin-login-button/mock-admin-login-button.component';
-import { MockAdminLoginButtonComponent } from './components/dev/mock-admin-login-button/mock-admin-login-button.component';
-
 // --- Directives
 export { InputFocusDirective } from './_directives/input-focus/input-focus.directive';
 import { InputFocusDirective } from './_directives/input-focus/input-focus.directive';
@@ -66,10 +62,6 @@ export const SHARED_UI_COMPONENTS = [
   MainLinkComponent,
   MainButtonComponent,
   ScrollToTopComponent,
-] as const;
-
-export const SHARED_DEV_COMPONENTS = [
-  MockAdminLoginButtonComponent,
 ] as const;
 
 export const SHARED_DIRECTIVES = [

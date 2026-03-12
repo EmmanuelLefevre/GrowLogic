@@ -5,7 +5,6 @@ export const ENVIRONMENT: IEnvironment = {
   useMocks: true,
   apiUrl: 'http://localhost:3000/api',
   logLevel: 'debug',
-  mockAdminPassword: '1234',
   application: {
     name: 'GrowLogic',
     author: 'Emmanuel Lefevre, Adrien Lazaille, Camille Hoareau, Rémy Nowe, Louise Delaunay, Nicolas Lombard',

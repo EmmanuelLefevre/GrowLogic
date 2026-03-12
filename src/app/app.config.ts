@@ -7,9 +7,7 @@ import { catchError, firstValueFrom, Observable, of } from 'rxjs';
 
 import { ROUTES } from '@app/app.routes';
 import { authInterceptor } from '@core/interceptor/auth/auth.interceptor';
-import { mockInterceptor } from '@core/interceptor/dev/mock.interceptor';
 import { AuthService } from '@core/_services/auth/auth.service';
-import { ENVIRONMENT } from '@env/environment';
 
 export class CustomTranslateLoader implements TranslateLoader {
   private readonly http = inject(HttpClient);
@@ -23,10 +21,6 @@ export class CustomTranslateLoader implements TranslateLoader {
 const HTTP_INTERCEPTORS: HttpInterceptorFn[] = [
   authInterceptor
 ];
-
-if (ENVIRONMENT.useMocks) {
-  HTTP_INTERCEPTORS.push(mockInterceptor);
-}
 
 export const APP_CONFIG: ApplicationConfig = {
   providers: [
