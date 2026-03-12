@@ -52,7 +52,6 @@ export default defineConfig({
         'coverage/**',
         'dist/**',
         'eslint.config.js',
-        'src/_environments/environment.prod.sample.ts',
         'src/_environments/environment.ts',
         'src/app/app.config.ts',
         'src/main.ts',

@@ -110,7 +110,7 @@
  ┃ ┗ 📄app.routes.ts
  ┣ 🖼️assets
  ┃ ┣ ⚙️_config
- ┃ ┣ 💾_data
+ ┃ ┣ 🌄background
  ┃ ┣ 🔡fonts
  ┃ ┣ 🗣️i18n
  ┃ ┣ ✨icons
