@@ -1,8 +1,8 @@
 {
-  "name": "angular-template",
+  "name": "grow-logic",
   "version": "1.0.0",
   "private": true,
-  "description": "Angular 21 development accelerator designed for demanding teams",
+  "description": "GrowLogic Application",
   "keywords": [
     "Angular",
     "boilerplate",
@@ -29,14 +29,14 @@
     "Fontawesome",
     "Angular Material"
   ],
-  "homepage": "https://www.angulartemplate.emmanuellefevre.com/home",
+  "homepage": "https://www.growlogic.emmanuellefevre.com/home",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EmmanuelLefevre/AngularTemplate"
+    "url": "https://github.com/EmmanuelLefevre/growlogic"
   },
   "license": "MIT",
   "author": {
-    "name": "Emmanuel Lefevre",
+    "name": "Emmanuel Lefevre, Adrien Lazaille, Camille Hoareau, Rémy Nowe, Louise Delaunay, Nicolas Lombard",
     "url": "https://www.emmanuellefevre.com/"
   },
   "packageManager": "pnpm@10.25.0",

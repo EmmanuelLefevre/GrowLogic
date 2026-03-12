@@ -9,7 +9,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "AngularTemplate": {
+    "GrowLogic": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -170,10 +170,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "AngularTemplate:build:production"
+              "buildTarget": "GrowLogic:build:production"
             },
             "development": {
-              "buildTarget": "AngularTemplate:build:development"
+              "buildTarget": "GrowLogic:build:development"
             }
           },
           "defaultConfiguration": "development"
