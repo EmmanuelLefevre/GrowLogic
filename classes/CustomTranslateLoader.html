@@ -206,8 +206,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/app.config.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/app/app.config.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -272,9 +272,7 @@ import { catchError, firstValueFrom, Observable, of } from &#x27;rxjs&#x27;;
 
 import { ROUTES } from &#x27;@app/app.routes&#x27;;
 import { authInterceptor } from &#x27;@core/interceptor/auth/auth.interceptor&#x27;;
-import { mockInterceptor } from &#x27;@core/interceptor/dev/mock.interceptor&#x27;;
 import { AuthService } from &#x27;@core/_services/auth/auth.service&#x27;;
-import { ENVIRONMENT } from &#x27;@env/environment&#x27;;
 
 export class CustomTranslateLoader implements TranslateLoader {
   private readonly http &#x3D; inject(HttpClient);
@@ -288,10 +286,6 @@ export class CustomTranslateLoader implements TranslateLoader {
 const HTTP_INTERCEPTORS: HttpInterceptorFn[] &#x3D; [
   authInterceptor
 ];
-
-if (ENVIRONMENT.useMocks) {
-  HTTP_INTERCEPTORS.push(mockInterceptor);
-}
 
 export const APP_CONFIG: ApplicationConfig &#x3D; {
   providers: [
