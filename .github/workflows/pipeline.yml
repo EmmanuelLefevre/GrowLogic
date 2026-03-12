@@ -226,8 +226,8 @@ jobs:
     name: 🎯 Deploy to Production
     needs: [security, quality]
     # 🚩 Temporarily disabled (will never launch)
-    # if: github.ref == 'refs/heads/main' && false
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && false
+    # if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
