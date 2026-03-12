@@ -161,9 +161,9 @@ Ce projet utilise **Corepack** (inclus dans **NodeJS**) pour garantir que tous l
 
 ```bash
 git clone git@github.com:EmmanuelLefevre/AngularTemplate.git
-cd AngularTemplate
+cd GrowLogic
 corepack enable
-pnpm install
+pnpm install --frozen-lockfile
 pnpm start
 ```
 
