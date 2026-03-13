@@ -16,17 +16,17 @@
 
 <h1 id="angular-template" align="center">
   <img
-    alt="Angular"
-    title="Angular"
+    alt="GrowLogic"
+    title="GrowLogic"
     width="34px"
-    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/growlogic.png"
   />
-  ANGULAR TEMPLATE
+  GROW LOGIC
   <img
-    alt="Angular"
-    title="Angular"
+    alt="GrowLogic"
+    title="GrowLogic"
     width="34px"
-    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"
+    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/growlogic.png"
   />
 </h1>
 
