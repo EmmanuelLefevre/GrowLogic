@@ -15,26 +15,10 @@
 <br>
 
 <h1 id="angular-template" align="center">
-  <img
-    alt="GrowLogic"
-    title="GrowLogic"
-    width="34px"
-    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/growlogic.png"
-  />
-  GROW LOGIC
-  <img
-    alt="GrowLogic"
-    title="GrowLogic"
-    width="34px"
-    src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/growlogic.png"
-  />
-</h1>
-
-<h1 id="angular-template" align="center">
 <img
     alt="GrowLogic"
     title="GrowLogic"
-    width="150px"
+    width="450px"
     src="https://raw.githubusercontent.com/EmmanuelLefevre/GitHubProfileIcons/main/logo_growlogic.png"
   />
 </h1>
