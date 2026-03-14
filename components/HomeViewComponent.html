@@ -301,11 +301,6 @@ export class HomeViewComponent {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;home&quot;&gt;
-  &lt;img
-    src&#x3D;&quot;assets/background/bg.png&quot;
-    alt&#x3D;&quot;Background&quot;
-    class&#x3D;&quot;home__background&quot; /&gt;
-
   &lt;div class&#x3D;&quot;home__hero&quot;&gt;
     &lt;div class&#x3D;&quot;home__welcome&quot;&gt;
       &lt;img
@@ -352,7 +347,7 @@ export class HomeViewComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section class="home">  <img    src="assets/background/bg.png"    alt="Background"    class="home__background" />  <div class="home__hero">    <div class="home__welcome">      <img        src="assets/logos/logo.png"        alt="{{ appNameKey() | translate }}"        class="home__logo" />      <h1 class="home__title">{{ \'PAGES.HOME.HERO.TITLE\' | translate }}</h1>      <p class="home__description">        {{ \'PAGES.HOME.HERO.PREFIX\' | translate }}        <strong class="home__accent">{{ appNameKey() | translate }}</strong>        {{ \'PAGES.HOME.HERO.SUFFIX\' | translate }}      </p>    </div>  </div></section></div>'
+        var COMPONENT_TEMPLATE = '<div><section class="home">  <div class="home__hero">    <div class="home__welcome">      <img        src="assets/logos/logo.png"        alt="{{ appNameKey() | translate }}"        class="home__logo" />      <h1 class="home__title">{{ \'PAGES.HOME.HERO.TITLE\' | translate }}</h1>      <p class="home__description">        {{ \'PAGES.HOME.HERO.PREFIX\' | translate }}        <strong class="home__accent">{{ appNameKey() | translate }}</strong>        {{ \'PAGES.HOME.HERO.SUFFIX\' | translate }}      </p>    </div>  </div></section></div>'
     var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CloseButtonComponent', 'selector': 'close-button'},{'name': 'ContactViewComponent', 'selector': 'contact'},{'name': 'DashboardComponent', 'selector': 'dashboard'},{'name': 'DynamicFormComponent', 'selector': 'dynamic-form'},{'name': 'ErrorHandlerComponent', 'selector': 'error-handler'},{'name': 'GenericErrorComponent', 'selector': 'generic-error'},{'name': 'GenericInputComponent', 'selector': 'generic-input'},{'name': 'HeaderNavComponent', 'selector': 'header-nav'},{'name': 'HomeViewComponent', 'selector': 'home-view'},{'name': 'LanguageToggleComponent', 'selector': 'language-toggle'},{'name': 'LoginViewComponent', 'selector': 'login-view'},{'name': 'LogoComponent', 'selector': 'logo'},{'name': 'MainButtonComponent', 'selector': 'main-button'},{'name': 'MainFooterComponent', 'selector': 'main-footer'},{'name': 'MainLinkComponent', 'selector': 'main-link'},{'name': 'PrivateComponent', 'selector': 'private'},{'name': 'PublicLayoutComponent', 'selector': 'public-layout'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ServerErrorComponent', 'selector': 'server-error'},{'name': 'SnackbarComponent', 'selector': 'snackbar'},{'name': 'UnauthorizedErrorComponent', 'selector': 'unauthorized-error'},{'name': 'UnfoundErrorComponent', 'selector': 'unfound-error'},{'name': 'UnknownErrorComponent', 'selector': 'unknown-error'}];
     var DIRECTIVES = [{'name': 'InputFocusDirective', 'selector': '[inputFocus]'},{'name': 'InputTitleCaseDirective', 'selector': '[inputTitleCase]'},{'name': 'InputTrimDirective', 'selector': '[inputTrim]'},{'name': 'InputUppercaseDirective', 'selector': '[inputUpperCase]'},{'name': 'TypeWriterDirective', 'selector': '[typeWriter]'}];
     var ACTUAL_COMPONENT = {'name': 'HomeViewComponent'};
