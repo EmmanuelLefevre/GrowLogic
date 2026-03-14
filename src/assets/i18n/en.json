@@ -34,7 +34,7 @@
       },
       "CREDITS": {
         "DEVELOPED_BY_PREFIX": "Site developped by",
-        "DEVELOPER_NAME": "Emmanuel Lefevre, Adrien Lazaille, Camille Hoareau, Rémy Nowe, Louise Delaunay, Nicolas Lombard ",
+        "DEVELOPER_NAME": "Emmanuel Lefevre ",
         "HOSTED_BY_PREFIX": "and hosted on",
         "HOST_PROVIDER_NAME": "Planet Hoster "
       },
@@ -68,14 +68,9 @@
   "PAGES": {
     "HOME": {
       "HERO": {
-        "TITLE": "Hello my friend !",
+        "TITLE": "Your connected green thumb !",
         "PREFIX": "Your new project",
         "SUFFIX": "is ready 🎉"
-      },
-      "LINKS": {
-        "EXPLORE": "Explore the doc",
-        "LEARN": "Learn with tutorials",
-        "CLI": "CLI Doc"
       }
     },
     "AUTH": {

@@ -34,7 +34,7 @@
       },
       "CREDITS": {
         "DEVELOPED_BY_PREFIX": "Site développé par",
-        "DEVELOPER_NAME": "Emmanuel Lefevre, Adrien Lazaille, Camille Hoareau, Rémy Nowe, Louise Delaunay, Nicolas Lombard ",
+        "DEVELOPER_NAME": "Emmanuel Lefevre ",
         "HOSTED_BY_PREFIX": "et hébergé sur",
         "HOST_PROVIDER_NAME": "Planet Hoster "
       },
@@ -68,14 +68,9 @@
   "PAGES": {
     "HOME": {
       "HERO": {
-        "TITLE": "Bonjour l'ami !",
+        "TITLE": "Votre main verte connectée !",
         "PREFIX": "Ton nouveau projet",
         "SUFFIX": "est prêt 🎉"
-      },
-      "LINKS": {
-        "EXPLORE": "Explorer la doc",
-        "LEARN": "Apprendre via Tutoriels",
-        "CLI": "Doc de la CLI"
       }
     },
     "AUTH": {
