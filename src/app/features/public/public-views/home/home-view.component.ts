@@ -20,4 +20,5 @@ import { BackgroundComponent } from '@app/shared/components/background/backgroun
 export class HomeViewComponent {
 
   readonly appNameKey = signal('META.DEFAULT.APP_NAME');
+
 }
