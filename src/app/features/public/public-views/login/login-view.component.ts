@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal, viewChild } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -23,6 +24,7 @@ const FLIP_ANIMATION_MIDPOINT_MS = FLIP_ANIMATION_DURATION_MS * FLIP_ANIMATION_M
     CloseButtonComponent,
     DynamicFormComponent,
     MainLinkComponent,
+    NgOptimizedImage,
     TranslateModule
   ],
   templateUrl: './login-view.component.html',

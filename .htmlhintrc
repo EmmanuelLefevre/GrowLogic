@@ -20,6 +20,7 @@
     "matTooltipClass",
     "matTooltipPosition",
     "matTooltipShowDelay",
+    "ngSrc",
     "routerLink",
     "routerLinkActive"
   ],
