@@ -41,4 +41,32 @@ describe('HomeViewComponent', () => {
     // --- ASSERT ---
     expect(backgroundDebugElement).toBeTruthy();
   });
+
+  describe('Translations', () => {
+    it('should render the correct translation key for the title', () => {
+      // --- ACT ---
+      const titleElement = fixture.debugElement.query(By.css('.home__title')).nativeElement;
+
+      // --- ASSERT ---
+      expect(titleElement.textContent.trim()).toBe('PAGES.HOME.HERO.TITLE');
+    });
+
+    it('should render the app name key and the description translation key', () => {
+      // --- ACT ---
+      const accentElement = fixture.debugElement.query(By.css('.home__accent')).nativeElement;
+      const descriptionElement = fixture.debugElement.query(By.css('.home__description')).nativeElement;
+
+      // --- ASSERT ---
+      expect(accentElement.textContent.trim()).toBe('META.DEFAULT.APP_NAME');
+      expect(descriptionElement.textContent).toContain('PAGES.HOME.HERO.DESCRIPTION');
+    });
+
+    it('should set the logo alt attribute to the app name translation key', () => {
+      // --- ACT ---
+      const logoElement = fixture.debugElement.query(By.css('.home__logo')).nativeElement;
+
+      // --- ASSERT ---
+      expect(logoElement.getAttribute('alt')).toBe('META.DEFAULT.APP_NAME');
+    });
+  });
 });

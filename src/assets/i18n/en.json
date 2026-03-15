@@ -70,8 +70,7 @@
     "HOME": {
       "HERO": {
         "TITLE": "Your Connected Green Thumb !",
-        "PREFIX": "Your new project",
-        "SUFFIX": "is ready 🎉"
+        "DESCRIPTION": " or IoT intelligence at the service of your houseplants. Thanks to our precision sensors and AI, monitor their water needs in real time and receive alerts for a greener indoor environment."
       }
     },
     "AUTH": {

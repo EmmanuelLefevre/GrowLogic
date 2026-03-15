@@ -60,13 +60,16 @@
     }
 
     @include respond-to('desktop-xl') {
-      max-width: 450px;
+      max-width: 430px;
     }
   }
 
   &__title {
-    color: var(--text-primary-color);
+    color: transparent;
     margin: 0 auto;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
 
     @include respond-to('desktop-xl') {
       max-width: 100%;
@@ -74,13 +77,24 @@
   }
 
   &__description {
-    max-width: 600px;
+    font-family: var(--font-special);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-nav-color);
+    max-width: 250px;
     margin: 0 auto;
     line-height: 1.6;
+
+    @include respond-to('tablet') {
+      max-width: 480px;
+    }
+
+    @include respond-to('desktop') {
+      max-width: 600px;
+    }
   }
 
   &__accent {
     color: var(--text-primary-color);
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
   }
 }

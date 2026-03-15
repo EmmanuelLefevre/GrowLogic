@@ -70,8 +70,7 @@
     "HOME": {
       "HERO": {
         "TITLE": "Votre Main Verte Connectée !",
-        "PREFIX": "Ton nouveau projet",
-        "SUFFIX": "est prêt 🎉"
+        "DESCRIPTION": " ou l'intelligence IoT au service de vos plantes d'intérieur. Grâce à nos capteurs de précision et à l'IA, suivez leurs besoins en eau en temps réel et recevez des alertes pour un intérieur verdoyant."
       }
     },
     "AUTH": {

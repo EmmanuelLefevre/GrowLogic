@@ -54,7 +54,7 @@
   --font-main: 'Roboto', sans-serif;
   --font-mono: 'Fira Code', monospace;
   --font-nav: 'Roboto', sans-serif;
-  --font-special: 'Roboto', sans-serif;
+  --font-special: 'Roboto Serif', serif;
   --font-snackbar: 'Roboto', sans-serif;
   --font-title-primary: 'Aria', sans-serif;
   --font-title-secondary: 'Montserrat', sans-serif;
@@ -91,7 +91,7 @@
   }
 
   @include respond-to('desktop-xl') {
-    --font-size-h1: 48px;
+    --font-size-h1: 44px;
   }
 
   /* =========== ICONS =========== */
