@@ -42,6 +42,14 @@ describe('HomeViewComponent', () => {
     expect(backgroundDebugElement).toBeTruthy();
   });
 
+  it('should render the logo image with the correct ngSrc path', () => {
+    // --- ACT ---
+    const logoElement = fixture.debugElement.query(By.css('.home__logo')).nativeElement;
+
+    // --- ASSERT ---
+    expect(logoElement.getAttribute('ngSrc')).toBe('assets/logos/logo.png');
+  });
+
   describe('Translations', () => {
     it('should render the correct translation key for the title', () => {
       // --- ACT ---
