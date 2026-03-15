@@ -7,35 +7,13 @@
 }
 
 .home {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
   width: 100%;
   padding: 2rem 1rem;
-  background-image: url('/assets/background/bg-hg.png'), url('/assets/background/bg-bd.png');
-  background-position:
-    top left,
-    bottom right;
-  background-repeat: no-repeat, no-repeat;
-  background-size: 340px, 280px;
-  overflow: hidden;
-  isolation: isolate;
-  z-index: 0;
-
-  @include respond-to('tablet') {
-    padding: 4rem 1rem 4rem 1rem;
-    background-size: 480px, 400px;
-  }
-
-  @include respond-to('desktop') {
-    background-size: 600px, 500px;
-  }
-
-  @include respond-to('desktop-xl') {
-    background-size: 800px, 600px;
-  }
+  z-index: 1;
 
   &__hero {
     position: relative;

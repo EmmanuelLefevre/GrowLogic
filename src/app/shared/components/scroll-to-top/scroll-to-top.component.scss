@@ -42,6 +42,7 @@
     .scroll-top__icon {
       color: var(--white-color);
       animation: rubber-band 1.5s linear 0s infinite reverse;
+      -webkit-animation: rubber-band 1.5s linear 0s infinite reverse;
     }
   }
 

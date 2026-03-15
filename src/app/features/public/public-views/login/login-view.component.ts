@@ -7,6 +7,7 @@ import { LoginCredentials } from '@core/_models/auth/auth.model';
 
 import { AuthService } from '@core/_services/auth/auth.service';
 
+import { BackgroundComponent } from '@app/shared/components/background/background.component';
 import { CloseButtonComponent } from '@shared/components/close-button/close-button.component';
 import { DynamicFormComponent } from '@shared/components/dynamic-form/dynamic-form.component';
 import { MainLinkComponent } from '@shared/components/link/main-link.component';
@@ -18,6 +19,7 @@ const FLIP_ANIMATION_MIDPOINT_MS = FLIP_ANIMATION_DURATION_MS * FLIP_ANIMATION_M
 @Component({
   selector: 'login-view',
   imports: [
+    BackgroundComponent,
     CloseButtonComponent,
     DynamicFormComponent,
     MainLinkComponent,

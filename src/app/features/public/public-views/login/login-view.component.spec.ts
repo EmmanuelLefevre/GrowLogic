@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { Signal } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { of, throwError } from 'rxjs';
 
 import { AuthService } from '@core/_services/auth/auth.service';
+import { BackgroundComponent } from '@shared/components/background/background.component';
 import { DynamicFormComponent } from '@shared/components/dynamic-form/dynamic-form.component';
 
 import { LoginViewComponent } from './login-view.component';
@@ -50,6 +52,14 @@ describe('LoginViewComponent', () => {
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render the BackgroundComponent wrapper', () => {
+    // --- ACT ---
+    const backgroundDebugElement = fixture.debugElement.query(By.directive(BackgroundComponent));
+
+    // --- ASSERT ---
+    expect(backgroundDebugElement).toBeTruthy();
   });
 
   it('should have initial signals set to false', () => {

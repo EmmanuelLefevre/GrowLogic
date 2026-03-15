@@ -39,6 +39,7 @@
     border-right-color: transparent;
     border-radius: 50%;
     animation: btn-spin 0.75s linear infinite;
+    -webkit-animation: btn-spin 0.75s linear infinite;
   }
 
   &:hover:not(:disabled, .is-disabled) {

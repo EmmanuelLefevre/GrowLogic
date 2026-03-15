@@ -31,10 +31,12 @@
     );
 
     animation: defective-bulb 1.5s infinite;
+    -webkit-animation: defective-bulb 1.5s infinite;
 
     @media (prefers-reduced-motion: reduce) {
       transition: none;
       animation: none;
+      -webkit-animation: none;
       background: radial-gradient(
         circle 400px at 50% 50%,
         transparent 0%,
