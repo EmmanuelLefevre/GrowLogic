@@ -148,19 +148,6 @@ jobs:
       - name: 🎨 Stylelint SCSS
         run: pnpm lint:scss:ci
 
-      # - name: 🌍 Check i18n Integrity
-      #   id: i18n
-      #   run: pnpm i18n:lint:ci
-
-      # - name: 📢 Failure Notification
-      #   if: failure() && steps.i18n.outcome == 'failure'
-      #   run: |
-      #     echo "##### 🚨 TRANSLATION POLICE HERE ! #####" >> $GITHUB_STEP_SUMMARY
-      #     echo "Hey ${{ github.actor }}, you created new keys but forgot to translate them !" >> $GITHUB_STEP_SUMMARY
-      #     echo "Do not leave our users lost in translation. 🗺️" >> $GITHUB_STEP_SUMMARY
-      #     echo "👉 Run 'pnpm i18n:extract' locally to generate the missing keys automatically." >> $GITHUB_STEP_SUMMARY
-      #     exit 1
-
       - name: 🧪 Run Vitest Tests & Coverage
         id: vitest
         run: pnpm test:coverage
@@ -173,17 +160,27 @@ jobs:
           echo "Hey ${{ github.actor }}, please work harder on your coverage ! 🤣🤣🤣" >> $GITHUB_STEP_SUMMARY
           exit 1
 
-      - name: 🚀 SonarQube Scan
+      - name: ☁️ SonarCloud Scan & Quality Gate
         if: success()
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarcloud-github-action@master
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.qualitygate.wait=true
 
-      - name: 📊 SonarQube Quality Gate
-        uses: SonarSource/sonarqube-quality-gate-action@v1
-        timeout-minutes: 5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      # - name: 🚀 SonarQube Scan
+      #   if: success()
+      #   uses: SonarSource/sonarqube-scan-action@v6
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      # - name: 📊 SonarQube Quality Gate
+      #   uses: SonarSource/sonarqube-quality-gate-action@v1
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: 🧱 Build Check
         run: pnpm build --configuration=production
