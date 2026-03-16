@@ -32,7 +32,7 @@ export default defineConfig({
     setupFiles: [
       resolve(DIRNAME, 'src/test-setup.ts')
     ],
-    reporters: ['default'],
+    reporters: ['default', 'lcov'],
     testTimeout: 20000,
     hookTimeout: 20000,
     coverage: {

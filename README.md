@@ -177,4 +177,3 @@ $env:ALLOW_UPDATE=1; pnpm add <nom-du-package>
 ```bash
 pnpm add -g @angular/cli@21.2.1
 ```
-
