@@ -160,27 +160,18 @@ jobs:
           echo "Hey ${{ github.actor }}, please work harder on your coverage ! 🤣🤣🤣" >> $GITHUB_STEP_SUMMARY
           exit 1
 
-      - name: ☁️ SonarCloud Scan & Quality Gate
-        if: success()
+      - name: 🚀 SonarQube Scan
+        if: success() && github.ref == 'refs/heads/main'
         uses: SonarSource/sonarqube-scan-action@v6
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.qualitygate.wait=true
 
-      # - name: 🚀 SonarQube Scan
-      #   if: success()
-      #   uses: SonarSource/sonarqube-scan-action@v6
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      # - name: 📊 SonarQube Quality Gate
-      #   uses: SonarSource/sonarqube-quality-gate-action@v1
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: 📊 SonarQube Quality Gate
+        if: success() && github.ref == 'refs/heads/main'
+        uses: SonarSource/sonarqube-quality-gate-action@v1
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: 🧱 Build Check
         run: pnpm build --configuration=production
