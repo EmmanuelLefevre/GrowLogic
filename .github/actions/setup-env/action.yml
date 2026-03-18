@@ -10,15 +10,19 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: 📦 Install PNPM
-      uses: pnpm/action-setup@v4
+    - shell: bash
+      run: echo "📦 Install PNPM"
+    - uses: pnpm/action-setup@v4
 
-    - name: 🏗️ Setup Node
-      uses: actions/setup-node@v4
+    - shell: bash
+      run: echo "🏗️ Setup Node"
+    - uses: actions/setup-node@v4
       with:
         node-version: 22
         cache: 'pnpm'
 
-    - name: ${{ inputs.step-name }}
-      shell: bash
-      run: pnpm install --frozen-lockfile
+    - shell: bash
+      run: |
+        echo "::group::${{ inputs.step-name }}"
+        pnpm install --frozen-lockfile
+        echo "::endgroup::"
