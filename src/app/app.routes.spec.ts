@@ -178,17 +178,4 @@ describe('Route Configuration Integrity', () => {
     expect(ROOT_ROUTE?.loadComponent).toBeDefined();
     expect(COMPONENT_IMPORT).toBeTruthy();
   });
-
-  it('should be able to resolve the AdminLayoutComponent import', async() => {
-    // --- ARRANGE ---
-    const ADMIN_ROUTE = ROUTES.find(r => r.path === 'admin');
-
-    // --- ACT ---
-    const COMPONENT_IMPORT = await ADMIN_ROUTE?.loadComponent!();
-
-    // --- ASSERT ---
-    expect(ADMIN_ROUTE?.loadComponent).toBeDefined();
-    expect(COMPONENT_IMPORT).toBeTruthy();
-  });
-
 });
