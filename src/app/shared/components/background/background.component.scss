@@ -21,7 +21,7 @@
   isolation: isolate;
   z-index: 0;
 
-  @include respond-to-ratio('standard-laptop') {
+  @include respond-to-ratio('laptop-and-below') {
     background-size: clamp(200px, 20vw, 450px), clamp(150px, 15vw, 350px);
   }
 

@@ -27,7 +27,7 @@
       @content;
     }
   }
-  @if $ratio == 'standard-laptop' {
+  @if $ratio == 'laptop-and-below' {
     @media (max-aspect-ratio: 16/9) {
       @content;
     }
