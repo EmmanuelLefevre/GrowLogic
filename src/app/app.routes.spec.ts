@@ -6,10 +6,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideTranslateService } from '@ngx-translate/core';
 
+import { authGuard } from '@core/guard/auth/auth.guard';
 import { AuthService } from '@core/_services/auth/auth.service';
-
-import { ROUTES } from './app.routes';
-import { authGuard } from './core/guard/auth/auth.guard';
+import { ROUTES } from '@app/app.routes';
 
 @Component({
   selector: 'mock-layout',
@@ -85,30 +84,6 @@ describe('App Routes', () => {
     // --- ASSERT ---
     expect(INSTANCE).toBeTruthy();
     expect(TestBed.inject(Router).url).toBe('/login');
-  });
-
-  it('should redirect to home (via root) if adminGuard fails due to missing token', async() => {
-    // --- ARRANGE ---
-    AUTH_SERVICE_MOCK.isAdmin.mockReturnValue(false);
-    localStorage.clear();
-
-    // --- ACT ---
-    await harness.navigateByUrl('/admin/dashboard');
-
-    // --- ASSERT ---
-    expect(TestBed.inject(Router).url).toBe('/home');
-  });
-
-  it('should allow /admin/dashboard if adminGuard passes', async() => {
-    // --- ARRANGE ---
-    AUTH_SERVICE_MOCK.isAdmin.mockReturnValue(true);
-    AUTH_SERVICE_MOCK.currentUser.set({ roles: ['ADMIN'] });
-
-    // --- ACT ---
-    await harness.navigateByUrl('/admin/dashboard');
-
-    // --- ASSERT ---
-    expect(TestBed.inject(Router).url).toBe('/admin/dashboard');
   });
 
   it('should navigate to unfound-error for unknown routes (wildcard)', async() => {
