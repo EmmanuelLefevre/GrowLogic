@@ -36,10 +36,9 @@
 
   &__logo {
     width: 100%;
-    max-width: 250px;
+    max-width: clamp(250px, 30vw, 430px);
     margin: 0 auto;
     height: auto;
-    max-width: clamp(250px, 30vw, 430px);
   }
 
   &__title {
