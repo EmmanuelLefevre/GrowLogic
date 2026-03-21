@@ -1,6 +1,8 @@
 :host {
   --mouse-x: 50vw;
   --mouse-y: 50vh;
+  display: block;
+  width: 100%;
 }
 
 .interrogation-room {
@@ -10,15 +12,17 @@
   justify-content: center;
   font-family: var(--font-typewriter);
   color: var(--text-typewriter-color);
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
+  width: 90%;
+  max-width: min(700px, calc((100vh - 500px) * (16 / 9)));
   min-height: calc(100vh - 500px);
+  margin: 0 auto;
+  border-radius: 8px;
   background-color: var(--deep-black-color);
+  box-shadow: 0 4px 15px var(--rgba-color-s);
+  overflow: hidden;
   cursor:
     url('/assets/img/flashlight.svg') 0 32,
     crosshair;
-  overflow: hidden;
 
   &__spotlight {
     position: absolute;
@@ -29,7 +33,7 @@
     background: radial-gradient(
       circle 250px at calc(var(--mouse-x) - 120px) calc(var(--mouse-y) + 120px),
       transparent 0%,
-      rgba(0, 0, 0, 0.8) 50%,
+      var(--rgba-color-l) 50%,
       var(--deep-black-color) 80%
     );
 
@@ -43,7 +47,7 @@
       background: radial-gradient(
         circle 400px at 50% 50%,
         transparent 0%,
-        rgba(0, 0, 0, 0.8) 50%,
+        var(--rgba-color-l) 50%,
         var(--deep-black-color) 80%
       );
     }
@@ -58,14 +62,10 @@
   }
 
   &__title {
-    font-size: 24px;
+    font-size: var(--font-size-h1);
     text-transform: uppercase;
     color: var(--text-danger-color);
     margin-bottom: 18px;
     letter-spacing: 1px;
-  }
-
-  &__message {
-    font-size: 1.25rem;
   }
 }
