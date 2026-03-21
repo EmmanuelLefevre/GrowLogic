@@ -131,7 +131,7 @@ La documentation détaillée est disponible ici :
 
 **Etape 1 :** Node.js  
 
-- Ce projet nécessite une version précise de **NodeJS**. Utilisez **NVM**  
+- Ce projet nécessite une version précise de **NodeJS**. Utilisez **NVM**.  
 
 ```shell
 nvm install 22.21.1
@@ -164,12 +164,6 @@ pnpm start
 
 ```bash
 
-```
-
-### Installation d'une librairie
-
-```bash
-$env:ALLOW_UPDATE=1; pnpm add <nom-du-package>
 ```
 
 ### Installation de la CLI Angular en global

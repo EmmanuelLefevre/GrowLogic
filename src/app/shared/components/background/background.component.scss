@@ -16,14 +16,10 @@
     top left,
     bottom right;
   background-repeat: no-repeat, no-repeat;
-  background-size: clamp(320px, 45vw, 800px), clamp(260px, 35vw, 600px);
+  background-size: clamp(200px, 35vmin, 600px), clamp(150px, 30vmin, 500px);
   overflow: hidden;
   isolation: isolate;
   z-index: 0;
-
-  @include respond-to-ratio('laptop-and-below') {
-    background-size: clamp(200px, 20vw, 450px), clamp(150px, 15vw, 350px);
-  }
 
   @include respond-to-ratio('portrait') {
     background-size: 150px, 120px;
