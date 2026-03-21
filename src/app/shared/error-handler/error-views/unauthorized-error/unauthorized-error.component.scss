@@ -1,3 +1,5 @@
+$reserved-vertical-space: 500px;
+
 :host {
   --mouse-x: 50vw;
   --mouse-y: 50vh;
@@ -13,8 +15,8 @@
   font-family: var(--font-typewriter);
   color: var(--text-typewriter-color);
   width: 90%;
-  max-width: min(700px, calc((100vh - 500px) * (16 / 9)));
-  min-height: calc(100vh - 500px);
+  max-width: min(700px, calc((100vh - #{$reserved-vertical-space}) * (16 / 9)));
+  min-height: calc(100vh - #{$reserved-vertical-space});
   margin: 0 auto;
   border-radius: 8px;
   background-color: var(--deep-black-color);
