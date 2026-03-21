@@ -16,23 +16,10 @@
     top left,
     bottom right;
   background-repeat: no-repeat, no-repeat;
-  // background-size: 320px, 260px;
   background-size: clamp(320px, 45vw, 800px), clamp(260px, 35vw, 600px);
   overflow: hidden;
   isolation: isolate;
   overflow: hidden;
   isolation: isolate;
   z-index: 0;
-
-  // @include respond-to('tablet') {
-  //   background-size: 480px, 400px;
-  // }
-
-  // @include respond-to('desktop') {
-  //   background-size: 600px, 500px;
-  // }
-
-  // @include respond-to('desktop-xl') {
-  //   background-size: 800px, 600px;
-  // }
 }
