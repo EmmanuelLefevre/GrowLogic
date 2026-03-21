@@ -12,7 +12,7 @@
   &__video-container {
     position: relative;
     width: 90%;
-    max-width: min(700px, calc(55vh * (16 / 9)));
+    max-width: min(700px, calc((100vh - 500px) * (16 / 9)));
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: 0 4px 15px var(--rgba-color-s);
