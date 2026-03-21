@@ -12,7 +12,7 @@
   justify-content: center;
   flex: 1;
   width: 100%;
-  padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 3rem);
+  padding: clamp(3rem, 15vmin, 10rem) clamp(1rem, 5vw, 2rem);
   z-index: 1;
 
   &__hero {
@@ -26,7 +26,7 @@
     z-index: 1;
 
     @include respond-to('tablet') {
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
     }
   }
@@ -42,15 +42,16 @@
 
   &__logo {
     width: 100%;
-    max-width: clamp(250px, 30vw, 430px);
+    max-width: clamp(200px, 35vw, 350px);
     margin: 0 auto;
     height: auto;
   }
 
   &__title {
     color: transparent;
+    width: 100%;
+    max-width: clamp(280px, 70vw, 800px);
     margin: 0 auto;
-    max-width: 90%;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     background-clip: text;
@@ -60,7 +61,8 @@
     font-family: var(--font-special);
     font-weight: var(--font-weight-medium);
     color: var(--text-nav-color);
-    max-width: 85%;
+    width: 100%;
+    max-width: clamp(280px, 80%, 550px);
     margin: 0 auto;
     line-height: 1.6;
   }
