@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { adminGuard } from '@core/guard/admin/admin.guard';
 import { authGuard } from '@core/guard/auth/auth.guard';
 
 export const ROUTES: Routes = [
@@ -117,27 +116,6 @@ export const ROUTES: Routes = [
           }
         ]
       },
-    ]
-  },
-
-  // --- PRIVATE AREA ---
-  {
-    path: 'admin',
-    loadComponent: () => import(
-      '@features/admin/admin-layout.component')
-      .then(m => m.AdminLayoutComponent),
-    canActivate: [adminGuard],
-    children: [
-      {
-        path: 'dashboard',
-        loadComponent: () => import(
-          '@features/admin/components/dashboard/dashboard.component').
-          then(m => m.DashboardComponent)
-      },
-      // {
-      //   path: 'users',
-      //   loadComponent: () => import('@features/admin/components/users/users.component').then(m => m.UsersComponent)
-      // }
     ]
   },
 
