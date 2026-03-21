@@ -22,18 +22,26 @@ h6 {
   letter-spacing: -0.02em;
 }
 
-h1 {
-  font-family: var(--font-title-primary);
-  font-size: var(--font-size-h1);
-  font-weight: var(--font-weight-bold);
-}
-
 h2,
 h3,
 h4,
 h5,
 h6 {
   font-family: var(--font-title-secondary);
+}
+
+h1 {
+  font-family: var(--font-title-primary);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
 }
 
 /* =========== TAGS =========== */
