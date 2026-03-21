@@ -23,12 +23,10 @@
     align-items: center;
     justify-content: center;
     gap: clamp(1.5rem, 3vh, 2.5rem);
-    width: 100%;
     z-index: 1;
 
     @include respond-to('tablet') {
       max-width: 700px;
-      margin: 0 auto;
     }
   }
 
@@ -38,21 +36,16 @@
     align-items: center;
     text-align: center;
     gap: clamp(1rem, 2vh, 1.5rem);
-    width: 100%;
   }
 
   &__logo {
-    width: 100%;
     max-width: clamp(200px, 35vw, 350px);
-    margin: 0 auto;
     height: auto;
   }
 
   &__title {
     color: transparent;
-    width: 100%;
     max-width: clamp(280px, 70vw, 800px);
-    margin: 0 auto;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     background-clip: text;
@@ -62,9 +55,7 @@
     font-family: var(--font-special);
     font-weight: var(--font-weight-medium);
     color: var(--text-nav-color);
-    width: 100%;
-    max-width: clamp(280px, 80%, 550px);
-    margin: 0 auto;
+    max-width: 60%;
     line-height: 1.6;
   }
 

@@ -16,12 +16,12 @@
     top left,
     bottom right;
   background-repeat: no-repeat, no-repeat;
-  background-size: clamp(320px, 60vmin, 800px), clamp(260px, 55vmin, 600px);
+  background-size: clamp(320px, 60vmin, 800px), clamp(260px, 52vmin, 600px);
   overflow: hidden;
   isolation: isolate;
   z-index: 0;
 
   @include respond-to-ratio('portrait') {
-    background-size: clamp(320px, 65vw, 600px), clamp(260px, 45vw, 500px);
+    background-size: clamp(250px, 65vw, 600px), clamp(190px, 45vw, 500px);
   }
 }
