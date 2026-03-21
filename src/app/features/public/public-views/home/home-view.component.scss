@@ -12,7 +12,7 @@
   justify-content: center;
   flex: 1;
   width: 100%;
-  padding: 2rem 1rem;
+  padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 2rem);
   z-index: 1;
 
   &__hero {
@@ -20,16 +20,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    gap: clamp(1.5rem, 3vh, 2.5rem);
+    width: 100%;
     z-index: 1;
-
-    @include respond-to('tablet') {
-      flex-direction: row;
-      justify-content: center;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
-    }
   }
 
   &__welcome {
@@ -37,60 +31,33 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.5rem;
-
-    @include respond-to('tablet') {
-      align-items: flex-start;
-      text-align: center;
-    }
+    gap: clamp(1rem, 2vh, 1.5rem);
   }
 
   &__logo {
     width: 100%;
     max-width: 250px;
-    height: auto;
     margin: 0 auto;
-
-    @include respond-to('tablet') {
-      max-width: 300px;
-    }
-
-    @include respond-to('desktop') {
-      max-width: 350px;
-    }
-
-    @include respond-to('desktop-xl') {
-      max-width: 430px;
-    }
+    height: auto;
+    max-width: clamp(250px, 30vw, 430px);
   }
 
   &__title {
     color: transparent;
     margin: 0 auto;
+    max-width: clamp(300px, 80vw, 800px);
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     background-clip: text;
-
-    @include respond-to('desktop-xl') {
-      max-width: 100%;
-    }
   }
 
   &__description {
     font-family: var(--font-special);
     font-weight: var(--font-weight-medium);
     color: var(--text-nav-color);
-    max-width: 250px;
+    max-width: clamp(280px, 45vw, 600px);
     margin: 0 auto;
     line-height: 1.6;
-
-    @include respond-to('tablet') {
-      max-width: 480px;
-    }
-
-    @include respond-to('desktop') {
-      max-width: 600px;
-    }
   }
 
   &__accent {
