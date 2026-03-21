@@ -147,6 +147,7 @@
 📄.npmrc
 📄.prettier.js
 📄.secretlintrc.json
+📄.snyk
 📄.stylelintrc.json
 📄eslint-security.config.js
 📄eslint.config.js
