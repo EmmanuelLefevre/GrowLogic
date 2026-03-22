@@ -3,7 +3,8 @@
     "DEFAULT": {
       "APP_NAME": "GrowLogic",
       "TITLE": "GrowLogic",
-      "DESCRIPTION": "GrowLogic project with CI/CD, SEO, i18n and more."
+      "DESCRIPTION": "AI-powered precision diagnostics for your houseplants. Receive smart watering alerts and keep your indoors lush and green.",
+      "KEYWORDS": "IoT, artificial intelligence, watering alerts, humidity and temperature sensors, plant diagnostics, gardening assistance, plant care, houseplants"
     },
     "PAGES": {
       "HOME": {

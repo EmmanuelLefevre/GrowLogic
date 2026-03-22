@@ -3,7 +3,8 @@
     "DEFAULT": {
       "APP_NAME": "GrowLogic",
       "TITLE": "GrowLogic",
-      "DESCRIPTION": "Projet GrowLogic avec CI/CD, SEO, i18n et plus."
+      "DESCRIPTION": "Diagnostic de précision IA pour vos plantes d'intérieur. Recevez des alertes d'arrosage intelligentes et maintenez votre intérieur verdoyant.",
+      "KEYWORDS": "IOT, intelligence artificielle, alerte arrosage, capteurs humidité et température, diagnostic plante, assistance jardinage, entretien plantes, plante d intérieur"
     },
     "PAGES": {
       "HOME": {

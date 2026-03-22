@@ -8,7 +8,6 @@ export const ENVIRONMENT: IEnvironment = {
   application: {
     name: 'GrowLogic',
     author: 'Emmanuel Lefevre, Adrien Lazaille, Camille Hoareau, Rémy Nowe, Louise Delaunay, Nicolas Lombard',
-    keywords: 'angular, seo, i18n, vitest, pnpm',
     themeColor: '#08b26b',
     defaultShareImage: 'https://growlogic.emmanuellefevre.com/assets/logos/logo.png'
   }
