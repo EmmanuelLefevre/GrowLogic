@@ -44,11 +44,24 @@ h3 {
   font-size: var(--font-size-h3);
 }
 
+h4 {
+  font-size: var(--font-size-h4);
+}
+
 /* =========== TAGS =========== */
-p {
+blockquote {
   font-family: var(--font-main);
   font-size: var(--font-size-base);
-  text-wrap: pretty;
+}
+
+cite {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-bubble);
+}
+
+footer {
+  font-family: var(--font-footer);
 }
 
 nav {
@@ -56,18 +69,22 @@ nav {
   font-weight: var(--font-weight-light);
 }
 
-footer {
-  font-family: var(--font-footer);
+p {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  text-wrap: pretty;
 }
 
 p,
 li,
 blockquote,
+cite,
 span {
   text-wrap: pretty;
 }
 
 code,
+cite,
 pre {
   font-family: var(--font-mono);
 }

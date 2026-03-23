@@ -27,8 +27,10 @@
  ┃ ┃ ┃ ┃ ┣ host-links.constant.ts
  ┃ ┃ ┃ ┃ ┣ nav-links.constant.ts
  ┃ ┃ ┃ ┃ ┗ social-links.constant.ts
- ┃ ┃ ┃ ┗ 🔔snackbar
- ┃ ┃ ┃   ┗ snackbar.constant.ts
+ ┃ ┃ ┃ ┣ 🔔snackbar
+ ┃ ┃ ┃ ┃ ┗ snackbar.constant.ts
+ ┃ ┃ ┃ ┗ 👨‍💻team
+ ┃ ┃ ┃ ┃ ┗ developers.constant.ts
  ┃ ┃ ┣ 🧱_models
  ┃ ┃ ┃ ┣ 📂auth
  ┃ ┃ ┃ ┣ 📂environment
@@ -36,6 +38,7 @@
  ┃ ┃ ┃ ┣ 📂links
  ┃ ┃ ┃ ┣ 📂seo
  ┃ ┃ ┃ ┣ 📂snackbar
+ ┃ ┃ ┃ ┣ 📂team
  ┃ ┃ ┃ ┗ 📂user
  ┃ ┃ ┣ 💉_services
  ┃ ┃ ┃ ┣ 🔐auth
@@ -47,25 +50,11 @@
  ┃ ┃ ┃ ┗ 🗣️translation
  ┃ ┃ ┃   ┗ 📄translation.service.ts
  ┃ ┃ ┣ 🚧guard
- ┃ ┃ ┃ ┣ 👑admin
  ┃ ┃ ┃ ┗ 🆔auth
  ┃ ┃ ┗ 🎣interceptor
  ┃ ┃   ┗ 🆔auth
  ┃ ┃     ┗ 📄auth.interceptor.ts
  ┃ ┣ 🧩features
- ┃ ┃ ┣ 👑admin
- ┃ ┃ ┃ ┣ ⚙️_config
- ┃ ┃ ┃ ┣ 🧱_models
- ┃ ┃ ┃ ┣ 💉_services
- ┃ ┃ ┃ ┣ 🗃️components
- ┃ ┃ ┃ ┣ 📂dashboard
- ┃ ┃ ┃ ┃ ┣ 📄dashboard.component.html
- ┃ ┃ ┃ ┃ ┗ 📄dashboard.component.ts
- ┃ ┃ ┃ ┣ 👁️admin-views
- ┃ ┃ ┃ ┣ 📂settings
- ┃ ┃ ┃ ┣ 📂users
- ┃ ┃ ┃ ┣ 📄admin-layout.component.html
- ┃ ┃ ┃ ┗ 📄admin-layout.component.ts
  ┃ ┃ ┣ 🔓private
  ┃ ┃ ┃ ┣ ⚙️_config
  ┃ ┃ ┃ ┣ 🧱_models
@@ -115,7 +104,8 @@
  ┃ ┣ 🗣️i18n
  ┃ ┣ ✨icons
  ┃ ┣ 📷img
- ┃ ┗ 🏢logos
+ ┃ ┣ 🏢logos
+ ┃ ┗ 🔊sounds
  ┣ 🎨styles
  ┃ ┣ 📂abstracts
  ┃ ┃ ┣ 🎨_functions.scss
@@ -129,7 +119,6 @@
  ┃ ┃ ┣ 🎨_typography.scss
  ┃ ┃ ┗ 🎨_utilities.scss
  ┃ ┣ 📂layout
- ┃ ┃ ┣ 🎨_admin-layout.scss
  ┃ ┃ ┗ 🎨_main-layout.scss
  ┃ ┗ 📂themes
  ┃   ┣ 🎨_light-theme.scss
