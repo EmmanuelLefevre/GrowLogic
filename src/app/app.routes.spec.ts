@@ -122,7 +122,7 @@ describe('App Routes', () => {
     });
   });
 
-  describe('Private Route (Lines 49-51 coverage)', () => {
+  describe('Private Route', () => {
 
     it('should allow navigation to /private if authGuard passes', async() => {
       // --- ARRANGE ---
@@ -177,5 +177,63 @@ describe('Route Configuration Integrity', () => {
     // --- ASSERT ---
     expect(ROOT_ROUTE?.loadComponent).toBeDefined();
     expect(COMPONENT_IMPORT).toBeTruthy();
+  });
+});
+
+describe('Route SEO Data Integrity', () => {
+  // --- SETUP VARIABLES ---
+  const publicLayoutRoute = ROUTES.find(r => r.path === '');
+  const publicRoutes = publicLayoutRoute?.children || [];
+
+  const errorLayoutRoute = publicRoutes.find(r => r.path === 'error');
+  const errorRoutes = errorLayoutRoute?.children || [];
+
+  it('should contain valid and EXACT SEO metadata for public views', () => {
+    // --- ARRANGE ---
+    const expectedPublicSeo = [
+      { path: 'home', titleKey: 'META.PAGES.HOME.TITLE', descriptionKey: 'META.PAGES.HOME.DESCRIPTION' },
+      { path: 'login', titleKey: 'META.PAGES.LOGIN.TITLE', descriptionKey: 'META.PAGES.LOGIN.DESCRIPTION' },
+      { path: 'contact', titleKey: 'META.PAGES.CONTACT.TITLE', descriptionKey: 'META.PAGES.CONTACT.DESCRIPTION' }
+    ];
+
+    // --- ACT & ASSERT ---
+    expectedPublicSeo.forEach(expected => {
+      const route = publicRoutes.find(r => r.path === expected.path);
+
+      expect(route).toBeDefined();
+      expect(route?.data?.['seo']).toBeDefined();
+
+      expect(route?.data?.['seo']?.titleKey).toBe(expected.titleKey);
+      expect(route?.data?.['seo']?.descriptionKey).toBe(expected.descriptionKey);
+    });
+  });
+
+  it('should contain valid and EXACT SEO metadata (including robots) for error views', () => {
+    // --- ARRANGE ---
+    const expectedErrorSeo = [
+      { path: 'unauthorized-error', titleKey: 'META.PAGES.ERROR.401.TITLE', descriptionKey: 'META.PAGES.ERROR.401.DESCRIPTION' },
+      { path: 'unfound-error', titleKey: 'META.PAGES.ERROR.404.TITLE', descriptionKey: 'META.PAGES.ERROR.404.DESCRIPTION' },
+      { path: 'server-error', titleKey: 'META.PAGES.ERROR.500.TITLE', descriptionKey: 'META.PAGES.ERROR.500.DESCRIPTION' },
+      { path: 'generic-error', titleKey: 'META.PAGES.ERROR.GENERIC.TITLE', descriptionKey: 'META.PAGES.ERROR.GENERIC.DESCRIPTION' },
+      { path: 'unknown-error', titleKey: 'META.PAGES.ERROR.UNKNOWN.TITLE', descriptionKey: 'META.PAGES.ERROR.UNKNOWN.DESCRIPTION' }
+    ];
+
+    // --- ACT & ASSERT ---
+    expectedErrorSeo.forEach(expected => {
+      const route = errorRoutes.find(r => r.path === expected.path);
+
+      expect(route).toBeDefined();
+      expect(route?.data?.['seo']).toBeDefined();
+
+      expect(route?.data?.['seo']?.titleKey).toBe(expected.titleKey);
+      expect(route?.data?.['seo']?.descriptionKey).toBe(expected.descriptionKey);
+
+      expect(route?.data?.['seo']?.robots).toBe('noindex, nofollow');
+    });
+  });
+
+  it('should have a global "noindex, nofollow" on the parent error layout route', () => {
+    // --- ACT & ASSERT ---
+    expect(errorLayoutRoute?.data?.['seo']?.robots).toBe('noindex, nofollow');
   });
 });
