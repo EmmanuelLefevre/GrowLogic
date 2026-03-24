@@ -22,19 +22,24 @@
 
   &__animation-wrapper {
     width: 100%;
+    aspect-ratio: 1 / 1;
     max-width: 300px;
     margin: 0 auto;
+    border-radius: 16px;
+    border: solid 2px var(--primary-color);
+    background-color: #0c2522;
     animation: float 6s ease-in-out infinite;
+    transform: translateZ(0);
+    overflow: hidden;
   }
 
   &__lottie {
     display: block;
-    aspect-ratio: 1 / 1;
     width: 100%;
-    height: auto;
-    border-radius: 16px;
-    border: solid 2px var(--primary-color);
-    overflow: hidden;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+    transform: scale(1.02);
   }
 
   &__title {
