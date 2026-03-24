@@ -58,5 +58,14 @@ export default defineConfig({
       ],
       clean: true
     },
+    onConsoleLog(log: string): false | void {
+      const IGNORED_MESSAGES = [
+        'NG02956'
+      ];
+
+      if (IGNORED_MESSAGES.some(msg => log.includes(msg))) {
+        return false;
+      }
+    }
   }
 });
