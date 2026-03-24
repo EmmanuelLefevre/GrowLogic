@@ -64,6 +64,9 @@ importers:
       '@lottiefiles/dotlottie-wc':
         specifier: 0.9.8
         version: 0.9.8
+      '@lottiefiles/dotlottie-web':
+        specifier: 0.67.0
+        version: 0.67.0
       '@ngx-translate/core':
         specifier: 17.0.0
         version: 17.0.0(@angular/common@21.2.4(@angular/core@21.2.4(@angular/compiler@21.2.4)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.4(@angular/compiler@21.2.4)(rxjs@7.8.2))

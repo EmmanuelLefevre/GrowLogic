@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of, Subject } from 'rxjs';
+import { DotLottie } from '@lottiefiles/dotlottie-web';
 
 import { AppComponent } from './app.component';
 import { AuthService } from '@core/_services/auth/auth.service';
@@ -12,6 +14,12 @@ import { TranslationService } from './core/_services/translation/translation.ser
 
 const NAV_ID = 1;
 const INITIAL_VALUE = 0;
+
+vi.mock('@lottiefiles/dotlottie-web', () => ({
+  DotLottie: {
+    setWasmUrl: vi.fn()
+  }
+}));
 
 describe('AppComponent', () => {
 
@@ -171,5 +179,17 @@ describe('AppComponent', () => {
     expect(SCROLL_SPY).toHaveBeenCalledWith(INITIAL_VALUE, INITIAL_VALUE);
 
     SCROLL_SPY.mockRestore();
+  });
+
+  it('should initialize Lottie WASM url on init', () => {
+    // --- ARRANGE ---
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+
+    // --- ACT ---
+    fixture.detectChanges();
+
+    // --- ASSERT ---
+    expect(DotLottie.setWasmUrl).toHaveBeenCalledWith('/assets/wasm/dotlottie-player.wasm');
   });
 });

@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter, map } from 'rxjs';
+import { DotLottie } from '@lottiefiles/dotlottie-web';
 
 import { AuthService } from '@core/_services/auth/auth.service';
 import { SeoService } from '@core/_services/seo/seo.service';
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
     this.authService.initAuth();
     this.initSeoListener();
     this.initScrollTopListener();
+    this.initLottieWasm();
   }
 
   private initSeoListener(): void {
@@ -67,5 +69,9 @@ export class AppComponent implements OnInit {
     ).subscribe(() => {
       window.scrollTo(INITIAL_VALUE, INITIAL_VALUE);
     });
+  }
+
+  private initLottieWasm(): void {
+    DotLottie.setWasmUrl('/assets/wasm/dotlottie-player.wasm');
   }
 }

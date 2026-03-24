@@ -13,6 +13,13 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
+<IfModule mod_mime.c>
+  # Allows Apache to properly serve Lottie animations and its engine
+  AddType application/wasm .wasm
+  AddType application/zip .lottie
+  AddType application/json .json
+</IfModule>
+
 <IfModule mod_headers.c>
   # Tell browser to only communicate via HTTPS
   Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
