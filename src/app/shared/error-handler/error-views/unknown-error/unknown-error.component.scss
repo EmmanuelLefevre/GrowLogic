@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding-top: 1rem;
   background-color: ar(--bg-color);
 
   &__content {
@@ -51,7 +52,6 @@
     color: transparent;
     margin: 0;
     background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
-    -webkit-background-clip: text;
     background-clip: text;
   }
 }

@@ -47,7 +47,6 @@
     color: transparent;
     max-width: clamp(280px, 70vw, 800px);
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
     background-clip: text;
   }
 
