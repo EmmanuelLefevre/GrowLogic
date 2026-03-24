@@ -46,8 +46,10 @@
   &__title {
     color: transparent;
     max-width: clamp(280px, 70vw, 800px);
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--secondary-color));
+    background-size: 200% auto;
     background-clip: text;
+    animation: shimmer 4s linear infinite;
   }
 
   &__description {
