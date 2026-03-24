@@ -99,6 +99,7 @@
  ┃ ┗ 📄app.routes.ts
  ┣ 🖼️assets
  ┃ ┣ ⚙️_config
+ ┃ ┣ 🎬animations
  ┃ ┣ 🌄background
  ┃ ┣ 🔡fonts
  ┃ ┣ 🗣️i18n
