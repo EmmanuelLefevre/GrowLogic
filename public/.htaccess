@@ -16,7 +16,7 @@
   RewriteCond %{REQUEST_URI} !^/maintenance\.html$
   RewriteCond %{REQUEST_URI} !^/maintenance\.css$
   RewriteCond %{REQUEST_URI} !^/maintenance\.js$
-  RewriteCond %{REQUEST_URI} !^/assets/animations/maintenance-error-under-construction\.json$
+  RewriteCond %{REQUEST_URI} !assets/animations/maintenance-error-under-construction\.json$
   RewriteCond %{REQUEST_URI} !^/favicon\.ico$
 
   # If file exists -> return a 503 for everything else
