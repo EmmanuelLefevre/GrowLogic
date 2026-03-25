@@ -84,12 +84,12 @@ describe('MaintenanceErrorComponent', () => {
 
       // --- ACT ---
       const canvas = fixture.debugElement.query(By.css('.maintenance-error__lottie')).nativeElement;
-      const wrapper = fixture.debugElement.query(By.css('.maintenance-error__animation-wrapper')).nativeElement;
+      const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
       expect(canvas.tagName.toLowerCase()).toBe('canvas');
-      expect(wrapper.getAttribute('aria-label')).toBe('Une équipe technique s\'affairant autour d\'un écran en maintenance');
-      expect(wrapper.getAttribute('role')).toBe('img');
+      expect(srOnlySpan.textContent.trim()).toBe('Une équipe technique s\'affairant autour d\'un écran en maintenance');
+      expect(canvas.getAttribute('aria-hidden')).toBe('true');
     });
   });
 
@@ -122,7 +122,7 @@ describe('MaintenanceErrorComponent', () => {
       expect(subtitle.textContent.trim()).toBe('We\'ll let the code dry and we\'ll be back soon...');
     });
 
-    it('should update the img aria-label when language is switched to English', () => {
+    it('should update the img description when language is switched to English', () => {
       // --- ARRANGE ---
       fixture.detectChanges();
 
@@ -133,7 +133,7 @@ describe('MaintenanceErrorComponent', () => {
       const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
-      expect(srOnlySpan.getAttribute('aria-label')).toBe('A technical team working on a screen undergoing maintenance');
+      expect(srOnlySpan.textContent.trim()).toBe('A technical team working on a screen undergoing maintenance');
     });
   });
 

@@ -84,12 +84,12 @@ describe('TimeoutErrorComponent', () => {
 
       // --- ACT ---
       const canvas = fixture.debugElement.query(By.css('.timeout-error__lottie')).nativeElement;
-      const wrapper = fixture.debugElement.query(By.css('.timeout-error__animation-wrapper')).nativeElement;
+      const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
       expect(canvas.tagName.toLowerCase()).toBe('canvas');
-      expect(wrapper.getAttribute('aria-label')).toBe('Un sablier en train de tourner sur lui-même');
-      expect(wrapper.getAttribute('role')).toBe('img');
+      expect(srOnlySpan.textContent.trim()).toBe('Un sablier en train de tourner sur lui-même');
+      expect(canvas.getAttribute('aria-hidden')).toBe('true');
     });
   });
 
@@ -122,7 +122,7 @@ describe('TimeoutErrorComponent', () => {
       expect(subtitle.textContent.trim()).toBe('Even light takes time to travel across the universe...');
     });
 
-    it('should update the img aria-label when language is switched to English', () => {
+    it('should update the img description when language is switched to English', () => {
       // --- ARRANGE ---
       fixture.detectChanges();
 
@@ -133,7 +133,7 @@ describe('TimeoutErrorComponent', () => {
       const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
-      expect(srOnlySpan.getAttribute('aria-label')).toBe('A sandglass spinning on its axis');
+      expect(srOnlySpan.textContent.trim()).toBe('A sandglass spinning on its axis');
     });
   });
 

@@ -84,12 +84,12 @@ describe('UnknownErrorComponent', () => {
 
       // --- ACT ---
       const canvas = fixture.debugElement.query(By.css('.unknown-error__lottie')).nativeElement;
-      const wrapper = fixture.debugElement.query(By.css('.unknown-error__animation-wrapper')).nativeElement;
+      const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
       expect(canvas.tagName.toLowerCase()).toBe('canvas');
-      expect(wrapper.getAttribute('aria-label')).toBe('Une soucoupe volante aspirant une chenille');
-      expect(wrapper.getAttribute('role')).toBe('img');
+      expect(srOnlySpan.textContent.trim()).toBe('Une soucoupe volante aspirant une chenille');
+      expect(canvas.getAttribute('aria-hidden')).toBe('true');
     });
   });
 
@@ -122,7 +122,7 @@ describe('UnknownErrorComponent', () => {
       expect(subtitle.textContent.trim()).toBe('It seems this page took a leap through spacetime...');
     });
 
-    it('should update the img aria-label when language is switched to English', () => {
+    it('should update the img description when language is switched to English', () => {
       // --- ARRANGE ---
       fixture.detectChanges();
 
@@ -133,7 +133,7 @@ describe('UnknownErrorComponent', () => {
       const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
-      expect(srOnlySpan.getAttribute('aria-label')).toBe('A flying saucer abducting a caterpillar');
+      expect(srOnlySpan.textContent.trim()).toBe('A flying saucer abducting a caterpillar');
     });
   });
 
