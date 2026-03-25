@@ -157,7 +157,7 @@ git clone git@github.com:EmmanuelLefevre/AngularTemplate.git
 cd GrowLogic
 corepack enable
 pnpm install --frozen-lockfile
-pnpm start
+pnpm start/ng serve
 ```
 
 - Via Package  
@@ -171,3 +171,25 @@ pnpm start
 ```bash
 pnpm add -g @angular/cli@21.2.1
 ```
+
+### Installer une librairie
+
+- En DEV  
+
+```bash
+pnpm add -DE <MA_LIBRAIRIE>@latest
+```
+
+- En PROD  
+
+```bash
+pnpm add <MA_LIBRAIRIE>@latest
+```
+
+Supprimer le `node_modules`, le `pnpm-lock.yaml` et clean le cache de **PNPM** =>
+
+````bash
+pnpm store prune
+```
+
+Push 🤜🤜🤜
