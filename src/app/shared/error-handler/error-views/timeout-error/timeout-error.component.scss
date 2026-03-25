@@ -16,11 +16,11 @@
   opacity: 0;
   pointer-events: none;
 
-  // &.is-ready {
-  //   transform: translateY(0);
-  //   opacity: 1;
-  //   pointer-events: auto;
-  // }
+  &.is-ready {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   &__content {
     display: flex;
