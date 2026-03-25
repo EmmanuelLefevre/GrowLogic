@@ -130,10 +130,10 @@ describe('MaintenanceErrorComponent', () => {
       translate.use('en');
       fixture.detectChanges();
 
-      const wrapper = fixture.debugElement.query(By.css('.maintenance-error__animation-wrapper')).nativeElement;
+      const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
-      expect(wrapper.getAttribute('aria-label')).toBe('A technical team working on a screen undergoing maintenance');
+      expect(srOnlySpan.getAttribute('aria-label')).toBe('A technical team working on a screen undergoing maintenance');
     });
   });
 

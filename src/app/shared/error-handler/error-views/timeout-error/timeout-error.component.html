@@ -2,12 +2,14 @@
   class="timeout-error"
   [class.is-ready]="isReady">
   <div class="timeout-error__content">
-    <div
-      role="img"
-      [attr.aria-label]="'PAGES.ERROR.TIMEOUT.IMG.ALT.SANDGLASS' | translate"
-      class="timeout-error__animation-wrapper">
+    <div class="timeout-error__animation-wrapper">
+      <span class="sr-only">
+        {{ 'PAGES.ERROR.TIMEOUT.IMG.ALT.SANDGLASS' | translate }}
+      </span>
+
       <canvas
         #lottieCanvas
+        aria-hidden="true"
         class="timeout-error__lottie">
       </canvas>
     </div>

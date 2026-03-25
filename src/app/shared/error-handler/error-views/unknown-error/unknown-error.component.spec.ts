@@ -130,10 +130,10 @@ describe('UnknownErrorComponent', () => {
       translate.use('en');
       fixture.detectChanges();
 
-      const wrapper = fixture.debugElement.query(By.css('.unknown-error__animation-wrapper')).nativeElement;
+      const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
-      expect(wrapper.getAttribute('aria-label')).toBe('A flying saucer abducting a caterpillar');
+      expect(srOnlySpan.getAttribute('aria-label')).toBe('A flying saucer abducting a caterpillar');
     });
   });
 

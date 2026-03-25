@@ -130,10 +130,10 @@ describe('TimeoutErrorComponent', () => {
       translate.use('en');
       fixture.detectChanges();
 
-      const wrapper = fixture.debugElement.query(By.css('.timeout-error__animation-wrapper')).nativeElement;
+      const srOnlySpan = fixture.debugElement.query(By.css('.sr-only')).nativeElement;
 
       // --- ASSERT ---
-      expect(wrapper.getAttribute('aria-label')).toBe('A sandglass spinning on its axis');
+      expect(srOnlySpan.getAttribute('aria-label')).toBe('A sandglass spinning on its axis');
     });
   });
 

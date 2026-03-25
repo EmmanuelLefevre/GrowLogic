@@ -2,12 +2,14 @@
   class="unknown-error"
   [class.is-ready]="isReady">
   <div class="unknown-error__content">
-    <div
-      role="img"
-      [attr.aria-label]="'PAGES.ERROR.UNKNOWN.IMG.ALT.ABDUCTION' | translate"
-      class="unknown-error__animation-wrapper">
+    <div class="unknown-error__animation-wrapper">
+      <span class="sr-only">
+        {{ 'PAGES.ERROR.UNKNOWN.IMG.ALT.ABDUCTION' | translate }}
+      </span>
+
       <canvas
         #lottieCanvas
+        aria-hidden="true"
         class="unknown-error__lottie">
       </canvas>
     </div>
