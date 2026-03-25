@@ -35,8 +35,7 @@
     aspect-ratio: 1 / 1;
     max-width: 300px;
     margin: 0 auto;
-    animation: fadeInUp 0.8s ease-out forwards;
-    // animation: pop-in 0.8s cubic-bezier(0.26, 0.53, 0.74, 1.48) forwards;
+    animation: fade-in-up 0.7s ease-out forwards;
   }
 
   &__lottie {
