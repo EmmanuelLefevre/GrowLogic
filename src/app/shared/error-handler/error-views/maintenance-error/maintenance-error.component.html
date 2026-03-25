@@ -2,11 +2,12 @@
   class="maintenance-error"
   [class.is-ready]="isReady">
   <div class="maintenance-error__content">
-    <div class="maintenance-error__animation-wrapper">
+    <div
+      role="img"
+      [attr.aria-label]="'PAGES.ERROR.MAINTENANCE.IMG.ALT.MAINTENANCE' | translate"
+      class="maintenance-error__animation-wrapper">
       <canvas
         #lottieCanvas
-        role="img"
-        [attr.aria-label]="'PAGES.ERROR.MAINTENANCE.IMG.ALT.MAINTENANCE' | translate"
         class="maintenance-error__lottie">
       </canvas>
     </div>
