@@ -83,11 +83,13 @@ describe('TimeoutErrorComponent', () => {
       fixture.detectChanges();
 
       // --- ACT ---
-      const lottieAnim = fixture.debugElement.query(By.css('.timeout-error__lottie')).nativeElement;
+      const canvas = fixture.debugElement.query(By.css('.timeout-error__lottie')).nativeElement;
+      const wrapper = fixture.debugElement.query(By.css('.timeout-error__animation-wrapper')).nativeElement;
 
       // --- ASSERT ---
-      expect(lottieAnim.tagName.toLowerCase()).toBe('canvas');
-      expect(lottieAnim.getAttribute('aria-label')).toBe('Un sablier en train de tourner sur lui-même');
+      expect(canvas.tagName.toLowerCase()).toBe('canvas');
+      expect(wrapper.getAttribute('aria-label')).toBe('Un sablier en train de tourner sur lui-même');
+      expect(wrapper.getAttribute('role')).toBe('img');
     });
   });
 
@@ -128,10 +130,10 @@ describe('TimeoutErrorComponent', () => {
       translate.use('en');
       fixture.detectChanges();
 
-      const lottieAnim = fixture.debugElement.query(By.css('.timeout-error__lottie')).nativeElement;
+      const wrapper = fixture.debugElement.query(By.css('.timeout-error__animation-wrapper')).nativeElement;
 
       // --- ASSERT ---
-      expect(lottieAnim.getAttribute('aria-label')).toBe('A sandglass spinning on its axis');
+      expect(wrapper.getAttribute('aria-label')).toBe('A sandglass spinning on its axis');
     });
   });
 
@@ -154,11 +156,11 @@ describe('TimeoutErrorComponent', () => {
   });
 
   describe('Lottie Configuration', () => {
-    it('should fallback to DEFAULT_PIXEL_RATIO if window.devicePixelRatio is undefined', () => {
+    it('should fallback to DEFAULT_PIXEL_RATIO if globalThis.devicePixelRatio is undefined', () => {
       // --- ARRANGE ---
-      const originalPixelRatio = window.devicePixelRatio;
+      const originalPixelRatio = globalThis.devicePixelRatio;
 
-      Object.defineProperty(window, 'devicePixelRatio', {
+      Object.defineProperty(globalThis, 'devicePixelRatio', {
         value: undefined,
         writable: true
       });
@@ -174,7 +176,7 @@ describe('TimeoutErrorComponent', () => {
       expect(lottieInstance).toBeDefined();
 
       // --- CLEANUP ---
-      Object.defineProperty(window, 'devicePixelRatio', {
+      Object.defineProperty(globalThis, 'devicePixelRatio', {
         value: originalPixelRatio,
         writable: true
       });
