@@ -86,10 +86,13 @@
  ┃ ┃ ┃ ┣ 📂header
  ┃ ┃ ┃ ❌error-handler
  ┃ ┃ ┃ ┣ 👁️error-views
+ ┃ ┃ ┃ ┃ ┣ 📂generic-error
+ ┃ ┃ ┃ ┃ ┣ 📂maintenance-error
  ┃ ┃ ┃ ┃ ┣ 📂server-error
+ ┃ ┃ ┃ ┃ ┣ 📂timeout-error
  ┃ ┃ ┃ ┃ ┣ 📂unauthorized-error
- ┃ ┃ ┃ ┃ ┣ 📂unconnected-error
- ┃ ┃ ┃ ┃ ┗ 📂unfound-error
+ ┃ ┃ ┃ ┃ ┣ 📂unfound-error
+ ┃ ┃ ┃ ┃ ┗ 📂unknown-error
  ┃ ┃ ┃ ┣ 📄error-handler.component.html
  ┃ ┃ ┃ ┗ 📄error-handler.component.ts
  ┃ ┃ ┗ 📄shared.ts

@@ -111,6 +111,7 @@ describe('App Routes', () => {
       { path: '/error/generic-error' },
       { path: '/error/unknown-error' },
       { path: '/error/timeout-error' },
+      { path: '/error/maintenance-error' },
     ];
 
     it.each(ERROR_CASES)('should successfully load component for $path', async({ path }) => {
@@ -218,6 +219,8 @@ describe('Route SEO Data Integrity', () => {
       { path: 'generic-error', titleKey: 'META.PAGES.ERROR.GENERIC.TITLE', descriptionKey: 'META.PAGES.ERROR.GENERIC.DESCRIPTION' },
       { path: 'unknown-error', titleKey: 'META.PAGES.ERROR.UNKNOWN.TITLE', descriptionKey: 'META.PAGES.ERROR.UNKNOWN.DESCRIPTION' },
       { path: 'timeout-error', titleKey: 'META.PAGES.ERROR.408.TITLE', descriptionKey: 'META.PAGES.ERROR.408.DESCRIPTION' }
+      ,
+      { path: 'maintenance-error', titleKey: 'META.PAGES.ERROR.503.TITLE', descriptionKey: 'META.PAGES.ERROR.503.DESCRIPTION' }
     ];
 
     // --- ACT & ASSERT ---
