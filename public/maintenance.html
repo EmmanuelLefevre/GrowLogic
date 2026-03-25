@@ -40,7 +40,7 @@
       rel="stylesheet"
       href="/maintenance.css" />
 
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script type="module" src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"></script>
   </head>
   <body>
     <main class="error-view">
@@ -65,7 +65,7 @@
         <section class="maintenance-error">
           <div class="maintenance-error__content">
             <div class="maintenance-error__animation-wrapper">
-              <lottie-player
+              <dotlottie-player
                 id="lottie"
                 src="/assets/animations/maintenance-error-under-construction.lottie"
                 background="transparent"
