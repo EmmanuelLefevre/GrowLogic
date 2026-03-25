@@ -265,9 +265,9 @@ $shake-intensity: 1%;
   animation: pop-in 0.8s cubic-bezier(0.26, 0.53, 0.74, 1.48) forwards;
 }
 @keyframes pop-in {
-  0%   { opacity: 0; transform: scale3d(0.2, 0.2, 0.2); filter: blur(10px); }
-  70%  { opacity: 1; transform: scale3d(1.15, 1.15, 1.15); filter: blur(0px); }
-  100% { opacity: 1; transform: scale3d(1, 1, 1); filter: blur(0px); }
+  0%   { opacity: 0; transform: scale3d(0.7, 0.7, 0.7); }
+  70%  { opacity: 1; transform: scale3d(1.1, 1.1, 1.1); }
+  100% { opacity: 1; transform: scale3d(1, 1, 1); }
 }
 
 /*------Sonar Pulse------*/
