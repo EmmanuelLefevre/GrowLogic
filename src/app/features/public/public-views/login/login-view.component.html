@@ -11,9 +11,9 @@
             {{ (isRegisterMode() ? 'PAGES.AUTH.REGISTER.TITLE' : 'PAGES.AUTH.LOGIN.TITLE') | translate }}
           </h1>
 
-          <p class="login__subtitle">
+          <h2 class="login__subtitle">
             {{ (isRegisterMode() ? 'PAGES.AUTH.REGISTER.SUBTITLE' : 'PAGES.AUTH.LOGIN.SUBTITLE') | translate }}
-          </p>
+          </h2>
         </div>
 
         <dynamic-form
@@ -26,7 +26,8 @@
         <div class="login__footer">
           <main-link
             [label]="isRegisterMode() ? 'PAGES.AUTH.LOGIN.CTA_SWITCH' : 'PAGES.AUTH.REGISTER.CTA_SWITCH'"
-            (clicked)="toggleMode()" />
+            (clicked)="toggleMode()"
+            class="text-background-effect" />
         </div>
       </div>
     </div>
