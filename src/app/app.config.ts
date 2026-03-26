@@ -7,7 +7,7 @@ import { catchError, firstValueFrom, Observable, of } from 'rxjs';
 import { DotLottie } from '@lottiefiles/dotlottie-web';
 
 import { ROUTES } from '@app/app.routes';
-import { authInterceptor } from '@core/interceptor/auth/auth.interceptor';
+import { authInterceptor } from '@core/interceptors/auth/auth.interceptor';
 import { AuthService } from '@core/_services/auth/auth.service';
 
 export class CustomTranslateLoader implements TranslateLoader {
