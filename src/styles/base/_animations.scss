@@ -100,6 +100,15 @@ $shake-intensity: 1%;
   to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
+/*------Fade In Blur------*/
+.fade-in-blur {
+  animation: fade-in-blur 0.4s ease-out forwards;
+}
+@keyframes fade-in-blur {
+  from { opacity: 0;backdrop-filter: blur(0px); }
+  to   { opacity: 1; backdrop-filter: blur(4px); }
+}
+
 /*------Defective Bulb------*/
 .defective-bulb {
   animation: fade-in-right 0.5s ease-in-out;
@@ -288,4 +297,32 @@ $shake-intensity: 1%;
   0%,
   100% { transform: rotate(-3deg); transform-origin: top center; }
   50%  { transform: rotate(3deg); transform-origin: top center; }
+}
+
+/*------Pulse Alert------*/
+.pulse-alert {
+  animation: pulse-alert 0.8s infinite alternate;
+}
+@keyframes pulse-alert {
+  from { opacity: 0.6; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1.05); }
+}
+
+/*------Drop Heavy------*/
+.drop-heavy {
+  animation: drop-heavy 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+@keyframes drop-heavy {
+  from { transform: translateY(-20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/*------Pop Timer------*/
+.pop-timer {
+  animation: pop-timer 1s infinite;
+}
+@keyframes pop-timer {
+  0%   { transform: scale(0.5); opacity: 0; }
+  20%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
 }
