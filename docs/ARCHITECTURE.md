@@ -52,11 +52,11 @@
  ┃ ┃ ┃ ┃ ┗ 📄snackbar.service.ts
  ┃ ┃ ┃ ┗ 🗣️translation
  ┃ ┃ ┃   ┗ 📄translation.service.ts
- ┃ ┃ ┣ 🚧guard
+ ┃ ┃ ┣ 🚧guards
  ┃ ┃ ┃ ┗ 🆔auth
- ┃ ┃ ┗ 🎣interceptor
- ┃ ┃   ┗ 🆔auth
- ┃ ┃     ┗ 📄auth.interceptor.ts
+ ┃ ┃ ┗ 🎣interceptors
+ ┃ ┃   ┣ 🆔auth
+ ┃ ┃   ┗ 🔴error
  ┃ ┣ 🧩features
  ┃ ┃ ┣ 🔓private
  ┃ ┃ ┃ ┣ ⚙️_config

@@ -7,7 +7,9 @@ import { catchError, firstValueFrom, Observable, of } from 'rxjs';
 import { DotLottie } from '@lottiefiles/dotlottie-web';
 
 import { ROUTES } from '@app/app.routes';
+
 import { authInterceptor } from '@core/interceptors/auth/auth.interceptor';
+import { errorInterceptor } from '@core/interceptors/error/error.interceptor';
 import { AuthService } from '@core/_services/auth/auth.service';
 
 export class CustomTranslateLoader implements TranslateLoader {
@@ -20,7 +22,8 @@ export class CustomTranslateLoader implements TranslateLoader {
 }
 
 const HTTP_INTERCEPTORS: HttpInterceptorFn[] = [
-  authInterceptor
+  authInterceptor,
+  errorInterceptor
 ];
 
 export const APP_CONFIG: ApplicationConfig = {
