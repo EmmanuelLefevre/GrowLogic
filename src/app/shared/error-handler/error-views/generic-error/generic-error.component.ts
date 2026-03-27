@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { Location, DOCUMENT, NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
-const COUNTDOWN_START = 5;
+const COUNTDOWN_START = 4;
 const COUNTDOWN_END = 0;
 const COUNTDOWN_STEP = 1;
 
 const EMPTY_HISTORY = 0;
 const MIN_HISTORY_LENGTH = 1;
+const REDIRECT_CONGRATS_PERIOD_MS = 800;
+const TERMINATION_ANIMATION_MS = 300;
 const TICK_INTERVAL_MS = 1000;
 
 const INITIAL_NODES = [
@@ -25,7 +27,10 @@ const INITIAL_NODES = [
   ],
   templateUrl: './generic-error.component.html',
   styleUrl: './generic-error.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.is-terminating]': 'isTerminating()'
+  }
 })
 
 export class GenericErrorComponent {
@@ -37,10 +42,10 @@ export class GenericErrorComponent {
 
   private isRedirecting = false;
   private timerInterval: ReturnType<typeof setInterval> | undefined;
-  private timerBeep?: HTMLAudioElement;
 
-  protected readonly systemNodes = signal([...INITIAL_NODES]);
   protected readonly countdown = signal(COUNTDOWN_START);
+  protected readonly isTerminating = signal(false);
+  protected readonly systemNodes = signal([...INITIAL_NODES]);
 
   // Calculated signal: true ONLY if all buttons are activated
   protected readonly isSystemRebooted = computed(() =>
@@ -67,25 +72,26 @@ export class GenericErrorComponent {
 
   private handleSuccessNavigation(): void {
     this.isRedirecting = true;
-
-    if (this.document.defaultView) {
-      this.timerBeep = new Audio('assets/sounds/timer-beep.mp3');
-
-      this.timerBeep.play().catch(() => {
-        console.info('Please enable audio in your browser to hear the sound effects.');
-      });
-    }
+    this.playSound('assets/sounds/timer-beep.mp3');
 
     this.timerInterval = setInterval(() => {
       const currentValue = this.countdown() - COUNTDOWN_STEP;
       this.countdown.set(currentValue);
 
       if (currentValue > COUNTDOWN_END) {
-        this.playSound('assets/sounds/congrats.mp3');
+        this.playSound('assets/sounds/timer-beep.mp3');
       }
       else {
         this.clearTimer();
-        this.executeRedirection();
+        this.playSound('assets/sounds/congrats.mp3');
+
+        setTimeout(() => {
+          this.isTerminating.set(true);
+        }, REDIRECT_CONGRATS_PERIOD_MS - TERMINATION_ANIMATION_MS);
+
+        setTimeout(() => {
+          this.executeRedirection();
+        }, REDIRECT_CONGRATS_PERIOD_MS);
       }
     }, TICK_INTERVAL_MS);
   }

@@ -10,13 +10,20 @@
       class="generic-error__img" />
 
     @if (isSystemRebooted()) {
-      <div class="generic-error__overlay">
-        <p class="generic-error__success-message">
+      <div
+        [class.is-nearly-rebooted]="countdown() === 0"
+        class="generic-error__overlay">
+        <p
+          [class.is-nearly-rebooted]="countdown() === 0"
+          class="generic-error__success-message">
           {{ 'PAGES.ERROR.GENERIC.SUCCESS' | translate }}
         </p>
-        <span class="generic-error__countdown">
-          {{ countdown() }}
-        </span>
+
+        @if (countdown() !== 0) {
+          <span class="generic-error__countdown">
+            {{ countdown() }}
+          </span>
+        }
       </div>
     }
   </div>
@@ -30,7 +37,7 @@
   </h5>
 
   <div
-    [class.is-nearly-rebooted]="isSystemRebooted() && countdown() <= 1"
+    [class.is-nearly-rebooted]="countdown() === 0"
     [class.is-rebooted]="isSystemRebooted()"
     class="generic-error__control-panel">
     @for (node of systemNodes(); track node.id) {
