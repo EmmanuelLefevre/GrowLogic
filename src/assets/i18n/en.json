@@ -252,7 +252,7 @@
       }
     },
     "LOADER": {
-      "LOADING": "Loading..."
+      "ARIA": "Page loading in progress"
     }
   }
 }
