@@ -172,6 +172,7 @@ describe('GenericErrorComponent', () => {
       // --- ACT & ASSERT ---
       vi.advanceTimersByTime(1000);
       expect((component as any).countdown()).toBe(3);
+      expect(window.Audio).toHaveBeenCalledWith('assets/sounds/timer-beep.mp3');
 
       vi.advanceTimersByTime(3000);
       expect((component as any).countdown()).toBe(0);
@@ -270,6 +271,26 @@ describe('GenericErrorComponent', () => {
 
       // --- CLEANUP ---
       viewSpy.mockRestore();
+    });
+  });
+
+  describe('Image', () => {
+    it('should render the generic error image correctly with optimized attributes', () => {
+      // --- ARRANGE ---
+      fixture.detectChanges();
+
+      // --- ACT ---
+      const imgElement = fixture.debugElement.query(By.css('.generic-error__img')).nativeElement;
+
+      // --- ASSERT ---
+      expect(imgElement.getAttribute('src')).toContain('assets/img/generic-error.png');
+
+      // Le alt doit correspondre à la traduction mockée dans ton beforeEach
+      expect(imgElement.getAttribute('alt')).toBe('Image d\'erreur');
+
+      // Bonus : on s'assure que les dimensions strictes imposées par NgOptimizedImage sont bien là
+      expect(imgElement.getAttribute('width')).toBe('656');
+      expect(imgElement.getAttribute('height')).toBe('380');
     });
   });
 });
