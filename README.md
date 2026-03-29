@@ -165,7 +165,7 @@ git clone git@github.com:EmmanuelLefevre/AngularTemplate.git
 cd GrowLogic
 corepack enable
 pnpm install --frozen-lockfile
-pnpm start/ng serve
+pnpm start
 ```
 
 - Via Package  
