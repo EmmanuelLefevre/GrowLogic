@@ -43,6 +43,9 @@ export const ROUTES: Routes = [
           seo: { titleKey: 'META.PAGES.CONTACT.TITLE', descriptionKey: 'META.PAGES.CONTACT.DESCRIPTION' }
         }
       },
+      // Add 'about', 'other views'...
+
+      // --- PRIVATE AREA ---
       {
         path: 'private',
         loadComponent: () => import(
@@ -50,7 +53,6 @@ export const ROUTES: Routes = [
           .then(m => m.PrivateComponent),
         canActivate: [authGuard],
       },
-      // Add 'about', 'other views'...
 
       // --- ERROR MANAGEMENT ---
       {
@@ -72,6 +74,18 @@ export const ROUTES: Routes = [
               seo: {
                 titleKey: 'META.PAGES.ERROR.401.TITLE',
                 descriptionKey: 'META.PAGES.ERROR.401.DESCRIPTION',
+                robots: 'noindex, nofollow'
+              }
+            }
+          },
+          { path: 'forbidden-error',
+            loadComponent: () => import(
+              '@shared/error-handler/error-views/forbidden-error/forbidden-error.component')
+              .then(m => m.ForbiddenErrorComponent),
+            data: {
+              seo: {
+                titleKey: 'META.PAGES.ERROR.403.TITLE',
+                descriptionKey: 'META.PAGES.ERROR.403.DESCRIPTION',
                 robots: 'noindex, nofollow'
               }
             }

@@ -20,6 +20,7 @@ class MockLayoutComponent {}
 describe('App Routes', () => {
 
   let harness: RouterTestingHarness;
+  let router: Router;
 
   const AUTH_SERVICE_MOCK = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,6 +58,7 @@ describe('App Routes', () => {
       ]
     });
 
+    router = TestBed.inject(Router);
     harness = await RouterTestingHarness.create();
   });
 
@@ -106,6 +108,7 @@ describe('App Routes', () => {
 
     const ERROR_CASES = [
       { path: '/error/unauthorized-error' },
+      { path: '/error/forbidden-error' },
       { path: '/error/unfound-error' },
       { path: '/error/server-error' },
       { path: '/error/generic-error' },
@@ -126,44 +129,28 @@ describe('App Routes', () => {
 
   describe('Private Route', () => {
 
-    it('should allow navigation to /private if authGuard passes', async() => {
+    it('should allow navigation to /private if authGuard returns true', async() => {
       // --- ARRANGE ---
-      AUTH_SERVICE_MOCK.isAuthenticated.mockReturnValue(true);
+      mockAuthGuard.mockReturnValue(true);
 
       // --- ACT ---
       const INSTANCE = await harness.navigateByUrl('/private');
 
       // --- ASSERT ---
       expect(INSTANCE).toBeTruthy();
-      expect(TestBed.inject(Router).url).toBe('/private');
+      expect(router.url).toBe('/private');
     });
 
-    it('should redirect to /home if authGuard fails (no token)', async() => {
+    it('should redirect to root (/) if authGuard rejects unauthenticated user', async() => {
       // --- ARRANGE ---
-      const ROUTER = TestBed.inject(Router);
-      const HOME_TREE = ROUTER.createUrlTree(['/home']);
-
-      mockAuthGuard.mockReturnValue(HOME_TREE);
+      mockAuthGuard.mockReturnValue(router.parseUrl('/'));
 
       // --- ACT ---
       await harness.navigateByUrl('/private');
 
       // --- ASSERT ---
-      expect(TestBed.inject(Router).url).toBe('/home');
-    });
-
-    it('should redirect to unauthorized error if authGuard fails (token present but not authenticated)', async() => {
-      // --- ARRANGE ---
-      const ROUTER = TestBed.inject(Router);
-      const ERROR_TREE = ROUTER.createUrlTree(['/error/unauthorized-error']);
-
-      mockAuthGuard.mockReturnValue(ERROR_TREE);
-
-      // --- ACT ---
-      await harness.navigateByUrl('/private');
-
-      // --- ASSERT ---
-      expect(TestBed.inject(Router).url).toBe('/error/unauthorized-error');
+      // Redirige vers / qui lui même redirige vers /home
+      expect(router.url).toBe('/home');
     });
   });
 });
@@ -214,6 +201,7 @@ describe('Route SEO Data Integrity', () => {
     // --- ARRANGE ---
     const expectedErrorSeo = [
       { path: 'unauthorized-error', titleKey: 'META.PAGES.ERROR.401.TITLE', descriptionKey: 'META.PAGES.ERROR.401.DESCRIPTION' },
+      { path: 'forbidden-error', titleKey: 'META.PAGES.ERROR.403.TITLE', descriptionKey: 'META.PAGES.ERROR.403.DESCRIPTION' },
       { path: 'unfound-error', titleKey: 'META.PAGES.ERROR.404.TITLE', descriptionKey: 'META.PAGES.ERROR.404.DESCRIPTION' },
       { path: 'server-error', titleKey: 'META.PAGES.ERROR.500.TITLE', descriptionKey: 'META.PAGES.ERROR.500.DESCRIPTION' },
       { path: 'generic-error', titleKey: 'META.PAGES.ERROR.GENERIC.TITLE', descriptionKey: 'META.PAGES.ERROR.GENERIC.DESCRIPTION' },
