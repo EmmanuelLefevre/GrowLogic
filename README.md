@@ -8,9 +8,9 @@
 
 <div align="center">
   <a href="https://github.com/EmmanuelLefevre/GrowLogic/actions"><img src="https://github.com/EmmanuelLefevre/GrowLogic/actions/workflows/pipeline.yml/badge.svg" alt="CI/CD Pipeline"/>
-  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/api/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=security_rating" alt="Security Rating"/>
-  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=alert_status" alt="Quality Gate"/>
-  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=coverage" alt="Coverage"/></a>
+  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/api/dashboard?id=EmmanuelLefevre_GrowLogic"><img src="https://sonarcloud.io/api/project_badges/measure?project=EmmanuelLefevre_GrowLogic&metric=security_rating" alt="Security Rating"/>
+  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=EmmanuelLefevre_GrowLogic"><img src="https://sonarcloud.io/api/project_badges/measure?project=EmmanuelLefevre_GrowLogic&metric=alert_status" alt="Quality Gate"/>
+  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=EmmanuelLefevre_GrowLogic"><img src="https://sonarcloud.io/api/project_badges/measure?project=EmmanuelLefevre_GrowLogic&metric=coverage" alt="Coverage"/></a>
 </div>
 
 <br>
