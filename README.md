@@ -12,7 +12,7 @@
 
 <div align="center">
   <a href="https://snyk.io/test/github/EmmanuelLefevre/GrowLogic">
-    <img src="https://snyk.io/test/github/EmmanuelLefevre/GrowLogic/badge.svg" alt="Known Vulnerabilities"/>
+    <img src="https://snyk.io/test/github/EmmanuelLefevre/GrowLogic/badge.svg?targetFile=package.json" alt="Libraries Vulnerabilities"/>
   </a>
 </div>
 
