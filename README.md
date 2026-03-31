@@ -1,31 +1,24 @@
 <div align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=EmmanuelLefevre.AngularTemplate" alt="Visitors"/>
-  &nbsp;&nbsp;<img src="https://img.shields.io/github/last-commit/EmmanuelLefevre/AngularTemplate" alt="Last Commit"/>&nbsp;&nbsp;
-  <img src="https://img.shields.io/github/license/EmmanuelLefevre/AngularTemplate" alt="License MIT"/>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=EmmanuelLefevre.GrowLogic" alt="Visitors"/>
+  &nbsp;&nbsp;<img src="https://img.shields.io/github/last-commit/EmmanuelLefevre/GrowLogic" alt="Last Commit"/>&nbsp;&nbsp;
+  <img src="https://img.shields.io/github/license/EmmanuelLefevre/GrowLogic" alt="License MIT"/>
 </div>
 
 <br>
 
 <div align="center">
-  <a href="https://github.com/EmmanuelLefevre/AngularTemplate/actions">
-    <img src="https://github.com/EmmanuelLefevre/AngularTemplate/actions/workflows/pipeline.yml/badge.svg" alt="CI/CD Pipeline"/>
-  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/api/dashboard?id=emmanuel-lefevre_angular-template">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=security_rating" alt="Security Rating"/>
-  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=emmanuel-lefevre_angular-template">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=alert_status" alt="Quality Gate"/>
-  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=emmanuel-lefevre_angular-template">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=coverage" alt="Coverage"/></a>
+  <a href="https://github.com/EmmanuelLefevre/GrowLogic/actions"><img src="https://github.com/EmmanuelLefevre/GrowLogic/actions/workflows/pipeline.yml/badge.svg" alt="CI/CD Pipeline"/>
+  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/api/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=security_rating" alt="Security Rating"/>
+  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=alert_status" alt="Quality Gate"/>
+  </a>&nbsp;&nbsp;<a href="https://sonarcloud.io/dashboard?id=emmanuel-lefevre_angular-template"><img src="https://sonarcloud.io/api/project_badges/measure?project=emmanuel-lefevre_angular-template&metric=coverage" alt="Coverage"/></a>
 </div>
 
 <br>
 
 <div align="center">
-  <a href="https://snyk.io/test/github/EmmanuelLefevre/AngularTemplate">
-    <img src="https://snyk.io/test/github/EmmanuelLefevre/AngularTemplate/badge.svg" alt="Known Vulnerabilities"/>
+  <a href="https://snyk.io/test/github/EmmanuelLefevre/GrowLogic">
+    <img src="https://snyk.io/test/github/EmmanuelLefevre/GrowLogic/badge.svg" alt="Known Vulnerabilities"/>
   </a>&nbsp;&nbsp;
-  <a href="https://github.com/EmmanuelLefevre/AngularTemplate/actions/workflows/codeql.yml">
-    <img src="https://github.com/EmmanuelLefevre/AngularTemplate/actions/workflows/codeql.yml/badge.svg" alt="CodeQL"/>
-  </a>
 </div>
 
 <br>
@@ -147,7 +140,7 @@ La documentation détaillée est disponible ici :
 
 <br>
 
-> [🔗 Lien vers la documentation GitHub Pages](https://emmanuellefevre.github.io/AngularTemplate/)  
+> [🔗 Lien vers la documentation GitHub Pages](https://emmanuellefevre.github.io/GrowLogic/)  
 
 ## ⚡ QUICK START
 
@@ -181,7 +174,7 @@ Ce projet utilise **Corepack** (inclus dans **NodeJS**) pour garantir que tous l
 - Via Clone **SSH**  
 
 ```bash
-git clone git@github.com:EmmanuelLefevre/AngularTemplate.git
+git clone git@github.com:EmmanuelLefevre/GrowLogic.git
 cd GrowLogic
 corepack enable
 pnpm install --frozen-lockfile
