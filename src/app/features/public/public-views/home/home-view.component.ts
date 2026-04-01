@@ -2,7 +2,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
-import { BackgroundComponent } from '@app/shared/components/background/background.component';
+import { BackgroundComponent } from '@shared/components/background/background.component';
 
 @Component({
   selector: 'home-view',
