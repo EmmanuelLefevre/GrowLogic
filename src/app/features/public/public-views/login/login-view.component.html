@@ -1,5 +1,7 @@
 <background>
-  <section class="login">
+  <section
+    [class.is-register]="isRegisterMode()"
+    class="login">
     <div class="login__wrapper">
       <div
         class="login__container"
@@ -19,7 +21,6 @@
         <dynamic-form
           [fields]="loginFields"
           [isRegisterMode]="isRegisterMode()"
-          [isLoading]="isLoading()"
           (submitted)="onFormSubmit($event)"
           (cancelled)="onCancel()" />
 

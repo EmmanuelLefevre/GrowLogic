@@ -45,13 +45,10 @@
  ┃ ┃ ┃ ┗ 📂user
  ┃ ┃ ┣ 💉_services
  ┃ ┃ ┃ ┣ 🔐auth
- ┃ ┃ ┃ ┃ ┗ 📄auth.service.ts
  ┃ ┃ ┃ ┣ 📈seo
- ┃ ┃ ┃ ┃ ┗ 📄seo.service.ts
  ┃ ┃ ┃ ┣ 🔔snackbar
- ┃ ┃ ┃ ┃ ┗ 📄snackbar.service.ts
+ ┃ ┃ ┃ ┣ 🐘supabase
  ┃ ┃ ┃ ┗ 🗣️translation
- ┃ ┃ ┃   ┗ 📄translation.service.ts
  ┃ ┃ ┣ 🚧guards
  ┃ ┃ ┃ ┗ 🆔auth
  ┃ ┃ ┗ 🎣interceptors
