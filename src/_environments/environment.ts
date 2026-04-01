@@ -10,5 +10,9 @@ export const ENVIRONMENT: IEnvironment = {
     author: 'Emmanuel Lefevre, Adrien Lazaille, Camille Hoareau, Rémy Nowe, Louise Delaunay, Nicolas Lombard',
     themeColor: '#08b26b',
     defaultShareImage: 'https://growlogic.emmanuellefevre.com/assets/logos/logo.png'
+  },
+  supabase: {
+    url: PROCESS.env['NG_APP_SUPABASE_URL'] || '',
+    anonKey: PROCESS.env['NG_APP_SUPABASE_ANON_KEY'] || ''
   }
 };
