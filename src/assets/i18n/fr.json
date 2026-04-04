@@ -182,6 +182,9 @@
         "SUCCESS": "Erreur colmatée. Tunnel de sortie stable !",
         "IMG": {
           "ALT": "Une illustration de paysage désertique dévasté par la sécheresse"
+        },
+        "BUTTON": {
+          "ARIA": "Réparer le système {{id}}"
         }
       }
     }

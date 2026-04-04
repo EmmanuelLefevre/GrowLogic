@@ -182,6 +182,9 @@
         "SUCCESS": "Error fixed. Stable exit tunnel !",
         "IMG": {
           "ALT": "An illustration of a desert landscape devastated by drought"
+        },
+        "BUTTON": {
+          "ARIA": "Fix system {{id}}"
         }
       }
     }
