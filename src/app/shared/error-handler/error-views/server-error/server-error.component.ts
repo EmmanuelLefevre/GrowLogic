@@ -172,9 +172,9 @@ export class ServerErrorComponent implements OnInit {
 
   private playPunchSound(): void {
     if (this.punchSound) {
-      this.punchSound.currentTime = 0;
+      const soundClone = this.punchSound.cloneNode() as HTMLAudioElement;
 
-      this.punchSound.play().catch(() => {
+      soundClone.play().catch(() => {
         console.info('Please enable audio in your browser to hear the sound effects.');
       });
     }

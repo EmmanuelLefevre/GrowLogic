@@ -29,7 +29,9 @@ describe('ServerErrorComponent', () => {
       load: vi.fn(),
       currentTime: 0,
       preload: '',
-      src: ''
+      src: '',
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      cloneNode: vi.fn().mockImplementation(() => mockAudio)
     };
 
     mockBlob = new Blob(['fake audio content']);
