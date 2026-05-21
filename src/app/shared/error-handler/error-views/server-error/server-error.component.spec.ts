@@ -46,10 +46,12 @@ describe('ServerErrorComponent', () => {
     translate = TestBed.inject(TranslateService);
     mockDocument = TestBed.inject(DOCUMENT);
 
-    vi.stubGlobal('Audio', vi.fn().mockImplementation(function() {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return mockAudio;
-    }));
+    if (mockDocument.defaultView) {
+      (mockDocument.defaultView as any).Audio = vi.fn().mockImplementation(function() {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return mockAudio;
+      });
+    }
 
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
       blob: vi.fn().mockResolvedValue(mockBlob)
@@ -124,13 +126,19 @@ describe('ServerErrorComponent', () => {
     it('should log info if audio play is blocked by browser', async() => {
       // --- ARRANGE ---
       fixture.detectChanges();
+
+      await Promise.resolve();
+      await vi.runAllTimersAsync();
+
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       const consoleSpy = vi.spyOn(console, 'info').mockImplementation(() => {});
       mockAudio.play.mockRejectedValue(new Error('NotAllowedError'));
 
       // --- ACT ---
       component.whackDeveloper(TEAM_DEVELOPERS[0].id);
+
       await Promise.resolve();
+      await vi.runAllTimersAsync();
 
       // --- ASSERT ---
       expect(consoleSpy).toHaveBeenCalledWith(
@@ -243,6 +251,10 @@ describe('ServerErrorComponent', () => {
     it('should play sound and update signals when whacking a developer', async() => {
       // --- ARRANGE ---
       fixture.detectChanges();
+
+      await Promise.resolve();
+      await vi.runAllTimersAsync();
+
       const targetId = TEAM_DEVELOPERS[0].id;
 
       // --- ACT ---
@@ -320,6 +332,30 @@ describe('ServerErrorComponent', () => {
 
       // --- ACT ---
       component.whackDeveloper(targetId);
+
+      // --- ASSERT ---
+      expect(mockAudio.play).not.toHaveBeenCalled();
+    });
+
+    it('should return early if the developer id is not found (!targetDev branch)', () => {
+      // --- ARRANGE ---
+      fixture.detectChanges();
+      mockAudio.play.mockClear();
+
+      // --- ACT ---
+      component.whackDeveloper(9999);
+
+      // --- ASSERT ---
+      expect(mockAudio.play).not.toHaveBeenCalled();
+    });
+
+    it('should not play sound if punchSound.src is empty', () => {
+      // --- ARRANGE ---
+      fixture.detectChanges();
+      (component as any).punchSound.src = '';
+
+      // --- ACT ---
+      component.whackDeveloper(TEAM_DEVELOPERS[0].id);
 
       // --- ASSERT ---
       expect(mockAudio.play).not.toHaveBeenCalled();
@@ -469,6 +505,24 @@ describe('ServerErrorComponent', () => {
 
       // --- ASSERT ---
       expect((component as any).punchSound).toBeUndefined();
+
+      // --- CLEANUP ---
+      viewSpy.mockRestore();
+    });
+
+    it('should not play sound if window is null during playPunchSound', async() => {
+      // --- ARRANGE ---
+      fixture.detectChanges();
+      await Promise.resolve();
+      await vi.runAllTimersAsync();
+
+      const viewSpy = vi.spyOn(mockDocument, 'defaultView', 'get').mockReturnValue(null as any);
+
+      // --- ACT ---
+      component.whackDeveloper(TEAM_DEVELOPERS[0].id);
+
+      // --- ASSERT ---
+      expect(mockAudio.play).not.toHaveBeenCalled();
 
       // --- CLEANUP ---
       viewSpy.mockRestore();
