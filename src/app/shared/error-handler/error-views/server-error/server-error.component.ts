@@ -121,11 +121,24 @@ export class ServerErrorComponent implements OnInit {
 
   private initAudio(): void {
     const window = this.document.defaultView;
+    if (!window) return;
 
-    if (window) {
-      this.punchSound = new window.Audio('assets/sounds/punch.wav');
-      this.punchSound.load();
-    }
+    this.punchSound = new window.Audio();
+    this.punchSound.preload = 'auto';
+
+    fetch('assets/sounds/punch.wav')
+      .then(response => response.blob())
+      .then(blob => {
+        const objectUrl = URL.createObjectURL(blob);
+
+        if (this.punchSound) {
+          this.punchSound.src = objectUrl;
+          this.punchSound.load();
+        }
+      })
+      .catch(() => {
+        console.info('Impossible de précharger le son.');
+      });
   }
 
   private initMouseAndTouchListeners(): void {

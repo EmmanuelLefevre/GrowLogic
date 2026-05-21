@@ -16,6 +16,9 @@ describe('ServerErrorComponent', () => {
   let mockAudio: any;
   let mockDocument: Document;
   let translate: TranslateService;
+  let mockBlob: Blob;
+
+  let originalCreateObjectURL: typeof URL.createObjectURL;
 
   const ANIM_MS = 900;
 
@@ -24,8 +27,12 @@ describe('ServerErrorComponent', () => {
     mockAudio = {
       play: vi.fn().mockReturnValue(Promise.resolve()),
       load: vi.fn(),
-      currentTime: 0
+      currentTime: 0,
+      preload: '',
+      src: ''
     };
+
+    mockBlob = new Blob(['fake audio content']);
 
     await TestBed.configureTestingModule({
       imports: [
@@ -41,6 +48,13 @@ describe('ServerErrorComponent', () => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return mockAudio;
     }));
+
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      blob: vi.fn().mockResolvedValue(mockBlob)
+    }));
+
+    originalCreateObjectURL = URL.createObjectURL;
+    URL.createObjectURL = vi.fn().mockReturnValue('blob:fake-url');
 
     translate.setTranslation('fr', {
       'PAGES.ERROR.SERVER': {
@@ -62,8 +76,11 @@ describe('ServerErrorComponent', () => {
   });
 
   afterEach(() => {
+    URL.createObjectURL = originalCreateObjectURL;
     vi.restoreAllMocks();
+    vi.unstubAllGlobals();
     vi.useRealTimers();
+    fixture.destroy();
   });
 
   describe('Initialization & State', () => {
@@ -84,12 +101,21 @@ describe('ServerErrorComponent', () => {
       expect(component.developers()[0].isWhacked).toBe(false);
     });
 
-    it('should initialize the punch sound effect', () => {
+    it('should initialize the punch sound effect using fetch and Blob', async() => {
       // --- ACT ---
       fixture.detectChanges();
 
+      await Promise.resolve();
+      await Promise.resolve();
+      await Promise.resolve();
+      await vi.runAllTimersAsync();
+
       // --- ASSERT ---
-      expect(window.Audio).toHaveBeenCalledWith('assets/sounds/punch.wav');
+      expect(window.Audio).toHaveBeenCalled();
+      expect(globalThis.fetch).toHaveBeenCalledWith('assets/sounds/punch.wav');
+      expect(URL.createObjectURL).toHaveBeenCalledWith(mockBlob);
+      expect(mockAudio.preload).toBe('auto');
+      expect(mockAudio.src).toBe('blob:fake-url');
       expect(mockAudio.load).toHaveBeenCalled();
     });
 
@@ -402,11 +428,11 @@ describe('ServerErrorComponent', () => {
   });
 
   describe('Edge Cases (No Window Context)', () => {
-    it('should execute if(window) branch and instantiate Audio', () => {
-      // --- ARRANGE ---
-      const localMockAudio = { load: vi.fn() };
+    it('should execute if(window) branch and instantiate Audio', async() => {
+      const localMockAudio = { load: vi.fn(), preload: '', src: '' };
 
       const mockWin = {
+        location: { href: 'http://localhost' },
         Audio: vi.fn().mockImplementation(function() {
           return localMockAudio;
         })
@@ -417,8 +443,14 @@ describe('ServerErrorComponent', () => {
       // --- ACT ---
       (component as any).initAudio();
 
+      await Promise.resolve();
+      await vi.runAllTimersAsync();
+
       // --- ASSERT ---
       expect((component as any).punchSound).toBe(localMockAudio);
+      expect(localMockAudio.preload).toBe('auto');
+      expect(URL.createObjectURL).toHaveBeenCalledWith(mockBlob);
+      expect(localMockAudio.src).toBe('blob:fake-url');
       expect(localMockAudio.load).toHaveBeenCalled();
 
       // --- CLEANUP ---
