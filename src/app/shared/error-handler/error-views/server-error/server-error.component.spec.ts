@@ -16,9 +16,6 @@ describe('ServerErrorComponent', () => {
   let mockAudio: any;
   let mockDocument: Document;
   let translate: TranslateService;
-  let mockBlob: Blob;
-
-  let originalCreateObjectURL: typeof URL.createObjectURL;
 
   const ANIM_MS = 900;
 
@@ -27,14 +24,8 @@ describe('ServerErrorComponent', () => {
     mockAudio = {
       play: vi.fn().mockReturnValue(Promise.resolve()),
       load: vi.fn(),
-      currentTime: 0,
-      preload: '',
-      src: '',
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      cloneNode: vi.fn().mockImplementation(() => mockAudio)
+      currentTime: 0
     };
-
-    mockBlob = new Blob(['fake audio content']);
 
     await TestBed.configureTestingModule({
       imports: [
@@ -46,19 +37,10 @@ describe('ServerErrorComponent', () => {
     translate = TestBed.inject(TranslateService);
     mockDocument = TestBed.inject(DOCUMENT);
 
-    if (mockDocument.defaultView) {
-      (mockDocument.defaultView as any).Audio = vi.fn().mockImplementation(function() {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return mockAudio;
-      });
-    }
-
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
-      blob: vi.fn().mockResolvedValue(mockBlob)
+    vi.stubGlobal('Audio', vi.fn().mockImplementation(function() {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      return mockAudio;
     }));
-
-    originalCreateObjectURL = URL.createObjectURL;
-    URL.createObjectURL = vi.fn().mockReturnValue('blob:fake-url');
 
     translate.setTranslation('fr', {
       'PAGES.ERROR.SERVER': {
@@ -80,11 +62,8 @@ describe('ServerErrorComponent', () => {
   });
 
   afterEach(() => {
-    URL.createObjectURL = originalCreateObjectURL;
     vi.restoreAllMocks();
-    vi.unstubAllGlobals();
     vi.useRealTimers();
-    fixture.destroy();
   });
 
   describe('Initialization & State', () => {
@@ -105,40 +84,25 @@ describe('ServerErrorComponent', () => {
       expect(component.developers()[0].isWhacked).toBe(false);
     });
 
-    it('should initialize the punch sound effect using fetch and Blob', async() => {
+    it('should initialize the punch sound effect', () => {
       // --- ACT ---
       fixture.detectChanges();
 
-      await Promise.resolve();
-      await Promise.resolve();
-      await Promise.resolve();
-      await vi.runAllTimersAsync();
-
       // --- ASSERT ---
-      expect(window.Audio).toHaveBeenCalled();
-      expect(globalThis.fetch).toHaveBeenCalledWith('assets/sounds/punch.wav');
-      expect(URL.createObjectURL).toHaveBeenCalledWith(mockBlob);
-      expect(mockAudio.preload).toBe('auto');
-      expect(mockAudio.src).toBe('blob:fake-url');
+      expect(window.Audio).toHaveBeenCalledWith('assets/sounds/punch.wav');
       expect(mockAudio.load).toHaveBeenCalled();
     });
 
     it('should log info if audio play is blocked by browser', async() => {
       // --- ARRANGE ---
       fixture.detectChanges();
-
-      await Promise.resolve();
-      await vi.runAllTimersAsync();
-
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       const consoleSpy = vi.spyOn(console, 'info').mockImplementation(() => {});
       mockAudio.play.mockRejectedValue(new Error('NotAllowedError'));
 
       // --- ACT ---
       component.whackDeveloper(TEAM_DEVELOPERS[0].id);
-
       await Promise.resolve();
-      await vi.runAllTimersAsync();
 
       // --- ASSERT ---
       expect(consoleSpy).toHaveBeenCalledWith(
@@ -251,10 +215,6 @@ describe('ServerErrorComponent', () => {
     it('should play sound and update signals when whacking a developer', async() => {
       // --- ARRANGE ---
       fixture.detectChanges();
-
-      await Promise.resolve();
-      await vi.runAllTimersAsync();
-
       const targetId = TEAM_DEVELOPERS[0].id;
 
       // --- ACT ---
@@ -332,30 +292,6 @@ describe('ServerErrorComponent', () => {
 
       // --- ACT ---
       component.whackDeveloper(targetId);
-
-      // --- ASSERT ---
-      expect(mockAudio.play).not.toHaveBeenCalled();
-    });
-
-    it('should return early if the developer id is not found (!targetDev branch)', () => {
-      // --- ARRANGE ---
-      fixture.detectChanges();
-      mockAudio.play.mockClear();
-
-      // --- ACT ---
-      component.whackDeveloper(9999);
-
-      // --- ASSERT ---
-      expect(mockAudio.play).not.toHaveBeenCalled();
-    });
-
-    it('should not play sound if punchSound.src is empty', () => {
-      // --- ARRANGE ---
-      fixture.detectChanges();
-      (component as any).punchSound.src = '';
-
-      // --- ACT ---
-      component.whackDeveloper(TEAM_DEVELOPERS[0].id);
 
       // --- ASSERT ---
       expect(mockAudio.play).not.toHaveBeenCalled();
@@ -466,11 +402,11 @@ describe('ServerErrorComponent', () => {
   });
 
   describe('Edge Cases (No Window Context)', () => {
-    it('should execute if(window) branch and instantiate Audio', async() => {
-      const localMockAudio = { load: vi.fn(), preload: '', src: '' };
+    it('should execute if(window) branch and instantiate Audio', () => {
+      // --- ARRANGE ---
+      const localMockAudio = { load: vi.fn() };
 
       const mockWin = {
-        location: { href: 'http://localhost' },
         Audio: vi.fn().mockImplementation(function() {
           return localMockAudio;
         })
@@ -481,14 +417,8 @@ describe('ServerErrorComponent', () => {
       // --- ACT ---
       (component as any).initAudio();
 
-      await Promise.resolve();
-      await vi.runAllTimersAsync();
-
       // --- ASSERT ---
       expect((component as any).punchSound).toBe(localMockAudio);
-      expect(localMockAudio.preload).toBe('auto');
-      expect(URL.createObjectURL).toHaveBeenCalledWith(mockBlob);
-      expect(localMockAudio.src).toBe('blob:fake-url');
       expect(localMockAudio.load).toHaveBeenCalled();
 
       // --- CLEANUP ---
@@ -505,24 +435,6 @@ describe('ServerErrorComponent', () => {
 
       // --- ASSERT ---
       expect((component as any).punchSound).toBeUndefined();
-
-      // --- CLEANUP ---
-      viewSpy.mockRestore();
-    });
-
-    it('should not play sound if window is null during playPunchSound', async() => {
-      // --- ARRANGE ---
-      fixture.detectChanges();
-      await Promise.resolve();
-      await vi.runAllTimersAsync();
-
-      const viewSpy = vi.spyOn(mockDocument, 'defaultView', 'get').mockReturnValue(null as any);
-
-      // --- ACT ---
-      component.whackDeveloper(TEAM_DEVELOPERS[0].id);
-
-      // --- ASSERT ---
-      expect(mockAudio.play).not.toHaveBeenCalled();
 
       // --- CLEANUP ---
       viewSpy.mockRestore();

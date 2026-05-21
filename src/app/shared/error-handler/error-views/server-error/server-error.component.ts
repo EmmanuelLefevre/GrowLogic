@@ -121,24 +121,11 @@ export class ServerErrorComponent implements OnInit {
 
   private initAudio(): void {
     const window = this.document.defaultView;
-    if (!window) return;
 
-    this.punchSound = new window.Audio();
-    this.punchSound.preload = 'auto';
-
-    fetch('assets/sounds/punch.wav')
-      .then(response => response.blob())
-      .then(blob => {
-        const objectUrl = URL.createObjectURL(blob);
-
-        if (this.punchSound) {
-          this.punchSound.src = objectUrl;
-          this.punchSound.load();
-        }
-      })
-      .catch(() => {
-        console.info('Impossible de précharger le son.');
-      });
+    if (window) {
+      this.punchSound = new window.Audio('assets/sounds/punch.wav');
+      this.punchSound.load();
+    }
   }
 
   private initMouseAndTouchListeners(): void {
@@ -171,16 +158,12 @@ export class ServerErrorComponent implements OnInit {
   }
 
   private playPunchSound(): void {
-    if (this.punchSound && this.punchSound.src) {
-      const window = this.document.defaultView;
+    if (this.punchSound) {
+      this.punchSound.currentTime = 0;
 
-      if (window) {
-        const soundClone = new window.Audio(this.punchSound.src);
-
-        soundClone.play().catch(() => {
-          console.info('Please enable audio in your browser to hear the sound effects.');
-        });
-      }
+      this.punchSound.play().catch(() => {
+        console.info('Please enable audio in your browser to hear the sound effects.');
+      });
     }
   }
 }
