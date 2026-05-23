@@ -45,9 +45,9 @@
       </div>
     } @else {
       <ul class="plant-chat__list">
-        @for (question of questions(); track question.IdQuestion) {
+        @for (question of questions(); track question.id) {
           <li class="plant-chat__bubble plant-chat__bubble--sent">
-            <p class="plant-chat__bubble-text">{{ question.question }}</p>
+            <p class="plant-chat__bubble-text">{{ question }}</p>
             <time
               class="plant-chat__bubble-time"
               [attr.datetime]="question.createdAt">
@@ -57,7 +57,7 @@
 
           @if (question.answer) {
             <li class="plant-chat__bubble plant-chat__bubble--received">
-              <p class="plant-chat__bubble-text">{{ question.answer.answer }}</p>
+              <p class="plant-chat__bubble-text">{{ question.answer }}</p>
               <time
                 class="plant-chat__bubble-time"
                 [attr.datetime]="question.answer.createdAt">
