@@ -1,12 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { By } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { of, throwError } from 'rxjs';
 
-import { Plant } from '@app/features/private/_models/plant/plant.model';
-import { PlantService } from '@app/features/private/_services/plant/plant.service';
 import { AuthService } from '@core/_services/auth/auth.service';
 import { SnackbarService } from '@core/_services/snackbar/snackbar.service';
+
+import { Plant } from '@features/private/_models/plant/plant.model';
+import { PlantService } from '@features/private/_services/plant/plant.service';
+
+import { BackgroundComponent } from '@shared/components/background/background.component';
 
 import { MyPlantsComponent } from './my-plants.component';
 
@@ -21,13 +25,13 @@ const FIRST_INDEX = 0;
 const SECOND_INDEX = 1;
 
 const MOCK_PLANT: Plant = {
-  IdPlant: 'abc-123',
-  IdUser: 'user-456',
+  id: 'abc-123',
+  idUser: 'user-456',
   name: 'Poppy',
   mood: 'happy',
-  AiContext: null,
+  aiContext: null,
   createdAt: '2026-01-01T00:00:00Z',
-  changedAt: '2026-01-01T00:00:00Z'
+  updatedAt: '2026-01-01T00:00:00Z'
 };
 
 describe('MyPlantsComponent', () => {
@@ -79,48 +83,59 @@ describe('MyPlantsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialise showAddPanel to false', () => {
-    expect(component.showAddPanel()).toBe(false);
+  describe('Initialization & Initial State', () => {
+    it('should render the BackgroundComponent wrapper', () => {
+      // --- ACT ---
+      const backgroundDebugElement = fixture.debugElement.query(By.directive(BackgroundComponent));
+
+      // --- ASSERT ---
+      expect(backgroundDebugElement).toBeTruthy();
+    });
+
+    it('should initialise showAddPanel to false', () => {
+      expect(component.showAddPanel()).toBe(false);
+    });
+
+    it('should initialise plants to an empty array', () => {
+      expect(component.plants()).toEqual([]);
+    });
   });
 
-  it('should initialise plants to an empty array', () => {
-    expect(component.plants()).toEqual([]);
-  });
+  describe('ngOnInit()', () => {
+    it('should call PlantService.getAll on init', () => {
+      expect(PLANT_SERVICE_MOCK.getAll).toHaveBeenCalledTimes(CALL_ONCE);
+    });
 
-  it('should call PlantService.getAll on init', () => {
-    expect(PLANT_SERVICE_MOCK.getAll).toHaveBeenCalledTimes(CALL_ONCE);
-  });
+    it('should set isLoading to false after a successful load', () => {
+      expect(component.isLoading()).toBe(false);
+    });
 
-  it('should set isLoading to false after a successful load', () => {
-    expect(component.isLoading()).toBe(false);
-  });
+    it('should populate the plants signal after a successful load', async() => {
+      // --- ARRANGE ---
+      PLANT_SERVICE_MOCK.getAll.mockReturnValue(of([MOCK_PLANT]));
 
-  it('should populate the plants signal after a successful load', async() => {
-    // --- ARRANGE ---
-    PLANT_SERVICE_MOCK.getAll.mockReturnValue(of([MOCK_PLANT]));
+      // --- ACT ---
+      component.ngOnInit();
+      await fixture.whenStable();
 
-    // --- ACT ---
-    component.ngOnInit();
-    await fixture.whenStable();
+      // --- ASSERT ---
+      expect(component.plants()).toEqual([MOCK_PLANT]);
+    });
 
-    // --- ASSERT ---
-    expect(component.plants()).toEqual([MOCK_PLANT]);
-  });
+    it('should set isLoading to false even when getAll returns an error', async() => {
+      // --- ARRANGE ---
+      PLANT_SERVICE_MOCK.getAll.mockReturnValue(throwError(() => new Error('Server error')));
 
-  it('should set isLoading to false even when getAll returns an error', async() => {
-    // --- ARRANGE ---
-    PLANT_SERVICE_MOCK.getAll.mockReturnValue(throwError(() => new Error('Server error')));
+      // --- ACT ---
+      component.ngOnInit();
+      await fixture.whenStable();
 
-    // --- ACT ---
-    component.ngOnInit();
-    await fixture.whenStable();
-
-    // --- ASSERT ---
-    expect(component.isLoading()).toBe(false);
+      // --- ASSERT ---
+      expect(component.isLoading()).toBe(false);
+    });
   });
 
   describe('openAddPanel()', () => {
-
     it('should set showAddPanel to true', () => {
       // --- ACT ---
       (component as unknown as MyPlantsPrivate).openAddPanel();
@@ -132,7 +147,6 @@ describe('MyPlantsComponent', () => {
   });
 
   describe('onAddCancelled()', () => {
-
     it('should set showAddPanel back to false', () => {
       // --- ARRANGE ---
       component.showAddPanel.set(true);
@@ -143,14 +157,12 @@ describe('MyPlantsComponent', () => {
       // --- ASSERT ---
       expect(component.showAddPanel()).toBe(false);
     });
-
   });
 
   describe('onPlantAdded()', () => {
-
     it('should prepend the new plant to the beginning of the list', () => {
       // --- ARRANGE ---
-      const EXISTING_PLANT: Plant = { ...MOCK_PLANT, IdPlant: 'existing-1', name: 'Manu' };
+      const EXISTING_PLANT: Plant = { ...MOCK_PLANT, id: 'existing-1', name: 'Manu' };
       component.plants.set([EXISTING_PLANT]);
 
       // --- ACT ---
@@ -171,7 +183,5 @@ describe('MyPlantsComponent', () => {
       // --- ASSERT ---
       expect(component.showAddPanel()).toBe(false);
     });
-
   });
-
 });

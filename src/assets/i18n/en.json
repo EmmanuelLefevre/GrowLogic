@@ -122,9 +122,9 @@
   },
   "PAGES": {
     "PLANTS": {
-      "TITLE": "My Plants",
+      "TITLE": "Your connected indoor garden.",
       "LOADING": "Loading your plants...",
-      "EMPTY": "You don't have any plants yet. Start by adding one!",
+      "EMPTY": "You don't have any plants yet. Start by adding one !",
       "ADD": {
         "BUTTON": "Add a plant",
         "FORM_TITLE": "New plant",

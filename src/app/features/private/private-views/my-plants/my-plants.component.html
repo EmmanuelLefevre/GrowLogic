@@ -1,47 +1,53 @@
-<div class="my-plants">
-  <div class="my-plants__header">
-    <h1 class="my-plants__title">{{ 'PAGES.PLANTS.TITLE' | translate }}</h1>
+<background>
+  <section class="my-plants">
+    <div class="my-plants__wrapper">
+      <div class="my-plants__header">
+        <h1 class="my-plants__title">{{ 'PAGES.PLANTS.TITLE' | translate }}</h1>
 
-    <main-button
-      [label]="'PAGES.PLANTS.ADD.BUTTON'"
-      icon="fa-solid fa-plus"
-      [ariaLabel]="'PAGES.PLANTS.ADD.BUTTON'"
-      (clicked)="openAddPanel()" />
-  </div>
+        <main-button
+          [label]="'PAGES.PLANTS.ADD.BUTTON'"
+          [ariaLabel]="'PAGES.PLANTS.ADD.BUTTON'"
+          (clicked)="openAddPanel()" />
+      </div>
 
-  @if (isLoading()) {
-    <p class="my-plants__empty">{{ 'PAGES.PLANTS.LOADING' | translate }}</p>
-  } @else if (plants().length === 0) {
-    <p class="my-plants__empty">{{ 'PAGES.PLANTS.EMPTY' | translate }}</p>
-  } @else {
-    <ul class="my-plants__list">
-      @for (plant of plants(); track plant.IdPlant) {
-        <li class="my-plants__item">
-          <div class="my-plants__item-info">
-            <span class="my-plants__item-name">{{ plant.name }}</span>
-            @if (plant.mood) {
-              <span class="my-plants__item-mood">{{ 'PAGES.PLANTS.MOODS.' + plant.mood | uppercase | translate }}</span>
-            }
-          </div>
-          <div class="my-plants__item-actions">
-            <a
-              class="my-plants__chat-btn"
-              [routerLink]="['/private/plant-chat', plant.IdPlant]"
-              [attr.aria-label]="'PAGES.PLANTS.CHAT.BUTTON' | translate">
-              <i
-                class="fa-solid fa-comments"
-                aria-hidden="true"></i>
-              <span>{{ 'PAGES.PLANTS.CHAT.BUTTON' | translate }}</span>
-            </a>
-          </div>
-        </li>
+      @if (isLoading()) {
+        <p class="my-plants__loading">{{ 'PAGES.PLANTS.LOADING' | translate }}</p>
+      } @else if (plants().length === 0) {
+        <p class="my-plants__empty">{{ 'PAGES.PLANTS.EMPTY' | translate }}</p>
+      } @else {
+        <ul class="my-plants__list">
+          @for (plant of plants(); track plant.id) {
+            <li class="my-plants__item">
+              <div class="my-plants__item-info">
+                <span class="my-plants__item-name">{{ plant.name }}</span>
+                @if (plant.mood) {
+                  <span class="my-plants__item-mood">{{
+                    'PAGES.PLANTS.MOODS.' + plant.mood | uppercase | translate
+                  }}</span>
+                }
+              </div>
+
+              <div class="my-plants__item-actions">
+                <a
+                  class="my-plants__chat-btn"
+                  [routerLink]="['/private/plant-chat', plant.id]"
+                  [attr.aria-label]="'PAGES.PLANTS.CHAT.BUTTON' | translate">
+                  <i
+                    class="fa-solid fa-comments"
+                    aria-hidden="true"></i>
+                  <span>{{ 'PAGES.PLANTS.CHAT.BUTTON' | translate }}</span>
+                </a>
+              </div>
+            </li>
+          }
+        </ul>
       }
-    </ul>
-  }
 
-  @if (showAddPanel()) {
-    <add-plant
-      (plantAdded)="onPlantAdded($event)"
-      (cancelled)="onAddCancelled()" />
-  }
-</div>
+      @if (showAddPanel()) {
+        <add-plant
+          (plantAdded)="onPlantAdded($event)"
+          (cancelled)="onAddCancelled()" />
+      }
+    </div>
+  </section>
+</background>
