@@ -59,8 +59,10 @@
  ┃ ┃ ┃ ┣ ⚙️_config
  ┃ ┃ ┃ ┣ 🧱_models
  ┃ ┃ ┃ ┣ 💉_services
- ┃ ┃ ┃ ┣ 🗃️components
  ┃ ┃ ┃ ┣ 👁️private-views
+ ┃ ┃ ┃ ┃ ┣ 📊dashboard
+ ┃ ┃ ┃ ┃ ┣ 🌱my-plants
+ ┃ ┃ ┃ ┃ ┗ ⚙️settings
  ┃ ┃ ┃ ┣ 📄private.component.html
  ┃ ┃ ┃ ┣ 📄private.component.ts
  ┃ ┃ ┃ ┣ 📄private.config.ts
@@ -69,10 +71,10 @@
  ┃ ┃   ┣ ⚙️_config
  ┃ ┃   ┣ 🧱_models
  ┃ ┃   ┣ 💉_services
- ┃ ┃   ┣ 🗃️components
  ┃ ┃   ┣ 👁️public-views
  ┃ ┃   ┃ ┣ ✉️contact
- ┃ ┃   ┃ ┗ 🏠home
+ ┃ ┃   ┃ ┣ 🏠home
+ ┃ ┃   ┃ ┗ 🔑login
  ┃ ┃   ┣ 📄public.component.html
  ┃ ┃   ┣ 📄public.component.ts
  ┃ ┃   ┣ 📄public.config.ts

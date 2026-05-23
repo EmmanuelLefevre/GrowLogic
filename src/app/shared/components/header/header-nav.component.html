@@ -32,16 +32,18 @@
       class="header__nav">
       <ul class="header__list">
         @for (link of navLinks; track link.path) {
-          <li class="header__item">
-            <a
-              [routerLink]="link.path"
-              routerLinkActive="active"
-              (click)="closeMenu()"
-              (keydown.escape)="closeMenu()"
-              class="header__link">
-              {{ link.labelKey | translate }}
-            </a>
-          </li>
+          @if (!link.requiresAuth || authService.isAuthenticated()) {
+            <li class="header__item">
+              <a
+                [routerLink]="link.path"
+                routerLinkActive="active"
+                (click)="closeMenu()"
+                (keydown.escape)="closeMenu()"
+                class="header__link">
+                {{ link.labelKey | translate }}
+              </a>
+            </li>
+          }
         }
       </ul>
 

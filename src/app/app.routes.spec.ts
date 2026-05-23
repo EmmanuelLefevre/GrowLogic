@@ -1,14 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { provideRouter, Router, RouterOutlet } from '@angular/router';
+import { provideRouter, Router, RouterOutlet, Routes } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideTranslateService } from '@ngx-translate/core';
 
+import { ROUTES } from '@app/app.routes';
 import { authGuard } from '@core/guards/auth/auth.guard';
 import { AuthService } from '@core/_services/auth/auth.service';
-import { ROUTES } from '@app/app.routes';
 
 @Component({
   selector: 'mock-layout',
@@ -129,7 +129,7 @@ describe('App Routes', () => {
 
   describe('Private Route', () => {
 
-    it('should allow navigation to /private if authGuard returns true', async() => {
+    it('should allow navigation to /private/my-plants if authGuard returns true', async() => {
       // --- ARRANGE ---
       mockAuthGuard.mockReturnValue(true);
 
@@ -138,7 +138,7 @@ describe('App Routes', () => {
 
       // --- ASSERT ---
       expect(INSTANCE).toBeTruthy();
-      expect(router.url).toBe('/private');
+      expect(router.url).toBe('/private/my-plants');
     });
 
     it('should redirect to root (/) if authGuard rejects unauthenticated user', async() => {
@@ -149,7 +149,6 @@ describe('App Routes', () => {
       await harness.navigateByUrl('/private');
 
       // --- ASSERT ---
-      // Redirige vers / qui lui même redirige vers /home
       expect(router.url).toBe('/home');
     });
   });
@@ -197,6 +196,31 @@ describe('Route SEO Data Integrity', () => {
     });
   });
 
+  it('should contain valid and EXACT SEO metadata (including robots) for private views', () => {
+    // --- ARRANGE ---
+    const privateLayoutRoute = publicRoutes.find(r => r.path === 'private');
+    const privateRoutes = privateLayoutRoute?.children || [];
+
+    const expectedPrivateSeo = [
+      { path: 'dashboard', titleKey: 'META.PAGES.PRIVATE.DASHBOARD.TITLE', descriptionKey: 'META.PAGES.PRIVATE.DASHBOARD.DESCRIPTION' },
+      { path: 'my-plants', titleKey: 'META.PAGES.PRIVATE.PLANTS.TITLE', descriptionKey: 'META.PAGES.PRIVATE.PLANTS.DESCRIPTION' },
+      { path: 'settings', titleKey: 'META.PAGES.PRIVATE.SETTINGS.TITLE', descriptionKey: 'META.PAGES.PRIVATE.SETTINGS.DESCRIPTION' }
+    ];
+
+    // --- ACT & ASSERT ---
+    expectedPrivateSeo.forEach(expected => {
+      const route = privateRoutes.find(r => r.path === expected.path);
+
+      expect(route).toBeDefined();
+      expect(route?.data?.['seo']).toBeDefined();
+
+      expect(route?.data?.['seo']?.titleKey).toBe(expected.titleKey);
+      expect(route?.data?.['seo']?.descriptionKey).toBe(expected.descriptionKey);
+
+      expect(route?.data?.['seo']?.robots).toBe('noindex, nofollow');
+    });
+  });
+
   it('should contain valid and EXACT SEO metadata (including robots) for error views', () => {
     // --- ARRANGE ---
     const expectedErrorSeo = [
@@ -228,5 +252,27 @@ describe('Route SEO Data Integrity', () => {
   it('should have a global "noindex, nofollow" on the parent error layout route', () => {
     // --- ACT & ASSERT ---
     expect(errorLayoutRoute?.data?.['seo']?.robots).toBe('noindex, nofollow');
+  });
+});
+
+describe('Route Configuration Integrity (Lazy Loading)', () => {
+  it('should successfully resolve all lazy-loaded components in the routing tree', async() => {
+    // --- ARRANGE ---
+    const checkRoutes = async(routes: Routes): Promise<void> => {
+      for (const route of routes) {
+
+        if (route.loadComponent) {
+          const component = await route.loadComponent();
+          expect(component).toBeTruthy();
+        }
+
+        if (route.children) {
+          await checkRoutes(route.children);
+        }
+      }
+    };
+
+    // --- ACT & ASSERT ---
+    await checkRoutes(ROUTES);
   });
 });

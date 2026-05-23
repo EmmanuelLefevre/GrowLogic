@@ -19,6 +19,20 @@
         "TITLE": "Login",
         "DESCRIPTION": "Website login page"
       },
+      "PRIVATE": {
+        "DASHBOARD": {
+          "TITLE": "Dashboard",
+          "DESCRIPTION": "Tables of metrics for your plants."
+        },
+        "PLANTS": {
+          "TITLE": "Your plants",
+          "DESCRIPTION": "View and manage your plants."
+        },
+        "SETTINGS": {
+          "TITLE": "Account settings",
+          "DESCRIPTION": "Configure your account and preferences."
+        }
+      },
       "ERROR": {
         "401": {
           "TITLE": "Unauthorized",
@@ -59,7 +73,12 @@
     "HEADER": {
       "NAV": {
         "WELCOME": "Welcome",
-        "CONTACT": "Contact"
+        "CONTACT": "Contact",
+        "PRIVATE": {
+          "PLANTS": "My plants",
+          "DASHBOARD": "Dashboard",
+          "SETTINGS": "Settings"
+        }
       }
     },
     "FOOTER": {

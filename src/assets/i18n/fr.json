@@ -19,6 +19,20 @@
         "TITLE": "Connexion",
         "DESCRIPTION": "Page de connexion du site"
       },
+      "PRIVATE": {
+        "DASHBOARD": {
+          "TITLE": "Tableau de bord",
+          "DESCRIPTION": "Tableaux de métriques de vos plantes."
+        },
+        "PLANTS": {
+          "TITLE": "Mes plantes",
+          "DESCRIPTION": "Consultez et gérez vos plantes."
+        },
+        "SETTINGS": {
+          "TITLE": "Paramètres du compte",
+          "DESCRIPTION": "Configurez votre compte et vos préférences."
+        }
+      },
       "ERROR": {
         "401": {
           "TITLE": "Non Autorisé",
@@ -59,7 +73,12 @@
     "HEADER": {
       "NAV": {
         "WELCOME": "Bienvenue",
-        "CONTACT": "Contact"
+        "CONTACT": "Contact",
+        "PRIVATE": {
+          "PLANTS": "Mes plantes",
+          "DASHBOARD": "Tableau de bord",
+          "SETTINGS": "Paramètres"
+        }
       }
     },
     "FOOTER": {

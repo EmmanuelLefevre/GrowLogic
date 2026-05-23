@@ -49,9 +49,55 @@ export const ROUTES: Routes = [
       {
         path: 'private',
         loadComponent: () => import(
-          './features/private/private.component')
+          '@features/private/private.component')
           .then(m => m.PrivateComponent),
         canActivate: [authGuard],
+        children: [
+          {
+            path: '',
+            redirectTo: 'my-plants',
+            pathMatch: 'full'
+          },
+          {
+            path: 'dashboard',
+            loadComponent: () => import(
+              '@features/private/private-views/dashboard/dashboard.component')
+              .then(m => m.DashboardComponent),
+            data: {
+              seo: {
+                titleKey: 'META.PAGES.PRIVATE.DASHBOARD.TITLE',
+                descriptionKey: 'META.PAGES.PRIVATE.DASHBOARD.DESCRIPTION',
+                robots: 'noindex, nofollow'
+              }
+            }
+          },
+          {
+            path: 'my-plants',
+            loadComponent: () => import(
+              '@features/private/private-views/my-plants/my-plants.component')
+              .then(m => m.MyPlantsComponent),
+            data: {
+              seo: {
+                titleKey: 'META.PAGES.PRIVATE.PLANTS.TITLE',
+                descriptionKey: 'META.PAGES.PRIVATE.PLANTS.DESCRIPTION',
+                robots: 'noindex, nofollow'
+              }
+            }
+          },
+          {
+            path: 'settings',
+            loadComponent: () => import(
+              '@features/private/private-views/settings/settings.component')
+              .then(m => m.SettingsComponent),
+            data: {
+              seo: {
+                titleKey: 'META.PAGES.PRIVATE.SETTINGS.TITLE',
+                descriptionKey: 'META.PAGES.PRIVATE.SETTINGS.DESCRIPTION',
+                robots: 'noindex, nofollow'
+              }
+            }
+          }
+        ]
       },
 
       // --- ERROR MANAGEMENT ---
