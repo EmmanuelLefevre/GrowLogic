@@ -3,7 +3,7 @@ import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { SupabaseService } from '@core/_services/supabase/supabase.service';
-import { Plant, PlantCreate } from '@app/features/private/_models/plant/plant.model';
+import { Plant, PlantCreate } from '@features/private/_models/plant/plant.model';
 
 const SCHEMA = 'growlogic';
 const TABLE = 'plant';
@@ -40,7 +40,7 @@ export class PlantService {
         .schema(SCHEMA)
         .from(TABLE)
         .select()
-        .eq('IdPlant', id)
+        .eq('idPlant', id)
         .single()
     ).pipe(
       map(({ data, error }) => {
