@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  inject,
-  OnInit,
-  signal
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { DatePipe, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -13,11 +6,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { Plant } from '@app/features/private/_models/plant/plant.model';
-import { Question, QuestionCreate } from '@app/features/private/_models/question/question.model';
-import { PlantService } from '@app/features/private/_services/plant/plant.service';
-import { QuestionService } from '@app/features/private/_services/question/question.service';
 import { AuthService } from '@core/_services/auth/auth.service';
+
+import { Plant } from '@features/private/_models/plant/plant.model';
+import { PlantService } from '@features/private/_services/plant/plant.service';
+import { Question, QuestionCreate } from '@features/private/_models/question/question.model';
+import { QuestionService } from '@features/private/_services/question/question.service';
 
 const MESSAGE_MIN_LENGTH = 1;
 const MESSAGE_MAX_LENGTH = 500;
@@ -26,10 +20,10 @@ const MESSAGE_MAX_LENGTH = 500;
   selector: 'plant-chat',
   imports: [
     DatePipe,
-    UpperCasePipe,
-    RouterLink,
     ReactiveFormsModule,
-    TranslateModule
+    RouterLink,
+    TranslateModule,
+    UpperCasePipe,
   ],
   templateUrl: './plant-chat.component.html',
   styleUrl: './plant-chat.component.scss',
@@ -46,6 +40,7 @@ export class PlantChatComponent implements OnInit {
 
   readonly plant = signal<Plant | null>(null);
   readonly questions = signal<Question[]>([]);
+
   readonly isLoading = signal(true);
   readonly hasError = signal(false);
   readonly isSending = signal(false);
@@ -86,9 +81,9 @@ export class PlantChatComponent implements OnInit {
     if (!userId) return;
 
     const payload: QuestionCreate = {
-      question: this.messageControl.value!.trim(),
-      IdPlant: this.plantId,
-      IdUser: userId
+      content: this.messageControl.value!.trim(),
+      idPlant: this.plantId,
+      idUser: userId
     };
 
     this.isSending.set(true);
