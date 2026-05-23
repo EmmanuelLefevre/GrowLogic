@@ -25,11 +25,11 @@
           "DESCRIPTION": "Tables of metrics for your plants."
         },
         "PLANTS": {
-          "TITLE": "Your plants",
+          "TITLE": "My Plants",
           "DESCRIPTION": "View and manage your plants."
         },
         "SETTINGS": {
-          "TITLE": "Account settings",
+          "TITLE": "Profile",
           "DESCRIPTION": "Configure your account and preferences."
         }
       },
@@ -75,9 +75,9 @@
         "WELCOME": "Welcome",
         "CONTACT": "Contact",
         "PRIVATE": {
-          "PLANTS": "My plants",
+          "PLANTS": "My Plants",
           "DASHBOARD": "Dashboard",
-          "SETTINGS": "Settings"
+          "SETTINGS": "Profile"
         }
       }
     },

@@ -21,15 +21,15 @@
       },
       "PRIVATE": {
         "DASHBOARD": {
-          "TITLE": "Tableau de bord",
+          "TITLE": "Suivi",
           "DESCRIPTION": "Tableaux de métriques de vos plantes."
         },
         "PLANTS": {
-          "TITLE": "Mes plantes",
+          "TITLE": "Mes Plantes",
           "DESCRIPTION": "Consultez et gérez vos plantes."
         },
         "SETTINGS": {
-          "TITLE": "Paramètres du compte",
+          "TITLE": "Profil",
           "DESCRIPTION": "Configurez votre compte et vos préférences."
         }
       },
@@ -75,9 +75,9 @@
         "WELCOME": "Bienvenue",
         "CONTACT": "Contact",
         "PRIVATE": {
-          "PLANTS": "Mes plantes",
-          "DASHBOARD": "Tableau de bord",
-          "SETTINGS": "Paramètres"
+          "PLANTS": "Mes Plantes",
+          "DASHBOARD": "Suivi",
+          "SETTINGS": "Profil"
         }
       }
     },

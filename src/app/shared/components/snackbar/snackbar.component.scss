@@ -42,8 +42,8 @@
 }
 
 .mat-mdc-snack-bar-container[class*='snackbar-container--'] {
-  margin: 0 0 13vh 6vh !important;
-  animation: fade-in-up 1.5s;
+  margin: calc(70px + 2vh) 2vh 0 !important;
+  animation: fade-in-right 1.5s;
 
   .mdc-snackbar__label {
     font-family: var(--font-snackbar);
@@ -80,21 +80,24 @@
 }
 
 .mat-mdc-snack-bar-container.snackbar-container--modified {
+  margin: 0 0 13vh 6vh !important;
+  animation: fade-in-up 1.5s;
+
   .mdc-snackbar__surface::before {
     background-color: var(--info-color);
   }
 }
 
 .mat-mdc-snack-bar-container.snackbar-container--deleted {
+  margin: 0 0 13vh 6vh !important;
+  animation: fade-in-up 1.5s;
+
   .mdc-snackbar__surface::before {
     background-color: var(--danger-color);
   }
 }
 
 .mat-mdc-snack-bar-container.snackbar-container--logIn-logOut {
-  margin: 12vh 6vh !important;
-  animation: fade-in-right 1.5s;
-
   .mdc-snackbar__surface {
     background-color: var(--primary-color);
 
@@ -105,9 +108,6 @@
 }
 
 .mat-mdc-snack-bar-container.snackbar-container--register {
-  margin: 5vh 2vh !important;
-  animation: fade-in-right 1.5s;
-
   .mdc-snackbar__surface {
     background-color: var(--primary-color);
     white-space: pre-line;
@@ -119,9 +119,6 @@
 }
 
 .mat-mdc-snack-bar-container.snackbar-container--orange-alert {
-  margin: 5vh 2vh !important;
-  animation: fade-in-right 1.5s;
-
   .mdc-snackbar__surface {
     border-color: var(--danger-color);
     background-color: var(--danger-color-2);
@@ -134,9 +131,6 @@
 }
 
 .mat-mdc-snack-bar-container.snackbar-container--red-alert {
-  margin: 5vh 2vh !important;
-  animation: fade-in-right 1.5s;
-
   .mdc-snackbar__surface {
     border-color: var(--danger-color-2);
     background-color: var(--danger-color);
