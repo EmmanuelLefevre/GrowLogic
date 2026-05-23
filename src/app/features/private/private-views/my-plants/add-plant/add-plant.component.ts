@@ -3,11 +3,12 @@ import { ChangeDetectionStrategy, Component, inject, output, signal } from '@ang
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { PlantMoodKey, Plant } from '@app/features/private/_models/plant/plant.model';
-import { PLANT_MOODS, PlantMoodConfig } from '@app/features/private/_config/plant/mood.constant';
-import { PlantService } from '@app/features/private/_services/plant/plant.service';
 import { SnackbarService } from '@core/_services/snackbar/snackbar.service';
 import { AuthService } from '@core/_services/auth/auth.service';
+
+import { PLANT_MOODS, PlantMoodConfig } from '@features/private/_config/plant-moods/plant-moods.constant';
+import { PlantMoodKey, Plant } from '@features/private/_models/plant/plant.model';
+import { PlantService } from '@features/private/_services/plant/plant.service';
 
 import { GenericInputComponent } from '@shared/components/generic-input/generic-input.component';
 
@@ -70,7 +71,7 @@ export class AddPlantComponent {
     this.isLoading.set(true);
 
     this.plantService.create({
-      IdUser: userId,
+      idUser: userId,
       name: this.nameControl.value!.trim(),
       mood: this.selectedMood()
     }).subscribe({
