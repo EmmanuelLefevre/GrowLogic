@@ -1,4 +1,4 @@
-import { PlantMoodKey } from '@app/features/private/_models/plant/plant.model';
+import { PlantMoodKey } from '@features/private/_models/plant/plant.model';
 
 export interface PlantMoodConfig {
   key: PlantMoodKey;

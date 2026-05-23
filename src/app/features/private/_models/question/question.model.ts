@@ -1,18 +1,13 @@
-export interface Answer {
-  IdAnswer: string;
-  createdAt: string;
-  answer: string;
-  IdQuestion: string;
-  IdUser: string;
-}
+import { Answer } from '../answer/answer.model';
 
 export interface Question {
-  IdQuestion: string;
-  createdAt: string;
-  question: string;
-  IdPlant: string;
-  IdUser: string;
+  id: string;
+  content: string;
+  idPlant: string;
+  idUser: string;
   answer: Answer | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export type QuestionCreate = Pick<Question, 'question' | 'IdPlant' | 'IdUser'>;
+export type QuestionCreate = Pick<Question, 'content' | 'idPlant' | 'idUser'>;

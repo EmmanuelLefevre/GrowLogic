@@ -11,13 +11,13 @@ export type PlantMoodKey =
   | 'sleepy';
 
 export interface Plant {
-  IdPlant: string;
-  IdUser: string;
+  id: string;
+  idUser: string;
   name: string;
   mood: PlantMoodKey | null;
-  AiContext: Record<string, unknown> | null;
+  aiContext: Record<string, unknown> | null;
   createdAt: string;
-  changedAt: string;
+  updatedAt: string;
 }
 
-export type PlantCreate = Pick<Plant, 'name' | 'mood' | 'IdUser'>;
+export type PlantCreate = Pick<Plant, 'name' | 'mood' | 'idUser'>;
