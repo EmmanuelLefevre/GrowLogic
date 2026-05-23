@@ -121,6 +121,35 @@
     }
   },
   "PAGES": {
+    "PLANTS": {
+      "TITLE": "Mes Plantes",
+      "LOADING": "Chargement de vos plantes...",
+      "EMPTY": "Vous n'avez pas encore de plante. Commencez par en ajouter une !",
+      "ADD": {
+        "BUTTON": "Rajouter une plante",
+        "FORM_TITLE": "Nouvelle plante",
+        "NAME_LABEL": "Nom de la plante",
+        "NAME_PLACEHOLDER": "Ex : Mon ficus...",
+        "NAME_ERROR": "Le nom doit contenir entre 2 et 50 caractères.",
+        "MOOD_LABEL": "Humeur",
+        "MOOD_PLACEHOLDER": "Choisir une humeur",
+        "SUBMIT": "Ajouter",
+        "SUCCESS": "Plante ajoutée avec succès !",
+        "ERROR": "Une erreur est survenue, veuillez réessayer."
+      },
+      "MOODS": {
+        "HAPPY": "😊 Heureuse",
+        "THRIVING": "💪 Épanouie",
+        "GROWING": "🌱 En pleine croissance",
+        "RADIANT": "✨ Rayonnante",
+        "SLEEPY": "🥱 Endormie",
+        "LAZY": "😴 Feignante",
+        "MOODY": "😤 Bougonne",
+        "GRUMPY": "😠 Méchante",
+        "SAD": "😢 Triste",
+        "SICK": "🤒 Malade"
+      }
+    },
     "HOME": {
       "HERO": {
         "TITLE": "Votre Main Verte Connectée !",

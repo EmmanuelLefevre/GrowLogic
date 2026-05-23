@@ -1,0 +1,76 @@
+<div
+  class="c-add-plant__backdrop"
+  (click)="onCancel()"
+  aria-hidden="true"></div>
+
+<div
+  class="c-add-plant__card"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="'PAGES.PLANTS.ADD.FORM_TITLE' | translate">
+  <h2 class="c-add-plant__title">{{ 'PAGES.PLANTS.ADD.FORM_TITLE' | translate }}</h2>
+
+  <form
+    class="c-add-plant__form"
+    (ngSubmit)="onSubmit()">
+    <generic-input
+      id="plant-name"
+      [label]="'PAGES.PLANTS.ADD.NAME_LABEL'"
+      [placeholder]="'PAGES.PLANTS.ADD.NAME_PLACEHOLDER'"
+      [control]="nameControl"
+      [customErrorKey]="'PAGES.PLANTS.ADD.NAME_ERROR'" />
+
+    <div class="c-field">
+      <label
+        for="plant-mood"
+        class="c-field__label">
+        {{ 'PAGES.PLANTS.ADD.MOOD_LABEL' | translate }}
+      </label>
+
+      <div
+        class="c-field__wrapper"
+        [class.is-selected]="selectedMood()">
+        <select
+          id="plant-mood"
+          class="c-field__select"
+          [value]="selectedMood() ?? ''"
+          (change)="onSelectMood($event)">
+          <option
+            value=""
+            disabled
+            selected>
+            {{ 'PAGES.PLANTS.ADD.MOOD_PLACEHOLDER' | translate }}
+          </option>
+          @for (mood of moods; track mood.key) {
+            <option [value]="mood.key">
+              {{ mood.labelKey | translate }}
+            </option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="c-add-plant__actions">
+      <button
+        type="button"
+        class="c-add-plant__btn c-add-plant__btn--outline"
+        (click)="onCancel()">
+        {{ 'UI.BUTTONS.CANCEL.LABEL' | translate }}
+      </button>
+
+      <button
+        type="button"
+        class="c-add-plant__btn c-add-plant__btn--primary"
+        [disabled]="isLoading()"
+        (click)="onSubmit()">
+        @if (isLoading()) {
+          <span
+            class="c-add-plant__btn-loader"
+            aria-hidden="true"></span>
+        } @else {
+          {{ 'PAGES.PLANTS.ADD.SUBMIT' | translate }}
+        }
+      </button>
+    </div>
+  </form>
+</div>

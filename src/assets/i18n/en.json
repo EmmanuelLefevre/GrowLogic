@@ -121,6 +121,35 @@
     }
   },
   "PAGES": {
+    "PLANTS": {
+      "TITLE": "My Plants",
+      "LOADING": "Loading your plants...",
+      "EMPTY": "You don't have any plants yet. Start by adding one!",
+      "ADD": {
+        "BUTTON": "Add a plant",
+        "FORM_TITLE": "New plant",
+        "NAME_LABEL": "Plant name",
+        "NAME_PLACEHOLDER": "E.g.: My ficus...",
+        "NAME_ERROR": "Name must be between 2 and 50 characters.",
+        "MOOD_LABEL": "Mood",
+        "MOOD_PLACEHOLDER": "Choose a mood",
+        "SUBMIT": "Add",
+        "SUCCESS": "Plant added successfully!",
+        "ERROR": "An error occurred, please try again."
+      },
+      "MOODS": {
+        "HAPPY": "😊 Happy",
+        "THRIVING": "💪 Thriving",
+        "GROWING": "🌱 Growing",
+        "RADIANT": "✨ Radiant",
+        "SLEEPY": "🥱 Sleepy",
+        "LAZY": "😴 Lazy",
+        "MOODY": "😤 Moody",
+        "GRUMPY": "😠 Grumpy",
+        "SAD": "😢 Sad",
+        "SICK": "🤒 Sick"
+      }
+    },
     "HOME": {
       "HERO": {
         "TITLE": "Your Connected Green Thumb !",
