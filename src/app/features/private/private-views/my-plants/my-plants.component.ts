@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { UpperCasePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -7,15 +9,15 @@ import { PlantService } from '@app/features/private/_services/plant/plant.servic
 
 import { MainButtonComponent } from '@shared/components/button/main-button.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
-import { CapitalizeFirstPipe } from '@shared/_pipes/capitalize-first/capitalize-first';
 
 @Component({
   selector: 'my-plants',
   imports: [
+    UpperCasePipe,
+    RouterLink,
     TranslateModule,
     MainButtonComponent,
-    AddPlantComponent,
-    CapitalizeFirstPipe
+    AddPlantComponent
   ],
   templateUrl: './my-plants.component.html',
   styleUrl: './my-plants.component.scss',

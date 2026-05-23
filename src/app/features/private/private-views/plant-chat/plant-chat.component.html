@@ -1,0 +1,104 @@
+<div class="plant-chat">
+  <!-- ── En-tête ── -->
+  <header class="plant-chat__header">
+    <a
+      class="plant-chat__back"
+      [routerLink]="['/private/my-plants']"
+      [attr.aria-label]="'PAGES.PLANT_CHAT.BACK' | translate">
+      <i
+        class="fa-solid fa-arrow-left"
+        aria-hidden="true"></i>
+    </a>
+
+    @if (plant()) {
+      <div class="plant-chat__plant-info">
+        <span class="plant-chat__plant-name">{{ plant()!.name }}</span>
+        @if (plant()!.mood) {
+          <span class="plant-chat__plant-mood">
+            {{ 'PAGES.PLANTS.MOODS.' + plant()!.mood | uppercase | translate }}
+          </span>
+        }
+      </div>
+    }
+  </header>
+
+  <!-- ── Zone messages ── -->
+  <div
+    class="plant-chat__messages"
+    role="log"
+    aria-live="polite">
+    @if (isLoading()) {
+      <p class="plant-chat__status">{{ 'PAGES.PLANT_CHAT.LOADING' | translate }}</p>
+    } @else if (hasError()) {
+      <p class="plant-chat__status plant-chat__status--error">
+        {{ 'PAGES.PLANT_CHAT.ERROR' | translate }}
+      </p>
+    } @else if (questions().length === 0) {
+      <div class="plant-chat__empty">
+        <span
+          class="plant-chat__empty-icon"
+          aria-hidden="true"
+          >🌱</span
+        >
+        <p class="plant-chat__empty-text">{{ 'PAGES.PLANT_CHAT.EMPTY' | translate }}</p>
+        <p class="plant-chat__empty-hint">{{ 'PAGES.PLANT_CHAT.EMPTY_HINT' | translate }}</p>
+      </div>
+    } @else {
+      <ul class="plant-chat__list">
+        @for (question of questions(); track question.IdQuestion) {
+          <li class="plant-chat__bubble plant-chat__bubble--sent">
+            <p class="plant-chat__bubble-text">{{ question.question }}</p>
+            <time
+              class="plant-chat__bubble-time"
+              [attr.datetime]="question.createdAt">
+              {{ question.createdAt | date: 'HH:mm' }}
+            </time>
+          </li>
+
+          @if (question.answer) {
+            <li class="plant-chat__bubble plant-chat__bubble--received">
+              <p class="plant-chat__bubble-text">{{ question.answer.answer }}</p>
+              <time
+                class="plant-chat__bubble-time"
+                [attr.datetime]="question.answer.createdAt">
+                {{ question.answer.createdAt | date: 'HH:mm' }}
+              </time>
+            </li>
+          } @else {
+            <li class="plant-chat__bubble plant-chat__bubble--pending">
+              <p class="plant-chat__bubble-text">{{ 'PAGES.PLANT_CHAT.NO_ANSWER' | translate }}</p>
+            </li>
+          }
+        }
+      </ul>
+    }
+  </div>
+
+  <!-- ── Zone saisie ── -->
+  <div class="plant-chat__input-area">
+    <input
+      class="plant-chat__input"
+      type="text"
+      [formControl]="messageControl"
+      [placeholder]="'PAGES.PLANT_CHAT.PLACEHOLDER' | translate"
+      [attr.aria-label]="'PAGES.PLANT_CHAT.PLACEHOLDER' | translate"
+      (keydown.enter)="onSend()" />
+
+    <button
+      type="button"
+      class="plant-chat__send-btn"
+      [disabled]="messageControl.invalid || isSending()"
+      [attr.aria-label]="'PAGES.PLANT_CHAT.SEND' | translate"
+      (click)="onSend()">
+      @if (isSending()) {
+        <span
+          class="plant-chat__send-spinner"
+          aria-hidden="true"></span>
+      } @else {
+        <i
+          class="fa-solid fa-paper-plane"
+          aria-hidden="true"></i>
+      }
+    </button>
+  </div>
+</div>

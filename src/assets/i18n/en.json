@@ -28,6 +28,10 @@
           "TITLE": "My Plants",
           "DESCRIPTION": "View and manage your plants."
         },
+        "PLANT_CHAT": {
+          "TITLE": "Chat with your plant",
+          "DESCRIPTION": "Browse all questions and answers for this plant."
+        },
         "SETTINGS": {
           "TITLE": "Profile",
           "DESCRIPTION": "Configure your account and preferences."
@@ -137,6 +141,9 @@
         "SUCCESS": "Plant added successfully!",
         "ERROR": "An error occurred, please try again."
       },
+      "CHAT": {
+        "BUTTON": "Chat with my plant"
+      },
       "MOODS": {
         "HAPPY": "😊 Happy",
         "THRIVING": "💪 Thriving",
@@ -149,6 +156,16 @@
         "SAD": "😢 Sad",
         "SICK": "🤒 Sick"
       }
+    },
+    "PLANT_CHAT": {
+      "BACK": "Back to my plants",
+      "LOADING": "Loading the conversation...",
+      "EMPTY": "No messages yet.",
+      "EMPTY_HINT": "Ask your plant its first question!",
+      "ERROR": "An error occurred while loading.",
+      "NO_ANSWER": "Waiting for a reply...",
+      "PLACEHOLDER": "Write a message...",
+      "SEND": "Send message"
     },
     "HOME": {
       "HERO": {

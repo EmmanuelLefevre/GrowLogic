@@ -43,6 +43,9 @@ export { DateFormatPipe } from './_pipes/date/date-format.pipe';
 import { DateFormatPipe } from './_pipes/date/date-format.pipe';
 export { YesNoPipe } from './_pipes/yes-no/yes-no.pipe';
 import { YesNoPipe } from './_pipes/yes-no/yes-no.pipe';
+export { CapitalizeFirstPipe } from './_pipes/capitalize-first/capitalize-first';
+import { CapitalizeFirstPipe } from './_pipes/capitalize-first/capitalize-first';
+
 
 // --- Utils
 
@@ -74,7 +77,8 @@ export const SHARED_DIRECTIVES = [
 export const SHARED_PIPES = [
   AlertPipe,
   DateFormatPipe,
-  YesNoPipe
+  YesNoPipe,
+  CapitalizeFirstPipe
 ] as const;
 
 export const SHARED_UTILS = [

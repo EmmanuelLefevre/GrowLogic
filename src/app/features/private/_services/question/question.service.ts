@@ -3,63 +3,47 @@ import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { SupabaseService } from '@core/_services/supabase/supabase.service';
-import { Plant, PlantCreate } from '@app/features/private/_models/plant/plant.model';
+import { Question, QuestionCreate } from '@app/features/private/_models/question/question.model';
 
 const SCHEMA = 'growlogic';
-const TABLE = 'plant';
+const TABLE = 'question';
+const RECENT_LIMIT = 5;
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PlantService {
+export class QuestionService {
 
   private readonly supabase = inject(SupabaseService).client;
 
-  getAll(): Observable<Plant[]> {
+  getByPlantId(plantId: string): Observable<Question[]> {
     return from(
       this.supabase
         .schema(SCHEMA)
         .from(TABLE)
-        .select()
+        .select('*, answer(*)')
+        .eq('IdPlant', plantId)
         .order('createdAt', { ascending: false })
+        .limit(RECENT_LIMIT)
     ).pipe(
       map(({ data, error }) => {
         if (error) {
           throw error;
         }
 
-        return (data ?? []) as Plant[];
+        return ((data ?? []) as Question[]).reverse();
       })
     );
   }
 
-  getById(id: string): Observable<Plant> {
-    return from(
-      this.supabase
-        .schema(SCHEMA)
-        .from(TABLE)
-        .select()
-        .eq('IdPlant', id)
-        .single()
-    ).pipe(
-      map(({ data, error }) => {
-        if (error) {
-          throw error;
-        }
-
-        return data as Plant;
-      })
-    );
-  }
-
-  create(payload: PlantCreate): Observable<Plant> {
+  create(payload: QuestionCreate): Observable<Question> {
     return from(
       this.supabase
         .schema(SCHEMA)
         .from(TABLE)
         .insert(payload)
-        .select()
+        .select('*, answer(*)')
         .single()
     ).pipe(
       map(({ data, error }) => {
@@ -67,7 +51,7 @@ export class PlantService {
           throw error;
         }
 
-        return data as Plant;
+        return data as Question;
       })
     );
   }
