@@ -3,11 +3,11 @@ import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { SupabaseService } from '@core/_services/supabase/supabase.service';
-import { Question, QuestionCreate } from '@app/features/private/_models/question/question.model';
+import { Question, QuestionCreate } from '@features/private/_models/question/question.model';
 
+const RECENT_LIMIT = 5;
 const SCHEMA = 'growlogic';
 const TABLE = 'question';
-const RECENT_LIMIT = 5;
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class QuestionService {
         .schema(SCHEMA)
         .from(TABLE)
         .select('*, answer(*)')
-        .eq('IdPlant', plantId)
+        .eq('idPlant', plantId)
         .order('createdAt', { ascending: false })
         .limit(RECENT_LIMIT)
     ).pipe(
