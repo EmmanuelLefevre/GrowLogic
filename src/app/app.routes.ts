@@ -85,19 +85,6 @@ export const ROUTES: Routes = [
             }
           },
           {
-            path: 'plant-chat/:plantId',
-            loadComponent: () => import(
-              '@features/private/private-views/plant-chat/plant-chat.component')
-              .then(m => m.PlantChatComponent),
-            data: {
-              seo: {
-                titleKey: 'META.PAGES.PRIVATE.PLANT_CHAT.TITLE',
-                descriptionKey: 'META.PAGES.PRIVATE.PLANT_CHAT.DESCRIPTION',
-                robots: 'noindex, nofollow'
-              }
-            }
-          },
-          {
             path: 'settings',
             loadComponent: () => import(
               '@features/private/private-views/settings/settings.component')

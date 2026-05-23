@@ -28,10 +28,6 @@
           "TITLE": "My Plants",
           "DESCRIPTION": "View and manage your plants."
         },
-        "PLANT_CHAT": {
-          "TITLE": "Chat with your plant",
-          "DESCRIPTION": "Browse all questions and answers for this plant."
-        },
         "SETTINGS": {
           "TITLE": "Profile",
           "DESCRIPTION": "Configure your account and preferences."
