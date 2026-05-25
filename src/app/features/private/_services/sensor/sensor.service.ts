@@ -3,57 +3,35 @@ import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { SupabaseService } from '@core/_services/supabase/supabase.service';
-import { Plant, PlantCreate } from '@features/private/_models/plant/plant.model';
+import { Sensor, SensorCreate } from '@features/private/_models/sensor/sensor.model';
 
 const SCHEMA = 'growlogic';
-const TABLE = 'plant';
+const TABLE = 'sensor';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PlantService {
+export class SensorService {
 
   private readonly supabase = inject(SupabaseService).client;
 
-  getAll(): Observable<Plant[]> {
+  getAll(): Observable<Sensor[]> {
     return from(
       this.supabase
         .schema(SCHEMA)
         .from(TABLE)
         .select()
-        .order('createdAt', { ascending: false })
+        .order('createdAt', { ascending: true })
     ).pipe(
       map(({ data, error }) => {
-        if (error) {
-          throw error;
-        }
-
-        return (data ?? []) as Plant[];
+        if (error) throw error;
+        return (data ?? []) as Sensor[];
       })
     );
   }
 
-  getById(id: string): Observable<Plant> {
-    return from(
-      this.supabase
-        .schema(SCHEMA)
-        .from(TABLE)
-        .select()
-        .eq('id', id)
-        .single()
-    ).pipe(
-      map(({ data, error }) => {
-        if (error) {
-          throw error;
-        }
-
-        return data as Plant;
-      })
-    );
-  }
-
-  create(payload: PlantCreate): Observable<Plant> {
+  create(payload: SensorCreate): Observable<Sensor> {
     return from(
       this.supabase
         .schema(SCHEMA)
@@ -67,7 +45,7 @@ export class PlantService {
           throw error;
         }
 
-        return data as Plant;
+        return data as Sensor;
       })
     );
   }

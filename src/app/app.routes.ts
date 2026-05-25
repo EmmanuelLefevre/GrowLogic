@@ -61,8 +61,8 @@ export const ROUTES: Routes = [
           {
             path: 'dashboard',
             loadComponent: () => import(
-              '@features/private/private-views/dashboard/dashboard.component')
-              .then(m => m.DashboardComponent),
+              '@features/private/private-views/suivi/suivi.component')
+              .then(m => m.SuiviComponent),
             data: {
               seo: {
                 titleKey: 'META.PAGES.PRIVATE.DASHBOARD.TITLE',
@@ -93,6 +93,30 @@ export const ROUTES: Routes = [
               seo: {
                 titleKey: 'META.PAGES.PRIVATE.SETTINGS.TITLE',
                 descriptionKey: 'META.PAGES.PRIVATE.SETTINGS.DESCRIPTION',
+                robots: 'noindex, nofollow'
+              }
+            }
+          },
+          {
+            path: 'plant-chat/:plantId',
+            loadComponent: () => import(
+              '@features/private/components/plant-chat/plant-chat.component')
+              .then(m => m.PlantChatComponent),
+            data: {
+              seo: {
+                titleKey: 'META.PAGES.PRIVATE.PLANT_CHAT.TITLE',
+                descriptionKey: 'META.PAGES.PRIVATE.PLANT_CHAT.DESCRIPTION',
+                robots: 'noindex, nofollow'
+              }
+            }
+          },
+          {
+            path: 'mock-data',
+            loadComponent: () => import(
+              '@features/private/private-views/mock-data/mock-data.component')
+              .then(m => m.MockDataComponent),
+            data: {
+              seo: {
                 robots: 'noindex, nofollow'
               }
             }

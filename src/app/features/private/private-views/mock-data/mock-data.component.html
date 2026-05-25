@@ -1,0 +1,65 @@
+<background>
+  <section class="mock-data">
+    <div class="mock-data__wrapper">
+      <div class="mock-data__header">
+        <span class="mock-data__badge">🧪 DEV ONLY</span>
+        <h1 class="mock-data__title">{{ 'PAGES.MOCK_DATA.TITLE' | translate }}</h1>
+        <p class="mock-data__subtitle">{{ 'PAGES.MOCK_DATA.SUBTITLE' | translate }}</p>
+      </div>
+
+      @if (isLoading()) {
+        <p class="mock-data__loading">{{ 'PAGES.MOCK_DATA.LOADING' | translate }}</p>
+      } @else {
+        <div class="mock-data__stats">
+          <div class="mock-data__stat-card">
+            <span class="mock-data__stat-value">{{ plants().length }}</span>
+            <span class="mock-data__stat-label">{{ 'PAGES.MOCK_DATA.PLANTS_COUNT' | translate }}</span>
+          </div>
+
+          <div class="mock-data__stat-card">
+            <span class="mock-data__stat-value">{{ sensors().length }}</span>
+            <span class="mock-data__stat-label">{{ 'PAGES.MOCK_DATA.SENSORS_COUNT' | translate }}</span>
+          </div>
+
+          <div class="mock-data__stat-card">
+            @if (lastReadingDate()) {
+              <span class="mock-data__stat-value mock-data__stat-value--small">
+                {{ lastReadingDate() | date: 'dd/MM HH:mm' }}
+              </span>
+            } @else {
+              <span class="mock-data__stat-value">—</span>
+            }
+            <span class="mock-data__stat-label">{{ 'PAGES.MOCK_DATA.LAST_READING' | translate }}</span>
+          </div>
+        </div>
+
+        @if (!canGenerate()) {
+          <p class="mock-data__warning">{{ 'PAGES.MOCK_DATA.NO_DATA_WARNING' | translate }}</p>
+        }
+
+        @if (isGenerating()) {
+          <div class="mock-data__progress">
+            <div class="mock-data__progress-bar">
+              <!-- eslint-disable-next-line @angular-eslint/template/no-inline-styles -->
+              <div
+                class="mock-data__progress-fill"
+                [style.width.%]="progress"></div>
+            </div>
+            <p class="mock-data__progress-label">
+              {{ insertedReadings() }} / {{ totalReadings() }} lignes insérées ({{ progress }}%)
+            </p>
+          </div>
+        }
+
+        <div class="mock-data__actions">
+          <main-button
+            [label]="'PAGES.MOCK_DATA.GENERATE_BUTTON'"
+            [ariaLabel]="'PAGES.MOCK_DATA.GENERATE_BUTTON'"
+            [isDisabled]="!canGenerate() || isGenerating()"
+            [isLoading]="isGenerating()"
+            (clicked)="onGenerate()" />
+        </div>
+      }
+    </div>
+  </section>
+</background>

@@ -4,10 +4,19 @@
       <div class="my-plants__header">
         <h1 class="my-plants__title">{{ 'PAGES.PLANTS.TITLE' | translate }}</h1>
 
-        <main-button
-          [label]="'PAGES.PLANTS.ADD.BUTTON'"
-          [ariaLabel]="'PAGES.PLANTS.ADD.BUTTON'"
-          (clicked)="openAddPanel()" />
+        <div class="my-plants__actions">
+          <main-button
+            [label]="'PAGES.PLANTS.ADD.BUTTON'"
+            [ariaLabel]="'PAGES.PLANTS.ADD.BUTTON'"
+            (clicked)="openAddPanel()" />
+
+          <main-button
+            [label]="'PAGES.PLANTS.SENSORS.CONNECT.BUTTON'"
+            [ariaLabel]="'PAGES.PLANTS.SENSORS.CONNECT.BUTTON'"
+            [variant]="'outline'"
+            [isDisabled]="plants().length === 0"
+            (clicked)="openConnectSensorPanel()" />
+        </div>
       </div>
 
       @if (isLoading()) {
@@ -20,11 +29,43 @@
             <li class="my-plants__item">
               <div class="my-plants__item-info">
                 <span class="my-plants__item-name">{{ plant.name }}</span>
+                @if (plant.typePlant) {
+                  <span class="my-plants__item-type">{{
+                    'PAGES.PLANTS.TYPES.' + plant.typePlant | uppercase | translate
+                  }}</span>
+                }
                 @if (plant.mood) {
                   <span class="my-plants__item-mood">{{
                     'PAGES.PLANTS.MOODS.' + plant.mood | uppercase | translate
                   }}</span>
                 }
+              </div>
+
+              <div class="my-plants__item-sensors">
+                <span class="my-plants__sensor-chip my-plants__sensor-chip--temp">
+                  <i
+                    class="fa-solid fa-temperature-half"
+                    aria-hidden="true"></i>
+                  @if (plantSensorMap()[plant.id]?.temperature) {
+                    {{ plantSensorMap()[plant.id]!.temperature!.value }}&nbsp;{{
+                      plantSensorMap()[plant.id]!.temperature!.unit
+                    }}
+                  } @else {
+                    {{ 'PAGES.PLANTS.SENSORS.NO_DATA' | translate }}
+                  }
+                </span>
+                <span class="my-plants__sensor-chip my-plants__sensor-chip--humidity">
+                  <i
+                    class="fa-solid fa-droplet"
+                    aria-hidden="true"></i>
+                  @if (plantSensorMap()[plant.id]?.humidity) {
+                    {{ plantSensorMap()[plant.id]!.humidity!.value }}&nbsp;{{
+                      plantSensorMap()[plant.id]!.humidity!.unit
+                    }}
+                  } @else {
+                    {{ 'PAGES.PLANTS.SENSORS.NO_DATA' | translate }}
+                  }
+                </span>
               </div>
 
               <div class="my-plants__item-actions">
@@ -47,6 +88,13 @@
         <add-plant
           (plantAdded)="onPlantAdded($event)"
           (cancelled)="onAddCancelled()" />
+      }
+
+      @if (showConnectSensorPanel()) {
+        <connect-sensor
+          [plants]="plants()"
+          (sensorConnected)="onSensorConnected($event)"
+          (cancelled)="onConnectSensorCancelled()" />
       }
     </div>
   </section>

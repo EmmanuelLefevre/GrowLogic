@@ -131,11 +131,26 @@
         "NAME_LABEL": "Nom de la plante",
         "NAME_PLACEHOLDER": "Ex : Mon ficus...",
         "NAME_ERROR": "Le nom doit contenir entre 2 et 50 caractères.",
+        "TYPE_LABEL": "Type de plante",
+        "TYPE_PLACEHOLDER": "Choisir un type",
         "MOOD_LABEL": "Humeur",
         "MOOD_PLACEHOLDER": "Choisir une humeur",
         "SUBMIT": "Ajouter",
         "SUCCESS": "Plante ajoutée avec succès !",
         "ERROR": "Une erreur est survenue, veuillez réessayer."
+      },
+      "TYPES": {
+        "CACTUS": "🌵 Cactus",
+        "SUCCULENTE": "🪴 Succulente",
+        "TROPICALE": "🌿 Tropicale",
+        "ARBRE": "🌳 Arbre",
+        "FLEUR": "🌸 Fleur",
+        "HERBE": "🌱 Herbe",
+        "FOUGERE": "🌾 Fougère",
+        "AQUATIQUE": "💧 Aquatique",
+        "GRIMPANTE": "🍃 Grimpante",
+        "BONSAI": "🎋 Bonsaï",
+        "AUTRE": "🪴 Autre"
       },
       "CHAT": {
         "BUTTON": "Discuter avec ma plante"
@@ -151,7 +166,52 @@
         "GRUMPY": "😠 Méchante",
         "SAD": "😢 Triste",
         "SICK": "🤒 Malade"
+      },
+      "SENSORS": {
+        "CONNECT": {
+          "BUTTON": "Connecter un capteur",
+          "FORM_TITLE": "Connecter un capteur",
+          "TYPE_LABEL": "Type de capteur",
+          "TYPE_PLACEHOLDER": "Choisir un type",
+          "PLANT_LABEL": "Plante associée",
+          "PLANT_PLACEHOLDER": "Choisir une plante",
+          "SUBMIT": "Connecter",
+          "SUCCESS": "Capteur connecté avec succès !",
+          "ERROR": "Une erreur est survenue, veuillez réessayer."
+        },
+        "TYPES": {
+          "HUMIDITY": "Capteur d'humidité",
+          "TEMPERATURE": "Capteur de température"
+        },
+        "TEMPERATURE_LABEL": "Température",
+        "HUMIDITY_LABEL": "Humidité",
+        "NO_DATA": "Pas encore connecté"
       }
+    },
+    "SUIVI": {
+      "TITLE": "Suivi de mes capteurs",
+      "LOADING": "Chargement de vos plantes...",
+      "EMPTY": "Vous n'avez pas encore de plante.",
+      "PERIOD_DAY": "Aujourd'hui",
+      "PERIOD_WEEK": "Cette semaine",
+      "PERIOD_MONTH": "Ce mois",
+      "NO_SENSOR": "Aucun capteur connecté à cette plante.",
+      "CHART_LOADING": "Chargement des données...",
+      "NO_DATA": "Aucune donnée disponible pour cette période."
+    },
+    "MOCK_DATA": {
+      "TITLE": "Générateur de données",
+      "SUBTITLE": "Génère des relevés de capteurs réalistes pour la démo du POC.",
+      "LOADING": "Chargement du contexte...",
+      "PLANTS_COUNT": "Plantes",
+      "SENSORS_COUNT": "Capteurs",
+      "LAST_READING": "Dernier relevé",
+      "NO_DATA_WARNING": "Vous devez avoir au moins une plante et un capteur pour générer des données.",
+      "GENERATE_BUTTON": "Générer les données",
+      "UP_TO_DATE": "Les données sont déjà à jour (moins de 2h).",
+      "SUCCESS": "Données générées avec succès !",
+      "ERROR": "Erreur lors de la génération des données.",
+      "LOAD_ERROR": "Erreur lors du chargement du contexte."
     },
     "PLANT_CHAT": {
       "BACK": "Retour à mes plantes",

@@ -1,0 +1,96 @@
+<background>
+  <section class="suivi">
+    <div class="suivi__wrapper">
+      <div class="suivi__header">
+        <h1 class="suivi__title">{{ 'PAGES.SUIVI.TITLE' | translate }}</h1>
+
+        <div class="suivi__period-tabs">
+          @for (p of periods; track p.key) {
+            <button
+              type="button"
+              class="suivi__period-btn"
+              [class.suivi__period-btn--active]="selectedPeriod() === p.key"
+              (click)="selectPeriod(p.key)">
+              {{ p.labelKey | translate }}
+            </button>
+          }
+        </div>
+      </div>
+
+      @if (isLoading()) {
+        <p class="suivi__loading">{{ 'PAGES.SUIVI.LOADING' | translate }}</p>
+      } @else if (plantStates().length === 0) {
+        <p class="suivi__empty">{{ 'PAGES.SUIVI.EMPTY' | translate }}</p>
+      } @else {
+        <div class="suivi__plants">
+          @for (state of plantStates(); track state.plant.id) {
+            <div class="suivi__plant-card">
+              <div class="suivi__plant-header">
+                <span class="suivi__plant-name">{{ state.plant.name }}</span>
+                @if (state.plant.typePlant) {
+                  <span class="suivi__plant-type">{{
+                    'PAGES.PLANTS.TYPES.' + state.plant.typePlant | uppercase | translate
+                  }}</span>
+                }
+              </div>
+
+              @if (state.sensors.length === 0) {
+                <p class="suivi__no-sensor">{{ 'PAGES.SUIVI.NO_SENSOR' | translate }}</p>
+              } @else if (state.isLoading) {
+                <p class="suivi__chart-loading">{{ 'PAGES.SUIVI.CHART_LOADING' | translate }}</p>
+              } @else if (!hasTemperature(state.chartData) && !hasHumidity(state.chartData)) {
+                <p class="suivi__no-data">{{ 'PAGES.SUIVI.NO_DATA' | translate }}</p>
+              } @else {
+                <div class="suivi__charts">
+                  @if (hasTemperature(state.chartData)) {
+                    <div class="suivi__chart-block">
+                      <p class="suivi__chart-label suivi__chart-label--temp">
+                        <i
+                          class="fa-solid fa-temperature-half"
+                          aria-hidden="true"></i>
+                        {{ 'PAGES.PLANTS.SENSORS.TEMPERATURE_LABEL' | translate }}
+                      </p>
+                      <apx-chart
+                        [series]="buildTempSeries(state.chartData!)"
+                        [chart]="buildTempOptions(state.chartData!.tempUnit).chart"
+                        [xaxis]="buildTempOptions(state.chartData!.tempUnit).xaxis"
+                        [yaxis]="buildTempOptions(state.chartData!.tempUnit).yaxis"
+                        [stroke]="buildTempOptions(state.chartData!.tempUnit).stroke"
+                        [fill]="buildTempOptions(state.chartData!.tempUnit).fill"
+                        [dataLabels]="buildTempOptions(state.chartData!.tempUnit).dataLabels"
+                        [grid]="buildTempOptions(state.chartData!.tempUnit).grid"
+                        [tooltip]="buildTempOptions(state.chartData!.tempUnit).tooltip"
+                        [colors]="buildTempOptions(state.chartData!.tempUnit).colors" />
+                    </div>
+                  }
+
+                  @if (hasHumidity(state.chartData)) {
+                    <div class="suivi__chart-block">
+                      <p class="suivi__chart-label suivi__chart-label--humidity">
+                        <i
+                          class="fa-solid fa-droplet"
+                          aria-hidden="true"></i>
+                        {{ 'PAGES.PLANTS.SENSORS.HUMIDITY_LABEL' | translate }}
+                      </p>
+                      <apx-chart
+                        [series]="buildHumSeries(state.chartData!)"
+                        [chart]="buildHumOptions(state.chartData!.humUnit).chart"
+                        [xaxis]="buildHumOptions(state.chartData!.humUnit).xaxis"
+                        [yaxis]="buildHumOptions(state.chartData!.humUnit).yaxis"
+                        [stroke]="buildHumOptions(state.chartData!.humUnit).stroke"
+                        [fill]="buildHumOptions(state.chartData!.humUnit).fill"
+                        [dataLabels]="buildHumOptions(state.chartData!.humUnit).dataLabels"
+                        [grid]="buildHumOptions(state.chartData!.humUnit).grid"
+                        [tooltip]="buildHumOptions(state.chartData!.humUnit).tooltip"
+                        [colors]="buildHumOptions(state.chartData!.humUnit).colors" />
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </section>
+</background>

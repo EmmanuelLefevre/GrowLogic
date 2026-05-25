@@ -22,6 +22,36 @@
 
     <div class="c-field">
       <label
+        for="plant-type"
+        class="c-field__label">
+        {{ 'PAGES.PLANTS.ADD.TYPE_LABEL' | translate }}
+      </label>
+
+      <div
+        class="c-field__wrapper"
+        [class.is-selected]="selectedType()">
+        <select
+          id="plant-type"
+          class="c-field__select"
+          [value]="selectedType() ?? ''"
+          (change)="onSelectType($event)">
+          <option
+            value=""
+            disabled
+            selected>
+            {{ 'PAGES.PLANTS.ADD.TYPE_PLACEHOLDER' | translate }}
+          </option>
+          @for (type of plantTypes; track type.key) {
+            <option [value]="type.key">
+              {{ type.labelKey | translate }}
+            </option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="c-field">
+      <label
         for="plant-mood"
         class="c-field__label">
         {{ 'PAGES.PLANTS.ADD.MOOD_LABEL' | translate }}

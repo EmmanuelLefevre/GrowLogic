@@ -1,0 +1,97 @@
+<div
+  class="c-connect-sensor__backdrop"
+  (click)="onCancel()"
+  aria-hidden="true"></div>
+
+<div
+  class="c-connect-sensor__card"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="'PAGES.PLANTS.SENSORS.CONNECT.FORM_TITLE' | translate">
+  <h2 class="c-connect-sensor__title">{{ 'PAGES.PLANTS.SENSORS.CONNECT.FORM_TITLE' | translate }}</h2>
+
+  <form
+    class="c-connect-sensor__form"
+    (ngSubmit)="onSubmit()">
+    <div class="c-field">
+      <label
+        for="sensor-type"
+        class="c-field__label">
+        {{ 'PAGES.PLANTS.SENSORS.CONNECT.TYPE_LABEL' | translate }}
+      </label>
+
+      <div
+        class="c-field__wrapper"
+        [class.is-selected]="selectedType()">
+        <select
+          id="sensor-type"
+          class="c-field__select"
+          [value]="selectedType() ?? ''"
+          (change)="onSelectType($event)">
+          <option
+            value=""
+            disabled
+            selected>
+            {{ 'PAGES.PLANTS.SENSORS.CONNECT.TYPE_PLACEHOLDER' | translate }}
+          </option>
+          @for (type of sensorTypes; track type.key) {
+            <option [value]="type.key">
+              {{ type.labelKey | translate }}
+            </option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="c-field">
+      <label
+        for="sensor-plant"
+        class="c-field__label">
+        {{ 'PAGES.PLANTS.SENSORS.CONNECT.PLANT_LABEL' | translate }}
+      </label>
+
+      <div
+        class="c-field__wrapper"
+        [class.is-selected]="selectedPlantId()">
+        <select
+          id="sensor-plant"
+          class="c-field__select"
+          [value]="selectedPlantId() ?? ''"
+          (change)="onSelectPlant($event)">
+          <option
+            value=""
+            disabled
+            selected>
+            {{ 'PAGES.PLANTS.SENSORS.CONNECT.PLANT_PLACEHOLDER' | translate }}
+          </option>
+          @for (plant of plants(); track plant.id) {
+            <option [value]="plant.id">{{ plant.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="c-connect-sensor__actions">
+      <button
+        type="button"
+        class="c-connect-sensor__btn c-connect-sensor__btn--outline"
+        (click)="onCancel()">
+        {{ 'UI.BUTTONS.CANCEL.LABEL' | translate }}
+      </button>
+
+      <button
+        type="button"
+        class="c-connect-sensor__btn c-connect-sensor__btn--primary"
+        [disabled]="isLoading() || !selectedType() || !selectedPlantId()"
+        (click)="onSubmit()">
+        @if (isLoading()) {
+          <span
+            class="c-connect-sensor__btn-loader"
+            aria-hidden="true"></span>
+        } @else {
+          {{ 'PAGES.PLANTS.SENSORS.CONNECT.SUBMIT' | translate }}
+        }
+      </button>
+    </div>
+  </form>
+</div>

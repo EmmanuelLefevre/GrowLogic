@@ -131,11 +131,26 @@
         "NAME_LABEL": "Plant name",
         "NAME_PLACEHOLDER": "E.g.: My ficus...",
         "NAME_ERROR": "Name must be between 2 and 50 characters.",
+        "TYPE_LABEL": "Plant type",
+        "TYPE_PLACEHOLDER": "Choose a type",
         "MOOD_LABEL": "Mood",
         "MOOD_PLACEHOLDER": "Choose a mood",
         "SUBMIT": "Add",
         "SUCCESS": "Plant added successfully!",
         "ERROR": "An error occurred, please try again."
+      },
+      "TYPES": {
+        "CACTUS": "🌵 Cactus",
+        "SUCCULENTE": "🪴 Succulent",
+        "TROPICALE": "🌿 Tropical",
+        "ARBRE": "🌳 Tree",
+        "FLEUR": "🌸 Flower",
+        "HERBE": "🌱 Herb",
+        "FOUGERE": "🌾 Fern",
+        "AQUATIQUE": "💧 Aquatic",
+        "GRIMPANTE": "🍃 Climbing",
+        "BONSAI": "🎋 Bonsai",
+        "AUTRE": "🪴 Other"
       },
       "CHAT": {
         "BUTTON": "Chat with my plant"
@@ -151,7 +166,52 @@
         "GRUMPY": "😠 Grumpy",
         "SAD": "😢 Sad",
         "SICK": "🤒 Sick"
+      },
+      "SENSORS": {
+        "CONNECT": {
+          "BUTTON": "Connect a sensor",
+          "FORM_TITLE": "Connect a sensor",
+          "TYPE_LABEL": "Sensor type",
+          "TYPE_PLACEHOLDER": "Choose a type",
+          "PLANT_LABEL": "Associated plant",
+          "PLANT_PLACEHOLDER": "Choose a plant",
+          "SUBMIT": "Connect",
+          "SUCCESS": "Sensor connected successfully!",
+          "ERROR": "An error occurred, please try again."
+        },
+        "TYPES": {
+          "HUMIDITY": "Humidity sensor",
+          "TEMPERATURE": "Temperature sensor"
+        },
+        "TEMPERATURE_LABEL": "Temperature",
+        "HUMIDITY_LABEL": "Humidity",
+        "NO_DATA": "Not yet connected"
       }
+    },
+    "SUIVI": {
+      "TITLE": "Sensor monitoring",
+      "LOADING": "Loading your plants...",
+      "EMPTY": "You don't have any plants yet.",
+      "PERIOD_DAY": "Today",
+      "PERIOD_WEEK": "This week",
+      "PERIOD_MONTH": "This month",
+      "NO_SENSOR": "No sensor connected to this plant.",
+      "CHART_LOADING": "Loading data...",
+      "NO_DATA": "No data available for this period."
+    },
+    "MOCK_DATA": {
+      "TITLE": "Data Generator",
+      "SUBTITLE": "Generates realistic sensor readings for the POC demo.",
+      "LOADING": "Loading context...",
+      "PLANTS_COUNT": "Plants",
+      "SENSORS_COUNT": "Sensors",
+      "LAST_READING": "Last reading",
+      "NO_DATA_WARNING": "You need at least one plant and one sensor to generate data.",
+      "GENERATE_BUTTON": "Generate data",
+      "UP_TO_DATE": "Data is already up to date (less than 2h ago).",
+      "SUCCESS": "Data generated successfully!",
+      "ERROR": "Error while generating data.",
+      "LOAD_ERROR": "Error loading context."
     },
     "PLANT_CHAT": {
       "BACK": "Back to my plants",

@@ -8,6 +8,8 @@
     "(ngSubmit)",
     "[ariaLabel]",
     "(plantAdded)",
+    "(sensorConnected)",
+    "[dataLabels]",
     "[className]",
     "[customErrorKey]",
     "[formControl]",
