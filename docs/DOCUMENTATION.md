@@ -32,7 +32,7 @@ Dans ce projet, nous avons poussé l'intégration plus loin pour permettre une d
 - Via les fichiers **Markdown** sur **GitHub**.  
 - Via le site généré **Compodoc**.  
 
-> [🔗 Lien vers la documentation GitHub Pages](https://emmanuellefevre.github.io/AngularTemplate/)  
+> [🔗 Lien vers la documentation GitHub Pages](https://emmanuellefevre.github.io/GrowLogic/)  
 
 ### CONFIGURATION
 
@@ -150,7 +150,7 @@ Le déploiement ne se lance que sur la branche `main`. Il nécessite que les job
 
 La documentation est hébergée gratuitement via **GitHub Pages**. Elle est automatiquement mise à jour à chaque modification sur la branche main.  
 
-> [🔗 Lien vers la documentation GitHub Pages](https://EmmanuelLefevre.github.io/AngularTemplate/)  
+> [🔗 Lien vers la documentation GitHub Pages](https://EmmanuelLefevre.github.io/GrowLogic/)  
 
 <h2 id="depot">
   <img
@@ -168,4 +168,4 @@ Pour que le site soit accessible, la configuration suivante a été appliquée d
 - **Source :** Deploy from a branch
 - **Branch :** gh-pages / (root)
 
-> [🔗 Lien vers la configuration GitHub Pages](https://github.com/EmmanuelLefevre/AngularTemplate/settings/pages)  
+> [🔗 Lien vers la configuration GitHub Pages](https://github.com/EmmanuelLefevre/GrowLogic/settings/pages)  

@@ -18,7 +18,7 @@
 
 <br>
 
-<h1 id="angular-template" align="center">
+<h1 id="grow-logic" align="center">
 <img
     alt="GrowLogic"
     title="GrowLogic"
@@ -40,9 +40,11 @@
 
 ## 🚀 PRÉSENTATION
 
+**GrowLogic** est une solution complète (matérielle et logicielle) conçue pour surveiller en temps réel l'humidité des sols et la santé de vos plantes. Connectant des microcontrôleurs sur votre plante à une interface web moderne, cette application permet à chaque jardinier amateur d'avoir une vue d'ensemble sur ses plantes depuis n'importe quel appareil.
+
 > **"L'excellence industrielle dès le premier commit !"**
 
-Ce projet n'est pas simplement un squelette d'application, c'est un **accélérateur de développement Angular 21** conçu pour les équipes exigeantes.
+Ce projet n'est pas une simplement application, c'est aussi un **accélérateur de développement Angular 21** conçu pour les équipes exigeantes.
 
 Il incarne une philosophie **"Zéro Config - Maximum Quality"**.
 

@@ -62,7 +62,7 @@ Ces raccourcis sont définis dans `compilerOptions.paths` du `tsconfig.json`.
   SERVER CONFIG (Apache)
 </h2>
 
-### A propos d'Apache HTTP Server ::
+### A propos d'Apache HTTP Server :
 
 **Apache** est le serveur web qui héberge notre application en production.  
 Contrairement à un serveur d'application (comme **NodeJS*** ou **Java**), son rôle ici est de servir des fichiers statiques (**HTML**, **SCSS**, **JS**, **Images**) au navigateur de l'utilisateur.  
@@ -84,7 +84,7 @@ Nous utilisons un fichier de configuration distribué (`.htaccess`) pour interce
 
 Ce fichier est situé dans le dossier des assets publics et est automatiquement copié à la racine du build lors de la compilation.  
 
-**Emplacement build :** `dist/AngularTemplate/browser/.htaccess`  
+**Emplacement build :** `dist/GrowLogic/browser/.htaccess`  
 
 ### Fonctionnalités activées :
 

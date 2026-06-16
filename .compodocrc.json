@@ -9,6 +9,6 @@
   "open": true,
   "output": ".documentation-output",
   "port": 8080,
-  "title": "AngularTemplate Documentation",
+  "title": "GrowLogic Documentation",
   "tsconfig": "tsconfig.doc.json"
 }
